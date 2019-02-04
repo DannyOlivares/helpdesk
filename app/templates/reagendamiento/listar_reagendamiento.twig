@@ -1,0 +1,100 @@
+{% extends 'portal/portal' %}
+{% block appStylos %}
+    <link rel="stylesheet" href="views/app/template/datatables/dataTables.bootstrap.css">
+{% endblock %}
+{% block appBody %}
+    <section class="content-header">
+        <h1>
+            Reagendamiento
+            <small>Total Ordenes</small>
+        </h1>
+    </section>
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box box-primary">
+                    <div class="box-body">
+                        <table id="tblreagendamiento" name="tblreagendamiento" class="table table-bordered">
+                            <thead>
+                                <tr>
+
+                                    <th>ID_ACTIVIDAD</th>
+                                    <th>NO_ORDEN</th>
+                                    <th>RUT_CLIENTE</th>
+                                    <th>TIPO_ACTIVIDAD</th>
+                                    <th>COMUNA</th>
+                                    <th>ESTADO</th>
+                                    <th>dias</th>
+                                    <th>Usuario_Gestion</th>
+                                    <th>Fecha_Gestion</th>
+                                    <th>Observacion_Gestion</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                {% for r in db_ordenes if false != db_ordenes %}
+                                    <tr>
+
+                                        <td>{{ r.id_orden }}</td>
+                                        <td>{{ r.numero_orden }}</td>
+                                        <td>{{ r.rut_cliente }}</td>
+                                        <td>{{ r.actividad }}</td>
+                                        <td>{{ r.descripcion }}</td>
+                                        {% if r.estado == 1 %}
+                                         <td>GESTIONADA</td>
+                                        {% elseif r.estado == 2 %}
+                                         <td>REAGENDADA</td>
+                                        {% elseif r.estado == 3 %}
+                                         <td>CANCELADA</td>
+                                        {% elseif r.estado == 4 %}
+                                          <td>ALTA UTILIZACION</td>
+                                        {% elseif r.estado == 5 %}
+                                          <td>GESTION EXTERNA</td>
+                                        {% else %}
+                                          <td>PENDIENTE</td>
+                                        {% endif %}
+                                        <td >
+                                            {{ r.dias }}
+                                        </td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+
+
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+{% block appScript %}
+
+    <script src="views/app/template/datatables/jquery.dataTables.min.js" type="text/javascript"></script>
+    <script src="views/app/template/datatables/dataTables.bootstrap.min.js" type="text/javascript"></script>
+    <script src="views/app/js/reagendamiento/reagendamiento.js"></script>
+    <script>
+        $("#tblreagendamiento").dataTable({
+            "language": {
+                "search": "Buscar:",
+                "zeroRecords": "No hay datos para mostrar",
+                "info": "Mostrando _END_ Registros, de un total de _TOTAL_ ",
+                "loadingRecords": "Cargando...",
+                "processing": "Procesando...",
+                "infoEmpty": "No hay entradas para mostrar",
+                "lengthMenu": "Mostrar _MENU_ Filas",
+                "paginate": {
+                    "first": "Primera",
+                    "last": "Ultima",
+                    "next": "Siguiente",
+                    "previous": "Anterior"
+                }
+            },
+            "autoWidth": true,
+            "scrollX": true
+        });
+    </script>
+{% endblock %}

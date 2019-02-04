@@ -1,0 +1,125 @@
+{% extends 'portal/portal' %}
+{% block appStylos %}
+    <link rel="stylesheet" href="views/app/template/datatables/dataTables.bootstrap.css">
+    <style media="screen">
+        .at {
+            display: none;
+        }
+    </style>
+{% endblock %}
+{% block appBody %}
+
+    <section class="content-header menu" id="menu" >
+        <h1>
+            Eventos
+            <small>Detalle de Evento</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li>
+                <a href="#">
+                    <i class="fa fa-home"></i>
+                    Home</a>
+            </li>
+            <li ><a href="evento/bienvenida" >Bienvenida</a></li>
+            <li>
+                <a href="evento/listar_evento">Listado de Eventos</a>
+            </li>
+            <li class="active">
+                <button type="button" name="button" class="btn btn-primary" onclick= location.href='evento/agregarEvento'>Agregar Evento</button>
+            </li>
+        </ol>
+    </section>
+    <br>
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box box-primary">
+                    <div class="box-body">
+                        <table id="dataordenes" name="dataordenes" class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Hora Evento</th>
+                                    <th>Descripción</th>
+                                    <th>Observacion</th>
+                                    <th>Fecha Creacion </th>
+                                    <th>Fecha Evento </th>
+                                    <th>Fecha Cierre </th>
+                                    <th>Creador Evento</th>
+                                    <th>Estado Evento   </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {%  for d in data if false != data %}
+                                    <tr>
+                                        <td>{{ d.id }}</td>
+                                        <td>{{ d.hora_evento }}</td>
+                                        <td>{{ d.descripcion_evento}}</td>
+                                        <td>{{ d.observacion_evento }}</td>
+                                        <td>{{ d.fecha_ingreso}}</td>
+                                        <td>{{ d.fecha_evento}}</td>
+                                        {% if d.fecha_cierre != null %}
+                                        <td>{{ d.fecha_cierre }}</td>
+                                        {%  else %}
+                                        <td>No Finalizado</td>
+                                        {%  endif %}
+                                        <td>{{ d.name }}</td>
+                                            {%  if d.estado_evento == "1" %}
+                                                <td>Finalizada</td>
+                                        {%  else %}
+                                                <td>Pendiente</td>
+                                        {% endif %}
+                                        <td>
+
+                                            {%  if  d.estado_evento != "1"  and d.id_usuario == user%}
+                                            <a data-toggle='tooltip' data-placement='top' id="btnmodificar" name="btnmodificar" title='Modificar' class='btn btn-success btn-sm' href="evento/editar_evento/{{d.id}}">
+                                                <i class='glyphicon glyphicon-edit'></i>
+                                            </a>
+                                            {%  endif %}
+                                            <a data-toggle='tooltip' data-placement='top' id="visualizar" name="visualizar" title='Ver Observacion' class='btn btn-primary btn-sm' onclick="visualizar({{d.id}})">
+
+                                                <i class='glyphicon glyphicon-eye-open'></i>
+                                            </a>
+                                            {%  if  d.estado_evento != "1"  and d.id_usuario == user%}
+                                            <a data-toggle='tooltip' data-placement='top' id="btnEliminar" name="btnEliminar" title='Eliminar' class='btn btn-danger btn-sm' onclick="eliminar_evento({{d.id}});">
+                                                <i class='glyphicon glyphicon-erase'></i>
+                                            </a>
+                                            {%  endif %}
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+{% block appScript %}
+    <script src="views/app/template/datatables/jquery.dataTables.min.js" type="text/javascript"></script>
+    <script src="views/app/template/datatables/dataTables.bootstrap.min.js" type="text/javascript"></script>
+    <script src="views/app/js/evento/evento.js"></script>
+    <script>
+        $("#dataordenes").dataTable({
+            "language": {
+                "search": "Buscar:",
+                "zeroRecords": "No hay datos para mostrar",
+                "info": "Mostrando _END_ Registros, de un total de _TOTAL_ ",
+                "loadingRecords": "Cargando...",
+                "processing": "Procesando...",
+                "infoEmpty": "No hay entradas para mostrar",
+                "lengthMenu": "Mostrar _MENU_ Filas",
+                "paginate": {
+                    "first": "Primera",
+                    "last": "Ultima",
+                    "next": "Siguiente",
+                    "previous": "Anterior"
+                }
+            },
+            "autoWidth": true,
+            "scrollX": true,
+            "bSort": false
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,190 @@
+{% extends 'portal/portal' %}
+{% block appStylos %}
+    <link rel="stylesheet" href="views/app/template/datatables/dataTables.bootstrap.css">
+    <!-- <style media="screen">
+        .at {
+            display: none;
+        }
+        #divhistorial{
+             height:250px;
+             width:728px;
+             overflow: auto;
+        }
+        #divdatos{
+             height:250px;
+             width:728px;
+             overflow: auto;
+        }
+        #divcontenido{
+              height:700px;
+             width:700px;
+        }
+    </style> -->
+{% endblock %}
+{% block appBody %}
+  <div class="row">
+    <div class="box">
+      <div class="col-md-12" >
+          <section class="content-header">
+              <h1>
+                Reagendamiento
+                <small>Alta Utilizacion</small>
+              </h1>
+
+          </section>
+        </div>
+    </div>
+</div>
+<section class="content">
+  <form id="formalta" name="formalta">
+    <div class="row">
+      <div class="col-md-4" id="divalta" name="divalta">
+        <div class="box">
+            <div class="box-header">
+              <h4 class="box-title">Alta Utilizacion</h4>
+            </div>
+            <div class="box-body">
+              <div id="divordenesalta" name="divordenesalta">
+                  <div class="col-md-10">
+                    <label>ID ORDEN</label>
+                    <input type="text" class="form-control col-md-3" id="txtordenalta" name="txtordenalta">
+                  </div>
+                  <div class="col-md-2">
+                  </div>
+                  <div class="col-md-12">
+                    <br>
+                  </div>
+                  <div class="col-md-10">
+                    <label>N° PEDIDO</label>
+                    <input type="text" class="form-control col-md-3" id="txtpedidoalta" name="txtpedidoalta">
+                  </div>
+                  <div class="col-md-2">
+                  </div>
+                  <div class="col-md-12">
+                    <br>
+                  </div>
+                  <div class="col-md-10">
+                    <label>RUT CLIENTE</label>
+                    <input type="text" class="form-control col-md-3" id="txtrutclientealta" name="txtrutclientealta">
+                  </div>
+                  <div class="col-md-2">
+                  </div>
+                  <div class="col-md-12">
+                    <br>
+                  </div>
+                  <div class="col-md-10">
+                    <label>TIPO ACTIVIDAD</label>
+                    <input type="text" class="form-control col-md-3" id="txtactividadalta" name="txtactividadalta">
+                  </div>
+                  <div class="col-md-2">
+                  </div>
+                  <div class="col-md-12">
+                    <br>
+                  </div>
+                  <div class="col-md-10">
+                    <label>COMUNA</label>
+                    <select id='opcioncomunaalta' name='opcioncomunaalta' class="form-control">
+                      <option value="0">--</option>
+                      {% for c in db_comunas if false != db_comunas %}
+                          <option value="{{c.id_comuna}}">{{c.descripcion}}</option>
+                      {% endfor %}
+                    </select>
+                  </div>
+                  <div class="col-md-2">
+                  </div>
+                <div class="col-md-12">
+                </div>
+              </div>
+            </div>
+              <div class="box-body">
+                <div>
+                  <h4 class="box-title">OPCIONES</h4>
+                </div>
+                <div class="col-md-12">
+                  <br>
+                </div>
+                <div class="col-md-12" >
+                     <div id="divbotonesalta" name="divbotonesalta">
+                      <td>
+                      <a data-toggle='tooltip' data-placement='top' title='Nueva Orden' onclick="nuevaordenalta()" class='btn btn-success btn-md col-md-3'><i class='glyphicon glyphicon-plus-sign'></i></a>
+                      <div class="col-md-1"></div><a data-toggle='tooltip' data-placement='top' title='Guardar Orden' onclick="guardar_orden_altautilizacion()" class='btn btn-primary btn-md col-md-3' ><i class='glyphicon glyphicon-floppy-disk'></i></a>
+                      <div class="col-md-1"></div><a data-toggle='tooltip' data-placement='top' title='Eliminar Orden' class='btn btn-danger btn-md col-md-3' onclick='eliminar_orden_altautilizacion()'><i class='glyphicon glyphicon-remove-sign'></a></i>
+                      </td>
+                      <br/>
+                      <br/>
+                      <br/>
+                      <br/>
+                      <br/>
+                     </div>
+                </div>
+            </div>
+          </div>
+        </div>
+
+      <div  class='col-md-8' id="divdetalle" name="divdetalle">
+        <div class="box">
+            <div class="box-header">
+              <h4 class="box-title">Listar Ordenes</h4>
+            </div>
+            <div class="box-body">
+                <div id="divtablaalta" name="divtablaalta">
+                  <table id='tblaltautilizacion'  name='tblaltautilizacion' class="table table-bordered">
+                    <thead>
+                      <th>ID_ORDEN</th>
+                      <th>NUMERO_ORDEN</th>
+                      <th>RUT_CLIENTE</th>
+                      <th>ACTIVIDAD</th>
+                      <th>COMUNA</th>
+                      <th>USUARIO_REGISTRA</th>
+                    </thead>
+                    <tbody>
+                        {% set No = 1 %}
+                        {% for u in db_utilizacion if false != db_utilizacion %}
+                            <tr>
+                                <td>{{ u.id_orden }}</td>
+                                <td>{{ u.num_orden }}</td>
+                                <td>{{ u.rut_cliente }}</td>
+                                <td>{{ u.actividad }}</td>
+                                <td>{{ u.descripcion }}</td>
+                                <td>{{ u.nombre }}</td>
+                            </tr>
+                            {% set No = No + 1  %}
+
+                        {% endfor %}
+                    </tbody>
+                  </table>
+                </div>
+          </div>
+        </div>
+    </div>
+  </div>
+ </form>
+</section>
+{% endblock %}
+{% block appScript %}
+<script src="views/app/template/datatables/jquery.dataTables.min.js" type="text/javascript"></script>
+<script src="views/app/template/datatables/dataTables.bootstrap.min.js" type="text/javascript"></script>
+<script src="views/app/js/reagendamiento/reagendamiento.js"></script>
+<script>
+    $("#tblaltautilizacion").dataTable({
+        "language": {
+            "search": "Buscar:",
+            "zeroRecords": "No hay datos para mostrar",
+            "info": "Mostrando _END_ Registros, de un total de _TOTAL_ ",
+            "loadingRecords": "Cargando...",
+            "processing": "Procesando...",
+            "infoEmpty": "No hay entradas para mostrar",
+            "lengthMenu": "Mostrar _MENU_ Filas",
+            "paginate": {
+                "first": "Primera",
+                "last": "Ultima",
+                "next": "Siguiente",
+                "previous": "Anterior"
+            }
+        },
+        "autoWidth": true,
+        "scrollX": true,
+        "bSort": false
+    });
+</script>
+{% endblock %}

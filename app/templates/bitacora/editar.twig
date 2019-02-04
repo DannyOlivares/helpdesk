@@ -1,0 +1,40 @@
+{% extends 'portal/portal' %}
+{% block appBody %}
+<section class="content-header">
+    <h1>
+        Bitacora
+        <small>Editar Bitacoras</small>
+    </h1>
+    <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+    <li class="active"><a class="btn btn-social btn-primary" onclick="editar()"><i class="fa fa-edit"></i>modificar</a></li>
+    </ol>
+
+</section>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="box box-primary">
+                <div class="box-body">
+                    <form name="form_regi" id="form_regi">
+                        <table class="table table-bordered">
+                            <thead>
+                                <th>Descripcion</th>
+                                <th>Detalle</th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><input id="descripcion" name="descripcion"  value="{{data.descripcion}}"></td>
+                                    <td><input id="detalle"     name="detalle"      value="{{data.detalle}}"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <input id="idVitacora"  name="idBitacora"   value="{{data.idBitacora}}" type="hidden">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block appScript %}
+    <script src="views/app/js/bitacora/bitacora.js"></script>
+{% endblock %}

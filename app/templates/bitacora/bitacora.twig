@@ -1,0 +1,87 @@
+
+{% extends 'portal/portal' %}
+{% block appStylos %}
+    <style media="screen">
+        .at {
+            display: none;
+        }
+    </style>
+    <link rel="stylesheet" href="views/app/template/datatables/dataTables.bootstrap.css">
+{% endblock %}
+{% block appBody %}
+    <section class="content-header">
+        <h1>
+            Bitacora
+            <small>Control Bitacoras</small>
+        </h1>
+        <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active"><a class="btn btn-social btn-primary" href="bitacora/agregarBitacora"><i class="fa fa-plus"></i>agregar Bitacora</a></li>
+        </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="box box-primary">
+                    <div class="box-body">
+                        <table id="table_bitacora" name="table_bitacora" class="table table-bordered">
+                            <thead>
+                                <th>Id</th>
+                                <th>Descripcion</th>
+                                <th>Detalle</th>
+                                <th>Fecha Y Hora</th>
+                                <th>operaciones</th>
+                            </thead>
+                            <tbody>
+                                {%  for d in data if false != data %}
+                                    <tr>
+                                        <td>{{d.idBitacora}}</td>
+                                        <td>{{d.descripcion}}</td>
+                                        <td>{{d.detalle}}</td>
+                                        <td>{{d.fechayHora}}</td>
+                                        <td>
+                                            <a href="bitacora/eliminar/{{d.idBitacora}}">Eliminar</a>
+                                            <a href="bitacora/editar/{{d.idBitacora}}">Editar</a>
+                                        </td>
+                                    </tr>
+                                {%  endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /.content -->
+
+{% endblock %}
+{% block appScript %}
+
+    <script src="views/app/template/datatables/jquery.dataTables.min.js" type="text/javascript"></script>
+    <script src="views/app/template/datatables/dataTables.bootstrap.min.js" type="text/javascript"></script>
+
+    <script>
+        $("#table_bitacora").dataTable({
+            "language": {
+                "search": "Buscar:",
+                "zeroRecords": "No hay datos para mostrar",
+                "info": "Mostrando _END_ Registros, de un total de _TOTAL_ ",
+                "loadingRecords": "Cargando...",
+                "processing": "Procesando...",
+                "infoEmpty": "No hay entradas para mostrar",
+                "lengthMenu": "Mostrar _MENU_ Filas",
+                "paginate": {
+                    "first": "Primera",
+                    "last": "Ultima",
+                    "next": "Siguiente",
+                    "previous": "Anterior"
+                }
+            },
+            "autoWidth": true,
+            "scrollX": true,
+            "bSort": false
+        });
+    </script>
+{% endblock %}

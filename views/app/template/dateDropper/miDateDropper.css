@@ -1,0 +1,68 @@
+/*
+
+	INSTRUCTIONS ---------------------------------------------------------------------------------
+  
+  1. link this stylesheet in the head of your HTML
+  	 <link href="YOUR PATH/miDateDropper.css" rel="stylesheet" type="text/css" />
+     
+  2. Set the file name as data-theme attribute on your input
+  	 <input data-theme="miDateDropper" />
+     
+  3. That's it!
+  
+  When you run script the style will be automatically applied.
+
+*/
+div.datedropper.miDateDropper {
+  border-radius: 16px;
+  width: 162px;
+}
+div.datedropper.miDateDropper .picker {
+  border-radius: 16px;
+  box-shadow: 0 0 35px 0px rgba(0, 0, 0, 1);
+}
+div.datedropper.miDateDropper .pick-l {
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+}
+div.datedropper.miDateDropper:before,
+div.datedropper.miDateDropper .pick-submit,
+div.datedropper.miDateDropper .pick-lg-b .pick-sl:before,
+div.datedropper.miDateDropper .pick-m,
+div.datedropper.miDateDropper .pick-lg-h {
+  background-color: #fd4741;
+}
+div.datedropper.miDateDropper .pick-y.pick-jump,
+div.datedropper.miDateDropper .pick li span,
+div.datedropper.miDateDropper .pick-lg-b .pick-wke,
+div.datedropper.miDateDropper .pick-btn {
+  color: #fd4741;
+}
+div.datedropper.miDateDropper .picker,
+div.datedropper.miDateDropper .pick-l {
+  background-color: #FFF;
+}
+div.datedropper.miDateDropper .picker,
+div.datedropper.miDateDropper .pick-arw,
+div.datedropper.miDateDropper .pick-l {
+  color: #4D4D4D;
+}
+div.datedropper.miDateDropper .pick-m,
+div.datedropper.miDateDropper .pick-m .pick-arw,
+div.datedropper.miDateDropper .pick-lg-h,
+div.datedropper.miDateDropper .pick-lg-b .pick-sl,
+div.datedropper.miDateDropper .pick-submit {
+  color: #FFF;
+}
+div.datedropper.miDateDropper.picker-tiny:before,
+div.datedropper.miDateDropper.picker-tiny .pick-m {
+  background-color: #FFF;
+}
+div.datedropper.miDateDropper.picker-tiny .pick-m,
+div.datedropper.miDateDropper.picker-tiny .pick-m .pick-arw {
+  color: #4D4D4D;
+}
+div.datedropper.miDateDropper.picker-lkd .pick-submit {
+  background-color: #FFF;
+  color: #4D4D4D;
+}

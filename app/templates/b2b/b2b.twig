@@ -1,0 +1,139 @@
+{% extends 'portal/portal' %}
+{% block appBody %}
+    <section class="content-header">
+        <h1>
+            B2B
+            <small>Control panel</small>
+        </h1>
+        <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
+        <li class="active">Dashboard</li>
+        </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="nav-tabs-custom">
+                    <ul class="nav nav-tabs pull-rigth">
+                        <li class="active"><a href="#tab_1-1" data-toggle="tab">ALTAS</a></li>
+                        <li><a href="#tab_2-2" data-toggle="tab" onclick="getTurnoSemanaCompleta();">SSTT</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="tab_1-1">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="box">
+                                        <div class="box-header">
+                                            <h3 class="box-title">Resumen Gestion Compromiso Hoy</h3>
+                                        </div>
+                                        <div class="box-body">
+                                            <div class="col-lg-3">
+                                                <table class="table table-bordered">
+                                                    <tbody>
+                                                        <tr>
+                                                        {% set total = 0 %}
+                                                        {% for d in getResumenGestionCompromisoHoy if false != getResumenGestionCompromisoHoy %}
+
+                                                            <td>
+                                                                {% if d.estado_actual == "ANULADA" %}
+                                                                    {% set clase = 'label-danger' %}
+                                                                {% elseif d.estado_actual == "FINALIZADA" %}
+                                                                    {% set clase = 'label-success' %}
+                                                                {% elseif d.estado_actual == "PENDIENTE" %}
+                                                                    {% set clase = 'label-warning' %}
+                                                                {% endif %}
+                                                                <span class="label  {{ clase }}">
+                                                                    {{ d.estado_actual }}
+                                                                </span>
+                                                            </td>
+                                                            <td> {{ d.q }}</td>
+                                                            {% set total = total + d.q %}
+                                                        {% endfor %}
+                                                            <td><span class="label label-info" >TOTAL</span></td><td>{{ total }}</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            
+                                <div class="col-lg-6">
+                                    <div class="box">
+                                        <div id="div_lista_ejecutivos"  class="box-body">
+                                        {% set bloque = '' %}
+                                        {% set count = 1 %}
+                                        {% set Q_Bloque = 0 %}
+                                        {% for d in getResumenGestionCompromisoHoyBloques if false != getResumenGestionCompromisoHoyBloques %}
+                                            {% if bloque != d.HORARIO_COMPROMISO %}
+                                                {% if count > 1 %}
+                                                                <tr>
+                                                                    <td><span class="label label-info" >TOTAL</span></td><td>{{ Q_Bloque }}</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                {% endif %}
+                                                {% set count = 1 %}
+                                                {% set bloque = d.HORARIO_COMPROMISO %}
+                                            {% endif %}
+
+                                            {% if count == 1 %}
+                                                <div class="col-lg-3">
+                                                    <label>{{ d.HORARIO_COMPROMISO }}</label>
+                                                    <table class="table table-bordered">
+                                                        <thead>
+                                                            <th>ESTADO</th>
+                                                            <th>Q</th>
+                                                        </thead>
+                                                        <tbody>
+                                                        {% set Q_Bloque = 0 %}
+                                            {% endif %}
+                                                            <tr>
+                                                                <td>
+                                                                    {% if d.estado_actual == "ANULADA" %}
+                                                                        <span class="label label-danger">
+                                                                    {% elseif d.estado_actual == "FINALIZADA" %}
+                                                                        <span class="label label-success">
+                                                                    {% else  %}
+                                                                        <span class="label label-warning">
+                                                                    {% endif %}
+                                                                    {{ d.estado_actual }}</span>
+                                                                </td>
+                                                                <td><a href="#">{{ d.q }}</a></td>
+                                                                {% set Q_Bloque = Q_Bloque + d.q %}
+                                                            </tr>
+
+                                            {% set count = count + 1 %}
+                                        {% endfor %}
+                                        {% if count > 1 %}
+                                                        <tr>
+                                                            <td><span class="label label-info" >TOTAL</span></td><td>{{ Q_Bloque }}</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="tab_2-2">
+                            <div class="box">
+                                <div class="box-body">
+                                    <div class="col-md-12">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /.content -->
+
+{% endblock %}
