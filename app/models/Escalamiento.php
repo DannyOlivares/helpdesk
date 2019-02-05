@@ -109,7 +109,10 @@ class Escalamiento extends Models implements IModels {
     }//----------------------------FIN CREAR ACTIVIDAD-------------------------------------------------
     //-----------------------------INICIO CREAR ENCARGADO-----------------------------------------
     public function crearEncargadoFiltrar(){
-        return array('success'=>0 'message'=>'Error de validación en:');
+        global $http;
+
+        print_r($http->request);
+        //return array('success'=>0 'message'=>'Error de validación en:');
     }
     //-----------------------------FIN CREAR ENCARGADO--------------------------------------------
     /**
