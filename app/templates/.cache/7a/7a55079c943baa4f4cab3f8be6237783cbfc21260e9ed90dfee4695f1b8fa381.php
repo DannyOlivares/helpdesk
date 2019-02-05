@@ -70,7 +70,7 @@ class __TwigTemplate_0a1f070a14b55a1fbc4c02864fb990f5602d752ebed47f815840b487da6
                         </div>
                         <div class=\"box-body\">
                             <div class=\"col-md-12 text-center\">
-                                <a data-toggle='tooltip' data-placement='top' name=\"btnRegistrarRemitente\" id=\"btnRegistrarRemitente\" class='btn btn-success' onclick=\"registrarRemitente()\">Registrar Remitente
+                                <a data-toggle='tooltip' data-placement='top' name=\"btnRegistrarRemitente\" id=\"btnRegistrarRemitente\" class='btn btn-success' onclick=\"crearEncargadoFiltrar()\">Registrar Remitente
                                 </a>
                                 <input type=\"reset\" class=\"btn btn-warning\">
                             </div>
@@ -93,7 +93,7 @@ class __TwigTemplate_0a1f070a14b55a1fbc4c02864fb990f5602d752ebed47f815840b487da6
                                         <option value=\"deuda\">Deuda</option>
                                         <option value=\"sinActividad\">Sin Actividad</option>
                                         <option value=\"adelantamientoOrdenes\">Adelantamiento Ordenes</option>
-                                        <option value=\"actividadPendienteAndes\">Actividades Pendientes Andes</option>
+                                        <option value=\"actividadesPendientesAndes\">Actividades Pendientes Andes</option>
                                         <option value=\"reclamoComercial\">Reclamo Comercial</option>
                                         <option value=\"reagendamientoReiterado\">Reagendamientod Reiterados</option>
                                         <option value=\"fechaFuturaLejana\">Fecha Futura Lejana</option>
@@ -103,7 +103,7 @@ class __TwigTemplate_0a1f070a14b55a1fbc4c02864fb990f5602d752ebed47f815840b487da6
                             <br>
                             <div class=\"col-md-12 text-center\">
                                 <br>
-                                <a data-toggle='tooltip' data-placement='top' name=\"btnRegistrarRemitente\" id=\"btnRegistrarRemitente\" class='btn btn-success' onclick=\"registrarRemitente()\">Registrar Remitente
+                                <a data-toggle='tooltip' data-placement='top' name=\"btnRegistrarRemitente\" id=\"btnRegistrarRemitente\" class='btn btn-success' onclick=\"crearEncargadoFiltrar()\">Registrar Remitente
                                 </a>
                                 <input type=\"reset\" class=\"btn btn-warning\">
                             </div>
@@ -119,7 +119,7 @@ class __TwigTemplate_0a1f070a14b55a1fbc4c02864fb990f5602d752ebed47f815840b487da6
     public function block_appScript($context, array $blocks = array())
     {
         // line 83
-        echo "        <script src=\"views/app/js/evento/evento.js\" type=\"text/javascript\"></script>
+        echo "        <script src=\"views/app/js/escalamiento/escalamiento.js\" type=\"text/javascript\"></script>
         <script src=\"//code.jquery.com/ui/1.12.1/jquery-ui.js\"></script>
     ";
     }

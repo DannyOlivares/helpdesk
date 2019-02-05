@@ -38,7 +38,7 @@ function agregarEscalamiento(){
   });
 }
 
-public function crearEncargadoFiltrar(){
+function crearEncargadoFiltrar(){
     $.ajax({
       type: "POST",
       url: "api/crearEncargadoFiltrar",
@@ -58,7 +58,7 @@ public function crearEncargadoFiltrar(){
               }
             }
         });
-      } else {
+    } else if (json.success == 0){
         $.alert({
           icon: "fa fa-warning",
           title: "Error al intentar crear encargado",
@@ -68,6 +68,20 @@ public function crearEncargadoFiltrar(){
           autoClose: "ok|3000",
           buttons: {
             ok: function() {}
+          }
+      });
+    }else{
+        $.alert({
+          icon: "fa fa-warning",
+          title: "finalizar actividad",
+          content: json.message,
+          type: "red",
+          typeAnimated: true,
+          autoClose: "ok|3000",
+          buttons: {
+            ok: function() {
+                location.ref = "escalamiento/agregarEncargadoFiltrar";
+            }
           }
       });
     }

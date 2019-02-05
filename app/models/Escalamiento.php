@@ -100,7 +100,7 @@ class Escalamiento extends Models implements IModels {
                                                     )";
 
             $result     =   $this->db->query_select($sql);
-            return array('success'=>1, 'message'=>'registro con exito');
+            return array('success'=>1, 'message'=>'registro creado correctamente');
 
         } catch (\Exception $e) {
             return array ('success'=>0, 'message'=> $e->getMessage());
@@ -111,8 +111,50 @@ class Escalamiento extends Models implements IModels {
     public function crearEncargadoFiltrar(){
         global $http;
 
-        print_r($http->request);
-        //return array('success'=>0 'message'=>'Error de validación en:');
+        try {
+
+            $nombreRemitente        = $http->request->get('nombreRemitente');
+            $areaIngreso            = $http->request->get('areaIngreso');
+            $comuna                 = $http->request->get('comuna');
+            $selectTipoActividad    = $http->request->get('selectTipoActividad');
+
+            $validar = [
+                    'nombreRemitente'       =>  $nombreRemitente,
+                    'areaIngreso'           =>  $areaIngreso,
+                    'comuna'                =>  $comuna,
+                    'selectTipoActividad'   =>  $selectTipoActividad
+            ];
+
+            foreach ($validar as $i => $value) {
+                if(trim($value)==''){
+                    return array('success' => 0 , 'message'=>'Error al intentar validar el campo '.$i);
+                }
+            }
+
+            if($selectTipoActividad     == 'deuda'                      ||
+                $selectTipoActividad    == 'sinActividad'               ||
+                $selectTipoActividad    == 'reclamoComercial'           ||
+                $selectTipoActividad    ==  'actividadesPendientesAndes'){
+                    return array('success'=>2, 'message'=>'Actividad cerrar');
+            }
+
+            $sql=   "insert escalamientoremitente(
+                                                    areaIngreso,
+                                                    comuna,
+                                                    nombreRemitente
+            )value(
+                                                    '$areaIngreso',
+                                                    '$comuna',
+                                                    '$nombreRemitente'
+                                                                        )";
+            $result=    $this->db->query_select($sql);
+            return array('success'=>1, 'message'=>'Encargado crado correctamente');
+
+        } catch (\Exception $e) {
+            return array('success'=>0, 'message'=>$e->getMessage());
+        }
+
+
     }
     //-----------------------------FIN CREAR ENCARGADO--------------------------------------------
     /**

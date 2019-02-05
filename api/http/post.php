@@ -594,3 +594,8 @@ $app->post('/agregarEscalamiento  ', function() use($app) {
     $u = new Model\Escalamiento;
     return $app->json($u->agregarEscalamiento());
 });
+
+$app->post('/crearEncargadoFiltrar  ', function() use($app) {
+    $u = new Model\Escalamiento;
+    return $app->json($u->crearEncargadoFiltrar());
+});
