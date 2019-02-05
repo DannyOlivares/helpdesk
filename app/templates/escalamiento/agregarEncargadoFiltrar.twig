@@ -36,7 +36,7 @@
                         </div>
                         <div class="box-body">
                             <div class="col-md-12 text-center">
-                                <a data-toggle='tooltip' data-placement='top' name="btnRegistrarRemitente" id="btnRegistrarRemitente" class='btn btn-success' onclick="registrarRemitente()">Registrar Remitente
+                                <a data-toggle='tooltip' data-placement='top' name="btnRegistrarRemitente" id="btnRegistrarRemitente" class='btn btn-success' onclick="crearEncargadoFiltrar()">Registrar Remitente
                                 </a>
                                 <input type="reset" class="btn btn-warning">
                             </div>
@@ -46,7 +46,7 @@
                             </div>
                             <div class="col-md-6">
                                 <label>Área Ingreso</label>
-                                <input type="text" name="" class="form-control" value="" placeholder="Ingrese Area Procedencia Actividad">
+                                <input type="text" id="areaIngreso" name="areaIngreso" class="form-control areaIngreso" value="" placeholder="Ingrese Area Procedencia Actividad">
                             </div>
                             <div class="col-md-6">
                                   <label>Comuna:</label>
@@ -54,7 +54,7 @@
                             </div>
                             <div class="col-md-6">
                                 <label>Tipo Actividad:</label>
-                                    <select class="form-control" name="">
+                                    <select class="form-control selectTipoActividad" name="selectTipoActividad" id="selectTipoActividad">
                                         <option value="" selected disabled>Seleccione Tipo Actividad</option>
                                         <option value="deuda">Deuda</option>
                                         <option value="sinActividad">Sin Actividad</option>
@@ -69,7 +69,7 @@
                             <br>
                             <div class="col-md-12 text-center">
                                 <br>
-                                <a data-toggle='tooltip' data-placement='top' name="btnRegistrarRemitente" id="btnRegistrarRemitente" class='btn btn-success' onclick="registrarRemitente()">Registrar Remitente
+                                <a data-toggle='tooltip' data-placement='top' name="btnRegistrarRemitente" id="btnRegistrarRemitente" class='btn btn-success' onclick="crearEncargadoFiltrar()">Registrar Remitente
                                 </a>
                                 <input type="reset" class="btn btn-warning">
                             </div>

@@ -61,7 +61,7 @@ class __TwigTemplate_0a1f070a14b55a1fbc4c02864fb990f5602d752ebed47f815840b487da6
     </section>
     <!-- Main content -->
     <section class=\"content\">
-        <form id=\"form_evento\" name=\"form_evento\">
+        <form id=\"formAgregarEncargadoFiltrar\" name=\"formAgregarEncargadoFiltrar\" class=\"formAgregarEncargadoFiltrar\">
             <div class=\"row\">
                 <div class=\"col-md-12\">
                     <div class=\"box\">
@@ -80,7 +80,7 @@ class __TwigTemplate_0a1f070a14b55a1fbc4c02864fb990f5602d752ebed47f815840b487da6
                             </div>
                             <div class=\"col-md-6\">
                                 <label>Área Ingreso</label>
-                                <input type=\"text\" name=\"\" class=\"form-control\" value=\"\" placeholder=\"Ingrese Area Procedencia Actividad\">
+                                <input type=\"text\" id=\"areaIngreso\" name=\"areaIngreso\" class=\"form-control areaIngreso\" value=\"\" placeholder=\"Ingrese Area Procedencia Actividad\">
                             </div>
                             <div class=\"col-md-6\">
                                   <label>Comuna:</label>
@@ -88,7 +88,7 @@ class __TwigTemplate_0a1f070a14b55a1fbc4c02864fb990f5602d752ebed47f815840b487da6
                             </div>
                             <div class=\"col-md-6\">
                                 <label>Tipo Actividad:</label>
-                                    <select class=\"form-control\" name=\"\">
+                                    <select class=\"form-control selectTipoActividad\" name=\"selectTipoActividad\" id=\"selectTipoActividad\">
                                         <option value=\"\" selected disabled>Seleccione Tipo Actividad</option>
                                         <option value=\"deuda\">Deuda</option>
                                         <option value=\"sinActividad\">Sin Actividad</option>

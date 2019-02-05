@@ -54,7 +54,7 @@ public function crearEncargadoFiltrar(){
             autoClose: "ok|3000",
             buttons: {
               ok: function() {
-                location.href = "escalamiento/agregarEscalamientoFiltrar";
+                location.href = "escalamiento/agregarEncargadoFiltrar";
               }
             }
         });
