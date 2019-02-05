@@ -70,7 +70,7 @@ function crearEncargadoFiltrar(){
             ok: function() {}
           }
       });
-    }else{
+  }else if (json.success == 2){
         $.alert({
           icon: "fa fa-warning",
           title: "finalizar actividad",
@@ -80,7 +80,7 @@ function crearEncargadoFiltrar(){
           autoClose: "ok|3000",
           buttons: {
             ok: function() {
-                location.ref = "escalamiento/agregarEncargadoFiltrar";
+                location.ref = "escalamiento/agregarEscalamientoNoCorresponde";
             }
           }
       });
@@ -90,4 +90,8 @@ function crearEncargadoFiltrar(){
       msg_box_alert(99, "title", xhr.responseText);
     }
   });
+}
+
+function agregarEscalamientoNoCorresponde(){
+
 }

@@ -36,14 +36,14 @@ class escalamientoController extends Controllers implements IControllers {
 
             case 'agregarEscalamiento':
                 echo $this->template->render('escalamiento/agregarEscalamiento');
-                break;
+            break;
 
-                case 'agregarEncargadoFiltrar':
-                    echo $this->template->render('escalamiento/agregarEncargadoFiltrar');
-                    break;
+            case 'agregarEscalamientoNoCorresponde':
+                echo $this->template->render('escalamiento/agregarEscalamientoNoCorresponde');
+            break;
             default:
-                echo $this->template->render('escalamiento/escalamiento');
-                break;
+                echo $this->template->render('escalamiento/agregarEncargadoFiltrar');
+            break;
         }
 
     }

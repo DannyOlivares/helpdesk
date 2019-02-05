@@ -135,7 +135,7 @@ class Escalamiento extends Models implements IModels {
                 $selectTipoActividad    == 'sinActividad'               ||
                 $selectTipoActividad    == 'reclamoComercial'           ||
                 $selectTipoActividad    ==  'actividadesPendientesAndes'){
-                    return array('success'=>2, 'message'=>'Actividad cerrar');
+                    return array('success'=>2, 'message'=>'Actividad Mal Enviada');
             }
 
             $sql=   "insert escalamientoremitente(
@@ -148,7 +148,7 @@ class Escalamiento extends Models implements IModels {
                                                     '$nombreRemitente'
                                                                         )";
             $result=    $this->db->query_select($sql);
-            return array('success'=>1, 'message'=>'Encargado crado correctamente');
+            return array('success'=>1, 'message'=>'Encargado creado correctamente');
 
         } catch (\Exception $e) {
             return array('success'=>0, 'message'=>$e->getMessage());
@@ -157,17 +157,13 @@ class Escalamiento extends Models implements IModels {
 
     }
     //-----------------------------FIN CREAR ENCARGADO--------------------------------------------
-    /**
-      * __construct()
-    */
+
+    //-----------------------------CONEXIÓN BD---------------------------------------------------
     public function __construct(IRouter $router = null) {
         parent::__construct($router);
         $this->startDBConexion();
     }
 
-    /**
-      * __destruct()
-    */
     public function __destruct() {
         parent::__destruct();
         $this->endDBConexion();
