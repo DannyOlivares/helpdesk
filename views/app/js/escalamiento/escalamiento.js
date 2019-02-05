@@ -80,7 +80,7 @@ function crearEncargadoFiltrar(){
           autoClose: "ok|3000",
           buttons: {
             ok: function() {
-                location.ref = "escalamiento/agregarEscalamientoNoCorresponde";
+                location.href = "escalamiento/agregarEscalamientoNoCorresponde";
             }
           }
       });

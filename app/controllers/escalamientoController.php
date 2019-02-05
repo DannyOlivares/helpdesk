@@ -41,6 +41,7 @@ class escalamientoController extends Controllers implements IControllers {
             case 'agregarEscalamientoNoCorresponde':
                 echo $this->template->render('escalamiento/agregarEscalamientoNoCorresponde');
             break;
+
             default:
                 echo $this->template->render('escalamiento/agregarEncargadoFiltrar');
             break;
