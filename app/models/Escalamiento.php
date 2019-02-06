@@ -233,6 +233,25 @@ class Escalamiento extends Models implements IModels {
         return $this->db->query_select($sql);
 
     }
+
+    public function actividadesPendientesAll(){
+        $sql = "select * from escalamientoCorresponde
+                where estadoOrden = 'pendiente'";
+        return  $this->db->query_select($sql);
+    }
+
+    public function actividadesAsignadasAll(){
+        $sql = "select * from escalamientoCorresponde
+                where estadoOrden = 'seguimiento'";
+        return  $this->db->query_select($sql);
+
+    }
+
+    public function actividadesAll(){
+        $sql = "select * from escalamientoCorresponde";
+        return  $this->db->query_select($sql);
+
+    }
     //-----------------------------FIN TRAER TODAS LAS ACTIVIDADES-----------------------------------------------
     // public function actividadesFinalizadasHoy(){
     //     $sql = 'select count(*) from escalamientocorresponde

@@ -105,7 +105,7 @@
                             <div class="col col-md-3">
                                 <div class="box">
                                     <div class="box-header with-border">
-                                        <h3 class="box-title">Resumen Actividades Seguimiento</h3>
+                                        <h3 class="box-title">Resumen Actividades Finalizadas Hoy</h3>
                                     </div>
                                     <div class="box-body">
                                         <table class="table">
@@ -130,7 +130,150 @@
                                 </div>
                             </div>
                         </div>
-                        hola
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a data-toggle="tab" href="#home">Actividades Gestionadas</a></li>
+                            <li><a data-toggle="tab" href="#menu1">Actividades Pendientes</a></li>
+                            <li><a data-toggle="tab" href="#menu2">Actividades seguimiento</a></li>
+                            <li><a data-toggle="tab" href="#menu3">Actividades Finalizadas Hoy</a></li>
+                        </ul>
+
+                            <div class="tab-content">
+                                <div id="home" class="tab-pane fade in active">
+                                    <div class="">
+                                        <h3>Detalle Gestionadas</h3>
+                                    </div>
+
+                                    <div class="box-body">
+                                        <table id="home" name="men" class="table table-bordered men">
+                                            <thead>
+                                                <tr>
+                                                    <th>Comuna</th>
+                                                    <th>Orden</th>
+                                                    <th>Rut</th>
+                                                    <th>Tipo De Actividad</th>
+                                                    <th>Usuario Ingresa </th>
+                                                    <th>Usuario Finaliza</th>
+                                                    <th>Estado Real </th>
+                                                    <th>Bloque</th>
+                                                    <th>Gestión</th>
+                                                    <th>Observación</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {%  for d in dat if false != dat %}
+                                                    <tr>
+                                                        <td>{{ d.fechaCompromiso }}</td>
+                                                        <td>{{ d.bloque }}</td>
+                                                        <td>{{ d.idActividadManual }}</td>
+                                                        <td>{{ d.rutCliente }}</td>
+                                                        <td>{{ d.estadoOrden }}</td>
+                                                        <td>{{ d.estadoEscalamiento }}</td>
+                                                        <td>{{ d.tipoActividad }}</td>
+                                                        <td>{{ d.canal }}</td>
+                                                        <td>{{ d.descripcionActividad }}</td>
+                                                        <td></td>
+                                                    </tr>
+                                            </tbody>
+                                            {% endfor %}
+                                        </table>
+                                    </div>
+                                </div>
+                                <div id="menu1" class="tab-pane fade">
+                                    <h3>Detalle Pendientes</h3>
+                                    <div class="box-body">
+                                        <table id="menu1" name="menu1" class="table table-bordered men">
+                                            <thead>
+                                                <tr>
+                                                    <th>Fecha Compromiso</th>
+                                                    <th>Bloque Asignado</th>
+                                                    <th>Id Actividad</th>
+                                                    <th>Rut Cliente</th>
+                                                    <th>Estado Orden</th>
+                                                    <th>Estado Escalamiento</th>
+                                                    <th>Tipo Actividad</th>
+                                                    <th>Canal</th>
+                                                    <th>Descripcion</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {%  for d in data0 if false != data0 %}
+                                                    <tr>
+                                                        <td>{{ d.fechaCompromiso }}</td>
+                                                        <td>{{ d.bloque }}</td>
+                                                        <td>{{ d.idActividadManual }}</td>
+                                                        <td>{{ d.rutCliente }}</td>
+                                                        <td>{{ d.estadoOrden }}</td>
+                                                        <td>{{ d.estadoEscalamiento }}</td>
+                                                        <td>{{ d.tipoActividad }}</td>
+                                                        <td>{{ d.canal }}</td>
+                                                        <td>{{ d.descripcionActividad }}</td>
+                                                        <td></td>
+                                                    </tr>
+                                                {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div id="menu2" class="tab-pane fade">
+                                    <h3>Detalle Seguimiento</h3>
+                                    <div class="box-body">
+                                        <table id="menu2" name="menu2" class="table table-bordered min">
+                                            <thead>
+                                                <tr>
+                                                    <th>Fecha Compromiso</th>
+                                                    <th>Bloque Asignado</th>
+                                                    <th>Id Actividad</th>
+                                                    <th>Rut Cliente</th>
+                                                    <th>Estado Orden</th>
+                                                    <th>Estado Escalamiento</th>
+                                                    <th>Tipo Actividad</th>
+                                                    <th>Canal</th>
+                                                    <th>Descripcion</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {%  for d in data if false != data %}
+                                                    <tr>
+                                                        <td>{{ d.fechaCompromiso }}</td>
+                                                        <td>{{ d.bloque }}</td>
+                                                        <td>{{ d.idActividadManual }}</td>
+                                                        <td>{{ d.rutCliente }}</td>
+                                                        <td>{{ d.estadoOrden }}</td>
+                                                        <td>{{ d.estadoEscalamiento }}</td>
+                                                        <td>{{ d.tipoActividad }}</td>
+                                                        <td>{{ d.canal }}</td>
+                                                        <td>{{ d.descripcionActividad }}</td>
+                                                        <td></td>
+                                                    </tr>
+                                                {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div id="menu3" class="tab-pane fade">
+                                    <h3>Detalle Finalizadas Hoy</h3>
+                                    <div class="box-body">
+                                        <table id="menu3" name="dataordenes" class="table table-bordered mon">
+                                            <thead>
+                                                <tr>
+                                                    <th>No</th>
+                                                    <th>Hora Evento</th>
+                                                    <th>Descripción</th>
+                                                    <th>Observacion</th>
+                                                    <th>Fecha Creacion </th>
+                                                    <th>Fecha Evento </th>
+                                                    <th>Fecha Cierre </th>
+                                                    <th>Creador Evento</th>
+                                                    <th>Estado Evento   </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
                     </div>
 
                 </div>
@@ -138,6 +281,80 @@
             </div>
 
     </section>
+    {% block appScript %}
+    <script src="views/app/template/datatables/jquery.dataTables.min.js" type="text/javascript"></script>
+    <script src="views/app/template/datatables/dataTables.bootstrap.min.js" type="text/javascript"></script>
+
+    <script>
+        $(".men").dataTable({
+            "language": {
+                "search": "Buscar:",
+                "zeroRecords": "No hay datos para mostrar",
+                "info": "Mostrando _END_ Registros, de un total de _TOTAL_ ",
+                "loadingRecords": "Cargando...",
+                "processing": "Procesando...",
+                "infoEmpty": "No hay entradas para mostrar",
+                "lengthMenu": "Mostrar _MENU_ Filas",
+                "paginate": {
+                    "first": "Primera",
+                    "last": "Ultima",
+                    "next": "Siguiente",
+                    "previous": "Anterior"
+                }
+            },
+            "autoWidth": true,
+            "scrollX": true,
+            "bSort": false
+        });
+    </script>
+
+    <script>
+        $(".min").dataTable({
+            "language": {
+                "search": "Buscar:",
+                "zeroRecords": "No hay datos para mostrar",
+                "info": "Mostrando _END_ Registros, de un total de _TOTAL_ ",
+                "loadingRecords": "Cargando...",
+                "processing": "Procesando...",
+                "infoEmpty": "No hay entradas para mostrar",
+                "lengthMenu": "Mostrar _MENU_ Filas",
+                "paginate": {
+                    "first": "Primera",
+                    "last": "Ultima",
+                    "next": "Siguiente",
+                    "previous": "Anterior"
+                }
+            },
+            "autoWidth": true,
+            "scrollX": true,
+            "bSort": false
+        });
+    </script>
+
+    <script>
+        $(".mon").dataTable({
+            "language": {
+                "search": "Buscar:",
+                "zeroRecords": "No hay datos para mostrar",
+                "info": "Mostrando _END_ Registros, de un total de _TOTAL_ ",
+                "loadingRecords": "Cargando...",
+                "processing": "Procesando...",
+                "infoEmpty": "No hay entradas para mostrar",
+                "lengthMenu": "Mostrar _MENU_ Filas",
+                "paginate": {
+                    "first": "Primera",
+                    "last": "Ultima",
+                    "next": "Siguiente",
+                    "previous": "Anterior"
+                }
+            },
+            "autoWidth": true,
+            "scrollX": true,
+            "bSort": false
+        });
+    </script>
+    {% endblock %}
+
     <!-- /.content -->
 
 {% endblock %}
