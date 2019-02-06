@@ -599,3 +599,8 @@ $app->post('/crearEncargadoFiltrar  ', function() use($app) {
     $u = new Model\Escalamiento;
     return $app->json($u->crearEncargadoFiltrar());
 });
+
+$app->post('/agregarEscalamientoNoCorresponde  ', function() use($app) {
+    $u = new Model\Escalamiento;
+    return $app->json($u->agregarEscalamientoNoCorresponde());
+});

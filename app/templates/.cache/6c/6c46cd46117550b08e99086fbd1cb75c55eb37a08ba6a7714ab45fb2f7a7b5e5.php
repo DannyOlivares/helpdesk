@@ -86,7 +86,7 @@ class __TwigTemplate_6943159441e5f06fea72299be7421a9da646b62c098cf902a5a0c8c986c
                             </div>
                             <div class=\"col-md-6\">
                                 <label>Nombre remitente:</label>
-                                <input type=\"text\" name=\"nombreUsuario\" id=\"nombreRemitente\" class=\"form-control\"  value=\"\" placeholder=\"Ingrese nombre Remitente\">
+                                <input type=\"text\" name=\"nombreRemitente\" id=\"nombreRemitente\" class=\"form-control nombreRemitente\"  value=\"\" placeholder=\"Ingrese nombre Remitente\">
                             </div>
                             <div class=\"col-md-6\">
                                 <label>Fecha:</label><input type=\"DATE\" name=\"fecha\" id=\"fecha\" class=\"form-control\" value=\"";
@@ -96,11 +96,11 @@ class __TwigTemplate_6943159441e5f06fea72299be7421a9da646b62c098cf902a5a0c8c986c
                             </div>
                             <div class=\"col-md-6\">
                                   <label>Rut Cliente:</label>
-                                  <input type=\"text\" name=\"rutCliente\" id=\"rutCliente\" class=\"form-control\" placeholder=\"Ingrese rut cliente\">
+                                  <input type=\"text\" name=\"rutCliente\" id=\"rutCliente\" class=\"form-control rutCliente\" placeholder=\"Ingrese rut cliente\">
                             </div>
                             <div class=\"col-md-6\">
                                   <label>Id Actividad:</label>
-                                  <input type=\"text\" name=\"idCliente\" id=\"idActividad\" class=\"form-control idActividad\" placeholder=\"Ingrese id Actividad\">
+                                  <input type=\"text\" name=\"idActividad\" id=\"idActividad\" class=\"form-control idActividad\" placeholder=\"Ingrese id Actividad\">
                             </div>
 
 
@@ -110,7 +110,7 @@ class __TwigTemplate_6943159441e5f06fea72299be7421a9da646b62c098cf902a5a0c8c986c
                             </div>
                             <div class=\"col-md-12 text-center\">
                                 <br>
-                                <a data-toggle='tooltip' data-placement='top' name=\"btnAgregarEscalamiento\" id=\"btnAgregarEscalamiento\" class='btn btn-success' onclick=\"agregarEscalamiento();\">Finalizar Gestión
+                                <a data-toggle='tooltip' data-placement='top' name=\"btnAgregarEscalamiento\" id=\"btnAgregarEscalamiento\" class='btn btn-success' onclick=\"agregarEscalamientoNoCorresponde();\">Finalizar Gestión
                                 </a>
                                 <input type=\"reset\" class=\"btn btn-warning\">
                             </div>

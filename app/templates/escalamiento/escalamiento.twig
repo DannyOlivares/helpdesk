@@ -2,8 +2,8 @@
 {% block appBody %}
     <section class="content-header">
         <h1>
-            escalamiento
-            <small>Control panel</small>
+            Escalamiento
+            <small>Resumen Actividades</small>
         </h1>
         <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -11,8 +11,132 @@
         </ol>
     </section>
 
-    <!-- Main content -->
     <section class="content">
+        <div class="row">
+                <div class="col col-md-12">
+                    <div class="box">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Mirada Global</h3>
+                        </div>
+                        <div class="box-body">
+                            <div class="col col-md-3">
+                                <div class="box">
+                                    <div class="box-header with-border">
+                                        <h3 class="box-title">Resumen Actividades Gestionadas</h3>
+                                    </div>
+                                    <div class="box-body">
+                                        <table class="table">
+                                            <thead>
+                                                <th>Estado</th>
+                                                <th class="text-center">Cantidad</th>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            ñfgkñd
+                                                        </td>
+                                                        <td class="text-right">kjdshf</td>
+                                                        {% set total_pendiente = total_pendiente + row['q'] %}
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="box-footer">
+                                        Total Gestionadas: {{ data1[0][0] }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col col-md-3">
+                                <div class="box">
+                                    <div class="box-header with-border">
+                                        <h3 class="box-title">Resumen Actividades Pendientes</h3>
+                                    </div>
+                                        <div class="box-body">
+                                            <table class="table">
+                                                <thead>
+                                                    <th>Estado</th>
+                                                    <th class="text-center">Cantidad</th>
+                                                </thead>
+                                                <tbody>
+                                                        <tr>
+                                                            <td>
+                                                                ñfgkñd
+                                                            </td>
+                                                            <td class="text-right">kjdshf</td>
+                                                            {% set total_pendiente = total_pendiente + row['q'] %}
+                                                        </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    <div class="box-footer">
+                                        Total Pendientes: {{ data2[0][0] }}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col col-md-3">
+                                <div class="box">
+                                    <div class="box-header with-border">
+                                        <h3 class="box-title">Resumen Actividades Seguimiento</h3>
+                                    </div>
+                                    <div class="box-body">
+                                        <table class="table">
+                                            <thead>
+                                                <th>Estado</th>
+                                                <th class="text-center">Cantidad</th>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            ñfgkñd
+                                                        </td>
+                                                        <td class="text-right">kjdshf</td>
+
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="box-footer">
+                                        Total Seguimiento: {{ data3[0][0] }}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col col-md-3">
+                                <div class="box">
+                                    <div class="box-header with-border">
+                                        <h3 class="box-title">Resumen Actividades Seguimiento</h3>
+                                    </div>
+                                    <div class="box-body">
+                                        <table class="table">
+                                            <thead>
+                                                <th>Estado</th>
+                                                <th class="text-center">Cantidad</th>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            ñfgkñd
+                                                        </td>
+                                                        <td class="text-right">kjdshf</td>
+
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="box-footer">
+                                        Total Finalizadas Hoy: {{ data3[0][0] }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        hola
+                    </div>
+
+                </div>
+
+            </div>
+
     </section>
     <!-- /.content -->
 

@@ -110,15 +110,15 @@ class __TwigTemplate_50dcb364286fe35d6913f6f23165d031b66c640ce8a1c303074ae15bc7f
                                 <label>Bloque:</label>
                                 <select class=\"form-control bloque\" name=\"bloque\" id=\"bloque\">
                                     <option value=\"\"selected disabled>Seleccione Bloque</option>
-                                    <option value=\"10-13\">10-13</option>
+                                    <option value=\"09-13\">09-13</option>
                                     <option value=\"13-16\">13-16</option>
                                     <option value=\"16-19\">16-19</option>
-                                    <option value=\"19-22\">19-22</option>
+                                    <option value=\"19-21\">19-21</option>
                                 </select>
                             </div>
                             <div class=\"col-md-6\">
                                 <label>Estado Escalamiento:</label>
-                                    <input type=\"text\" name=\"estadoEscalamiento\" id=\"estadoEscalamiento\" class=\"form-control estadoEscalamiento\" placeholder=\"Ingrese Estado Escalamiento\" >
+                                <input type=\"text\" name=\"estadoEscalamiento\" value=\"\" id=\"estadoEscalamiento\" class=\"form-control\" placeholder=\"Ingrese estado escalamiento\">
                             </div>
                             <input type=\"date\" name=\"fechaCreacion\" class=\"fechaCreacion\" id=\"fechaCreacion\" value=\"";
         // line 80

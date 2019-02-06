@@ -85,6 +85,21 @@ function crearEncargadoFiltrar(){
           }
       });
     }
+    else if (json.success == 3){
+          $.alert({
+            icon: "fa fa-warning",
+            title: "agregar Actividad",
+            content: json.message,
+            type: "red",
+            typeAnimated: true,
+            autoClose: "ok|3000",
+            buttons: {
+              ok: function() {
+                  location.href = "escalamiento/agregarEscalamiento";
+              }
+            }
+        });
+      }
     },
     error: function(xhr, status) {
       msg_box_alert(99, "title", xhr.responseText);
@@ -93,5 +108,41 @@ function crearEncargadoFiltrar(){
 }
 
 function agregarEscalamientoNoCorresponde(){
-
+    $.ajax({
+      type: "POST",
+      url: "api/agregarEscalamientoNoCorresponde",
+      data: $("#formAgregarEscalamientoNoCorresponde").serialize(),
+      success: function(json) {
+        if (json.success == 1) {
+          $.alert({
+            icon: "fa fa-warning",
+            title: "Actividad Cerrada Satisfactoriamente",
+            content: json.message,
+            type: "green",
+            typeAnimated: true,
+            autoClose: "ok|3000",
+            buttons: {
+              ok: function() {
+                location.href = "escalamiento/agregarEncargadoFiltrar";
+              }
+            }
+        });
+      } else {
+        $.alert({
+          icon: "fa fa-warning",
+          title: "Error al intentar cerrar la actividad",
+          content: json.message,
+          type: "red",
+          typeAnimated: true,
+          autoClose: "ok|3000",
+          buttons: {
+            ok: function() {}
+          }
+      });
+    }
+    },
+    error: function(xhr, status) {
+      msg_box_alert(99, "title", xhr.responseText);
+    }
+  });
 }

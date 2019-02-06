@@ -45,7 +45,7 @@ class Escalamiento extends Models implements IModels {
             $tipoActividad                  = $http->request->get('selectTipoActividad');
             $estadoOrden                    = $http->request->get('selectEstadoOrden');
             $nombreUsuario                  = $http->request->get('nombreUsuario');
-            $fechaFinalizacion              = '19/08/12';
+            $fechaFinalizacion              = '06/02/2019';
             $descripcionActividad           = $http->request->get('descripcionActividad');
             $fechaCreacion                  = $http->request->get('fechaCreacion');
 
@@ -107,7 +107,7 @@ class Escalamiento extends Models implements IModels {
         }
 
     }//----------------------------FIN CREAR ACTIVIDAD-------------------------------------------------
-    //-----------------------------INICIO CREAR ENCARGADO-----------------------------------------
+    //-----------------------------INICIO CREAR ENCARGADO--------------------------------------------
     public function crearEncargadoFiltrar(){
         global $http;
 
@@ -131,13 +131,6 @@ class Escalamiento extends Models implements IModels {
                 }
             }
 
-            if($selectTipoActividad     == 'deuda'                      ||
-                $selectTipoActividad    == 'sinActividad'               ||
-                $selectTipoActividad    == 'reclamoComercial'           ||
-                $selectTipoActividad    ==  'actividadesPendientesAndes'){
-                    return array('success'=>2, 'message'=>'Actividad Mal Enviada');
-            }
-
             $sql=   "insert escalamientoremitente(
                                                     areaIngreso,
                                                     comuna,
@@ -148,7 +141,16 @@ class Escalamiento extends Models implements IModels {
                                                     '$nombreRemitente'
                                                                         )";
             $result=    $this->db->query_select($sql);
-            return array('success'=>1, 'message'=>'Encargado creado correctamente');
+
+            if($selectTipoActividad     == 'deuda'                      ||
+                $selectTipoActividad    == 'sinActividad'               ||
+                $selectTipoActividad    == 'reclamoComercial'           ||
+                $selectTipoActividad    ==  'actividadesPendientesAndes'){
+                    return array('success'=>2, 'message'=>'Actividad Mal Enviada');
+            }else{
+                return array('success'=> 3, 'message'=>'Crear Actividad');
+            }
+            //return array('success'=>1, 'message'=>'Encargado creado correctamente');
 
         } catch (\Exception $e) {
             return array('success'=>0, 'message'=>$e->getMessage());
@@ -156,9 +158,88 @@ class Escalamiento extends Models implements IModels {
 
 
     }
-    //-----------------------------FIN CREAR ENCARGADO--------------------------------------------
 
-    //-----------------------------CONEXIÓN BD---------------------------------------------------
+    public function agregarEscalamientoNoCorresponde(){
+        global $http;
+        try {
+
+        $nombreUsuario          =   $http->request->get('nombreUsuario');
+        $nombreRemitente        =   $http->request->get('nombreRemitente');
+        $fechaCreacion          =   $http->request->get('fecha');
+        $rutCliente             =   $http->request->get('rutCliente');
+        $idActividad            =   $http->request->get('idActividad');
+        $descripcionActividad   =   $http->request->get('descripcionActividad');
+
+        $validar = [
+                'nombreUsuario'         =>   $nombreUsuario,
+                'nombreRemitente'       =>   $nombreRemitente,
+                'fechaCreacion'         =>   $fechaCreacion,
+                'rutCliente'            =>   $rutCliente,
+                'idActividad'           =>   $idActividad,
+                'descripcionActividad'  =>   $descripcionActividad
+        ];
+
+        foreach ($validar as $i => $value) {
+            if(trim($value)==''){
+                return array('success' => 0 , 'message'=>'Error al intentar validar el campo '.$i);
+            }
+        }
+
+        $sql                =   "insert escalamientonocorresponde (
+                                nombreUsuarioLogeado,
+                                fecha,
+                                rutCliente,
+                                descripcion,
+                                nombreRemitente,
+                                idActividadManual
+            )value(             '$nombreUsuario',
+                                '$fechaCreacion',
+                                '$rutCliente',
+                                '$descripcionActividad',
+                                '$nombreRemitente',
+                                '$idActividad'
+
+            )";
+
+            $result             =   $this->db->query_select($sql);
+
+            return array('success'=>1, 'message'=>'Actividad Finalizada correctamente');
+        } catch (\Exception $e) {
+            return array('success' => 0, 'message' =>$e->getMessage());
+        }
+    }
+    //-----------------------------FIN CREAR ENCARGADO-----------------------------------------------
+
+    //-----------------------------TRAER PENDIENTES--------------------------------------------------
+    public function actividadesPendientes(){
+        $sql = 'select count(*) from escalamientocorresponde
+                where estadoOrden = "pendiente"';
+        return $this->db->query_select($sql);
+    }
+    //-----------------------------FIN TRAER PENDIENTES----------------------------------------------
+
+    //-----------------------------TRAER ASIGNADAS-------------------------------------------------------
+    public function actividadesAsignadas(){
+        $sql = 'select count(*) from escalamientocorresponde
+                where estadoOrden = "seguimiento"';
+        return $this->db->query_select($sql);
+    }
+    //-----------------------------FIN TRAER ASIGNADAS---------------------------------------------------
+
+
+    //-----------------------------TRAER TODAS LAS ACTIVIDADES---------------------------------------------------
+    public function actividadesTotales(){
+        $sql = 'select count(*) from escalamientocorresponde';
+        return $this->db->query_select($sql);
+
+    }
+    //-----------------------------FIN TRAER TODAS LAS ACTIVIDADES-----------------------------------------------
+    // public function actividadesFinalizadasHoy(){
+    //     $sql = 'select count(*) from escalamientocorresponde
+    //             where SELECT fecha = NOW() and '
+    // }
+
+    //-----------------------------CONEXIÓN BD-------------------------------------------------------
     public function __construct(IRouter $router = null) {
         parent::__construct($router);
         $this->startDBConexion();

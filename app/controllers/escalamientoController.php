@@ -42,6 +42,15 @@ class escalamientoController extends Controllers implements IControllers {
                 echo $this->template->render('escalamiento/agregarEscalamientoNoCorresponde');
             break;
 
+            case 'escalamiento':
+                $t = new Model\Escalamiento();
+                echo $this->template->render('escalamiento/escalamiento',array(
+                    'data2'     => (new Model\Escalamiento)->actividadesPendientes(),
+                    'data3'     => (new Model\Escalamiento)->actividadesAsignadas(),
+                    'data1'     => (new Model\Escalamiento)->actividadesTotales()
+                ));
+            break;
+
             default:
                 echo $this->template->render('escalamiento/agregarEncargadoFiltrar');
             break;
