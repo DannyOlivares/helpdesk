@@ -87,16 +87,20 @@ class __TwigTemplate_0a1f070a14b55a1fbc4c02864fb990f5602d752ebed47f815840b487da6
                                   <input type=\"text\" name=\"comuna\" id=\"comuna\" class=\"comuna form-control\" placeholder=\"Ingrese Comuna\" >
                             </div>
                             <div class=\"col-md-6\">
+                                  <label>Id Actividad:</label>
+                                  <input type=\"text\" name=\"idActividadManual\" id=\"idActividadManual\" class=\"Id_Actividad_Manual form-control\" placeholder=\"Ingrese Id Actividad\" >
+                            </div>
+                            <div class=\"col-md-6\">
                                 <label>Tipo Actividad:</label>
                                     <select class=\"form-control selectTipoActividad\" name=\"selectTipoActividad\" id=\"selectTipoActividad\">
                                         <option value=\"\" selected disabled>Seleccione Tipo Actividad</option>
                                         <option value=\"deuda\">Deuda</option>
                                         <option value=\"sinActividad\">Sin Actividad</option>
                                         <option value=\"adelantamientoOrdenes\">Adelantamiento Ordenes</option>
-                                        <option value=\"actividadesPendientesAndes\">Actividades Pendientes Andes</option>
+                                        <option value=\"actividadesPendientesAndes\">Actividades pendientes andes</option>
                                         <option value=\"reclamoComercial\">Reclamo Comercial</option>
-                                        <option value=\"reagendamientoReiterado\">Reagendamientod Reiterados</option>
-                                        <option value=\"fechaFuturaLejana\">Fecha Futura Lejana</option>
+                                        <option value=\"reagendamientoReiterado\">Reagendamientos reiterados</option>
+                                        <option value=\"fechaFuturaLejana\">Fecha futura lejana</option>
                                         <option value=\"fallaSistema\">Falla en el sistema</option>
                                     </select>
                             </div>
@@ -115,10 +119,10 @@ class __TwigTemplate_0a1f070a14b55a1fbc4c02864fb990f5602d752ebed47f815840b487da6
     ";
     }
 
-    // line 82
+    // line 86
     public function block_appScript($context, array $blocks = array())
     {
-        // line 83
+        // line 87
         echo "        <script src=\"views/app/js/escalamiento/escalamiento.js\" type=\"text/javascript\"></script>
         <script src=\"//code.jquery.com/ui/1.12.1/jquery-ui.js\"></script>
     ";
@@ -136,7 +140,7 @@ class __TwigTemplate_0a1f070a14b55a1fbc4c02864fb990f5602d752ebed47f815840b487da6
 
     public function getDebugInfo()
     {
-        return array (  122 => 83,  119 => 82,  41 => 7,  38 => 6,  33 => 3,  30 => 2,  11 => 1,);
+        return array (  126 => 87,  123 => 86,  41 => 7,  38 => 6,  33 => 3,  30 => 2,  11 => 1,);
     }
 
     public function getSourceContext()

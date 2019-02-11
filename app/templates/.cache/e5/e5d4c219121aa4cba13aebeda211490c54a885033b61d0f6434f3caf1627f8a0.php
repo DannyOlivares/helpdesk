@@ -99,6 +99,10 @@ class __TwigTemplate_50dcb364286fe35d6913f6f23165d031b66c640ce8a1c303074ae15bc7f
                                   <input type=\"text\" name=\"rutCliente\" id=\"rutCliente\" class=\"form-control\" placeholder=\"Ingrese rut cliente\">
                             </div>
                             <div class=\"col-md-6\">
+                                  <label>Comuna Actividad:</label>
+                                  <input type=\"text\" name=\"comuna\" id=\"comuna\" class=\"form-control comuna\" placeholder=\"Ingrese comuna Actividad\">
+                            </div>
+                            <div class=\"col-md-6\">
                                 <label>Fecha Compromiso:</label>
                                     <input type=\"date\" name=\"fechaCompromiso\" id=\"fechaCompromiso\" class=\"form-control fechaCompromiso\" placeholder=\"Ingrese Descripción Actividad\" >
                             </div>
@@ -121,7 +125,7 @@ class __TwigTemplate_50dcb364286fe35d6913f6f23165d031b66c640ce8a1c303074ae15bc7f
                                 <input type=\"text\" name=\"estadoEscalamiento\" value=\"\" id=\"estadoEscalamiento\" class=\"form-control\" placeholder=\"Ingrese estado escalamiento\">
                             </div>
                             <input type=\"date\" name=\"fechaCreacion\" class=\"fechaCreacion\" id=\"fechaCreacion\" value=\"";
-        // line 80
+        // line 84
         echo twig_escape_filter($this->env, twig_date_format_filter($this->env, "now", "Y-m-d"), "html", null, true);
         echo "\" hidden>
 
@@ -166,10 +170,10 @@ class __TwigTemplate_50dcb364286fe35d6913f6f23165d031b66c640ce8a1c303074ae15bc7f
     ";
     }
 
-    // line 121
+    // line 125
     public function block_appScript($context, array $blocks = array())
     {
-        // line 122
+        // line 126
         echo "        <script src=\"views/app/js/escalamiento/escalamiento.js\" type=\"text/javascript\"></script>
         <script src=\"//code.jquery.com/ui/1.12.1/jquery-ui.js\"></script>
     ";
@@ -187,7 +191,7 @@ class __TwigTemplate_50dcb364286fe35d6913f6f23165d031b66c640ce8a1c303074ae15bc7f
 
     public function getDebugInfo()
     {
-        return array (  173 => 122,  170 => 121,  125 => 80,  94 => 52,  84 => 45,  80 => 44,  41 => 7,  38 => 6,  33 => 3,  30 => 2,  11 => 1,);
+        return array (  177 => 126,  174 => 125,  129 => 84,  94 => 52,  84 => 45,  80 => 44,  41 => 7,  38 => 6,  33 => 3,  30 => 2,  11 => 1,);
     }
 
     public function getSourceContext()

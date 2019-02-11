@@ -157,20 +157,19 @@ class __TwigTemplate_e1cab488f37ea3cc00ebd1580bf9c485c4fe7ed6783b089ca461c3c5fc7
     public function block_appScript($context, array $blocks = array())
     {
         // line 109
-        echo "        <script src=\"views/app/js/evento/vue.js\"></script>
-        <script src=\"views/app/js/evento/evento.js\" type=\"text/javascript\"></script>
+        echo "        <script src=\"views/app/js/evento/evento.js\" type=\"text/javascript\"></script>
         <script src=\"//code.jquery.com/ui/1.12.1/jquery-ui.js\"></script>
 
         <script>
              \$(function(){
                var dbdatos = [
                  ";
-        // line 116
+        // line 115
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(($context["data"] ?? null));
         foreach ($context['_seq'] as $context["_key"] => $context["d"]) {
             if ((false != ($context["data"] ?? null))) {
-                // line 117
+                // line 116
                 echo "                 '";
                 echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), $context["d"], "responsable", array()), "html", null, true);
                 echo "',
@@ -180,7 +179,7 @@ class __TwigTemplate_e1cab488f37ea3cc00ebd1580bf9c485c4fe7ed6783b089ca461c3c5fc7
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['d'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 119
+        // line 118
         echo "               ];
                \$('#id_responsable').autocomplete({
                  source: dbdatos
@@ -192,12 +191,12 @@ class __TwigTemplate_e1cab488f37ea3cc00ebd1580bf9c485c4fe7ed6783b089ca461c3c5fc7
                   \$(function(){
                     var dbdatos = [
                       ";
-        // line 129
+        // line 128
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(($context["dato"] ?? null));
         foreach ($context['_seq'] as $context["_key"] => $context["d"]) {
             if ((false != ($context["dato"] ?? null))) {
-                // line 130
+                // line 129
                 echo "                      '";
                 echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), $context["d"], "areas", array()), "html", null, true);
                 echo "',
@@ -207,13 +206,203 @@ class __TwigTemplate_e1cab488f37ea3cc00ebd1580bf9c485c4fe7ed6783b089ca461c3c5fc7
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['d'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 132
+        // line 131
         echo "                    ];
                     \$('#area_contingencia').autocomplete({
                       source: dbdatos
                     });
                   });
                   </script>
+                </script>
+
+                <script>
+                var app = new Vue({
+                    el:'#appVue',
+                    delimiters: ['\${', '}'],
+                    data:{
+                        lists:  [
+                                    ],
+                                    newKeep : '',
+
+                        },
+                    methods:    {
+                        addKeep: function (){
+                            if(this.newKeep == \"\"){
+                                \$.alert({
+                                    icon: \"fa fa-warning\",
+                                    title: \"ERROR\",
+                                    content: \"ESTE CAMPO NO PUEDE ESTAR VACÍO\",
+                                    type: \"red\",
+                                    typeAnimated: true
+                                  });
+                            }else{
+                                var arrValor = new Array ();
+                                \$(\"#responsable_select\").find('option').each( function() {
+                                    arrValor.push(\$.trim(\$(this).val().toLowerCase()));
+                                });
+                                var ctrl = jQuery.inArray(this.newKeep.toLowerCase(), arrValor);
+                                //console.log(arrValor);
+                                if (ctrl !== -1) {
+                                    \$.alert({
+                                        icon: \"fa fa-warning\",
+                                        title: \"ERROR\",
+                                        content: \"ESTE VALOR YA SE ENCUENTRA EN EL SELECT\",
+                                        type: \"red\",
+                                        typeAnimated: true,
+                                      });
+                                } else {
+                                    this.lists.push({keep:this.newKeep, completed: false});
+                                    this.newKeep = '';
+                                }
+                            }
+                        },
+                        eliminarTarea: function(index){
+                            this.lists.splice(index,1);
+                        }
+                    }
+                });
+
+                var app1 = new Vue({
+                    el:'#appVue1',
+                    delimiters: ['\${', '}'],
+                    data:{
+                        lista:  [
+                                    ],
+                                    newKeep1 : '',
+                         },
+                    methods:    {
+                        addKeep1: function (){
+                            if(this.newKeep1 == \"\"){
+                                \$.alert({
+                                    icon: \"fa fa-warning\",
+                                    title: \"ERROR\",
+                                    content: \"ESTE CAMPO NO PUEDE ESTAR VACÍO\",
+                                    type: \"red\",
+                                    typeAnimated: true
+                                  });
+                            }else{
+                                var arrValor = new Array ();
+                                \$(\"#areaContingencia_select\").find('option').each( function() {
+                                    arrValor.push(\$.trim(\$(this).val().toLowerCase()));
+                                });
+                                var ctrl = jQuery.inArray(this.newKeep1.toLowerCase(), arrValor);
+                                //console.log(arrValor);
+                                if (ctrl !== -1) {
+                                    \$.alert({
+                                        icon: \"fa fa-warning\",
+                                        title: \"ERROR\",
+                                        content: \"ESTE VALOR YA SE ENCUENTRA EN EL SELECT\",
+                                        type: \"red\",
+                                        typeAnimated: true,
+                                      });
+                                } else {
+                                    this.lista.push({keep1:this.newKeep1, completed: false});
+                                    this.newKeep1 = '';
+                                }
+                            }
+                        },
+                        eliminarTarea: function(index){
+                            this.lista.splice(index,1);
+                        }
+                    }
+                });
+
+                var app2     = new Vue({
+
+                    el:'#app2',
+                    delimiters: ['\${', '}'],
+                    data:{
+                        selected: \"84\",
+                        listas:  [],
+                        newKeep1:'',
+                    },
+                    beforeMount: function() {
+                        this.listas = JSON.parse(this.\$el.attributes['data-array'].value.replace(/&quot;/ig, '\"'));
+                    },
+                    methods: {
+                        eliminarTarea: function(index){
+                            this.listas.splice(index,1);
+                        },
+                        addKeep1: function(){
+                            if(this.newKeep1 == \"\"){
+                                \$.alert({
+                                    icon: \"fa fa-warning\",
+                                    title: \"ERROR\",
+                                    content: \"ESTE CAMPO NO PUEDE ESTAR VACÍO\",
+                                    type: \"red\",
+                                    typeAnimated: true
+                                  });
+                            } else {
+                                var arrValor = new Array ();
+                                \$(\"#areaModificada\").find('option').each( function() {
+                                    arrValor.push(\$.trim(\$(this).val().toLowerCase()));
+                                });
+                                var ctrl = jQuery.inArray(this.newKeep1.toLowerCase(), arrValor);
+                                //console.log(arrValor);
+                                if (ctrl !== -1) {
+                                    \$.alert({
+                                        icon: \"fa fa-warning\",
+                                        title: \"ERROR\",
+                                        content: \"ESTE VALOR YA SE ENCUENTRA EN EL SELECT\",
+                                        type: \"red\",
+                                        typeAnimated: true,
+                                      });
+                                } else {
+                                    this.listas.push({areas:this.newKeep1});
+                                    this.newKeep1 = '';
+                                }
+                            }
+                        }
+                    }
+                });
+
+                var app3     = new Vue({
+                    el:'#app3',
+                    delimiters: ['\${', '}'],
+                    data:{
+                        selected: \"84\",
+                        lists:  [],
+                        newKeep:'',
+                    },
+                    beforeMount: function() {
+                        this.lists = JSON.parse(this.\$el.attributes['data-arr'].value.replace(/&quot;/ig, '\"'));
+                    },
+                    methods:{
+                        eliminarTarea:  function(index){
+                            this.lists.splice(index,1);
+                        },
+                        addKeep: function(){
+                            if(this. newKeep == \"\"){
+                                \$.alert({
+                                    icon: \"fa fa-warning\",
+                                    title: \"ERROR\",
+                                    content: \"ESTE CAMPO NO PUEDE ESTAR VACÍO\",
+                                    type: \"red\",
+                                    typeAnimated: true
+                                  });
+                            }else{
+                                var arrValor = new Array ();
+                                \$(\"#responsableModificado\").find('option').each( function() {
+                                    arrValor.push(\$.trim(\$(this).val().toLowerCase()));
+                                });
+                                var ctrl = jQuery.inArray(this.newKeep.toLowerCase(), arrValor);
+                                //console.log(ctrl);
+                                if (ctrl !== -1) {
+                                    \$.alert({
+                                        icon: \"fa fa-warning\",
+                                        title: \"ERROR\",
+                                        content: \"ESTE VALOR YA SE ENCUENTRA EN EL SELECT\",
+                                        type: \"red\",
+                                        typeAnimated: true,
+                                      });
+                                } else {
+                                    this.lists.push({responsable:this.newKeep});
+                                    this.newKeep = '';
+                                }
+                            }
+                        }
+                    }
+                });
                 </script>
     ";
     }
@@ -230,7 +419,7 @@ class __TwigTemplate_e1cab488f37ea3cc00ebd1580bf9c485c4fe7ed6783b089ca461c3c5fc7
 
     public function getDebugInfo()
     {
-        return array (  211 => 132,  201 => 130,  196 => 129,  184 => 119,  174 => 117,  169 => 116,  160 => 109,  157 => 108,  101 => 56,  90 => 48,  86 => 47,  80 => 44,  41 => 7,  38 => 6,  33 => 3,  30 => 2,  11 => 1,);
+        return array (  210 => 131,  200 => 129,  195 => 128,  183 => 118,  173 => 116,  168 => 115,  160 => 109,  157 => 108,  101 => 56,  90 => 48,  86 => 47,  80 => 44,  41 => 7,  38 => 6,  33 => 3,  30 => 2,  11 => 1,);
     }
 
     public function getSourceContext()

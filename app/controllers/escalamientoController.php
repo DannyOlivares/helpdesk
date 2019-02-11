@@ -34,7 +34,8 @@ class escalamientoController extends Controllers implements IControllers {
                 echo $this->template->render('escalamiento/escalamiento',array(
                     'data2'     => (new Model\Escalamiento)->actividadesPendientes(),
                     'data3'     => (new Model\Escalamiento)->actividadesAsignadas(),
-                    'data1'     => (new Model\Escalamiento)->actividadesTotales()
+                    'data1'     => (new Model\Escalamiento)->actividadesTotales(),
+                    'data4'     => (new Model\Escalamiento)->actividadesFinalizadasHoyAll()
                 ));
             break;
 

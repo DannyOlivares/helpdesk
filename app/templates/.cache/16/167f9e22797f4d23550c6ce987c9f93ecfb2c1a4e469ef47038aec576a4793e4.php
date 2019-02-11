@@ -110,7 +110,7 @@ class __TwigTemplate_266d19d624eabe4f7231e125394eed61b8e1a4757b574f4fe6bbd23719f
                                     <div class=\"box-footer\">
                                         Total Finalizadas Hoy: ";
         // line 67
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), twig_get_attribute($this->env, $this->getSourceContext(), ($context["data3"] ?? null), 0, array(), "array"), 0, array(), "array"), "html", null, true);
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), twig_get_attribute($this->env, $this->getSourceContext(), ($context["data4"] ?? null), 0, array(), "array"), 0, array(), "array"), "html", null, true);
         echo "
                                     </div>
                                 </div>
@@ -118,38 +118,29 @@ class __TwigTemplate_266d19d624eabe4f7231e125394eed61b8e1a4757b574f4fe6bbd23719f
 
                         </div>
                         <ul class=\"nav nav-tabs\">
-                            <li class=\"active\"><a data-toggle=\"tab\" href=\"#home\" class=\"far fa-search\">Actividades Gestionadas</a></li>
-                            <li><a data-toggle=\"tab\" href=\"#menu1\" class=\"\" onclick=\"pintar();\">Actividades Pendientes</a></li>
-                            <li><a data-toggle=\"tab\" href=\"#menu2\">Actividades seguimiento</a></li>
-                            <li><a data-toggle=\"tab\" href=\"#menu3\">Actividades Finalizadas Hoy</a></li>
+                            <li class=\"active\"><a data-toggle=\"tab\" href=\"#home\" onclick=\"cargarTabla('gestionada');\">Actividades Gestionadas</a></li>
+                            <li><a data-toggle=\"tab\" href=\"#menu1\" class=\"\" onclick=\"cargarTabla('pendiente');\">Actividades Pendientes</a></li>
+                            <li><a data-toggle=\"tab\" href=\"#menu2\" onclick=\"cargarTabla('seguimiento');\">Actividades seguimiento</a></li>
+                            <li><a data-toggle=\"tab\" href=\"#menu3\" onclick=\"cargarTabla('finalizada');\">Actividades Finalizadas Hoy</a></li>
                         </ul>
 
 
                                 <div id=\"home\" class=\"tab-pane fade in active\">
                                     <div class=\"\">
-                                        <h3>Detalle Gestionadas</h3>
+                                        <h3></h3>
                                     </div>
                                     <div class=\"box-body\">
                                         <table id=\"t1\" class=\"table table-bordered\">
                                             <thead>
                                                 <tr>
-                                                    <th>Comuna</th>
-                                                    <th>Orden</th>
-                                                    <th>Rut</th>
-                                                    <th>Tipo De Actividad</th>
-                                                    <th>Usuario Ingresa </th>
-                                                    <th>Usuario Finaliza</th>
-                                                    <th>Estado Real </th>
-                                                    <th>Bloque</th>
-                                                    <th>Gestión</th>
-                                                    <th>Observación</th>
+
                                                 </tr>
                                             </thead>
                                         </table>
                                     </div>
                                 </div>
 
-                                <div id=\"menu1\" class=\"tab-pane fade\">
+                                <!-- <div id=\"menu1\" class=\"tab-pane fade\">
                                 <div class=\"\">
                                     <h3>Detalle Pendientes</h3>
                                 </div>
@@ -171,9 +162,9 @@ class __TwigTemplate_266d19d624eabe4f7231e125394eed61b8e1a4757b574f4fe6bbd23719f
                                             </thead>
                                         </table>
                                     </div>
-                                </div>
+                                </div> -->
 
-                                <div id=\"menu2\" class=\"tab-pane fade\">
+                                <!-- <div id=\"menu2\" class=\"tab-pane fade\">
                                     <div id=\"\" class=\"\">
                                         <h3>Detalle Seguimiento</h3>
                                     </div>
@@ -194,8 +185,8 @@ class __TwigTemplate_266d19d624eabe4f7231e125394eed61b8e1a4757b574f4fe6bbd23719f
                                             </thead>
                                         </table>
                                     </div>
-                                </div>
-                                <div id=\"menu3\" class=\"tab-pane fade\">
+                                </div> -->
+                                <!-- <div id=\"menu3\" class=\"tab-pane fade\">
                                     <h3>Detalle Finalizadas Hoy</h3>
                                     <div class=\"box-body\">
                                         <table id=\"t4\" name=\"t4\" class=\"table table-bordered t4\">
@@ -214,7 +205,7 @@ class __TwigTemplate_266d19d624eabe4f7231e125394eed61b8e1a4757b574f4fe6bbd23719f
                                             </thead>
                                         </table>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
 
                     </div>
@@ -225,45 +216,18 @@ class __TwigTemplate_266d19d624eabe4f7231e125394eed61b8e1a4757b574f4fe6bbd23719f
 ";
     }
 
-    // line 180
+    // line 171
     public function block_appScript($context, array $blocks = array())
     {
-        // line 181
-        echo "
+        // line 172
+        echo "    <script src=\"views/app/js/escalamiento/escalamiento.js\" type=\"text/javascript\"></script>
     <script src=\"views/app/template/datatables/jquery.dataTables.min.js\" type=\"text/javascript\"></script>
     <script>
-        \$(\"#t1\").dataTable({
-            \"ajax\": {
-                \"url\": \"api/tablaGestionada\",
-                \"type\": \"POST\"
-            },
-                \"language\"          : {
-                \"search\"            : \"Buscar:\",
-                \"zeroRecords\"       : \"No hay datos para mostrar\",
-                \"info\"              : \"Mostrando _END_ Registros, de un total de _TOTAL_ \",
-                \"loadingRecords\"    : \"Cargando...\",
-                \"processing\"        : \"Procesando...\",
-                \"infoEmpty\"         : \"No hay entradas para mostrar\",
-                \"lengthMenu\"        : \"Mostrar _MENU_ Filas\",
 
-                \"paginate\"          : {
-                \"first\"             : \"Primera\",
-                \"last\"              : \"Ultima\",
-                \"next\"              : \"Siguiente\",
-                \"previous\"          : \"Anterior\"
-                }
-            },
-                \"autoWidth\"         : true,
-                \"scrollX\"           : true,
-                \"bSort\"             : false,
-                \"bInfo\"             : false,
-                \"iDisplayLength\"    : 8,
-                \"pagingType\"        : \"full_numbers\"
-        });
 
 //------------Fin primer datatable---------------------//
     </script>
-<script>
+<!-- <script>
    \$(\"#t2\").dataTable({
        \"ajax\": {
            \"url\": \"api/tablaPendientes\",
@@ -294,9 +258,9 @@ class __TwigTemplate_266d19d624eabe4f7231e125394eed61b8e1a4757b574f4fe6bbd23719f
    });
 
 //---------------------------Fin datatable pendiente----------------------------//
-</script>
+</script> -->
 
-<script>
+<!-- <script>
    \$(\"#t3\").dataTable({
        \"ajax\": {
            \"url\": \"api/tablaAsignadas\",
@@ -326,7 +290,7 @@ class __TwigTemplate_266d19d624eabe4f7231e125394eed61b8e1a4757b574f4fe6bbd23719f
            \"pagingType\"        : \"full_numbers\"
    });
 //---------------------------Fin datatable asignadas----------------------------//
-</script>
+</script> -->
 ";
     }
 
@@ -342,7 +306,7 @@ class __TwigTemplate_266d19d624eabe4f7231e125394eed61b8e1a4757b574f4fe6bbd23719f
 
     public function getDebugInfo()
     {
-        return array (  232 => 181,  229 => 180,  113 => 67,  99 => 56,  85 => 45,  72 => 35,  45 => 10,  42 => 9,  33 => 3,  30 => 2,  11 => 1,);
+        return array (  223 => 172,  220 => 171,  113 => 67,  99 => 56,  85 => 45,  72 => 35,  45 => 10,  42 => 9,  33 => 3,  30 => 2,  11 => 1,);
     }
 
     public function getSourceContext()
