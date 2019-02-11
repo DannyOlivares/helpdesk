@@ -1,14 +1,5 @@
 <?php
 
-/*
- * This file is part of the Ocrend Framewok 2 package.
- *
- * (c) Ocrend Software <info@ocrend.com>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
-*/
-
 namespace app\controllers;
 
 use app\models as Model;
@@ -30,10 +21,6 @@ class escalamientoController extends Controllers implements IControllers {
         ));
 
         switch ($this->method) {
-            case 'inicio':
-                echo $this->template->render('escalamiento/escalamiento');
-                break;
-
             case 'agregarEscalamiento':
                 echo $this->template->render('escalamiento/agregarEscalamiento');
             break;
@@ -47,10 +34,7 @@ class escalamientoController extends Controllers implements IControllers {
                 echo $this->template->render('escalamiento/escalamiento',array(
                     'data2'     => (new Model\Escalamiento)->actividadesPendientes(),
                     'data3'     => (new Model\Escalamiento)->actividadesAsignadas(),
-                    'data1'     => (new Model\Escalamiento)->actividadesTotales(),
-                    'data0'     => (new Model\Escalamiento)->actividadesPendientesAll(),
-                    'data'      => (new Model\Escalamiento)->actividadesAsignadasAll(),
-                    'dat'       => (new Model\Escalamiento)->actividadesAll()
+                    'data1'     => (new Model\Escalamiento)->actividadesTotales()
                 ));
             break;
 

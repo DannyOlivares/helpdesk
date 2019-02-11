@@ -604,3 +604,17 @@ $app->post('/agregarEscalamientoNoCorresponde  ', function() use($app) {
     $u = new Model\Escalamiento;
     return $app->json($u->agregarEscalamientoNoCorresponde());
 });
+$app->post('/tablaGestionada  ', function() use($app) {
+    $u = new Model\Escalamiento;
+    return $app->json($u->actividadesAll());
+});
+
+$app->post('/tablaPendientes  ', function() use($app) {
+    $u = new Model\Escalamiento;
+    return $app->json($u->actividadesPendientesAll());
+});
+
+$app->post('/tablaAsignadas  ', function() use($app) {
+    $u = new Model\Escalamiento;
+    return $app->json($u->actividadesAsignadasAll());
+});

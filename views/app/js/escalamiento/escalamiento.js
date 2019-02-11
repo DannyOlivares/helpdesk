@@ -14,7 +14,7 @@ function agregarEscalamiento(){
             autoClose: "ok|3000",
             buttons: {
               ok: function() {
-                location.href = "escalamiento/agregarEscalamiento";
+                location.href = "escalamiento/escalamiento";
               }
             }
         });
@@ -145,4 +145,8 @@ function agregarEscalamientoNoCorresponde(){
       msg_box_alert(99, "title", xhr.responseText);
     }
   });
+}
+
+function pintar($var){
+    
 }
