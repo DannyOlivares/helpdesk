@@ -45,7 +45,7 @@ class Escalamiento extends Models implements IModels {
             $tipoActividad                  = $http->request->get('selectTipoActividad');
             $estadoOrden                    = $http->request->get('selectEstadoOrden');
             $nombreUsuario                  = $http->request->get('nombreUsuario');
-            $fechaFinalizacion              = '2019-02-11';
+            $fechaFinalizacion              = '2019-02-12';
             $descripcionActividad           = $http->request->get('descripcionActividad');
             $fechaCreacion                  = $http->request->get('fechaCreacion');
             $comuna                         = $http->request->get('comuna');
@@ -241,6 +241,17 @@ class Escalamiento extends Models implements IModels {
         return $this->db->query_select($sql);
 
     }
+    //----------------------------FIN TODAS LAS ACTIVIDADES---------------------------------------------
+    //----------------------------FINALIZADAS HOY------------------------------------------------------
+    public function actividadesFinalizadasHoy(){
+        $sql = 'SELECT fechaCreacion, fechaCompromiso, rutCliente, idActividadManual, e.comuna, nombreRemitente, bloque, tipoActividad
+                FROM escalamientoremitente e INNER JOIN escalamientocorresponde c ON e.idActividadIngresar = c.idActividadManual
+                WHERE fechaFinalizacion = curdate()';
+        $result = $this->db->query_select($sql);
+        
+        return array('data' => $result);
+    }
+    //----------------------------FIN FINALIZADAS HOY-----------------------------------------------
 
     public function actividadesPendientesAll(){
         $sql = "SELECT fechaCreacion, fechaCompromiso, rutCliente, idActividadManual, e.comuna, nombreRemitente, bloque, tipoActividad
@@ -260,7 +271,7 @@ class Escalamiento extends Models implements IModels {
     }
 
     public function actividadesAll(){
-        $sql = $sql = "SELECT DATE_FORMAT(fechaCreacion, '%d-%m-%Y'), DATE_FORMAT(fechaCompromiso, '%d-%m-%Y'), rutCliente, idActividadManual, e.comuna, nombreRemitente, bloque, tipoActividad
+        $sql = "SELECT DATE_FORMAT(fechaCreacion, '%d-%m-%Y'), DATE_FORMAT(fechaCompromiso, '%d-%m-%Y'), rutCliente, idActividadManual, e.comuna, nombreRemitente, bloque, tipoActividad
                 FROM escalamientoremitente e INNER JOIN escalamientocorresponde c ON e.idActividadIngresar = c.idActividadManual";
         $result = $this->db->query_select($sql);
         return array( 'data' => $result);
@@ -271,6 +282,7 @@ class Escalamiento extends Models implements IModels {
         $sql = 'select count(*) from escalamientocorresponde
                 where  fechaFinalizacion = curdate()';
         $result = $this->db->query_select($sql);
+
         return  array( 'data' => $result);
     }
 

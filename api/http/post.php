@@ -618,3 +618,8 @@ $app->post('/tablaAsignadas  ', function() use($app) {
     $u = new Model\Escalamiento;
     return $app->json($u->actividadesAsignadasAll());
 });
+
+$app->post('/actividadesFinalizadasHoy  ', function() use($app) {
+    $u = new Model\Escalamiento;
+    return $app->json($u->actividadesFinalizadasHoy());
+});

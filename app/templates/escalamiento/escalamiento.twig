@@ -64,7 +64,7 @@
                                         <h3 class="box-title">Resumen Actividades Finalizadas Hoy</h3>
                                     </div>
                                     <div class="box-footer">
-                                        Total Finalizadas Hoy: {{ data4[0][0] }}
+                                        Total Finalizadas Hoy: {{ data4["data"][0][0] }}
                                     </div>
                                 </div>
                             </div>
@@ -74,10 +74,8 @@
                             <li class="active"><a data-toggle="tab" href="#home" onclick="cargarTabla('gestionada');">Actividades Gestionadas</a></li>
                             <li><a data-toggle="tab" href="#menu1" class="" onclick="cargarTabla('pendiente');">Actividades Pendientes</a></li>
                             <li><a data-toggle="tab" href="#menu2" onclick="cargarTabla('seguimiento');">Actividades seguimiento</a></li>
-                            <li><a data-toggle="tab" href="#menu3" onclick="cargarTabla('finalizada');">Actividades Finalizadas Hoy</a></li>
+                            <li><a data-toggle="tab" href="#menu3" onclick="cargarTabla('finalizadaHoy');">Actividades Finalizadas Hoy</a></li>
                         </ul>
-
-
                                 <div id="home" class="tab-pane fade in active">
                                     <div class="">
                                         <h3></h3>
@@ -171,11 +169,7 @@
 {% block appScript %}
     <script src="views/app/js/escalamiento/escalamiento.js" type="text/javascript"></script>
     <script src="views/app/template/datatables/jquery.dataTables.min.js" type="text/javascript"></script>
-    <script>
-
-
-//------------Fin primer datatable---------------------//
-    </script>
+    <!-- //---------------------------Fin datatable pendiente----------------------------// -->
 <!-- <script>
    $("#t2").dataTable({
        "ajax": {
@@ -205,39 +199,7 @@
            "iDisplayLength"    : 8,
            "pagingType"        : "full_numbers"
    });
-
-//---------------------------Fin datatable pendiente----------------------------//
 </script> -->
+<!-- podemos en el llamado del datatable generar un ajax y traer datos atravez de una api -->
 
-<!-- <script>
-   $("#t3").dataTable({
-       "ajax": {
-           "url": "api/tablaAsignadas",
-           "type": "POST"
-       },
-           "language"          : {
-           "search"            : "Buscar:",
-           "zeroRecords"       : "No hay datos para mostrar",
-           "info"              : "Mostrando _END_ Registros, de un total de _TOTAL_ ",
-           "loadingRecords"    : "Cargando...",
-           "processing"        : "Procesando...",
-           "infoEmpty"         : "No hay entradas para mostrar",
-           "lengthMenu"        : "Mostrar _MENU_ Filas",
-
-           "paginate"          : {
-           "first"             : "Primera",
-           "last"              : "Ultima",
-           "next"              : "Siguiente",
-           "previous"          : "Anterior"
-           }
-       },
-           "autoWidth"         : true,
-           "scrollX"           : true,
-           "bSort"             : false,
-           "bInfo"             : false,
-           "iDisplayLength"    : 8,
-           "pagingType"        : "full_numbers"
-   });
-//---------------------------Fin datatable asignadas----------------------------//
-</script> -->
 {% endblock %}

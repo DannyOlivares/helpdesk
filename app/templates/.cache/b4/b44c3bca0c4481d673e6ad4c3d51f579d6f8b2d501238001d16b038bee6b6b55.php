@@ -1,7 +1,7 @@
 <?php
 
 /* escalamiento/escalamiento.twig */
-class __TwigTemplate_266d19d624eabe4f7231e125394eed61b8e1a4757b574f4fe6bbd23719fe2a68 extends Twig_Template
+class __TwigTemplate_ce7a27cff50aedef0720bc84857d4e19d4df6d7f7175720d5fdd2e4632becd40 extends Twig_Template
 {
     public function __construct(Twig_Environment $env)
     {
@@ -105,13 +105,13 @@ class __TwigTemplate_266d19d624eabe4f7231e125394eed61b8e1a4757b574f4fe6bbd23719f
                             <div class=\"col col-md-3\">
                                 <div class=\"box\">
                                     <div class=\"box-header with-border\">
-                                        <h3 class=\"box-title\">Resumen Actividades Finalizadas Hoy ";
-        // line 64
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), twig_get_attribute($this->env, $this->getSourceContext(), ($context["data"] ?? null), 0, array(), "array"), 0, array(), "array"), "html", null, true);
-        echo "</h3>
+                                        <h3 class=\"box-title\">Resumen Actividades Finalizadas Hoy</h3>
                                     </div>
                                     <div class=\"box-footer\">
-                                        Total Finalizadas Hoy:
+                                        Total Finalizadas Hoy: ";
+        // line 67
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), twig_get_attribute($this->env, $this->getSourceContext(), twig_get_attribute($this->env, $this->getSourceContext(), ($context["data4"] ?? null), "data", array(), "array"), 0, array(), "array"), 0, array(), "array"), "html", null, true);
+        echo "
                                     </div>
                                 </div>
                             </div>
@@ -121,10 +121,8 @@ class __TwigTemplate_266d19d624eabe4f7231e125394eed61b8e1a4757b574f4fe6bbd23719f
                             <li class=\"active\"><a data-toggle=\"tab\" href=\"#home\" onclick=\"cargarTabla('gestionada');\">Actividades Gestionadas</a></li>
                             <li><a data-toggle=\"tab\" href=\"#menu1\" class=\"\" onclick=\"cargarTabla('pendiente');\">Actividades Pendientes</a></li>
                             <li><a data-toggle=\"tab\" href=\"#menu2\" onclick=\"cargarTabla('seguimiento');\">Actividades seguimiento</a></li>
-                            <li><a data-toggle=\"tab\" href=\"#menu3\" onclick=\"cargarTabla('finalizada');\">Actividades Finalizadas Hoy</a></li>
+                            <li><a data-toggle=\"tab\" href=\"#menu3\" onclick=\"cargarTabla('finalizadaHoy');\">Actividades Finalizadas Hoy</a></li>
                         </ul>
-
-
                                 <div id=\"home\" class=\"tab-pane fade in active\">
                                     <div class=\"\">
                                         <h3></h3>
@@ -216,17 +214,13 @@ class __TwigTemplate_266d19d624eabe4f7231e125394eed61b8e1a4757b574f4fe6bbd23719f
 ";
     }
 
-    // line 171
+    // line 169
     public function block_appScript($context, array $blocks = array())
     {
-        // line 172
+        // line 170
         echo "    <script src=\"views/app/js/escalamiento/escalamiento.js\" type=\"text/javascript\"></script>
     <script src=\"views/app/template/datatables/jquery.dataTables.min.js\" type=\"text/javascript\"></script>
-    <script>
-
-
-//------------Fin primer datatable---------------------//
-    </script>
+    <!-- //---------------------------Fin datatable pendiente----------------------------// -->
 <!-- <script>
    \$(\"#t2\").dataTable({
        \"ajax\": {
@@ -256,14 +250,205 @@ class __TwigTemplate_266d19d624eabe4f7231e125394eed61b8e1a4757b574f4fe6bbd23719f
            \"iDisplayLength\"    : 8,
            \"pagingType\"        : \"full_numbers\"
    });
-
-//---------------------------Fin datatable pendiente----------------------------//
 </script> -->
+<!-- podemos en el llamado del datatable generar un ajax y traer datos atravez de una api -->
 
+";
+    }
+
+    public function getTemplateName()
+    {
+        return "escalamiento/escalamiento.twig";
+    }
+
+    public function isTraitable()
+    {
+        return false;
+    }
+
+    public function getDebugInfo()
+    {
+        return array (  221 => 170,  218 => 169,  113 => 67,  99 => 56,  85 => 45,  72 => 35,  45 => 10,  42 => 9,  33 => 3,  30 => 2,  11 => 1,);
+    }
+
+    public function getSourceContext()
+    {
+        return new Twig_Source("{% extends 'portal/portal' %}
+{% block appStylos %}
+
+    <link rel=\"stylesheet\" href=\"views/app/template/datatables/dataTables.bootstrap.css\">
+    <link rel=\"stylesheet\" href=\"views/app/template/datatables/jquery.dataTables.css\">
+    <style media=\"screen\">
+    </style>
+{% endblock %}
+{% block appBody %}
+    <section class=\"content-header\">
+        <h1>
+            Escalamiento
+            <small>Resumen Actividades</small>
+        </h1>
+        <ol class=\"breadcrumb\">
+        <li><a href=\"#\"><i class=\"fa fa-dashboard\"></i> Home</a></li>
+        <li><a href=\"escalamiento/agregarEncargadoFiltrar\">Agregar Actividad</a></li>
+        </ol>
+    </section>
+
+    <section class=\"content\">
+        <div class=\"row\">
+                <div class=\"col col-md-12\">
+                    <div class=\"box\">
+                        <div class=\"box-header with-border\">
+                            <h3 class=\"box-title\">Mirada Global</h3>
+                        </div>
+                        <div class=\"box-body\">
+                            <div class=\"col col-md-3\">
+                                <div class=\"box\">
+                                    <div class=\"box-header with-border\">
+                                        <h3 class=\"box-title\">Resumen Actividades Gestionadas</h3>
+                                    </div>
+                                    <div class=\"box-footer\">
+                                        Total Gestionadas: {{ data1[0][0] }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class=\"col col-md-3\">
+                                <div class=\"box\">
+                                    <div class=\"box-header with-border\">
+                                        <h3 class=\"box-title\">Resumen Actividades Pendientes</h3>
+                                    </div>
+                                    <div class=\"box-footer\">
+                                        Total Pendientes: {{ data2[0][0] }}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class=\"col col-md-3\">
+                                <div class=\"box\">
+                                    <div class=\"box-header with-border\">
+                                        <h3 class=\"box-title\">Resumen Actividades Seguimiento</h3>
+                                    </div>
+                                    <div class=\"box-footer\">
+                                        Total Seguimiento: {{ data3[0][0] }}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class=\"col col-md-3\">
+                                <div class=\"box\">
+                                    <div class=\"box-header with-border\">
+                                        <h3 class=\"box-title\">Resumen Actividades Finalizadas Hoy</h3>
+                                    </div>
+                                    <div class=\"box-footer\">
+                                        Total Finalizadas Hoy: {{ data4[\"data\"][0][0] }}
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <ul class=\"nav nav-tabs\">
+                            <li class=\"active\"><a data-toggle=\"tab\" href=\"#home\" onclick=\"cargarTabla('gestionada');\">Actividades Gestionadas</a></li>
+                            <li><a data-toggle=\"tab\" href=\"#menu1\" class=\"\" onclick=\"cargarTabla('pendiente');\">Actividades Pendientes</a></li>
+                            <li><a data-toggle=\"tab\" href=\"#menu2\" onclick=\"cargarTabla('seguimiento');\">Actividades seguimiento</a></li>
+                            <li><a data-toggle=\"tab\" href=\"#menu3\" onclick=\"cargarTabla('finalizadaHoy');\">Actividades Finalizadas Hoy</a></li>
+                        </ul>
+                                <div id=\"home\" class=\"tab-pane fade in active\">
+                                    <div class=\"\">
+                                        <h3></h3>
+                                    </div>
+                                    <div class=\"box-body\">
+                                        <table id=\"t1\" class=\"table table-bordered\">
+                                            <thead>
+                                                <tr>
+
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                </div>
+
+                                <!-- <div id=\"menu1\" class=\"tab-pane fade\">
+                                <div class=\"\">
+                                    <h3>Detalle Pendientes</h3>
+                                </div>
+
+                                    <div class=\"box-body\">
+                                        <table id=\"t2\" class=\"table table-bordered\">
+                                            <thead>
+                                                <tr>
+                                                    <th>Fecha Compromiso</th>
+                                                    <th>Bloque Agendamiento</th>
+                                                    <th>Id Actividad</th>
+                                                    <th>Rut Cliente</th>
+                                                    <th>Estado Orden</th>
+                                                    <th>Estado Escalamiento </th>
+                                                    <th>Tipo de Actividad</th>
+                                                    <th>Canal</th>
+                                                    <th>Descripción de la Actividad</th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                </div> -->
+
+                                <!-- <div id=\"menu2\" class=\"tab-pane fade\">
+                                    <div id=\"\" class=\"\">
+                                        <h3>Detalle Seguimiento</h3>
+                                    </div>
+                                    <div class=\"box-body\">
+                                        <table id=\"t3\" class=\"table table-bordered\">
+                                            <thead>
+                                                <tr>
+                                                    <th>Fecha Compromiso</th>
+                                                    <th>Bloque Asignado</th>
+                                                    <th>Id Actividad</th>
+                                                    <th>Rut Cliente</th>
+                                                    <th>Estado Orden</th>
+                                                    <th>Estado Escalamiento</th>
+                                                    <th>Tipo Actividad</th>
+                                                    <th>Canal</th>
+                                                    <th>Descripción de la Actividad</th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                </div> -->
+                                <!-- <div id=\"menu3\" class=\"tab-pane fade\">
+                                    <h3>Detalle Finalizadas Hoy</h3>
+                                    <div class=\"box-body\">
+                                        <table id=\"t4\" name=\"t4\" class=\"table table-bordered t4\">
+                                            <thead>
+                                                <tr>
+                                                    <th>Fecha Compromiso</th>
+                                                    <th>Bloque Agendamiento</th>
+                                                    <th>Id Actividad</th>
+                                                    <th>Rut Cliente</th>
+                                                    <th>Estado Orden</th>
+                                                    <th>Estado Esacalamiento </th>
+                                                    <th>Tipo de Actividad</th>
+                                                    <th>Canal</th>
+                                                    <th>Descripción de la Actividad</th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                </div> -->
+                            </div>
+
+                    </div>
+                </div>
+
+
+    </section>
+{% endblock %}
+
+{% block appScript %}
+    <script src=\"views/app/js/escalamiento/escalamiento.js\" type=\"text/javascript\"></script>
+    <script src=\"views/app/template/datatables/jquery.dataTables.min.js\" type=\"text/javascript\"></script>
+    <!-- //---------------------------Fin datatable pendiente----------------------------// -->
 <!-- <script>
-   \$(\"#t3\").dataTable({
+   \$(\"#t2\").dataTable({
        \"ajax\": {
-           \"url\": \"api/tablaAsignadas\",
+           \"url\": \"api/tablaPendientes\",
            \"type\": \"POST\"
        },
            \"language\"          : {
@@ -289,28 +474,10 @@ class __TwigTemplate_266d19d624eabe4f7231e125394eed61b8e1a4757b574f4fe6bbd23719f
            \"iDisplayLength\"    : 8,
            \"pagingType\"        : \"full_numbers\"
    });
-//---------------------------Fin datatable asignadas----------------------------//
 </script> -->
-";
-    }
+<!-- podemos en el llamado del datatable generar un ajax y traer datos atravez de una api -->
 
-    public function getTemplateName()
-    {
-        return "escalamiento/escalamiento.twig";
-    }
-
-    public function isTraitable()
-    {
-        return false;
-    }
-
-    public function getDebugInfo()
-    {
-        return array (  223 => 172,  220 => 171,  110 => 64,  99 => 56,  85 => 45,  72 => 35,  45 => 10,  42 => 9,  33 => 3,  30 => 2,  11 => 1,);
-    }
-
-    public function getSourceContext()
-    {
-        return new Twig_Source("", "escalamiento/escalamiento.twig", "C:\\xampp\\htdocs\\helpdesk\\app\\templates\\escalamiento\\escalamiento.twig");
+{% endblock %}
+", "escalamiento/escalamiento.twig", "C:\\xampp\\htdocs\\helpdesk\\app\\templates\\escalamiento\\escalamiento.twig");
     }
 }

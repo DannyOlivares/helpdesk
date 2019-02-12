@@ -270,7 +270,40 @@ function cargarTabla(tipo){
             });
         break
 
-        case 'finalizada':
+        case 'finalizadaHoy':
+            $("#home").find("h3").text("Detalle Finalizadas Hoy");
+            var cols = new Array("Fecha Ingreso", "Fecha Compromiso", "Rut", "Id Actividad", "Comuna", "Remitente", "Bloque","Tipo de Actividad");
+            $.each(cols, function (index, value) {
+                $("#t1").find("thead > tr").append("<th>"+value+"</th>");
+            });
+            $("#t1").dataTable({
+                "ajax": {
+                    "url": "api/actividadesFinalizadasHoy",
+                    "type": "POST"
+                },
+                    "language"          : {
+                    "search"            : "Buscar:",
+                    "zeroRecords"       : "No hay datos para mostrar",
+                    "info"              : "Mostrando _END_ Registros, de un total de _TOTAL_ ",
+                    "loadingRecords"    : "Cargando...",
+                    "processing"        : "Procesando...",
+                    "infoEmpty"         : "No hay entradas para mostrar",
+                    "lengthMenu"        : "Mostrar _MENU_ Filas",
+
+                    "paginate"          : {
+                    "first"             : "Primera",
+                    "last"              : "Ultima",
+                    "next"              : "Siguiente",
+                    "previous"          : "Anterior"
+                    }
+                },
+                    "autoWidth"         : true,
+                    "scrollX"           : true,
+                    "bSort"             : false,
+                    "bInfo"             : false,
+                    "iDisplayLength"    : 8,
+                    "pagingType"        : "full_numbers"
+            });
         break
         default:
 
