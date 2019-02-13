@@ -33,15 +33,25 @@ class __TwigTemplate_ce7a27cff50aedef0720bc84857d4e19d4df6d7f7175720d5fdd2e4632b
         echo "
     <link rel=\"stylesheet\" href=\"views/app/template/datatables/dataTables.bootstrap.css\">
     <link rel=\"stylesheet\" href=\"views/app/template/datatables/jquery.dataTables.css\">
+
     <style media=\"screen\">
+        .buttons-excel{
+            background-image: url(views/app/images/i_excel.png);
+            background-size: contain;
+            width: 32px;
+            height: 32px;
+            background-color: transparent;
+            border: none;
+            margin-left: 15px;
+        }
     </style>
 ";
     }
 
-    // line 9
+    // line 19
     public function block_appBody($context, array $blocks = array())
     {
-        // line 10
+        // line 20
         echo "    <section class=\"content-header\">
         <h1>
             Escalamiento
@@ -68,7 +78,7 @@ class __TwigTemplate_ce7a27cff50aedef0720bc84857d4e19d4df6d7f7175720d5fdd2e4632b
                                     </div>
                                     <div class=\"box-footer\">
                                         Total Gestionadas: ";
-        // line 35
+        // line 45
         echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), twig_get_attribute($this->env, $this->getSourceContext(), ($context["data1"] ?? null), 0, array(), "array"), 0, array(), "array"), "html", null, true);
         echo "
                                     </div>
@@ -81,7 +91,7 @@ class __TwigTemplate_ce7a27cff50aedef0720bc84857d4e19d4df6d7f7175720d5fdd2e4632b
                                     </div>
                                     <div class=\"box-footer\">
                                         Total Pendientes: ";
-        // line 45
+        // line 55
         echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), twig_get_attribute($this->env, $this->getSourceContext(), ($context["data2"] ?? null), 0, array(), "array"), 0, array(), "array"), "html", null, true);
         echo "
                                     </div>
@@ -95,7 +105,7 @@ class __TwigTemplate_ce7a27cff50aedef0720bc84857d4e19d4df6d7f7175720d5fdd2e4632b
                                     </div>
                                     <div class=\"box-footer\">
                                         Total Seguimiento: ";
-        // line 56
+        // line 66
         echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), twig_get_attribute($this->env, $this->getSourceContext(), ($context["data3"] ?? null), 0, array(), "array"), 0, array(), "array"), "html", null, true);
         echo "
                                     </div>
@@ -109,7 +119,7 @@ class __TwigTemplate_ce7a27cff50aedef0720bc84857d4e19d4df6d7f7175720d5fdd2e4632b
                                     </div>
                                     <div class=\"box-footer\">
                                         Total Finalizadas Hoy: ";
-        // line 67
+        // line 77
         echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), twig_get_attribute($this->env, $this->getSourceContext(), twig_get_attribute($this->env, $this->getSourceContext(), ($context["data4"] ?? null), "data", array(), "array"), 0, array(), "array"), 0, array(), "array"), "html", null, true);
         echo "
                                     </div>
@@ -128,7 +138,7 @@ class __TwigTemplate_ce7a27cff50aedef0720bc84857d4e19d4df6d7f7175720d5fdd2e4632b
                                         <h3></h3>
                                     </div>
                                     <div class=\"box-body\">
-                                        <table id=\"t1\" class=\"table table-bordered\">
+                                        <table id=\"t1\" class=\"table table-bordered stripe hover\">
                                             <thead>
                                                 <tr>
 
@@ -214,44 +224,16 @@ class __TwigTemplate_ce7a27cff50aedef0720bc84857d4e19d4df6d7f7175720d5fdd2e4632b
 ";
     }
 
-    // line 169
+    // line 179
     public function block_appScript($context, array $blocks = array())
     {
-        // line 170
+        // line 180
         echo "    <script src=\"views/app/js/escalamiento/escalamiento.js\" type=\"text/javascript\"></script>
     <script src=\"views/app/template/datatables/jquery.dataTables.min.js\" type=\"text/javascript\"></script>
-    <!-- //---------------------------Fin datatable pendiente----------------------------// -->
-<!-- <script>
-   \$(\"#t2\").dataTable({
-       \"ajax\": {
-           \"url\": \"api/tablaPendientes\",
-           \"type\": \"POST\"
-       },
-           \"language\"          : {
-           \"search\"            : \"Buscar:\",
-           \"zeroRecords\"       : \"No hay datos para mostrar\",
-           \"info\"              : \"Mostrando _END_ Registros, de un total de _TOTAL_ \",
-           \"loadingRecords\"    : \"Cargando...\",
-           \"processing\"        : \"Procesando...\",
-           \"infoEmpty\"         : \"No hay entradas para mostrar\",
-           \"lengthMenu\"        : \"Mostrar _MENU_ Filas\",
-
-           \"paginate\"          : {
-           \"first\"             : \"Primera\",
-           \"last\"              : \"Ultima\",
-           \"next\"              : \"Siguiente\",
-           \"previous\"          : \"Anterior\"
-           }
-       },
-           \"autoWidth\"         : true,
-           \"scrollX\"           : true,
-           \"bSort\"             : false,
-           \"bInfo\"             : false,
-           \"iDisplayLength\"    : 8,
-           \"pagingType\"        : \"full_numbers\"
-   });
-</script> -->
-<!-- podemos en el llamado del datatable generar un ajax y traer datos atravez de una api -->
+    <script src=\"https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js\"></script>
+    <script src=\"https://cdn.datatables.net/buttons/1.5.2/js/buttons.flash.min.js\"></script>
+    <script src=\"https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js\"></script>
+    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js\"></script>
 
 ";
     }
@@ -268,7 +250,7 @@ class __TwigTemplate_ce7a27cff50aedef0720bc84857d4e19d4df6d7f7175720d5fdd2e4632b
 
     public function getDebugInfo()
     {
-        return array (  221 => 170,  218 => 169,  113 => 67,  99 => 56,  85 => 45,  72 => 35,  45 => 10,  42 => 9,  33 => 3,  30 => 2,  11 => 1,);
+        return array (  231 => 180,  228 => 179,  123 => 77,  109 => 66,  95 => 55,  82 => 45,  55 => 20,  52 => 19,  33 => 3,  30 => 2,  11 => 1,);
     }
 
     public function getSourceContext()
@@ -278,7 +260,17 @@ class __TwigTemplate_ce7a27cff50aedef0720bc84857d4e19d4df6d7f7175720d5fdd2e4632b
 
     <link rel=\"stylesheet\" href=\"views/app/template/datatables/dataTables.bootstrap.css\">
     <link rel=\"stylesheet\" href=\"views/app/template/datatables/jquery.dataTables.css\">
+
     <style media=\"screen\">
+        .buttons-excel{
+            background-image: url(views/app/images/i_excel.png);
+            background-size: contain;
+            width: 32px;
+            height: 32px;
+            background-color: transparent;
+            border: none;
+            margin-left: 15px;
+        }
     </style>
 {% endblock %}
 {% block appBody %}
@@ -356,7 +348,7 @@ class __TwigTemplate_ce7a27cff50aedef0720bc84857d4e19d4df6d7f7175720d5fdd2e4632b
                                         <h3></h3>
                                     </div>
                                     <div class=\"box-body\">
-                                        <table id=\"t1\" class=\"table table-bordered\">
+                                        <table id=\"t1\" class=\"table table-bordered stripe hover\">
                                             <thead>
                                                 <tr>
 
@@ -444,38 +436,10 @@ class __TwigTemplate_ce7a27cff50aedef0720bc84857d4e19d4df6d7f7175720d5fdd2e4632b
 {% block appScript %}
     <script src=\"views/app/js/escalamiento/escalamiento.js\" type=\"text/javascript\"></script>
     <script src=\"views/app/template/datatables/jquery.dataTables.min.js\" type=\"text/javascript\"></script>
-    <!-- //---------------------------Fin datatable pendiente----------------------------// -->
-<!-- <script>
-   \$(\"#t2\").dataTable({
-       \"ajax\": {
-           \"url\": \"api/tablaPendientes\",
-           \"type\": \"POST\"
-       },
-           \"language\"          : {
-           \"search\"            : \"Buscar:\",
-           \"zeroRecords\"       : \"No hay datos para mostrar\",
-           \"info\"              : \"Mostrando _END_ Registros, de un total de _TOTAL_ \",
-           \"loadingRecords\"    : \"Cargando...\",
-           \"processing\"        : \"Procesando...\",
-           \"infoEmpty\"         : \"No hay entradas para mostrar\",
-           \"lengthMenu\"        : \"Mostrar _MENU_ Filas\",
-
-           \"paginate\"          : {
-           \"first\"             : \"Primera\",
-           \"last\"              : \"Ultima\",
-           \"next\"              : \"Siguiente\",
-           \"previous\"          : \"Anterior\"
-           }
-       },
-           \"autoWidth\"         : true,
-           \"scrollX\"           : true,
-           \"bSort\"             : false,
-           \"bInfo\"             : false,
-           \"iDisplayLength\"    : 8,
-           \"pagingType\"        : \"full_numbers\"
-   });
-</script> -->
-<!-- podemos en el llamado del datatable generar un ajax y traer datos atravez de una api -->
+    <script src=\"https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js\"></script>
+    <script src=\"https://cdn.datatables.net/buttons/1.5.2/js/buttons.flash.min.js\"></script>
+    <script src=\"https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js\"></script>
+    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js\"></script>
 
 {% endblock %}
 ", "escalamiento/escalamiento.twig", "C:\\xampp\\htdocs\\helpdesk\\app\\templates\\escalamiento\\escalamiento.twig");

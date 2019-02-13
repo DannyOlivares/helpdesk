@@ -218,7 +218,7 @@ class Escalamiento extends Models implements IModels {
     }
     //-----------------------------FIN CREAR ENCARGADO-----------------------------------------------
 
-    //-----------------------------TRAER PENDIENTES--------------------------------------------------
+    //-----------------------------VISTA SUPERIOR ESCALAMIENTO PRINCIPAL--------------------------------------------------
     public function actividadesPendientes(){
         $sql = 'SELECT count(*) FROM escalamientocorresponde
                 WHERE estadoOrden = "pendiente"';
@@ -241,20 +241,20 @@ class Escalamiento extends Models implements IModels {
         return $this->db->query_select($sql);
 
     }
-    //----------------------------FIN TODAS LAS ACTIVIDADES---------------------------------------------
+    //----------------------------FIN VISTA SUPERIOR ESCALAMIENTO PRINCIPAL----------------------------
     //----------------------------FINALIZADAS HOY------------------------------------------------------
     public function actividadesFinalizadasHoy(){
-        $sql = 'SELECT fechaCreacion, fechaCompromiso, rutCliente, idActividadManual, e.comuna, nombreRemitente, bloque, tipoActividad
+        $sql = "SELECT DATE_FORMAT(fechaCreacion, '%d-%m-%Y'), DATE_FORMAT(fechaCompromiso, '%d-%m-%Y'), rutCliente, idActividadManual, e.comuna, nombreRemitente, bloque, tipoActividad
                 FROM escalamientoremitente e INNER JOIN escalamientocorresponde c ON e.idActividadIngresar = c.idActividadManual
-                WHERE fechaFinalizacion = curdate()';
+                WHERE fechaFinalizacion = curdate()";
         $result = $this->db->query_select($sql);
-        
+
         return array('data' => $result);
     }
     //----------------------------FIN FINALIZADAS HOY-----------------------------------------------
 
     public function actividadesPendientesAll(){
-        $sql = "SELECT fechaCreacion, fechaCompromiso, rutCliente, idActividadManual, e.comuna, nombreRemitente, bloque, tipoActividad
+        $sql = "SELECT DATE_FORMAT(fechaCreacion, '%d-%m-%Y'), DATE_FORMAT(fechaCompromiso, '%d-%m-%Y'), rutCliente, idActividadManual, e.comuna, nombreRemitente, bloque, tipoActividad
                 FROM escalamientoremitente e INNER JOIN escalamientocorresponde c ON e.idActividadIngresar = c.idActividadManual
                 WHERE estadoOrden= 'pendiente'";
         $result = $this->db->query_select($sql);
@@ -262,7 +262,7 @@ class Escalamiento extends Models implements IModels {
     }
 
     public function actividadesAsignadasAll(){
-        $sql = "SELECT fechaCreacion, fechaCompromiso, rutCliente, idActividadManual, e.comuna, nombreRemitente, bloque, tipoActividad
+        $sql = "SELECT DATE_FORMAT(fechaCreacion, '%d-%m-%Y'), DATE_FORMAT(fechaCompromiso,'%d-%m-%Y'), rutCliente, idActividadManual, e.comuna, nombreRemitente, bloque, tipoActividad
                 FROM escalamientoremitente e INNER JOIN escalamientocorresponde c ON e.idActividadIngresar = c.idActividadManual
                 WHERE estadoOrden= 'seguimiento'";
         $result =  $this->db->query_select($sql);

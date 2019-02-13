@@ -3,7 +3,17 @@
 
     <link rel="stylesheet" href="views/app/template/datatables/dataTables.bootstrap.css">
     <link rel="stylesheet" href="views/app/template/datatables/jquery.dataTables.css">
+
     <style media="screen">
+        .buttons-excel{
+            background-image: url(views/app/images/i_excel.png);
+            background-size: contain;
+            width: 32px;
+            height: 32px;
+            background-color: transparent;
+            border: none;
+            margin-left: 15px;
+        }
     </style>
 {% endblock %}
 {% block appBody %}
@@ -81,7 +91,7 @@
                                         <h3></h3>
                                     </div>
                                     <div class="box-body">
-                                        <table id="t1" class="table table-bordered">
+                                        <table id="t1" class="table table-bordered stripe hover">
                                             <thead>
                                                 <tr>
 
@@ -169,37 +179,9 @@
 {% block appScript %}
     <script src="views/app/js/escalamiento/escalamiento.js" type="text/javascript"></script>
     <script src="views/app/template/datatables/jquery.dataTables.min.js" type="text/javascript"></script>
-    <!-- //---------------------------Fin datatable pendiente----------------------------// -->
-<!-- <script>
-   $("#t2").dataTable({
-       "ajax": {
-           "url": "api/tablaPendientes",
-           "type": "POST"
-       },
-           "language"          : {
-           "search"            : "Buscar:",
-           "zeroRecords"       : "No hay datos para mostrar",
-           "info"              : "Mostrando _END_ Registros, de un total de _TOTAL_ ",
-           "loadingRecords"    : "Cargando...",
-           "processing"        : "Procesando...",
-           "infoEmpty"         : "No hay entradas para mostrar",
-           "lengthMenu"        : "Mostrar _MENU_ Filas",
-
-           "paginate"          : {
-           "first"             : "Primera",
-           "last"              : "Ultima",
-           "next"              : "Siguiente",
-           "previous"          : "Anterior"
-           }
-       },
-           "autoWidth"         : true,
-           "scrollX"           : true,
-           "bSort"             : false,
-           "bInfo"             : false,
-           "iDisplayLength"    : 8,
-           "pagingType"        : "full_numbers"
-   });
-</script> -->
-<!-- podemos en el llamado del datatable generar un ajax y traer datos atravez de una api -->
+    <script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.flash.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
 
 {% endblock %}

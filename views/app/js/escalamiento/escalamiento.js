@@ -193,7 +193,14 @@ function cargarTabla(tipo){
                     "bSort"             : false,
                     "bInfo"             : false,
                     "iDisplayLength"    : 8,
-                    "pagingType"        : "full_numbers"
+                    "pagingType"        : "full_numbers",
+                    "dom"                 : 'Bfrtip',
+                    "buttons"             : [
+                        {
+                            extend: 'excel',
+                            text: ''
+                        }
+                    ]
             });
         break;
 
@@ -229,7 +236,14 @@ function cargarTabla(tipo){
                     "bSort"             : false,
                     "bInfo"             : false,
                     "iDisplayLength"    : 8,
-                    "pagingType"        : "full_numbers"
+                    "pagingType"        : "full_numbers",
+                    "dom"                 : 'Bfrtip',
+                    "buttons"             : [
+                        {
+                            extend: 'excel',
+                            text: ''
+                        }
+                    ]
             });
         break;
 
@@ -266,9 +280,16 @@ function cargarTabla(tipo){
                     "bSort"             : false,
                     "bInfo"             : false,
                     "iDisplayLength"    : 8,
-                    "pagingType"        : "full_numbers"
+                    "pagingType"        : "full_numbers",
+                    "dom"               : 'Bfrtip',
+                    "buttons"           : [
+                        {
+                            extend: 'excel',
+                            text: ''
+                        }
+                    ]
             });
-        break
+        break;
 
         case 'finalizadaHoy':
             $("#home").find("h3").text("Detalle Finalizadas Hoy");
@@ -290,6 +311,11 @@ function cargarTabla(tipo){
                     "infoEmpty"         : "No hay entradas para mostrar",
                     "lengthMenu"        : "Mostrar _MENU_ Filas",
 
+                    "columns":[
+                        {"data"         : "nombre"},
+                        {"defaultContent": "<button>Editar</button>"}
+                    ],
+
                     "paginate"          : {
                     "first"             : "Primera",
                     "last"              : "Ultima",
@@ -302,14 +328,21 @@ function cargarTabla(tipo){
                     "bSort"             : false,
                     "bInfo"             : false,
                     "iDisplayLength"    : 8,
-                    "pagingType"        : "full_numbers"
+                    "pagingType"        : "full_numbers",
+                    "dom"               : 'Bfrtip',
+                    "buttons"           : [
+                        {
+                            extend: 'excel',
+                            text: ''
+                        }
+                    ]
             });
-        break
+        break;
+
         default:
+            break;
 
     }
-    /**/
-
 }
 
 $(document).ready(function () {
