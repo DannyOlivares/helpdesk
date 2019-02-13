@@ -30,7 +30,6 @@ class Escalamiento extends Models implements IModels {
     */
     use DBModel;
 
-
     public function agregarEscalamiento(){
         global $http;
 
@@ -270,9 +269,9 @@ class Escalamiento extends Models implements IModels {
 
     public function actividadesAll(){
         $sql = "SELECT DATE_FORMAT(fechaCreacion, '%d-%m-%Y'), DATE_FORMAT(fechaCompromiso, '%d-%m-%Y'), rutCliente, idActividadManual, e.comuna, nombreRemitente, bloque, tipoActividad
-                FROM escalamientoremitente e INNER JOIN escalamientocorresponde c ON e.idActividadIngresar = c.idActividadManual";
+                FROM escalamientoremitente e RIGHT JOIN escalamientocorresponde c ON e.idActividadIngresar = c.idActividadManual";
         $result = $this->db->query_select($sql);
-
+        
         return array( 'data' => $result);
     }
 
