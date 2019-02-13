@@ -163,8 +163,6 @@ class Escalamiento extends Models implements IModels {
         } catch (\Exception $e) {
             return array('success'=>0, 'message'=>$e->getMessage());
         }
-
-
     }
 
     public function agregarEscalamientoNoCorresponde(){
@@ -274,6 +272,7 @@ class Escalamiento extends Models implements IModels {
         $sql = "SELECT DATE_FORMAT(fechaCreacion, '%d-%m-%Y'), DATE_FORMAT(fechaCompromiso, '%d-%m-%Y'), rutCliente, idActividadManual, e.comuna, nombreRemitente, bloque, tipoActividad
                 FROM escalamientoremitente e INNER JOIN escalamientocorresponde c ON e.idActividadIngresar = c.idActividadManual";
         $result = $this->db->query_select($sql);
+
         return array( 'data' => $result);
     }
 

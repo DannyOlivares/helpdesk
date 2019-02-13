@@ -133,102 +133,32 @@ class __TwigTemplate_ce7a27cff50aedef0720bc84857d4e19d4df6d7f7175720d5fdd2e4632b
                             <li><a data-toggle=\"tab\" href=\"#menu2\" onclick=\"cargarTabla('seguimiento');\">Actividades seguimiento</a></li>
                             <li><a data-toggle=\"tab\" href=\"#menu3\" onclick=\"cargarTabla('finalizadaHoy');\">Actividades Finalizadas Hoy</a></li>
                         </ul>
-                                <div id=\"home\" class=\"tab-pane fade in active\">
-                                    <div class=\"\">
-                                        <h3></h3>
-                                    </div>
-                                    <div class=\"box-body\">
-                                        <table id=\"t1\" class=\"table table-bordered stripe hover\">
-                                            <thead>
-                                                <tr>
-
-                                                </tr>
-                                            </thead>
-                                        </table>
-                                    </div>
-                                </div>
-
-                                <!-- <div id=\"menu1\" class=\"tab-pane fade\">
-                                <div class=\"\">
-                                    <h3>Detalle Pendientes</h3>
-                                </div>
-
-                                    <div class=\"box-body\">
-                                        <table id=\"t2\" class=\"table table-bordered\">
-                                            <thead>
-                                                <tr>
-                                                    <th>Fecha Compromiso</th>
-                                                    <th>Bloque Agendamiento</th>
-                                                    <th>Id Actividad</th>
-                                                    <th>Rut Cliente</th>
-                                                    <th>Estado Orden</th>
-                                                    <th>Estado Escalamiento </th>
-                                                    <th>Tipo de Actividad</th>
-                                                    <th>Canal</th>
-                                                    <th>Descripción de la Actividad</th>
-                                                </tr>
-                                            </thead>
-                                        </table>
-                                    </div>
-                                </div> -->
-
-                                <!-- <div id=\"menu2\" class=\"tab-pane fade\">
-                                    <div id=\"\" class=\"\">
-                                        <h3>Detalle Seguimiento</h3>
-                                    </div>
-                                    <div class=\"box-body\">
-                                        <table id=\"t3\" class=\"table table-bordered\">
-                                            <thead>
-                                                <tr>
-                                                    <th>Fecha Compromiso</th>
-                                                    <th>Bloque Asignado</th>
-                                                    <th>Id Actividad</th>
-                                                    <th>Rut Cliente</th>
-                                                    <th>Estado Orden</th>
-                                                    <th>Estado Escalamiento</th>
-                                                    <th>Tipo Actividad</th>
-                                                    <th>Canal</th>
-                                                    <th>Descripción de la Actividad</th>
-                                                </tr>
-                                            </thead>
-                                        </table>
-                                    </div>
-                                </div> -->
-                                <!-- <div id=\"menu3\" class=\"tab-pane fade\">
-                                    <h3>Detalle Finalizadas Hoy</h3>
-                                    <div class=\"box-body\">
-                                        <table id=\"t4\" name=\"t4\" class=\"table table-bordered t4\">
-                                            <thead>
-                                                <tr>
-                                                    <th>Fecha Compromiso</th>
-                                                    <th>Bloque Agendamiento</th>
-                                                    <th>Id Actividad</th>
-                                                    <th>Rut Cliente</th>
-                                                    <th>Estado Orden</th>
-                                                    <th>Estado Esacalamiento </th>
-                                                    <th>Tipo de Actividad</th>
-                                                    <th>Canal</th>
-                                                    <th>Descripción de la Actividad</th>
-                                                </tr>
-                                            </thead>
-                                        </table>
-                                    </div>
-                                </div> -->
+                        <div id=\"home\" class=\"tab-pane fade in active\">
+                            <div class=\"\">
+                                <h3></h3>
                             </div>
+                            <div class=\"box-body\">
+                                <table id=\"t1\" class=\"table table-bordered stripe hover t1\" name=\"t1\">
+                                    <thead>
+                                        <tr>
 
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
                     </div>
-                </div>
-
-
+                    <input type=\"text\" id=\"tabla\" xs=\"prueba\">
     </section>
 ";
     }
 
-    // line 179
+    // line 108
     public function block_appScript($context, array $blocks = array())
     {
-        // line 180
+        // line 109
         echo "    <script src=\"views/app/js/escalamiento/escalamiento.js\" type=\"text/javascript\"></script>
+    <!-- <script src=\"views/app/js/escalamiento/escalamientoCargaInicio.js\" type=\"text/javascript\"></script> -->
     <script src=\"views/app/template/datatables/jquery.dataTables.min.js\" type=\"text/javascript\"></script>
     <script src=\"https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js\"></script>
     <script src=\"https://cdn.datatables.net/buttons/1.5.2/js/buttons.flash.min.js\"></script>
@@ -250,7 +180,7 @@ class __TwigTemplate_ce7a27cff50aedef0720bc84857d4e19d4df6d7f7175720d5fdd2e4632b
 
     public function getDebugInfo()
     {
-        return array (  231 => 180,  228 => 179,  123 => 77,  109 => 66,  95 => 55,  82 => 45,  55 => 20,  52 => 19,  33 => 3,  30 => 2,  11 => 1,);
+        return array (  160 => 109,  157 => 108,  123 => 77,  109 => 66,  95 => 55,  82 => 45,  55 => 20,  52 => 19,  33 => 3,  30 => 2,  11 => 1,);
     }
 
     public function getSourceContext()
@@ -343,98 +273,28 @@ class __TwigTemplate_ce7a27cff50aedef0720bc84857d4e19d4df6d7f7175720d5fdd2e4632b
                             <li><a data-toggle=\"tab\" href=\"#menu2\" onclick=\"cargarTabla('seguimiento');\">Actividades seguimiento</a></li>
                             <li><a data-toggle=\"tab\" href=\"#menu3\" onclick=\"cargarTabla('finalizadaHoy');\">Actividades Finalizadas Hoy</a></li>
                         </ul>
-                                <div id=\"home\" class=\"tab-pane fade in active\">
-                                    <div class=\"\">
-                                        <h3></h3>
-                                    </div>
-                                    <div class=\"box-body\">
-                                        <table id=\"t1\" class=\"table table-bordered stripe hover\">
-                                            <thead>
-                                                <tr>
-
-                                                </tr>
-                                            </thead>
-                                        </table>
-                                    </div>
-                                </div>
-
-                                <!-- <div id=\"menu1\" class=\"tab-pane fade\">
-                                <div class=\"\">
-                                    <h3>Detalle Pendientes</h3>
-                                </div>
-
-                                    <div class=\"box-body\">
-                                        <table id=\"t2\" class=\"table table-bordered\">
-                                            <thead>
-                                                <tr>
-                                                    <th>Fecha Compromiso</th>
-                                                    <th>Bloque Agendamiento</th>
-                                                    <th>Id Actividad</th>
-                                                    <th>Rut Cliente</th>
-                                                    <th>Estado Orden</th>
-                                                    <th>Estado Escalamiento </th>
-                                                    <th>Tipo de Actividad</th>
-                                                    <th>Canal</th>
-                                                    <th>Descripción de la Actividad</th>
-                                                </tr>
-                                            </thead>
-                                        </table>
-                                    </div>
-                                </div> -->
-
-                                <!-- <div id=\"menu2\" class=\"tab-pane fade\">
-                                    <div id=\"\" class=\"\">
-                                        <h3>Detalle Seguimiento</h3>
-                                    </div>
-                                    <div class=\"box-body\">
-                                        <table id=\"t3\" class=\"table table-bordered\">
-                                            <thead>
-                                                <tr>
-                                                    <th>Fecha Compromiso</th>
-                                                    <th>Bloque Asignado</th>
-                                                    <th>Id Actividad</th>
-                                                    <th>Rut Cliente</th>
-                                                    <th>Estado Orden</th>
-                                                    <th>Estado Escalamiento</th>
-                                                    <th>Tipo Actividad</th>
-                                                    <th>Canal</th>
-                                                    <th>Descripción de la Actividad</th>
-                                                </tr>
-                                            </thead>
-                                        </table>
-                                    </div>
-                                </div> -->
-                                <!-- <div id=\"menu3\" class=\"tab-pane fade\">
-                                    <h3>Detalle Finalizadas Hoy</h3>
-                                    <div class=\"box-body\">
-                                        <table id=\"t4\" name=\"t4\" class=\"table table-bordered t4\">
-                                            <thead>
-                                                <tr>
-                                                    <th>Fecha Compromiso</th>
-                                                    <th>Bloque Agendamiento</th>
-                                                    <th>Id Actividad</th>
-                                                    <th>Rut Cliente</th>
-                                                    <th>Estado Orden</th>
-                                                    <th>Estado Esacalamiento </th>
-                                                    <th>Tipo de Actividad</th>
-                                                    <th>Canal</th>
-                                                    <th>Descripción de la Actividad</th>
-                                                </tr>
-                                            </thead>
-                                        </table>
-                                    </div>
-                                </div> -->
+                        <div id=\"home\" class=\"tab-pane fade in active\">
+                            <div class=\"\">
+                                <h3></h3>
                             </div>
+                            <div class=\"box-body\">
+                                <table id=\"t1\" class=\"table table-bordered stripe hover t1\" name=\"t1\">
+                                    <thead>
+                                        <tr>
 
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
                     </div>
-                </div>
-
-
+                    <input type=\"text\" id=\"tabla\" xs=\"prueba\">
     </section>
 {% endblock %}
 
 {% block appScript %}
     <script src=\"views/app/js/escalamiento/escalamiento.js\" type=\"text/javascript\"></script>
+    <!-- <script src=\"views/app/js/escalamiento/escalamientoCargaInicio.js\" type=\"text/javascript\"></script> -->
     <script src=\"views/app/template/datatables/jquery.dataTables.min.js\" type=\"text/javascript\"></script>
     <script src=\"https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js\"></script>
     <script src=\"https://cdn.datatables.net/buttons/1.5.2/js/buttons.flash.min.js\"></script>
