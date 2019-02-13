@@ -10,7 +10,7 @@ use Ocrend\Kernel\Controllers\IControllers;
 /**
  * Controlador escalamiento/
  *
- * @author Jorge Jara H. <jjara@wys.cl>
+ * @author Danny Olivares <danny.olivares@molder.cl>
 */
 
 class escalamientoController extends Controllers implements IControllers {

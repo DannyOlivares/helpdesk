@@ -148,7 +148,7 @@ class __TwigTemplate_ce7a27cff50aedef0720bc84857d4e19d4df6d7f7175720d5fdd2e4632b
                             </div>
                         </div>
                     </div>
-                    <input type=\"text\" id=\"tabla\" xs=\"prueba\">
+                    <input type=\"text\" id=\"tabla\" hidden>
     </section>
 ";
     }
@@ -288,7 +288,7 @@ class __TwigTemplate_ce7a27cff50aedef0720bc84857d4e19d4df6d7f7175720d5fdd2e4632b
                             </div>
                         </div>
                     </div>
-                    <input type=\"text\" id=\"tabla\" xs=\"prueba\">
+                    <input type=\"text\" id=\"tabla\" hidden>
     </section>
 {% endblock %}
 
