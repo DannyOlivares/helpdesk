@@ -22,11 +22,15 @@ class escalamientoController extends Controllers implements IControllers {
 
         switch ($this->method) {
             case 'agregarEscalamiento':
-                echo $this->template->render('escalamiento/agregarEscalamiento');
+                echo $this->template->render('escalamiento/agregarEscalamiento', array(
+                    'id_actividad' => $router->getId()
+                ));
             break;
 
             case 'agregarEscalamientoNoCorresponde':
-                echo $this->template->render('escalamiento/agregarEscalamientoNoCorresponde');
+                echo $this->template->render('escalamiento/agregarEscalamientoNoCorresponde', array(
+                    'id_actividad' => $router->getId()
+                ));
             break;
 
             case 'escalamiento':

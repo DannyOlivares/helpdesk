@@ -100,7 +100,10 @@ class __TwigTemplate_6b077bcbf84dadd80f3c1db00e8c3755349d9dbd9ff48c76e275df4007e
                             </div>
                             <div class=\"col-md-6\">
                                   <label>Id Actividad:</label>
-                                  <input type=\"text\" name=\"idActividad\" id=\"idActividad\" class=\"form-control idActividad\" placeholder=\"Ingrese id Actividad\">
+                                  <input type=\"text\" name=\"idActividad\" id=\"idActividad\" class=\"form-control idActividad\" placeholder=\"Ingrese id Actividad\" value=\"";
+        // line 60
+        echo twig_escape_filter($this->env, ($context["id_actividad"] ?? null), "html", null, true);
+        echo "\" readonly>
                             </div>
 
 
@@ -143,7 +146,7 @@ class __TwigTemplate_6b077bcbf84dadd80f3c1db00e8c3755349d9dbd9ff48c76e275df4007e
 
     public function getDebugInfo()
     {
-        return array (  129 => 81,  126 => 80,  94 => 52,  84 => 45,  80 => 44,  41 => 7,  38 => 6,  33 => 3,  30 => 2,  11 => 1,);
+        return array (  132 => 81,  129 => 80,  105 => 60,  94 => 52,  84 => 45,  80 => 44,  41 => 7,  38 => 6,  33 => 3,  30 => 2,  11 => 1,);
     }
 
     public function getSourceContext()
@@ -207,7 +210,7 @@ class __TwigTemplate_6b077bcbf84dadd80f3c1db00e8c3755349d9dbd9ff48c76e275df4007e
                             </div>
                             <div class=\"col-md-6\">
                                   <label>Id Actividad:</label>
-                                  <input type=\"text\" name=\"idActividad\" id=\"idActividad\" class=\"form-control idActividad\" placeholder=\"Ingrese id Actividad\">
+                                  <input type=\"text\" name=\"idActividad\" id=\"idActividad\" class=\"form-control idActividad\" placeholder=\"Ingrese id Actividad\" value=\"{{ id_actividad }}\" readonly>
                             </div>
 
 

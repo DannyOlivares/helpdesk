@@ -80,7 +80,7 @@ function crearEncargadoFiltrar(){
           autoClose: "ok|3000",
           buttons: {
             ok: function() {
-                location.href = "escalamiento/agregarEscalamientoNoCorresponde";
+                location.href = "escalamiento/agregarEscalamientoNoCorresponde/"+json.idActv;
             }
           }
       });
@@ -95,7 +95,7 @@ function crearEncargadoFiltrar(){
             autoClose: "ok|3000",
             buttons: {
               ok: function() {
-                  location.href = "escalamiento/agregarEscalamiento";
+                  location.href = "escalamiento/agregarEscalamiento/"+json.idActv;
               }
             }
         });

@@ -158,13 +158,11 @@ class __TwigTemplate_ce7a27cff50aedef0720bc84857d4e19d4df6d7f7175720d5fdd2e4632b
     {
         // line 109
         echo "    <script src=\"views/app/js/escalamiento/escalamiento.js\" type=\"text/javascript\"></script>
-    <!-- <script src=\"views/app/js/escalamiento/escalamientoCargaInicio.js\" type=\"text/javascript\"></script> -->
     <script src=\"views/app/template/datatables/jquery.dataTables.min.js\" type=\"text/javascript\"></script>
     <script src=\"https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js\"></script>
     <script src=\"https://cdn.datatables.net/buttons/1.5.2/js/buttons.flash.min.js\"></script>
     <script src=\"https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js\"></script>
     <script src=\"https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js\"></script>
-
 ";
     }
 
@@ -294,13 +292,11 @@ class __TwigTemplate_ce7a27cff50aedef0720bc84857d4e19d4df6d7f7175720d5fdd2e4632b
 
 {% block appScript %}
     <script src=\"views/app/js/escalamiento/escalamiento.js\" type=\"text/javascript\"></script>
-    <!-- <script src=\"views/app/js/escalamiento/escalamientoCargaInicio.js\" type=\"text/javascript\"></script> -->
     <script src=\"views/app/template/datatables/jquery.dataTables.min.js\" type=\"text/javascript\"></script>
     <script src=\"https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js\"></script>
     <script src=\"https://cdn.datatables.net/buttons/1.5.2/js/buttons.flash.min.js\"></script>
     <script src=\"https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js\"></script>
     <script src=\"https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js\"></script>
-
 {% endblock %}
 ", "escalamiento/escalamiento.twig", "C:\\xampp\\htdocs\\helpdesk\\app\\templates\\escalamiento\\escalamiento.twig");
     }

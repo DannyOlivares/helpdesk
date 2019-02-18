@@ -71,6 +71,12 @@ class Escalamiento extends Models implements IModels {
                 }
             }
 
+                
+            $sql = "select * from escalamientocorresponde
+            where idActividadManual = '$idActividadManual'";
+            $result1 = $this->db->query_select($sql);
+            //print_r($result1);
+
             $sql = "insert escalamientocorresponde(
                                                     idActividadManual,
                                                     rutCliente,
@@ -153,9 +159,9 @@ class Escalamiento extends Models implements IModels {
                 $selectTipoActividad    == 'sinActividad'               ||
                 $selectTipoActividad    == 'reclamoComercial'           ||
                 $selectTipoActividad    ==  'actividadesPendientesAndes'){
-                    return array('success'=>2, 'message'=>'Actividad Mal Enviada');
+                    return array('success'=>2, 'message'=>'Actividad Mal Enviada', 'idActv'=>$idActividadManual);
             }else{
-                return array('success'=> 3, 'message'=>'Crear Actividad');
+                return array('success'=> 3, 'message'=>'Crear Actividad', 'idActv'=>$idActividadManual);
             }
             //return array('success'=>1, 'message'=>'Encargado creado correctamente');
 

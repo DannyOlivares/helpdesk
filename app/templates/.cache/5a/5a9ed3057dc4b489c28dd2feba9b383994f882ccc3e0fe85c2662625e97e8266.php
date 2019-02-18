@@ -86,7 +86,10 @@ class __TwigTemplate_0a363d31d0d4b3aa5e5358642e9b3c821612e02649f0487f74fd5b687a2
                             </div>
                             <div class=\"col-md-6\">
                                   <label>Id Actividad:</label>
-                                  <input type=\"text\" name=\"idActividadManual\" id=\"idActividadManual\" class=\"form-control\" placeholder=\"Ingrese Id Actividad\" >
+                                  <input type=\"text\" name=\"idActividadManual\" id=\"idActividadManual\" class=\"form-control\" placeholder=\"Ingrese Id Actividad\" value=\"";
+        // line 49
+        echo twig_escape_filter($this->env, ($context["id_actividad"] ?? null), "html", null, true);
+        echo "\" readonly>
                             </div>
                             <div class=\"col-md-6\">
                                 <label>Fecha Ingreso Actividad:</label><input type=\"DATE\" name=\"fecha\" id=\"fecha\" class=\"form-control\" value=\"";
@@ -191,7 +194,7 @@ class __TwigTemplate_0a363d31d0d4b3aa5e5358642e9b3c821612e02649f0487f74fd5b687a2
 
     public function getDebugInfo()
     {
-        return array (  177 => 126,  174 => 125,  129 => 84,  94 => 52,  84 => 45,  80 => 44,  41 => 7,  38 => 6,  33 => 3,  30 => 2,  11 => 1,);
+        return array (  180 => 126,  177 => 125,  132 => 84,  97 => 52,  91 => 49,  84 => 45,  80 => 44,  41 => 7,  38 => 6,  33 => 3,  30 => 2,  11 => 1,);
     }
 
     public function getSourceContext()
@@ -244,7 +247,7 @@ class __TwigTemplate_0a363d31d0d4b3aa5e5358642e9b3c821612e02649f0487f74fd5b687a2
                             </div>
                             <div class=\"col-md-6\">
                                   <label>Id Actividad:</label>
-                                  <input type=\"text\" name=\"idActividadManual\" id=\"idActividadManual\" class=\"form-control\" placeholder=\"Ingrese Id Actividad\" >
+                                  <input type=\"text\" name=\"idActividadManual\" id=\"idActividadManual\" class=\"form-control\" placeholder=\"Ingrese Id Actividad\" value=\"{{ id_actividad }}\" readonly>
                             </div>
                             <div class=\"col-md-6\">
                                 <label>Fecha Ingreso Actividad:</label><input type=\"DATE\" name=\"fecha\" id=\"fecha\" class=\"form-control\" value=\"{{ \"now\"|date(\"Y-m-d\") }}\">
