@@ -141,7 +141,7 @@ class __TwigTemplate_ce7a27cff50aedef0720bc84857d4e19d4df6d7f7175720d5fdd2e4632b
                                 <table id=\"t1\" class=\"table table-bordered stripe hover t1\" name=\"t1\">
                                     <thead>
                                         <tr>
-
+                                            
                                         </tr>
                                     </thead>
                                 </table>
@@ -279,7 +279,7 @@ class __TwigTemplate_ce7a27cff50aedef0720bc84857d4e19d4df6d7f7175720d5fdd2e4632b
                                 <table id=\"t1\" class=\"table table-bordered stripe hover t1\" name=\"t1\">
                                     <thead>
                                         <tr>
-
+                                            
                                         </tr>
                                     </thead>
                                 </table>

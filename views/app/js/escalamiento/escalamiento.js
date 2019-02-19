@@ -161,7 +161,7 @@ function cargarTabla(tipo){
         case 'gestionada':
 
             $("#home").find("h3").text("Detalle Gestionadas");
-            var cols = new Array("Fecha Ingreso", "Fecha Compromiso", "Rut", "Id Actividad", "Comuna", "Remitente", "Bloque","Tipo de Actividad");
+            var cols = new Array("Fecha Ingreso", "Fecha Compromiso", "Rut", "Id Actividad", "Comuna", "Remitente", "Bloque","Tipo de Actividad", "Acciones");
             $.each(cols, function (index, value) {
                 $("#t1").find("thead > tr").append("<th>"+value+"</th>");
             });
@@ -200,7 +200,20 @@ function cargarTabla(tipo){
                             extend: 'excel',
                             text: ''
                         }
+                     ], "aoColumnDefs": [
+                      {
+                           "aTargets": [8],
+                      
+                           "mRender": function (data, type, full) {
+                               return '<a href="#" onclick="alert();">Proceso</a>';
+                           }
+                       }
                     ]
+
+                  //   columnDefs: [
+                  //     { targets: [0,1], visible: true},
+                  //     { targets: '_all', visible: false }
+                  // ]
             });
         break;
 
