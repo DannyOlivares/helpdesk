@@ -623,3 +623,8 @@ $app->post('/actividadesFinalizadasHoy  ', function() use($app) {
     $u = new Model\Escalamiento;
     return $app->json($u->actividadesFinalizadasHoy());
 });
+
+$app->post('/visualizarActividad  ', function() use($app) {
+    $u = new Model\Escalamiento;
+    return $app->json($u->visualizarActividad());
+});

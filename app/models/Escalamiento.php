@@ -269,7 +269,7 @@ class Escalamiento extends Models implements IModels {
                 FROM escalamientoremitente e INNER JOIN escalamientocorresponde c ON e.idActividadIngresar = c.idActividadManual
                 WHERE estadoOrden= 'seguimiento'";
         $result =  $this->db->query_select($sql);
-
+        
         return array('data' => $result);
     }
 
@@ -288,6 +288,13 @@ class Escalamiento extends Models implements IModels {
         $result = $this->db->query_select($sql);
 
         return  array( 'data' => $result);
+    }
+
+    public function visualizarActividad($select = '*'){
+        global $http;
+
+        $idActividad = $http->request->get('idActividad');
+
     }
 
     //-----------------------------CONEXIÓN BD-------------------------------------------------------

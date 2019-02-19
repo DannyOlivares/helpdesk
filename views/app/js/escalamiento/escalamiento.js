@@ -205,7 +205,7 @@ function cargarTabla(tipo){
                            "aTargets": [8],
                       
                            "mRender": function (data, type, full) {
-                               return '<a href="#" onclick="alert();">Proceso</a>';
+                            return '<input type="button" class="btn btn-success" onclick="visualizarActividad()" value="Estado"> <input type="button" class="btn btn-info" onclick="cambiarEstadoActividad()" value="Visualizar">';
                            }
                        }
                     ]
@@ -219,7 +219,7 @@ function cargarTabla(tipo){
 
         case 'pendiente':
             $("#home").find("h3").text("Detalle Pendientes");
-            var cols = new Array("Fecha Ingreso", "Fecha Compromiso", "Rut", "Id Actividad", "Comuna", "Remitente", "Bloque","Tipo de Actividad");
+            var cols = new Array("Fecha Ingreso", "Fecha Compromiso", "Rut", "Id Actividad", "Comuna", "Remitente", "Bloque","Tipo de Actividad", "Acciones");
             $.each(cols, function (index, value) {
                 $("#t1").find("thead > tr").append("<th>"+value+"</th>");
             });
@@ -256,6 +256,14 @@ function cargarTabla(tipo){
                             extend: 'excel',
                             text: ''
                         }
+                    ], "aoColumnDefs": [
+                      {
+                           "aTargets": [8],
+                      
+                           "mRender": function (data, type, full) {
+                            return '<input type="button" class="btn btn-success" onclick="visualizarActividad(  )" value="Estado"> <input type="button" class="btn btn-info" onclick="cambiarEstadoActividad()" value="Visualizar">';
+                           }
+                       }
                     ]
             });
         break;
@@ -263,14 +271,14 @@ function cargarTabla(tipo){
         case 'seguimiento':
 
             $("#home").find("h3").text("Detalle Seguimiento");
-            var cols = new Array("Fecha Ingreso", "Fecha Compromiso", "Rut", "Id Actividad", "Comuna", "Remitente", "Bloque","Tipo de Actividad");
+            var cols = new Array("Fecha Ingreso", "Fecha Compromiso", "Rut", "Id Actividad", "Comuna", "Remitente", "Bloque","Tipo de Actividad", "Acciones");
             $.each(cols, function (index, value) {
                 $("#t1").find("thead > tr").append("<th>"+value+"</th>");
             });
             $("#t1").dataTable({
                 "ajax": {
                     "url": "api/tablaAsignadas",
-                    "type": "POST"
+                    "type": "POST"               
                 },
                     "language"          : {
                     "search"            : "Buscar:",
@@ -300,13 +308,21 @@ function cargarTabla(tipo){
                             extend: 'excel',
                             text: ''
                         }
+                    ], "aoColumnDefs": [
+                      {
+                           "aTargets": [8],
+                      
+                           "mRender": function (data, type, full) {
+                            return '<input type="button" class="btn btn-success" onclick="visualizarActividad()" value="Estado"> <input type="button" class="btn btn-info" onclick="cambiarEstadoActividad()" value="Visualizar">';
+                           }
+                       }
                     ]
             });
         break;
 
         case 'finalizadaHoy':
             $("#home").find("h3").text("Detalle Finalizadas Hoy");
-            var cols = new Array("Fecha Ingreso", "Fecha Compromiso", "Rut", "Id Actividad", "Comuna", "Remitente", "Bloque","Tipo de Actividad");
+            var cols = new Array("Fecha Ingreso", "Fecha Compromiso", "Rut", "Id Actividad", "Comuna", "Remitente", "Bloque","Tipo de Actividad", "Acciones");
             $.each(cols, function (index, value) {
                 $("#t1").find("thead > tr").append("<th>"+value+"</th>");
             });
@@ -348,6 +364,14 @@ function cargarTabla(tipo){
                             extend: 'excel',
                             text: ''
                         }
+                    ], "aoColumnDefs": [
+                      {
+                           "aTargets": [8],
+                      
+                           "mRender": function (data, type, full) {
+                               return '<button>Visualizar</button>';
+                           }
+                       }
                     ]
             });
         break;
@@ -356,22 +380,62 @@ function cargarTabla(tipo){
             break;
     }
 }
+
+function visualizarActividad(idActividad) {
+  var formData = new FormData();
+  formData.append("idActividad", idActividad);
+  $.ajax({
+    type: "POST",
+    url: "api/visualizarActividad",
+    contentType: false,
+    processData: false,
+    data: formData,
+    success: function(data) {
+      if (data.success == 1) {
+        $.confirm({
+          escapeKey: "formSubmit",
+          icon: "glyphicon glyphicon-list-alt",
+          title: "Detalle Actividad",
+          columnClass: 'col-lg-12',
+          content: data.html,
+          type: "green",
+          buttons: {
+            formSubmit: {
+              text: "Aceptar",
+              btnClass: "btn-default",
+              action: function() {}
+            }
+          }
+        });
+      } else {
+        $.confirm({
+          escapeKey: "formSubmit",
+          icon: "glyphicon glyphicon-remove",
+          title: "Detalle Actividad",
+          content: "<h4>Error al visualizar Actividad</h4>",
+          type: "red",
+          buttons: {
+            formSubmit: {
+              text: "Aceptar",
+              btnClass: "btn-green",
+              action: function() {}
+            }
+          }
+        });
+      }
+    },
+    error: function(xhr, status) {
+      msg_box_alert(99, "Filtrar Ordenes", xhr.responseText);
+    }
+  });
+}
+
+function cambiarEstadoActividad(){
+  console.log("cambiarEstadoActividad");
+}
  $(document).ready(function () {
-      /*var url = window.location.href;
-      var arrURL = url.split("/");*/
-      //console.log($("#tabla").length);
       //si existe el elemento realizara esta gestion
       if ($("#tabla").length == 1) {
         cargarTabla("gestionada");        
       }
     });
-
-    
-  // $( document ).ready(function() {
-  //   console.log( "document loaded" );
-  // });
-
-  // $( window ).on( "load", function() {
-  //   cargarTabla("gestionada");
-  // });
-

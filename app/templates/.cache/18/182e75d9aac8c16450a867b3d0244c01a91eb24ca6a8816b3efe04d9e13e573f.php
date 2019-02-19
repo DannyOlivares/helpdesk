@@ -45,7 +45,6 @@ class __TwigTemplate_f68f36e86307633704017b790c994b9a2cbe3cac2cf2bd6dce698cdf3e2
     {
         // line 12
         echo "
-
 <section class=\"content-header menu\" id=\"menu\" >
     <h1>
         Eventos
@@ -62,92 +61,68 @@ class __TwigTemplate_f68f36e86307633704017b790c994b9a2cbe3cac2cf2bd6dce698cdf3e2
             <a href=\"evento/listar_evento\">Listado de Eventos</a>
         </li>
         <li class=\"active\">
-            <!-- <a href=\"evento/agregarEvento\" class=\"btn btn-primary\">Agregar Evento</a> -->
             <button type=\"button\" name=\"button\" class=\"btn btn-primary\" onclick= location.href='evento/agregarEvento'>Agregar Evento</button>
         </li>
     </ol>
 </section>
+<br>
 <div class=\"row\">
-            <div class=\"col col-md-12\">
-                <div class=\"box\">
-                    <div class=\"box-header with-border\">
-                        <h3 class=\"box-title\">Resumen Totalizado Eventos</h3>
-                    </div>
-                    <div class=\"box-body\">
-                        <div class=\"col col-md-12\">
-                            <div class=\"box\">
-                                <div class=\"box-header with-border\">
-                                    <h3 class=\"box-title\">Resumen por Estados</h3>
-                                </div>
-                                <div class=\"box-body\">
-                                    <table class=\"table\">
-                                        <thead>
-                                            <th>Estado</th>
-                                            <th class=\"text-left\">Cantidad</th>
-                                            <th>Fecha a Mostrar</th>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>Finalizado</td>
-                                                <td>";
-        // line 57
+    <div class=\"col col-md-12\">
+        <div class=\"box\">
+            <div class=\"box-header with-border\">
+                <h3 class=\"box-title\">Resumen Totalizado Eventos</h3>
+            </div>
+            <div class=\"box-body\">
+                <div class=\"col col-md-12\">
+                    <div class=\"box\">
+                        <div class=\"box-header with-border\">
+                            <h3 class=\"box-title\">Resumen por Estados</h3>
+                        </div>
+                        <div class=\"box-body\">
+                            <table class=\"table\">
+                                <thead>
+                                    <th>Estado</th>
+                                    <th class=\"text-left\">Cantidad</th>
+                                    <th>Fecha a Mostrar</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Finalizado</td>
+                                        <td>";
+        // line 56
         echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), ($context["fin"] ?? null), 0, array(), "array"), "html", null, true);
         echo "</td>
-                                                <td><input onchange=\"obtenerEventosFecha()\" type=\"text\" class=\"text-center\" data-min-year='2018'  data-modal=\"false\" data-fx=\"true\" data-lang=\"es\" data-format=\"Y/m/d\" data-large-mode=\"true\" data-large-default=\"true\" data-lock=\"to\" class=\"fechaMostrar\" id=\"fechaMostrar\"/></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Pendiente</td>
-                                                <td>";
-        // line 62
+                                        <td><input onchange=\"obtenerEventosFecha()\" type=\"text\" class=\"text-center\" data-min-year='2018'  data-modal=\"false\" data-fx=\"true\" data-lang=\"es\" data-format=\"Y/m/d\" data-large-mode=\"true\" data-large-default=\"true\" data-lock=\"to\" class=\"fechaMostrar\" id=\"fechaMostrar\"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Pendiente</td>
+                                        <td>";
+        // line 61
         echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), ($context["pen"] ?? null), 0, array(), "array"), "html", null, true);
         echo "</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
 </div>
 ";
     }
 
-    // line 75
+    // line 73
     public function block_appScript($context, array $blocks = array())
     {
-        // line 76
-        echo "<script src=\"views/app/js/evento/evento.js\" type=\"text/javascript\"></script>
+        // line 74
+        echo "
+<script src=\"views/app/js/evento/evento.js\" type=\"text/javascript\"></script>
 <script src=\"views/app/template/dateDropper/datedropper.js\"></script>
 
-<script src=\"jquery.min.js\"></script>
-<script>
-    \$(\"#dataordenes\").dataTable({
-        \"language\": {
-            \"search\": \"Buscar:\",
-            \"zeroRecords\": \"No hay datos para mostrar\",
-            \"info\": \"Mostrando _END_ Registros, de un total de _TOTAL_ \",
-            \"loadingRecords\": \"Cargando...\",
-            \"processing\": \"Procesando...\",
-            \"infoEmpty\": \"No hay entradas para mostrar\",
-            \"lengthMenu\": \"Mostrar _MENU_ Filas\",
-            \"paginate\": {
-                \"first\": \"Primera\",
-                \"last\": \"Ultima\",
-                \"next\": \"Siguiente\",
-                \"previous\": \"Anterior\"
-            }
-        },
-        \"autoWidth\": true,
-        \"scrollX\": true,
-        \"bSort\": false
-    });
-</script>
 <script>
 \$('input').dateDropper();
-</script>
-
 </script>
 ";
     }
@@ -164,7 +139,7 @@ class __TwigTemplate_f68f36e86307633704017b790c994b9a2cbe3cac2cf2bd6dce698cdf3e2
 
     public function getDebugInfo()
     {
-        return array (  121 => 76,  118 => 75,  102 => 62,  94 => 57,  47 => 12,  44 => 11,  33 => 3,  30 => 2,  11 => 1,);
+        return array (  120 => 74,  117 => 73,  101 => 61,  93 => 56,  47 => 12,  44 => 11,  33 => 3,  30 => 2,  11 => 1,);
     }
 
     public function getSourceContext()
@@ -180,7 +155,6 @@ class __TwigTemplate_f68f36e86307633704017b790c994b9a2cbe3cac2cf2bd6dce698cdf3e2
 
 {% endblock %}
 {% block appBody %}
-
 
 <section class=\"content-header menu\" id=\"menu\" >
     <h1>
@@ -198,82 +172,57 @@ class __TwigTemplate_f68f36e86307633704017b790c994b9a2cbe3cac2cf2bd6dce698cdf3e2
             <a href=\"evento/listar_evento\">Listado de Eventos</a>
         </li>
         <li class=\"active\">
-            <!-- <a href=\"evento/agregarEvento\" class=\"btn btn-primary\">Agregar Evento</a> -->
             <button type=\"button\" name=\"button\" class=\"btn btn-primary\" onclick= location.href='evento/agregarEvento'>Agregar Evento</button>
         </li>
     </ol>
 </section>
+<br>
 <div class=\"row\">
-            <div class=\"col col-md-12\">
-                <div class=\"box\">
-                    <div class=\"box-header with-border\">
-                        <h3 class=\"box-title\">Resumen Totalizado Eventos</h3>
-                    </div>
-                    <div class=\"box-body\">
-                        <div class=\"col col-md-12\">
-                            <div class=\"box\">
-                                <div class=\"box-header with-border\">
-                                    <h3 class=\"box-title\">Resumen por Estados</h3>
-                                </div>
-                                <div class=\"box-body\">
-                                    <table class=\"table\">
-                                        <thead>
-                                            <th>Estado</th>
-                                            <th class=\"text-left\">Cantidad</th>
-                                            <th>Fecha a Mostrar</th>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>Finalizado</td>
-                                                <td>{{fin[0]}}</td>
-                                                <td><input onchange=\"obtenerEventosFecha()\" type=\"text\" class=\"text-center\" data-min-year='2018'  data-modal=\"false\" data-fx=\"true\" data-lang=\"es\" data-format=\"Y/m/d\" data-large-mode=\"true\" data-large-default=\"true\" data-lock=\"to\" class=\"fechaMostrar\" id=\"fechaMostrar\"/></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Pendiente</td>
-                                                <td>{{pen[0]}}</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
+    <div class=\"col col-md-12\">
+        <div class=\"box\">
+            <div class=\"box-header with-border\">
+                <h3 class=\"box-title\">Resumen Totalizado Eventos</h3>
+            </div>
+            <div class=\"box-body\">
+                <div class=\"col col-md-12\">
+                    <div class=\"box\">
+                        <div class=\"box-header with-border\">
+                            <h3 class=\"box-title\">Resumen por Estados</h3>
+                        </div>
+                        <div class=\"box-body\">
+                            <table class=\"table\">
+                                <thead>
+                                    <th>Estado</th>
+                                    <th class=\"text-left\">Cantidad</th>
+                                    <th>Fecha a Mostrar</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Finalizado</td>
+                                        <td>{{fin[0]}}</td>
+                                        <td><input onchange=\"obtenerEventosFecha()\" type=\"text\" class=\"text-center\" data-min-year='2018'  data-modal=\"false\" data-fx=\"true\" data-lang=\"es\" data-format=\"Y/m/d\" data-large-mode=\"true\" data-large-default=\"true\" data-lock=\"to\" class=\"fechaMostrar\" id=\"fechaMostrar\"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Pendiente</td>
+                                        <td>{{pen[0]}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
 </div>
 {% endblock %}
-
 {% block appScript %}
+
 <script src=\"views/app/js/evento/evento.js\" type=\"text/javascript\"></script>
 <script src=\"views/app/template/dateDropper/datedropper.js\"></script>
 
-<script src=\"jquery.min.js\"></script>
-<script>
-    \$(\"#dataordenes\").dataTable({
-        \"language\": {
-            \"search\": \"Buscar:\",
-            \"zeroRecords\": \"No hay datos para mostrar\",
-            \"info\": \"Mostrando _END_ Registros, de un total de _TOTAL_ \",
-            \"loadingRecords\": \"Cargando...\",
-            \"processing\": \"Procesando...\",
-            \"infoEmpty\": \"No hay entradas para mostrar\",
-            \"lengthMenu\": \"Mostrar _MENU_ Filas\",
-            \"paginate\": {
-                \"first\": \"Primera\",
-                \"last\": \"Ultima\",
-                \"next\": \"Siguiente\",
-                \"previous\": \"Anterior\"
-            }
-        },
-        \"autoWidth\": true,
-        \"scrollX\": true,
-        \"bSort\": false
-    });
-</script>
 <script>
 \$('input').dateDropper();
-</script>
-
 </script>
 {% endblock %}
 ", "evento/bienvenida.twig", "C:\\xampp\\htdocs\\helpdesk\\app\\templates\\evento\\bienvenida.twig");

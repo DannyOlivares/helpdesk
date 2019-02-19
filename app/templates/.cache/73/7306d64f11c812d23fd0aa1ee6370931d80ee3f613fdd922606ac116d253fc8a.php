@@ -44,21 +44,27 @@ class __TwigTemplate_55fd99ebb734a71ccedb25e6fbe2774b8d39bd27cc52c19c0bf72a71669
     {
         // line 11
         echo "
-    <section class=\"content-header\">
+    <section class=\"content-header menu\" id=\"menu\" >
         <h1>
             Eventos
-            <small>Listado Eventos</small>
-
-            <a class=\"btn btn-primary btn-social pull-right\" href=\"evento/agregarEvento\" title=\"Agregar\" data-toggle=\"tooltip\">
-                <i class=\"fa fa-plus\"></i>
-                Agregar Nuevo Evento
-            </a>
+            <small>Detalle de Evento</small>
         </h1>
+        <ol class=\"breadcrumb\">
+            <li>
+                <a href=\"#\">
+                    <i class=\"fa fa-home\"></i>
+                    Home</a>
+            </li>
+            <li ><a href=\"evento/bienvenida\" >Bienvenida</a></li>
+            <li>
+                <a href=\"evento/listar_evento\">Listado de Eventos</a>
+            </li>
+            <li class=\"active\">
+                <button type=\"button\" name=\"button\" class=\"btn btn-primary\" onclick= location.href='evento/agregarEvento'>Agregar Evento</button>
+            </li>
+        </ol>
     </section>
-    ";
-        // line 23
-        echo twig_escape_filter($this->env, twig_var_dump($this->env, $context, ($context["data"] ?? null)), "html", null, true);
-        echo "
+    <br>
     <section class=\"content\">
         <div class=\"row\">
             <div class=\"col-md-12\">
@@ -80,72 +86,72 @@ class __TwigTemplate_55fd99ebb734a71ccedb25e6fbe2774b8d39bd27cc52c19c0bf72a71669
                             </thead>
                             <tbody>
                                 ";
-        // line 44
+        // line 53
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(($context["data"] ?? null));
         foreach ($context['_seq'] as $context["_key"] => $context["d"]) {
             if ((false != ($context["data"] ?? null))) {
-                // line 45
+                // line 54
                 echo "                                    <tr>
                                         <td>";
-                // line 46
+                // line 55
                 echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), $context["d"], "id", array()), "html", null, true);
                 echo "</td>
                                         <td>";
-                // line 47
+                // line 56
                 echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), $context["d"], "hora_evento", array()), "html", null, true);
                 echo "</td>
                                         <td>";
-                // line 48
+                // line 57
                 echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), $context["d"], "descripcion_evento", array()), "html", null, true);
                 echo "</td>
                                         <td>";
-                // line 49
+                // line 58
                 echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), $context["d"], "observacion_evento", array()), "html", null, true);
                 echo "</td>
                                         <td>";
-                // line 50
+                // line 59
                 echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), $context["d"], "fecha_ingreso", array()), "html", null, true);
                 echo "</td>
                                         <td>";
-                // line 51
+                // line 60
                 echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), $context["d"], "fecha_evento", array()), "html", null, true);
                 echo "</td>
                                         ";
-                // line 52
+                // line 61
                 if ((twig_get_attribute($this->env, $this->getSourceContext(), $context["d"], "fecha_cierre", array()) != null)) {
-                    // line 53
+                    // line 62
                     echo "                                        <td>";
                     echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), $context["d"], "fecha_cierre", array()), "html", null, true);
                     echo "</td>
                                         ";
                 } else {
-                    // line 55
+                    // line 64
                     echo "                                        <td>No Finalizado</td>
                                         ";
                 }
-                // line 57
+                // line 66
                 echo "                                        <td>";
                 echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), $context["d"], "name", array()), "html", null, true);
                 echo "</td>
                                             ";
-                // line 58
+                // line 67
                 if ((twig_get_attribute($this->env, $this->getSourceContext(), $context["d"], "estado_evento", array()) == "1")) {
-                    // line 59
+                    // line 68
                     echo "                                                <td>Finalizada</td>
                                         ";
                 } else {
-                    // line 61
+                    // line 70
                     echo "                                                <td>Pendiente</td>
                                         ";
                 }
-                // line 63
+                // line 72
                 echo "                                        <td>
 
                                             ";
-                // line 65
+                // line 74
                 if (((twig_get_attribute($this->env, $this->getSourceContext(), $context["d"], "estado_evento", array()) != "1") && (twig_get_attribute($this->env, $this->getSourceContext(), $context["d"], "id_usuario", array()) == ($context["user"] ?? null)))) {
-                    // line 66
+                    // line 75
                     echo "                                            <a data-toggle='tooltip' data-placement='top' id=\"btnmodificar\" name=\"btnmodificar\" title='Modificar' class='btn btn-success btn-sm' href=\"evento/editar_evento/";
                     echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), $context["d"], "id", array()), "html", null, true);
                     echo "\">
@@ -153,26 +159,26 @@ class __TwigTemplate_55fd99ebb734a71ccedb25e6fbe2774b8d39bd27cc52c19c0bf72a71669
                                             </a>
                                             ";
                 }
-                // line 70
+                // line 79
                 echo "                                            <a data-toggle='tooltip' data-placement='top' id=\"visualizar\" name=\"visualizar\" title='Ver Observacion' class='btn btn-primary btn-sm' onclick=\"visualizar(";
                 echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), $context["d"], "id", array()), "html", null, true);
                 echo ")\">
+
                                                 <i class='glyphicon glyphicon-eye-open'></i>
                                             </a>
                                             ";
-                // line 73
+                // line 83
                 if (((twig_get_attribute($this->env, $this->getSourceContext(), $context["d"], "estado_evento", array()) != "1") && (twig_get_attribute($this->env, $this->getSourceContext(), $context["d"], "id_usuario", array()) == ($context["user"] ?? null)))) {
-                    // line 74
-                    echo "                                            <a data-toggle='tooltip' data-placement='top' id=\"btnEliminar\" name=\"btnEliminar\" title='Eliminar' class='btn btn-danger btn-sm' href=\"evento/eliminar_evento/";
+                    // line 84
+                    echo "                                            <a data-toggle='tooltip' data-placement='top' id=\"btnEliminar\" name=\"btnEliminar\" title='Eliminar' class='btn btn-danger btn-sm' onclick=\"eliminar_evento(";
                     echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), $context["d"], "id", array()), "html", null, true);
-                    echo "\">
+                    echo ");\">
                                                 <i class='glyphicon glyphicon-erase'></i>
                                             </a>
                                             ";
                 }
-                // line 78
-                echo "
-                                        </td>
+                // line 88
+                echo "                                        </td>
                                     </tr>
                                 ";
             }
@@ -180,7 +186,7 @@ class __TwigTemplate_55fd99ebb734a71ccedb25e6fbe2774b8d39bd27cc52c19c0bf72a71669
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['d'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 82
+        // line 91
         echo "                            </tbody>
                         </table>
                     </div>
@@ -191,10 +197,10 @@ class __TwigTemplate_55fd99ebb734a71ccedb25e6fbe2774b8d39bd27cc52c19c0bf72a71669
 ";
     }
 
-    // line 90
+    // line 99
     public function block_appScript($context, array $blocks = array())
     {
-        // line 91
+        // line 100
         echo "    <script src=\"views/app/template/datatables/jquery.dataTables.min.js\" type=\"text/javascript\"></script>
     <script src=\"views/app/template/datatables/dataTables.bootstrap.min.js\" type=\"text/javascript\"></script>
     <script src=\"views/app/js/evento/evento.js\"></script>
@@ -235,7 +241,7 @@ class __TwigTemplate_55fd99ebb734a71ccedb25e6fbe2774b8d39bd27cc52c19c0bf72a71669
 
     public function getDebugInfo()
     {
-        return array (  198 => 91,  195 => 90,  184 => 82,  174 => 78,  166 => 74,  164 => 73,  157 => 70,  149 => 66,  147 => 65,  143 => 63,  139 => 61,  135 => 59,  133 => 58,  128 => 57,  124 => 55,  118 => 53,  116 => 52,  112 => 51,  108 => 50,  104 => 49,  100 => 48,  96 => 47,  92 => 46,  89 => 45,  84 => 44,  60 => 23,  46 => 11,  43 => 10,  33 => 3,  30 => 2,  11 => 1,);
+        return array (  204 => 100,  201 => 99,  190 => 91,  181 => 88,  173 => 84,  171 => 83,  163 => 79,  155 => 75,  153 => 74,  149 => 72,  145 => 70,  141 => 68,  139 => 67,  134 => 66,  130 => 64,  124 => 62,  122 => 61,  118 => 60,  114 => 59,  110 => 58,  106 => 57,  102 => 56,  98 => 55,  95 => 54,  90 => 53,  46 => 11,  43 => 10,  33 => 3,  30 => 2,  11 => 1,);
     }
 
     public function getSourceContext()
@@ -251,18 +257,27 @@ class __TwigTemplate_55fd99ebb734a71ccedb25e6fbe2774b8d39bd27cc52c19c0bf72a71669
 {% endblock %}
 {% block appBody %}
 
-    <section class=\"content-header\">
+    <section class=\"content-header menu\" id=\"menu\" >
         <h1>
             Eventos
-            <small>Listado Eventos</small>
-
-            <a class=\"btn btn-primary btn-social pull-right\" href=\"evento/agregarEvento\" title=\"Agregar\" data-toggle=\"tooltip\">
-                <i class=\"fa fa-plus\"></i>
-                Agregar Nuevo Evento
-            </a>
+            <small>Detalle de Evento</small>
         </h1>
+        <ol class=\"breadcrumb\">
+            <li>
+                <a href=\"#\">
+                    <i class=\"fa fa-home\"></i>
+                    Home</a>
+            </li>
+            <li ><a href=\"evento/bienvenida\" >Bienvenida</a></li>
+            <li>
+                <a href=\"evento/listar_evento\">Listado de Eventos</a>
+            </li>
+            <li class=\"active\">
+                <button type=\"button\" name=\"button\" class=\"btn btn-primary\" onclick= location.href='evento/agregarEvento'>Agregar Evento</button>
+            </li>
+        </ol>
     </section>
-    {{ dump(data) }}
+    <br>
     <section class=\"content\">
         <div class=\"row\">
             <div class=\"col-md-12\">
@@ -310,14 +325,14 @@ class __TwigTemplate_55fd99ebb734a71ccedb25e6fbe2774b8d39bd27cc52c19c0bf72a71669
                                             </a>
                                             {%  endif %}
                                             <a data-toggle='tooltip' data-placement='top' id=\"visualizar\" name=\"visualizar\" title='Ver Observacion' class='btn btn-primary btn-sm' onclick=\"visualizar({{d.id}})\">
+
                                                 <i class='glyphicon glyphicon-eye-open'></i>
                                             </a>
                                             {%  if  d.estado_evento != \"1\"  and d.id_usuario == user%}
-                                            <a data-toggle='tooltip' data-placement='top' id=\"btnEliminar\" name=\"btnEliminar\" title='Eliminar' class='btn btn-danger btn-sm' href=\"evento/eliminar_evento/{{d.id}}\">
+                                            <a data-toggle='tooltip' data-placement='top' id=\"btnEliminar\" name=\"btnEliminar\" title='Eliminar' class='btn btn-danger btn-sm' onclick=\"eliminar_evento({{d.id}});\">
                                                 <i class='glyphicon glyphicon-erase'></i>
                                             </a>
                                             {%  endif %}
-
                                         </td>
                                     </tr>
                                 {% endfor %}
