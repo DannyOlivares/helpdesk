@@ -205,15 +205,10 @@ function cargarTabla(tipo){
                            "aTargets": [8],
                       
                            "mRender": function (data, type, full) {
-                            return '<input type="button" class="btn btn-success" onclick="visualizarActividad()" value="Estado"> <input type="button" class="btn btn-info" onclick="cambiarEstadoActividad()" value="Visualizar">';
+                            return '<input type="button" class="btn btn-success" onclick="cambiarEstadoActividad(102)" value="Estado"> <input type="button" class="btn btn-info" onclick="visualizarActividad('+full[3]+')" value="Visualizar">';
                            }
                        }
                     ]
-
-                  //   columnDefs: [
-                  //     { targets: [0,1], visible: true},
-                  //     { targets: '_all', visible: false }
-                  // ]
             });
         break;
 
@@ -261,7 +256,7 @@ function cargarTabla(tipo){
                            "aTargets": [8],
                       
                            "mRender": function (data, type, full) {
-                            return '<input type="button" class="btn btn-success" onclick="visualizarActividad(  )" value="Estado"> <input type="button" class="btn btn-info" onclick="cambiarEstadoActividad()" value="Visualizar">';
+                            return '<input type="button" class="btn btn-success" onclick="cambiarEstadoActividad(102)" value="Estado"> <input type="button" class="btn btn-info" onclick="visualizarActividad('+full[3]+')" value="Visualizar">';
                            }
                        }
                     ]
@@ -278,7 +273,7 @@ function cargarTabla(tipo){
             $("#t1").dataTable({
                 "ajax": {
                     "url": "api/tablaAsignadas",
-                    "type": "POST"               
+                    "type": "POST"              
                 },
                     "language"          : {
                     "search"            : "Buscar:",
@@ -311,9 +306,9 @@ function cargarTabla(tipo){
                     ], "aoColumnDefs": [
                       {
                            "aTargets": [8],
-                      
                            "mRender": function (data, type, full) {
-                            return '<input type="button" class="btn btn-success" onclick="visualizarActividad()" value="Estado"> <input type="button" class="btn btn-info" onclick="cambiarEstadoActividad()" value="Visualizar">';
+                             console.log(full[3]);
+                            return '<input type="button" class="btn btn-success" onclick="cambiarEstadoActividad(102)" value="Estado"> <input type="button" class="btn btn-info" onclick="visualizarActividad('+full[3]+')" value="Visualizar">';
                            }
                        }
                     ]
@@ -430,8 +425,36 @@ function visualizarActividad(idActividad) {
   });
 }
 
-function cambiarEstadoActividad(){
-  console.log("cambiarEstadoActividad");
+function cambiarEstadoActividad(idActividad){
+  var formData = new FormData();
+  formData.append("idActividad", idActividad);
+    
+  $.confirm({
+    title: 'Mi Estado',
+    content: '' +
+    '<form action="" class="formName">' +
+    '<div class="form-group">' +
+    '<label>Enter something here</label>' +
+    '<input type="text" placeholder="Your name" class="name form-control" required />' +
+    '</div>' +
+    '</form>',
+    buttons: {
+        Confirmar: function () {
+            $.alert('Confirmado!');
+        },
+        Cancelar: function () {
+            $.alert('Cancelado!');
+        },
+        somethingElse: {
+            text: 'Something else',
+            btnClass: 'btn-blue',
+            keys: ['enter', 'shift'],
+            action: function(){
+                $.alert('Something else?');
+            }
+        }
+    }
+});
 }
  $(document).ready(function () {
       //si existe el elemento realizara esta gestion

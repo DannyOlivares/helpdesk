@@ -68,7 +68,7 @@ class __TwigTemplate_cfc11a3c0289c1c305c1397a2b41d894d60e802d0c8a32294711de91683
                             <div class=\"col-md-12 text-center\">
                                 <a data-toggle='tooltip' data-placement='top' name=\"modificarEvento\" id=\"modificarEvento\" class='btn btn-success'>Modificar Evento
                                 </a>
-                                <input type=\"reset\" class=\"btn btn-warning\">
+                                <input type=\"reset\"  class=\"btn btn-warning\">
                             </div>
                             <div class=\"col-md-6\">
                                 <label>Ingresado por:</label><input type=\"text\" name=\"nUsuario\" id=\"nUsuario\" class=\"form-control\"  value=\"";
@@ -294,7 +294,7 @@ class __TwigTemplate_cfc11a3c0289c1c305c1397a2b41d894d60e802d0c8a32294711de91683
                             <div class=\"col-md-12 text-center\">
                                 <a data-toggle='tooltip' data-placement='top' name=\"modificarEvento\" id=\"modificarEvento\" class='btn btn-success'>Modificar Evento
                                 </a>
-                                <input type=\"reset\" class=\"btn btn-warning\">
+                                <input type=\"reset\"  class=\"btn btn-warning\">
                             </div>
                             <div class=\"col-md-6\">
                                 <label>Ingresado por:</label><input type=\"text\" name=\"nUsuario\" id=\"nUsuario\" class=\"form-control\"  value=\"{{ owner_user['name'] }} \"disabled >

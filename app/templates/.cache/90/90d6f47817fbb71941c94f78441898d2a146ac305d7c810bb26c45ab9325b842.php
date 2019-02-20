@@ -47,13 +47,14 @@ class __TwigTemplate_38bc8a9057b139c22dccc995958ef591b37cac79778730355a989dcdd26
             <li>
                 <a href=\"#\">
                     <i class=\"fa fa-home\"></i>
-                    Home</a>
+                    Home
+                </a>
             </li>
             <li>
                 <a href=\"evento/bienvenida\">Bienvenida</a>
             </li>
             <li>
-                <a href=\"evento/listarEvento\">Listado de Evento</a>
+                <a href=\"evento/listar_evento\">Listado de Evento</a>
             </li>
             <li class=\"active\">Agregar Evento</li>
         </ol>
@@ -75,17 +76,17 @@ class __TwigTemplate_38bc8a9057b139c22dccc995958ef591b37cac79778730355a989dcdd26
                             </div>
                             <div class=\"col-md-6\">
                                 <label>Ingresado por:</label><input type=\"text\" name=\"nUsuario\" id=\"nUsuario\" class=\"form-control\"  value=\"";
-        // line 43
+        // line 44
         echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), ($context["owner_user"] ?? null), "name", array(), "array"), "html", null, true);
         echo " \" disabled>
                             </div>
                             <div class=\"col-md-6\">
                                 <label>Fecha Evento:</label><input type=\"DATE\" name=\"fecha\" id=\"fecha\" class=\"form-control\" value=\"";
-        // line 46
+        // line 47
         echo twig_escape_filter($this->env, twig_date_format_filter($this->env, "now", "Y-m-d"), "html", null, true);
         echo "\">
                                 <input type=\"text\" name=\"fechaCierre\" value=\"";
-        // line 47
+        // line 48
         echo twig_escape_filter($this->env, twig_date_format_filter($this->env, "now", "Y-m-d"), "html", null, true);
         echo "\" id=\"fechaCierre\" hidden>
                             </div>
@@ -96,7 +97,7 @@ class __TwigTemplate_38bc8a9057b139c22dccc995958ef591b37cac79778730355a989dcdd26
                             <div class=\"col-md-6\" id=\"diveps\" name=\"diveps\">
                                 <label>Hora:</label>
                                 <input type=\"time\" name=\"hora\" id=\"hora\" class=\"form-control\" VALUE=\"";
-        // line 55
+        // line 56
         echo twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), ($context["object"] ?? null), "date", array()), "H:i:s"), "html", null, true);
         echo "\" >
                             </div>
@@ -124,22 +125,20 @@ class __TwigTemplate_38bc8a9057b139c22dccc995958ef591b37cac79778730355a989dcdd26
                                     </select>
                                 <input type=\"hidden\" name=\"areaContingencia_input\" id=\"areaContingencia_input\"  value=\"\" class=\"areaContingencia_input\">
                             </div>
-
-                            <br>
+                                <br>
                             <div class=\"col-md-12\">
                                 <label>Observación:</label>
                                 <textarea name=\"observacion\" id=\"observacion\" cols=\"30\" rows=\"3\" class=\"form-control\"></textarea>
                             </div>
 
                             <div class=\"col-md-12\">
-                                    <label>Estado:</label>
+                                <label>Estado:</label>
                                 <select class=\"estado_select form-control\" name=\"estado_select\" id=\"estado_select\">
                                     <option selected=\"true\" disabled>Seleccione estado Evento</option>
                                     <option value=\"1\">Finalizada</option>
                                     <option value=\"2\">Pendiente</option>
                                 </select>
                             </div>
-
                             <div class=\"col-md-12 text-center\">
                                 <br>
                                 <a data-toggle='tooltip' data-placement='top' name=\"btnCrearEvento\" id=\"btnCrearEvento\" class='btn btn-success' onclick=\"crearEvento()\">Agregar Evento
@@ -154,24 +153,23 @@ class __TwigTemplate_38bc8a9057b139c22dccc995958ef591b37cac79778730355a989dcdd26
     ";
     }
 
-    // line 109
+    // line 108
     public function block_appScript($context, array $blocks = array())
     {
-        // line 110
-        echo "        <script src=\"views/app/js/evento/vue.js\"></script>
-        <script src=\"views/app/js/evento/evento.js\" type=\"text/javascript\"></script>
+        // line 109
+        echo "        <script src=\"views/app/js/evento/evento.js\" type=\"text/javascript\"></script>
         <script src=\"//code.jquery.com/ui/1.12.1/jquery-ui.js\"></script>
 
         <script>
              \$(function(){
                var dbdatos = [
                  ";
-        // line 117
+        // line 115
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(($context["data"] ?? null));
         foreach ($context['_seq'] as $context["_key"] => $context["d"]) {
             if ((false != ($context["data"] ?? null))) {
-                // line 118
+                // line 116
                 echo "                 '";
                 echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), $context["d"], "responsable", array()), "html", null, true);
                 echo "',
@@ -181,41 +179,231 @@ class __TwigTemplate_38bc8a9057b139c22dccc995958ef591b37cac79778730355a989dcdd26
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['d'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 120
+        // line 118
         echo "               ];
                \$('#id_responsable').autocomplete({
                  source: dbdatos
                });
              });
              </script>
-         </script>
-         <script>
-              \$(function(){
-                var dbdatos = [
-                  ";
-        // line 130
+                </script>
+                <script>
+                  \$(function(){
+                    var dbdatos = [
+                      ";
+        // line 128
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(($context["dato"] ?? null));
         foreach ($context['_seq'] as $context["_key"] => $context["d"]) {
             if ((false != ($context["dato"] ?? null))) {
-                // line 131
-                echo "                  '";
+                // line 129
+                echo "                      '";
                 echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), $context["d"], "areas", array()), "html", null, true);
                 echo "',
-                  ";
+                      ";
             }
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['d'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 133
-        echo "                ];
-                \$('#area_contingencia').autocomplete({
-                  source: dbdatos
+        // line 131
+        echo "                    ];
+                    \$('#area_contingencia').autocomplete({
+                      source: dbdatos
+                    });
+                  });
+                  </script>
+                </script>
+
+                <script>
+                var app = new Vue({
+                    el:'#appVue',
+                    delimiters: ['\${', '}'],
+                    data:{
+                        lists:  [
+                                    ],
+                                    newKeep : '',
+
+                        },
+                    methods:    {
+                        addKeep: function (){
+                            if(this.newKeep == \"\"){
+                                \$.alert({
+                                    icon: \"fa fa-warning\",
+                                    title: \"ERROR\",
+                                    content: \"ESTE CAMPO NO PUEDE ESTAR VACÍO\",
+                                    type: \"red\",
+                                    typeAnimated: true
+                                  });
+                            }else{
+                                var arrValor = new Array ();
+                                \$(\"#responsable_select\").find('option').each( function() {
+                                    arrValor.push(\$.trim(\$(this).val().toLowerCase()));
+                                });
+                                var ctrl = jQuery.inArray(this.newKeep.toLowerCase(), arrValor);
+                                //console.log(arrValor);
+                                if (ctrl !== -1) {
+                                    \$.alert({
+                                        icon: \"fa fa-warning\",
+                                        title: \"ERROR\",
+                                        content: \"ESTE VALOR YA SE ENCUENTRA EN EL SELECT\",
+                                        type: \"red\",
+                                        typeAnimated: true,
+                                      });
+                                } else {
+                                    this.lists.push({keep:this.newKeep, completed: false});
+                                    this.newKeep = '';
+                                }
+                            }
+                        },
+                        eliminarTarea: function(index){
+                            this.lists.splice(index,1);
+                        }
+                    }
                 });
-              });
-              </script>
-          </script>
+
+                var app1 = new Vue({
+                    el:'#appVue1',
+                    delimiters: ['\${', '}'],
+                    data:{
+                        lista:  [
+                                    ],
+                                    newKeep1 : '',
+                         },
+                    methods:    {
+                        addKeep1: function (){
+                            if(this.newKeep1 == \"\"){
+                                \$.alert({
+                                    icon: \"fa fa-warning\",
+                                    title: \"ERROR\",
+                                    content: \"ESTE CAMPO NO PUEDE ESTAR VACÍO\",
+                                    type: \"red\",
+                                    typeAnimated: true
+                                  });
+                            }else{
+                                var arrValor = new Array ();
+                                \$(\"#areaContingencia_select\").find('option').each( function() {
+                                    arrValor.push(\$.trim(\$(this).val().toLowerCase()));
+                                });
+                                var ctrl = jQuery.inArray(this.newKeep1.toLowerCase(), arrValor);
+                                //console.log(arrValor);
+                                if (ctrl !== -1) {
+                                    \$.alert({
+                                        icon: \"fa fa-warning\",
+                                        title: \"ERROR\",
+                                        content: \"ESTE VALOR YA SE ENCUENTRA EN EL SELECT\",
+                                        type: \"red\",
+                                        typeAnimated: true,
+                                      });
+                                } else {
+                                    this.lista.push({keep1:this.newKeep1, completed: false});
+                                    this.newKeep1 = '';
+                                }
+                            }
+                        },
+                        eliminarTarea: function(index){
+                            this.lista.splice(index,1);
+                        }
+                    }
+                });
+
+                var app2     = new Vue({
+
+                    el:'#app2',
+                    delimiters: ['\${', '}'],
+                    data:{
+                        selected: \"84\",
+                        listas:  [],
+                        newKeep1:'',
+                    },
+                    beforeMount: function() {
+                        this.listas = JSON.parse(this.\$el.attributes['data-array'].value.replace(/&quot;/ig, '\"'));
+                    },
+                    methods: {
+                        eliminarTarea: function(index){
+                            this.listas.splice(index,1);
+                        },
+                        addKeep1: function(){
+                            if(this.newKeep1 == \"\"){
+                                \$.alert({
+                                    icon: \"fa fa-warning\",
+                                    title: \"ERROR\",
+                                    content: \"ESTE CAMPO NO PUEDE ESTAR VACÍO\",
+                                    type: \"red\",
+                                    typeAnimated: true
+                                  });
+                            } else {
+                                var arrValor = new Array ();
+                                \$(\"#areaModificada\").find('option').each( function() {
+                                    arrValor.push(\$.trim(\$(this).val().toLowerCase()));
+                                });
+                                var ctrl = jQuery.inArray(this.newKeep1.toLowerCase(), arrValor);
+                                //console.log(arrValor);
+                                if (ctrl !== -1) {
+                                    \$.alert({
+                                        icon: \"fa fa-warning\",
+                                        title: \"ERROR\",
+                                        content: \"ESTE VALOR YA SE ENCUENTRA EN EL SELECT\",
+                                        type: \"red\",
+                                        typeAnimated: true,
+                                      });
+                                } else {
+                                    this.listas.push({areas:this.newKeep1});
+                                    this.newKeep1 = '';
+                                }
+                            }
+                        }
+                    }
+                });
+
+                var app3     = new Vue({
+                    el:'#app3',
+                    delimiters: ['\${', '}'],
+                    data:{
+                        selected: \"84\",
+                        lists:  [],
+                        newKeep:'',
+                    },
+                    beforeMount: function() {
+                        this.lists = JSON.parse(this.\$el.attributes['data-arr'].value.replace(/&quot;/ig, '\"'));
+                    },
+                    methods:{
+                        eliminarTarea:  function(index){
+                            this.lists.splice(index,1);
+                        },
+                        addKeep: function(){
+                            if(this. newKeep == \"\"){
+                                \$.alert({
+                                    icon: \"fa fa-warning\",
+                                    title: \"ERROR\",
+                                    content: \"ESTE CAMPO NO PUEDE ESTAR VACÍO\",
+                                    type: \"red\",
+                                    typeAnimated: true
+                                  });
+                            }else{
+                                var arrValor = new Array ();
+                                \$(\"#responsableModificado\").find('option').each( function() {
+                                    arrValor.push(\$.trim(\$(this).val().toLowerCase()));
+                                });
+                                var ctrl = jQuery.inArray(this.newKeep.toLowerCase(), arrValor);
+                                //console.log(ctrl);
+                                if (ctrl !== -1) {
+                                    \$.alert({
+                                        icon: \"fa fa-warning\",
+                                        title: \"ERROR\",
+                                        content: \"ESTE VALOR YA SE ENCUENTRA EN EL SELECT\",
+                                        type: \"red\",
+                                        typeAnimated: true,
+                                      });
+                                } else {
+                                    this.lists.push({responsable:this.newKeep});
+                                    this.newKeep = '';
+                                }
+                            }
+                        }
+                    }
+                });
+                </script>
     ";
     }
 
@@ -231,7 +419,7 @@ class __TwigTemplate_38bc8a9057b139c22dccc995958ef591b37cac79778730355a989dcdd26
 
     public function getDebugInfo()
     {
-        return array (  212 => 133,  202 => 131,  197 => 130,  185 => 120,  175 => 118,  170 => 117,  161 => 110,  158 => 109,  100 => 55,  89 => 47,  85 => 46,  79 => 43,  41 => 7,  38 => 6,  33 => 3,  30 => 2,  11 => 1,);
+        return array (  210 => 131,  200 => 129,  195 => 128,  183 => 118,  173 => 116,  168 => 115,  160 => 109,  157 => 108,  101 => 56,  90 => 48,  86 => 47,  80 => 44,  41 => 7,  38 => 6,  33 => 3,  30 => 2,  11 => 1,);
     }
 
     public function getSourceContext()
@@ -251,13 +439,14 @@ class __TwigTemplate_38bc8a9057b139c22dccc995958ef591b37cac79778730355a989dcdd26
             <li>
                 <a href=\"#\">
                     <i class=\"fa fa-home\"></i>
-                    Home</a>
+                    Home
+                </a>
             </li>
             <li>
                 <a href=\"evento/bienvenida\">Bienvenida</a>
             </li>
             <li>
-                <a href=\"evento/listarEvento\">Listado de Evento</a>
+                <a href=\"evento/listar_evento\">Listado de Evento</a>
             </li>
             <li class=\"active\">Agregar Evento</li>
         </ol>
@@ -316,22 +505,20 @@ class __TwigTemplate_38bc8a9057b139c22dccc995958ef591b37cac79778730355a989dcdd26
                                     </select>
                                 <input type=\"hidden\" name=\"areaContingencia_input\" id=\"areaContingencia_input\"  value=\"\" class=\"areaContingencia_input\">
                             </div>
-
-                            <br>
+                                <br>
                             <div class=\"col-md-12\">
                                 <label>Observación:</label>
                                 <textarea name=\"observacion\" id=\"observacion\" cols=\"30\" rows=\"3\" class=\"form-control\"></textarea>
                             </div>
 
                             <div class=\"col-md-12\">
-                                    <label>Estado:</label>
+                                <label>Estado:</label>
                                 <select class=\"estado_select form-control\" name=\"estado_select\" id=\"estado_select\">
                                     <option selected=\"true\" disabled>Seleccione estado Evento</option>
                                     <option value=\"1\">Finalizada</option>
                                     <option value=\"2\">Pendiente</option>
                                 </select>
                             </div>
-
                             <div class=\"col-md-12 text-center\">
                                 <br>
                                 <a data-toggle='tooltip' data-placement='top' name=\"btnCrearEvento\" id=\"btnCrearEvento\" class='btn btn-success' onclick=\"crearEvento()\">Agregar Evento
@@ -345,7 +532,6 @@ class __TwigTemplate_38bc8a9057b139c22dccc995958ef591b37cac79778730355a989dcdd26
         </section>
     {% endblock %}
     {% block appScript %}
-        <script src=\"views/app/js/evento/vue.js\"></script>
         <script src=\"views/app/js/evento/evento.js\" type=\"text/javascript\"></script>
         <script src=\"//code.jquery.com/ui/1.12.1/jquery-ui.js\"></script>
 
@@ -361,20 +547,210 @@ class __TwigTemplate_38bc8a9057b139c22dccc995958ef591b37cac79778730355a989dcdd26
                });
              });
              </script>
-         </script>
-         <script>
-              \$(function(){
-                var dbdatos = [
-                  {% for d in dato if false != dato %}
-                  '{{d.areas}}',
-                  {% endfor %}
-                ];
-                \$('#area_contingencia').autocomplete({
-                  source: dbdatos
+                </script>
+                <script>
+                  \$(function(){
+                    var dbdatos = [
+                      {% for d in dato if false != dato %}
+                      '{{d.areas}}',
+                      {% endfor %}
+                    ];
+                    \$('#area_contingencia').autocomplete({
+                      source: dbdatos
+                    });
+                  });
+                  </script>
+                </script>
+
+                <script>
+                var app = new Vue({
+                    el:'#appVue',
+                    delimiters: ['\${', '}'],
+                    data:{
+                        lists:  [
+                                    ],
+                                    newKeep : '',
+
+                        },
+                    methods:    {
+                        addKeep: function (){
+                            if(this.newKeep == \"\"){
+                                \$.alert({
+                                    icon: \"fa fa-warning\",
+                                    title: \"ERROR\",
+                                    content: \"ESTE CAMPO NO PUEDE ESTAR VACÍO\",
+                                    type: \"red\",
+                                    typeAnimated: true
+                                  });
+                            }else{
+                                var arrValor = new Array ();
+                                \$(\"#responsable_select\").find('option').each( function() {
+                                    arrValor.push(\$.trim(\$(this).val().toLowerCase()));
+                                });
+                                var ctrl = jQuery.inArray(this.newKeep.toLowerCase(), arrValor);
+                                //console.log(arrValor);
+                                if (ctrl !== -1) {
+                                    \$.alert({
+                                        icon: \"fa fa-warning\",
+                                        title: \"ERROR\",
+                                        content: \"ESTE VALOR YA SE ENCUENTRA EN EL SELECT\",
+                                        type: \"red\",
+                                        typeAnimated: true,
+                                      });
+                                } else {
+                                    this.lists.push({keep:this.newKeep, completed: false});
+                                    this.newKeep = '';
+                                }
+                            }
+                        },
+                        eliminarTarea: function(index){
+                            this.lists.splice(index,1);
+                        }
+                    }
                 });
-              });
-              </script>
-          </script>
+
+                var app1 = new Vue({
+                    el:'#appVue1',
+                    delimiters: ['\${', '}'],
+                    data:{
+                        lista:  [
+                                    ],
+                                    newKeep1 : '',
+                         },
+                    methods:    {
+                        addKeep1: function (){
+                            if(this.newKeep1 == \"\"){
+                                \$.alert({
+                                    icon: \"fa fa-warning\",
+                                    title: \"ERROR\",
+                                    content: \"ESTE CAMPO NO PUEDE ESTAR VACÍO\",
+                                    type: \"red\",
+                                    typeAnimated: true
+                                  });
+                            }else{
+                                var arrValor = new Array ();
+                                \$(\"#areaContingencia_select\").find('option').each( function() {
+                                    arrValor.push(\$.trim(\$(this).val().toLowerCase()));
+                                });
+                                var ctrl = jQuery.inArray(this.newKeep1.toLowerCase(), arrValor);
+                                //console.log(arrValor);
+                                if (ctrl !== -1) {
+                                    \$.alert({
+                                        icon: \"fa fa-warning\",
+                                        title: \"ERROR\",
+                                        content: \"ESTE VALOR YA SE ENCUENTRA EN EL SELECT\",
+                                        type: \"red\",
+                                        typeAnimated: true,
+                                      });
+                                } else {
+                                    this.lista.push({keep1:this.newKeep1, completed: false});
+                                    this.newKeep1 = '';
+                                }
+                            }
+                        },
+                        eliminarTarea: function(index){
+                            this.lista.splice(index,1);
+                        }
+                    }
+                });
+
+                var app2     = new Vue({
+
+                    el:'#app2',
+                    delimiters: ['\${', '}'],
+                    data:{
+                        selected: \"84\",
+                        listas:  [],
+                        newKeep1:'',
+                    },
+                    beforeMount: function() {
+                        this.listas = JSON.parse(this.\$el.attributes['data-array'].value.replace(/&quot;/ig, '\"'));
+                    },
+                    methods: {
+                        eliminarTarea: function(index){
+                            this.listas.splice(index,1);
+                        },
+                        addKeep1: function(){
+                            if(this.newKeep1 == \"\"){
+                                \$.alert({
+                                    icon: \"fa fa-warning\",
+                                    title: \"ERROR\",
+                                    content: \"ESTE CAMPO NO PUEDE ESTAR VACÍO\",
+                                    type: \"red\",
+                                    typeAnimated: true
+                                  });
+                            } else {
+                                var arrValor = new Array ();
+                                \$(\"#areaModificada\").find('option').each( function() {
+                                    arrValor.push(\$.trim(\$(this).val().toLowerCase()));
+                                });
+                                var ctrl = jQuery.inArray(this.newKeep1.toLowerCase(), arrValor);
+                                //console.log(arrValor);
+                                if (ctrl !== -1) {
+                                    \$.alert({
+                                        icon: \"fa fa-warning\",
+                                        title: \"ERROR\",
+                                        content: \"ESTE VALOR YA SE ENCUENTRA EN EL SELECT\",
+                                        type: \"red\",
+                                        typeAnimated: true,
+                                      });
+                                } else {
+                                    this.listas.push({areas:this.newKeep1});
+                                    this.newKeep1 = '';
+                                }
+                            }
+                        }
+                    }
+                });
+
+                var app3     = new Vue({
+                    el:'#app3',
+                    delimiters: ['\${', '}'],
+                    data:{
+                        selected: \"84\",
+                        lists:  [],
+                        newKeep:'',
+                    },
+                    beforeMount: function() {
+                        this.lists = JSON.parse(this.\$el.attributes['data-arr'].value.replace(/&quot;/ig, '\"'));
+                    },
+                    methods:{
+                        eliminarTarea:  function(index){
+                            this.lists.splice(index,1);
+                        },
+                        addKeep: function(){
+                            if(this. newKeep == \"\"){
+                                \$.alert({
+                                    icon: \"fa fa-warning\",
+                                    title: \"ERROR\",
+                                    content: \"ESTE CAMPO NO PUEDE ESTAR VACÍO\",
+                                    type: \"red\",
+                                    typeAnimated: true
+                                  });
+                            }else{
+                                var arrValor = new Array ();
+                                \$(\"#responsableModificado\").find('option').each( function() {
+                                    arrValor.push(\$.trim(\$(this).val().toLowerCase()));
+                                });
+                                var ctrl = jQuery.inArray(this.newKeep.toLowerCase(), arrValor);
+                                //console.log(ctrl);
+                                if (ctrl !== -1) {
+                                    \$.alert({
+                                        icon: \"fa fa-warning\",
+                                        title: \"ERROR\",
+                                        content: \"ESTE VALOR YA SE ENCUENTRA EN EL SELECT\",
+                                        type: \"red\",
+                                        typeAnimated: true,
+                                      });
+                                } else {
+                                    this.lists.push({responsable:this.newKeep});
+                                    this.newKeep = '';
+                                }
+                            }
+                        }
+                    }
+                });
+                </script>
     {% endblock %}
 ", "evento/agregarEvento.twig", "C:\\xampp\\htdocs\\helpdesk\\app\\templates\\evento\\agregarEvento.twig");
     }

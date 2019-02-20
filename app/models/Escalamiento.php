@@ -74,8 +74,7 @@ class Escalamiento extends Models implements IModels {
                 
             $sql = "select * from escalamientocorresponde
             where idActividadManual = '$idActividadManual'";
-            $result1 = $this->db->query_select($sql);
-            //print_r($result1);
+            $result1 = $this->db->query_select($sql);   
 
             $sql = "insert escalamientocorresponde(
                                                     idActividadManual,
@@ -293,7 +292,52 @@ class Escalamiento extends Models implements IModels {
     public function visualizarActividad($select = '*'){
         global $http;
 
-        $idActividad = $http->request->get('idActividad');
+        $idActividad            =   $http->request->get('idActividad');
+        $consulta               =   $this->db->select($select, 'escalamientoCorresponde',
+                                    "idActividadManual = '$idActividad'", 'limit 1');
+        $idActividad            =   $consulta[0]['idActividadManual'];
+        $rutCliente             =   $consulta[0]['rutCliente'];
+        $fechaCompromiso        =   $consulta[0]['fechaCompromiso'];
+        $canal                  =   $consulta[0]['canal'];
+        $bloque                 =   $consulta[0]['bloque'];
+        $estadoEscalamiento     =   $consulta[0]['estadoEscalamiento'];
+        $tipoActividad          =   $consulta[0]['tipoActividad'];
+        $estadoOrden            =   $consulta[0]['estadoOrden'];
+        $descripcionActividad   =   $consulta[0]['descripcionActividad'];
+          
+         $html="<h3 class='text-center'>
+                 ".toUppercase($descripcionActividad)."
+                 </h3>
+                 <h4>
+                 <table table class='table table-bordered'>
+                    <thead>
+                        <tr>
+                            <th>Id Actividad</th>
+                            <th>Rut Cliente</th>
+                            <th>Fecha Compromiso</th>
+                            <th>Canal</th>
+                            <th>Bloque</th>
+                            <th>Estado Escalamiento</th>
+                            <th>Tipo Actividad</th>
+                            <th>Estado Orden</th>
+                            <th>Descripcion Actividad</th>
+                        </tr>
+                    <tbody>
+                        <tr>
+                            <td>".$idActividad."</td>
+                            <td>".$rutCliente."</td>
+                            <td>".$fechaCompromiso."</td>
+                            <td>".$canal."</td>
+                            <td>".$bloque."</td>
+                            <td>".$estadoEscalamiento."</td>
+                            <td>".$tipoActividad."</td>
+                            <td>".$estadoOrden."</td>
+                            <td>".$descripcionActividad."</td>
+                        </tr>
+                    </tbody>
+
+                </table>            ";
+            return array('success'=>1, 'html'=> $html);
 
     }
 
