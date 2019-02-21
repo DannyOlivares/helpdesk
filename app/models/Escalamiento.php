@@ -306,7 +306,7 @@ class Escalamiento extends Models implements IModels {
         $descripcionActividad   =   $consulta[0]['descripcionActividad'];
           
          $html="<h3 class='text-center'>
-                 ".toUppercase($descripcionActividad)."
+                 ".$descripcionActividad."
                  </h3>
                  <h4>
                  <table table class='table table-bordered'>
@@ -339,6 +339,10 @@ class Escalamiento extends Models implements IModels {
                 </table>            ";
             return array('success'=>1, 'html'=> $html);
 
+    }
+
+    public function cambiarEstadoActividad(){
+        return array('success'=>1);
     }
 
     //-----------------------------CONEXIÓN BD-------------------------------------------------------

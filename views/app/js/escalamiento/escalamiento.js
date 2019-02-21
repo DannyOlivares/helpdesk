@@ -307,7 +307,7 @@ function cargarTabla(tipo){
                       {
                            "aTargets": [8],
                            "mRender": function (data, type, full) {
-                             console.log(full[3]);
+                      
                             return '<input type="button" class="btn btn-success" onclick="cambiarEstadoActividad(102)" value="Estado"> <input type="button" class="btn btn-info" onclick="visualizarActividad('+full[3]+')" value="Visualizar">';
                            }
                        }
@@ -428,33 +428,62 @@ function visualizarActividad(idActividad) {
 function cambiarEstadoActividad(idActividad){
   var formData = new FormData();
   formData.append("idActividad", idActividad);
-    
-  $.confirm({
-    title: 'Mi Estado',
-    content: '' +
-    '<form action="" class="formName">' +
-    '<div class="form-group">' +
-    '<label>Enter something here</label>' +
-    '<input type="text" placeholder="Your name" class="name form-control" required />' +
-    '</div>' +
-    '</form>',
-    buttons: {
-        Confirmar: function () {
-            $.alert('Confirmado!');
-        },
-        Cancelar: function () {
-            $.alert('Cancelado!');
-        },
-        somethingElse: {
-            text: 'Something else',
-            btnClass: 'btn-blue',
-            keys: ['enter', 'shift'],
-            action: function(){
-                $.alert('Something else?');
+    $.ajax({
+      type: "POST",
+      url: "api/cambiarEstadoActividad",
+      contentType: false,
+      processData: false,
+      data: formData,
+      success: function(data){
+        if(data.success == 1){
+          $.confirm({
+            title: 'Mi Estado',
+            content: '' +
+            '<form action="" class="formName">' +
+            '<div class="form-group">' +
+            '<label>Ingrese Cambio de estado</label>' +
+            '<input type="text" placeholder="Your name" class="name form-control" required />' +
+            '</div>' +
+            '</form>',
+            buttons: {
+                Confirmar: function () {
+                    $.alert('Confirmado!');
+                },
+                Cancelar: function () {
+                    $.alert('Cancelado!');
+                },
+                brake: function () {
+                  $.alert('brake!');
+              },
+                somethingElse: {
+                    text: 'Something else',
+                    btnClass: 'btn-blue',
+                    keys: ['enter', 'shift'],
+                    action: function(){
+                        $.alert('Something else?');
+                    }
+                }
             }
+        });
+        }else{
+          $.confirm({
+            escapeKey: "formSubmit",
+            icon: "glyphicon glyphicon-remove",
+            title: "Detalle Actividad",
+            content: "<h4>Error al visualizar Actividad</h4>",
+            type: "red",
+            buttons: {
+              formSubmit: {
+                text: "Aceptar",
+                btnClass: "btn-green",
+                action: function() {}
+              }
+            }
+          });
         }
-    }
-});
+      }
+    })
+ 
 }
  $(document).ready(function () {
       //si existe el elemento realizara esta gestion

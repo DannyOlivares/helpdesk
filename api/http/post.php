@@ -628,3 +628,8 @@ $app->post('/visualizarActividad  ', function() use($app) {
     $u = new Model\Escalamiento;
     return $app->json($u->visualizarActividad());
 });
+
+$app->post('/cambiarEstadoActividad  ', function() use($app) {
+    $u = new Model\Escalamiento;
+    return $app->json($u->cambiarEstadoActividad());
+});
