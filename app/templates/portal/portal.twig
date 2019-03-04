@@ -26,7 +26,27 @@
     <link rel="stylesheet" href="views/app/template/PACE/pace.min.css">
     <!-- bootstrap wysihtml5 - text editor -->
     <link rel="stylesheet" href="views/app/template/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
-
+    
+    <style>
+        .fa-eye{
+          transition: 0.150s;
+        }
+        
+        .rotate-left{
+          -webkit-transform: rotate(35deg);
+          -moz-transform: rotate(35deg);
+          -o-transform: rotate(35deg);
+          transform: rotate(35deg);
+          color: red;
+        }
+        .rotate-right{
+          -webkit-transform: rotate(-35deg);
+          -moz-transform: rotate(-35deg);
+          -o-transform: rotate(-35deg);
+          transform: rotate(-35deg);
+          color: blue;
+        }
+    </style>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -133,6 +153,18 @@
         })
 
         $(document).ajaxStart(function() { Pace.restart(); });
+
+        setInterval(function(){
+          $(".fa-eye").addClass("rotate-left");
+          $(".fa-eye").removeClass("rotate-right");
+        }, 125);
+
+        setInterval(function(){
+          $(".fa-eye").addClass("rotate-right");
+          $(".fa-eye").removeClass("rotate-left");
+        }, 250);
+
+
     </script>
     <script>
         if( {{ user_resetpass['reset'] }} == 1 ){

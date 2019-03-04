@@ -212,6 +212,7 @@ class Escalamiento extends Models implements IModels {
             )";
 
             $result             =   $this->db->query_select($sql);
+            print_r($result);
 
             return array('success'=>1, 'message'=>'Actividad Finalizada correctamente');
         } catch (\Exception $e) {

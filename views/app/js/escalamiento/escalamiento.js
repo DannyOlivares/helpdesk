@@ -485,6 +485,11 @@ function cambiarEstadoActividad(idActividad){
     })
  
 }
+
+    function cargarActividades(){
+        console.log("hola");
+    }
+
  $(document).ready(function () {
       //si existe el elemento realizara esta gestion
       if ($("#tabla").length == 1) {
