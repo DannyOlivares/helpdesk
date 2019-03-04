@@ -30,7 +30,6 @@
         <form id="formAgregarEscalamiento" name="formAgregarEscalamiento">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="box">
                         <div class="box-header">
                             <h3 class="box-title">Agregar Actividad</h3>
                         </div>
@@ -71,10 +70,10 @@
                                 <label>Bloque:</label>
                                 <select class="form-control bloque" name="bloque" id="bloque">
                                     <option value=""selected disabled>Seleccione Bloque</option>
-                                    <option value="09-13">09-13</option>
+                                    <option value="09-13">10-13</option>
                                     <option value="13-16">13-16</option>
                                     <option value="16-19">16-19</option>
-                                    <option value="19-21">19-21</option>
+                                    <option value="19-21">19-22</option>
                                 </select>
                             </div>
                             <div class="col-md-6">
@@ -104,6 +103,9 @@
                                     </select>
                             </div>
 
+                            <div class="col-md-6">
+                                <input type="hidden" name="fechaFinalizacion" id="fechaFinalizacion" class="form-control fechaFinalizacion" placeholder="Ingrese comuna Actividad" value="{{ "now"|date("Y-m-d") }}" >
+                            </div>
 
                                 <br>
                             <div class="col-md-12">

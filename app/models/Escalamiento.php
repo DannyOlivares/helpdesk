@@ -44,7 +44,7 @@ class Escalamiento extends Models implements IModels {
             $tipoActividad                  = $http->request->get('selectTipoActividad');
             $estadoOrden                    = $http->request->get('selectEstadoOrden');
             $nombreUsuario                  = $http->request->get('nombreUsuario');
-            $fechaFinalizacion              = '2019-02-12';
+            $fechaFinalizacion              = $http->request->get('fechaFinalizacion');
             $descripcionActividad           = $http->request->get('descripcionActividad');
             $fechaCreacion                  = $http->request->get('fechaCreacion');
             $comuna                         = $http->request->get('comuna');
@@ -71,8 +71,8 @@ class Escalamiento extends Models implements IModels {
                 }
             }
 
-                
-            $sql = "select * from escalamientocorresponde
+            if($estadoOrden == 'finalizada'){
+                $sql = "select * from escalamientocorresponde
             where idActividadManual = '$idActividadManual'";
             $result1 = $this->db->query_select($sql);   
 
@@ -107,8 +107,48 @@ class Escalamiento extends Models implements IModels {
                                                     '$comuna'
                                                     )";
 
+                $result     =   $this->db->query_select($sql);
+                    return array('success'=>1, 'message'=>'registro creado correctamente, Se a finalizado');
+            }else{
+                $sql = "select * from escalamientocorresponde
+                    where idActividadManual = '$idActividadManual'";
+                    $result1 = $this->db->query_select($sql);   
+
+                $sql = "insert escalamientocorresponde(
+                                                        idActividadManual,
+                                                        rutCliente,
+                                                        fechaCompromiso,
+                                                        canal,
+                                                        bloque,
+                                                        estadoEscalamiento,
+                                                        tipoActividad,
+                                                        estadoOrden,
+                                                        nombreUserLog,
+                                                        fechaFinalizacion,
+                                                        descripcionActividad,
+                                                        fechaCreacion,
+                                                        comuna
+
+                )value(
+                                                        '$idActividadManual',
+                                                        '$rutCliente',
+                                                        '$fechaCompromiso',
+                                                        '$canal',
+                                                        '$bloque',
+                                                        '$estadoEscalamiento',
+                                                        '$tipoActividad',
+                                                        '$estadoOrden',
+                                                        '$nombreUsuario',
+                                                        'pendienteFinalizar',
+                                                        '$descripcionActividad',
+                                                        '$fechaCreacion',
+                                                        '$comuna'
+                                                        )";
+
             $result     =   $this->db->query_select($sql);
-            return array('success'=>1, 'message'=>'registro creado correctamente');
+            return array('success'=>1, 'message'=>'registro creado correctamente, pendiente Finalizar');
+            }
+            
 
         } catch (\Exception $e) {
             return array ('success'=>0, 'message'=> $e->getMessage());
@@ -158,11 +198,16 @@ class Escalamiento extends Models implements IModels {
                 $selectTipoActividad    == 'sinActividad'               ||
                 $selectTipoActividad    == 'reclamoComercial'           ||
                 $selectTipoActividad    ==  'actividadesPendientesAndes'){
-                    return array('success'=>2, 'message'=>'Actividad Mal Enviada', 'idActv'=>$idActividadManual);
+                    return array('success'          =>2,
+                                'message'           =>'Actividad Mal Enviada', 
+                                'idActv'            =>$idActividadManual,
+                                'nombreRemitente'   =>$nombreRemitente);  
             }else{
-                return array('success'=> 3, 'message'=>'Crear Actividad', 'idActv'=>$idActividadManual);
+                return array('success'          => 3,
+                            'message'           =>'Crear Actividad',
+                            'idActv'            =>$idActividadManual, 
+                            'nombreRemitente'   =>$nombreRemitente);  
             }
-            //return array('success'=>1, 'message'=>'Encargado creado correctamente');
 
         } catch (\Exception $e) {
             return array('success'=>0, 'message'=>$e->getMessage());
@@ -179,6 +224,16 @@ class Escalamiento extends Models implements IModels {
         $rutCliente             =   $http->request->get('rutCliente');
         $idActividad            =   $http->request->get('idActividad');
         $descripcionActividad   =   $http->request->get('descripcionActividad');
+        $canal                  =   $http->request->get('canal');
+        $fechaCompromiso        =   $http->request->get('fechaCompromiso');
+        $bloque                 =   $http->request->get('bloque');
+        $estadoEscalamiento     =   $http->request->get('estadoEscalamiento');
+        $tipoActividad          =   $http->request->get('selectTipoActividad');
+        $estadoOrden            =   $http->request->get('selectEstadoOrden');
+        $fechaFinalizacion      =   '19/09/10';
+        $comuna                 =   $http->request->get('comuna');
+
+
 
         $validar = [
                 'nombreUsuario'         =>   $nombreUsuario,
@@ -186,7 +241,14 @@ class Escalamiento extends Models implements IModels {
                 'fechaCreacion'         =>   $fechaCreacion,
                 'rutCliente'            =>   $rutCliente,
                 'idActividad'           =>   $idActividad,
-                'descripcionActividad'  =>   $descripcionActividad
+                'descripcionActividad'  =>   $descripcionActividad,
+                'canal'                 =>   $canal,
+                'fechaCompromiso'       =>   $fechaCompromiso,
+                'bloque'                =>   $bloque,
+                'estadoEscalamiento'    =>   $estadoEscalamiento,
+                'tipoActividad'         =>   $tipoActividad,
+                'estadoOrden'           =>   $estadoOrden,
+                'comuna'                =>   $comuna
         ];
 
         foreach ($validar as $i => $value) {
@@ -197,24 +259,40 @@ class Escalamiento extends Models implements IModels {
 
         $sql                =   "insert escalamientonocorresponde (
                                 nombreUsuarioLogeado,
-                                fecha,
+                                fechaCreacion,
                                 rutCliente,
+                                fechaCompromiso,
+                                canal,
+                                bloque,
+                                estadoEscalamiento,
+                                tipoActividad,
+                                estadoOrden,
+                                fechaFinalizacion,
+                                comuna,
                                 descripcion,
                                 nombreRemitente,
                                 idActividadManual
+
             )value(             '$nombreUsuario',
                                 '$fechaCreacion',
-                                '$rutCliente',
+                                '$rutCliente',                            
+                                '$fechaCompromiso',
+                                '$canal',
+                                '$bloque',
+                                '$estadoEscalamiento',
+                                '$tipoActividad',
+                                '$estadoOrden',
+                                '$fechaFinalizacion',
+                                '$comuna',
                                 '$descripcionActividad',
                                 '$nombreRemitente',
                                 '$idActividad'
-
             )";
 
             $result             =   $this->db->query_select($sql);
-            print_r($result);
-
-            return array('success'=>1, 'message'=>'Actividad Finalizada correctamente');
+            
+            return array('success'=>1,
+                        'message'=>'Actividad Finalizada correctamente');
         } catch (\Exception $e) {
             return array('success' => 0, 'message' =>$e->getMessage());
         }
@@ -242,7 +320,6 @@ class Escalamiento extends Models implements IModels {
     public function actividadesTotales(){
         $sql = 'SELECT count(*) FROM escalamientocorresponde';
         return $this->db->query_select($sql);
-
     }
     //----------------------------FIN VISTA SUPERIOR ESCALAMIENTO PRINCIPAL----------------------------
     //----------------------------FINALIZADAS HOY------------------------------------------------------
@@ -290,6 +367,22 @@ class Escalamiento extends Models implements IModels {
         return  array( 'data' => $result);
     }
 
+    public function actividadesNoCorresponden(){
+        $sql = 'SELECT  idActividadManual,
+                        fechaCreacion,
+                        fechaCompromiso,
+                        rutCliente, 
+                        descripcion,
+                        nombreRemitente,
+                        canal,
+                        nombreUsuarioLogeado,
+                        tipoActividad
+                         FROM escalamientoNoCorresponde';
+        $result = $this->db->query_select($sql);
+
+        return array('data' => $result);
+    }
+
     public function visualizarActividad($select = '*'){
         global $http;
 
@@ -305,7 +398,9 @@ class Escalamiento extends Models implements IModels {
         $tipoActividad          =   $consulta[0]['tipoActividad'];
         $estadoOrden            =   $consulta[0]['estadoOrden'];
         $descripcionActividad   =   $consulta[0]['descripcionActividad'];
-          
+        $fechaCreacion          =   $consulta[0]['fechaCreacion'];
+        $comuna                 =   $consulta[0]['comuna'];
+
          $html="<h3 class='text-center'>
                  ".$descripcionActividad."
                  </h3>
@@ -322,6 +417,8 @@ class Escalamiento extends Models implements IModels {
                             <th>Tipo Actividad</th>
                             <th>Estado Orden</th>
                             <th>Descripcion Actividad</th>
+                            <th>Fecha Creación</th>
+                            <th>Comuna</th>
                         </tr>
                     <tbody>
                         <tr>
@@ -334,6 +431,67 @@ class Escalamiento extends Models implements IModels {
                             <td>".$tipoActividad."</td>
                             <td>".$estadoOrden."</td>
                             <td>".$descripcionActividad."</td>
+                            <td>".$fechaCreacion."</td>
+                            <td>".$comuna."</td>
+                        </tr>
+                    </tbody>
+                    s
+
+                </table>            ";
+            return array('success'=>1, 'html'=> $html);
+
+    }
+
+    public function visualizarActividadNoCorresponde($select = '*'){
+        global $http;
+
+        $idActividad            =   $http->request->get('idActividad');
+        $consulta               =   $this->db->select($select, 'escalamientoNoCorresponde',
+                                    "idActividadManual = '$idActividad'", 'limit 1');
+        $idActividad            =   $consulta[0]['idActividadManual'];
+        $rutCliente             =   $consulta[0]['rutCliente'];
+        $fechaCompromiso        =   $consulta[0]['fechaCompromiso'];
+        $canal                  =   $consulta[0]['canal'];
+        $bloque                 =   $consulta[0]['bloque'];
+        $estadoEscalamiento     =   $consulta[0]['estadoEscalamiento'];
+        $tipoActividad          =   $consulta[0]['tipoActividad'];
+        $estadoOrden            =   $consulta[0]['estadoOrden'];
+        $descripcionActividad   =   $consulta[0]['descripcion'];
+        $fechaCreacion          =   $consulta[0]['fechaCreacion'];
+        $comuna                 =   $consulta[0]['comuna'];
+
+         $html="<h3 class='text-center'>
+                 $descripcionActividad
+                 </h3>
+                 <h4>
+                 <table table class='table table-bordered'>
+                    <thead>
+                        <tr>
+                            <th>Id Actividad</th>
+                            <th>Rut Cliente</th>
+                            <th>Fecha Compromiso</th>
+                            <th>Canal</th>
+                            <th>Bloque</th>
+                            <th>Estado Escalamiento</th>
+                            <th>Tipo Actividad</th>
+                            <th>Estado Orden</th>
+                            <th>Descripcion Actividad</th>
+                            <th>Fecha Creación</th>
+                            <th>Comuna</th>
+                        </tr>
+                    <tbody>
+                        <tr>
+                            <td>".$idActividad."</td>
+                            <td>".$rutCliente."</td>
+                            <td>".$fechaCompromiso."</td>
+                            <td>".$canal."</td>
+                            <td>".$bloque."</td>
+                            <td>".$estadoEscalamiento."</td>
+                            <td>".$tipoActividad."</td>
+                            <td>".$estadoOrden."</td>
+                            <td>".$descripcionActividad."</td>
+                            <td>".$fechaCreacion."</td>
+                            <td>".$comuna."</td>
                         </tr>
                     </tbody>
 
@@ -341,9 +499,16 @@ class Escalamiento extends Models implements IModels {
             return array('success'=>1, 'html'=> $html);
 
     }
-
-    public function cambiarEstadoActividad(){
+    /* 
+    TODO:
+    crear funcion de retorno data al cambiar el estado de la actividad
+    */
+    public function cambiarEstadoActividad($select = '*'){
+        global $http;
         return array('success'=>1);
+        
+        $idActividad    =   $http->request->get('idActividad');
+        print_r($idActividad);
     }
 
     //-----------------------------CONEXIÓN BD-------------------------------------------------------

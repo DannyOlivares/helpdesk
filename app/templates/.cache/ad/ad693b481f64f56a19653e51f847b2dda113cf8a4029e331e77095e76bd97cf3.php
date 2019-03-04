@@ -132,6 +132,7 @@ class __TwigTemplate_c016bf9db555db0117f217c5c04db20933b58a21cb1906b4b4045de4eed
                             <li><a data-toggle=\"tab\" href=\"#menu1\" class=\"\" onclick=\"cargarTabla('pendiente');\">Actividades Pendientes</a></li>
                             <li><a data-toggle=\"tab\" href=\"#menu2\" onclick=\"cargarTabla('seguimiento');\">Actividades seguimiento</a></li>
                             <li><a data-toggle=\"tab\" href=\"#menu3\" onclick=\"cargarTabla('finalizadaHoy');\">Actividades Finalizadas Hoy</a></li>
+                            <li><a data-toggle=\"tab\" href=\"#menu3\" onclick=\"cargarTabla('noCorresponde');\">Actividades  no corresponde</a></li>
                         </ul>
                         <div id=\"home\" class=\"tab-pane fade in active\">
                             <div class=\"\">
@@ -153,10 +154,10 @@ class __TwigTemplate_c016bf9db555db0117f217c5c04db20933b58a21cb1906b4b4045de4eed
 ";
     }
 
-    // line 108
+    // line 109
     public function block_appScript($context, array $blocks = array())
     {
-        // line 109
+        // line 110
         echo "    <script src=\"views/app/js/escalamiento/escalamiento.js\" type=\"text/javascript\"></script>
     <script src=\"views/app/template/datatables/jquery.dataTables.min.js\" type=\"text/javascript\"></script>
     <script src=\"https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js\"></script>
@@ -178,7 +179,7 @@ class __TwigTemplate_c016bf9db555db0117f217c5c04db20933b58a21cb1906b4b4045de4eed
 
     public function getDebugInfo()
     {
-        return array (  160 => 109,  157 => 108,  123 => 77,  109 => 66,  95 => 55,  82 => 45,  55 => 20,  52 => 19,  33 => 3,  30 => 2,  11 => 1,);
+        return array (  161 => 110,  158 => 109,  123 => 77,  109 => 66,  95 => 55,  82 => 45,  55 => 20,  52 => 19,  33 => 3,  30 => 2,  11 => 1,);
     }
 
     public function getSourceContext()
@@ -270,6 +271,7 @@ class __TwigTemplate_c016bf9db555db0117f217c5c04db20933b58a21cb1906b4b4045de4eed
                             <li><a data-toggle=\"tab\" href=\"#menu1\" class=\"\" onclick=\"cargarTabla('pendiente');\">Actividades Pendientes</a></li>
                             <li><a data-toggle=\"tab\" href=\"#menu2\" onclick=\"cargarTabla('seguimiento');\">Actividades seguimiento</a></li>
                             <li><a data-toggle=\"tab\" href=\"#menu3\" onclick=\"cargarTabla('finalizadaHoy');\">Actividades Finalizadas Hoy</a></li>
+                            <li><a data-toggle=\"tab\" href=\"#menu3\" onclick=\"cargarTabla('noCorresponde');\">Actividades  no corresponde</a></li>
                         </ul>
                         <div id=\"home\" class=\"tab-pane fade in active\">
                             <div class=\"\">

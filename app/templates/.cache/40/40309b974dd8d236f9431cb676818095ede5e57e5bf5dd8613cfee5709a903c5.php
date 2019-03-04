@@ -96,12 +96,15 @@ class __TwigTemplate_d78983603ee56c0bfc653ffc817daadae53f4ec94f6397bf4a45f1de7b0
                                         <option value=\"\" selected disabled>Seleccione Tipo Actividad</option>
                                         <option value=\"deuda\">Deuda</option>
                                         <option value=\"sinActividad\">Sin Actividad</option>
-                                        <option value=\"adelantamientoOrdenes\">Adelantamiento Ordenes</option>
+                                        <option value=\"adelantamientoActividades\">Adelantamiento ordenes</option>
                                         <option value=\"actividadesPendientesAndes\">Actividades pendientes andes</option>
-                                        <option value=\"reclamoComercial\">Reclamo Comercial</option>
+                                        <option value=\"reclamoComercial\">Reclamo comercial</option>
                                         <option value=\"reagendamientoReiterado\">Reagendamientos reiterados</option>
                                         <option value=\"fechaFuturaLejana\">Fecha futura lejana</option>
                                         <option value=\"fallaSistema\">Falla en el sistema</option>
+                                        <option value=\"derivadaGsa\">Derivada Gsa</option>
+                                        <option value=\"noAgendada\">No agendada</option>
+                                        <option value=\"otros\">Otros</option>
                                     </select>
                             </div>
                             <br>
@@ -119,10 +122,10 @@ class __TwigTemplate_d78983603ee56c0bfc653ffc817daadae53f4ec94f6397bf4a45f1de7b0
     ";
     }
 
-    // line 86
+    // line 89
     public function block_appScript($context, array $blocks = array())
     {
-        // line 87
+        // line 90
         echo "        <script src=\"views/app/js/escalamiento/escalamiento.js\" type=\"text/javascript\"></script>
         <script src=\"//code.jquery.com/ui/1.12.1/jquery-ui.js\"></script>
     ";
@@ -140,7 +143,7 @@ class __TwigTemplate_d78983603ee56c0bfc653ffc817daadae53f4ec94f6397bf4a45f1de7b0
 
     public function getDebugInfo()
     {
-        return array (  126 => 87,  123 => 86,  41 => 7,  38 => 6,  33 => 3,  30 => 2,  11 => 1,);
+        return array (  129 => 90,  126 => 89,  41 => 7,  38 => 6,  33 => 3,  30 => 2,  11 => 1,);
     }
 
     public function getSourceContext()
@@ -209,12 +212,15 @@ class __TwigTemplate_d78983603ee56c0bfc653ffc817daadae53f4ec94f6397bf4a45f1de7b0
                                         <option value=\"\" selected disabled>Seleccione Tipo Actividad</option>
                                         <option value=\"deuda\">Deuda</option>
                                         <option value=\"sinActividad\">Sin Actividad</option>
-                                        <option value=\"adelantamientoOrdenes\">Adelantamiento Ordenes</option>
+                                        <option value=\"adelantamientoActividades\">Adelantamiento ordenes</option>
                                         <option value=\"actividadesPendientesAndes\">Actividades pendientes andes</option>
-                                        <option value=\"reclamoComercial\">Reclamo Comercial</option>
+                                        <option value=\"reclamoComercial\">Reclamo comercial</option>
                                         <option value=\"reagendamientoReiterado\">Reagendamientos reiterados</option>
                                         <option value=\"fechaFuturaLejana\">Fecha futura lejana</option>
                                         <option value=\"fallaSistema\">Falla en el sistema</option>
+                                        <option value=\"derivadaGsa\">Derivada Gsa</option>
+                                        <option value=\"noAgendada\">No agendada</option>
+                                        <option value=\"otros\">Otros</option>
                                     </select>
                             </div>
                             <br>

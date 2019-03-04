@@ -629,7 +629,17 @@ $app->post('/visualizarActividad  ', function() use($app) {
     return $app->json($u->visualizarActividad());
 });
 
+$app->post('/visualizarActividadNoCorresponde  ', function() use($app) {
+    $u = new Model\Escalamiento;
+    return $app->json($u->visualizarActividadNoCorresponde());
+});
+
 $app->post('/cambiarEstadoActividad  ', function() use($app) {
     $u = new Model\Escalamiento;
     return $app->json($u->cambiarEstadoActividad());
+});
+
+$app->post('/actividadesNoCorresponden  ', function() use($app) {
+    $u = new Model\Escalamiento;
+    return $app->json($u->actividadesNoCorresponden());
 });

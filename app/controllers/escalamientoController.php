@@ -28,8 +28,12 @@ class escalamientoController extends Controllers implements IControllers {
             break;
 
             case 'agregarEscalamientoNoCorresponde':
-                echo $this->template->render('escalamiento/agregarEscalamientoNoCorresponde', array(
-                    'id_actividad' => $router->getId()
+
+                $router->setRoute('/mi_nueva_ruta');
+                
+                echo $this->template->render('escalamiento/agregarEscalamientoNoCorresponde', array(                 
+                    'id_actividad'      => $router->getId(),
+                    'nombreRemitente'   => $router->getRoute('/mi_nueva_ruta')
                 ));
             break;
 
