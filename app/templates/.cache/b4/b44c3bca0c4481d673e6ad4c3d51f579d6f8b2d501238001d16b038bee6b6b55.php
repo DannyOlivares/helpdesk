@@ -132,6 +132,8 @@ class __TwigTemplate_ce7a27cff50aedef0720bc84857d4e19d4df6d7f7175720d5fdd2e4632b
                             <li><a data-toggle=\"tab\" href=\"#menu1\" class=\"\" onclick=\"cargarTabla('pendiente');\">Actividades Pendientes</a></li>
                             <li><a data-toggle=\"tab\" href=\"#menu2\" onclick=\"cargarTabla('seguimiento');\">Actividades seguimiento</a></li>
                             <li><a data-toggle=\"tab\" href=\"#menu3\" onclick=\"cargarTabla('finalizadaHoy');\">Actividades Finalizadas Hoy</a></li>
+                            <li><a data-toggle=\"tab\" href=\"#menu3\" onclick=\"cargarTabla('noCorresponde');\">Actividades  no corresponde</a></li>
+                            <li><a data-toggle=\"tab\" href=\"#menu5\" onclick=\"cargarTabla('porVencer');\">Actividades Por Vencer</a></li>
                         </ul>
                         <div id=\"home\" class=\"tab-pane fade in active\">
                             <div class=\"\">
@@ -153,10 +155,10 @@ class __TwigTemplate_ce7a27cff50aedef0720bc84857d4e19d4df6d7f7175720d5fdd2e4632b
 ";
     }
 
-    // line 108
+    // line 110
     public function block_appScript($context, array $blocks = array())
     {
-        // line 109
+        // line 111
         echo "    <script src=\"views/app/js/escalamiento/escalamiento.js\" type=\"text/javascript\"></script>
     <script src=\"views/app/template/datatables/jquery.dataTables.min.js\" type=\"text/javascript\"></script>
     <script src=\"https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js\"></script>
@@ -178,7 +180,7 @@ class __TwigTemplate_ce7a27cff50aedef0720bc84857d4e19d4df6d7f7175720d5fdd2e4632b
 
     public function getDebugInfo()
     {
-        return array (  160 => 109,  157 => 108,  123 => 77,  109 => 66,  95 => 55,  82 => 45,  55 => 20,  52 => 19,  33 => 3,  30 => 2,  11 => 1,);
+        return array (  162 => 111,  159 => 110,  123 => 77,  109 => 66,  95 => 55,  82 => 45,  55 => 20,  52 => 19,  33 => 3,  30 => 2,  11 => 1,);
     }
 
     public function getSourceContext()
@@ -270,6 +272,8 @@ class __TwigTemplate_ce7a27cff50aedef0720bc84857d4e19d4df6d7f7175720d5fdd2e4632b
                             <li><a data-toggle=\"tab\" href=\"#menu1\" class=\"\" onclick=\"cargarTabla('pendiente');\">Actividades Pendientes</a></li>
                             <li><a data-toggle=\"tab\" href=\"#menu2\" onclick=\"cargarTabla('seguimiento');\">Actividades seguimiento</a></li>
                             <li><a data-toggle=\"tab\" href=\"#menu3\" onclick=\"cargarTabla('finalizadaHoy');\">Actividades Finalizadas Hoy</a></li>
+                            <li><a data-toggle=\"tab\" href=\"#menu3\" onclick=\"cargarTabla('noCorresponde');\">Actividades  no corresponde</a></li>
+                            <li><a data-toggle=\"tab\" href=\"#menu5\" onclick=\"cargarTabla('porVencer');\">Actividades Por Vencer</a></li>
                         </ul>
                         <div id=\"home\" class=\"tab-pane fade in active\">
                             <div class=\"\">

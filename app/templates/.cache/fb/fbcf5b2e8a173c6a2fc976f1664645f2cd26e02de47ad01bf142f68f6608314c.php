@@ -37,8 +37,8 @@ class __TwigTemplate_555bd0789d7af3d16f348ee4055ae51bd0b3297f91d6e89f073f2fb31f8
 
         <div class=\"navbar-custom-menu\">
             <ul class=\"nav navbar-nav\">
-                <!-- Messages: style can be found in dropdown.less-->
-                <!-- <li class=\"dropdown messages-menu\">
+                 
+                 <li class=\"dropdown messages-menu\">
                     <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">
                         <i class=\"fa fa-envelope-o\"></i>
                         <span class=\"label label-success\"></span>
@@ -46,70 +46,84 @@ class __TwigTemplate_555bd0789d7af3d16f348ee4055ae51bd0b3297f91d6e89f073f2fb31f8
                     <ul class=\"dropdown-menu\">
                         <li class=\"header\">Tienes 0 mensajes</li>
                         <li>
-                            <!-- inner menu: contains the actual data -->
-                            <!-- <ul class=\"menu\">
+                            
+                             <ul class=\"menu\">
 
                             </ul>
                         </li>
                         <li class=\"footer\"><a href=\"#\">Ver todos los mensajes</a></li>
                     </ul>
-                </li> -->
-                <!-- Notifications: style can be found in dropdown.less -->
-                <!-- <li class=\"dropdown notifications-menu\">
+                </li> 
+               
+                <li class=\"dropdown notifications-menu\">
                     <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">
                         <i class=\"fa fa-bell-o\"></i>
                         <span class=\"label label-warning\"></span>
                     </a>
                     <ul class=\"dropdown-menu\">
                         <li class=\"header\">Tienes 0 notificaciones</li>
-                        <li> -->
-                            <!-- inner menu: contains the actual data -->
-                            <!-- <ul class=\"menu\">
+                        <li> 
+                            
+                            <ul class=\"menu\">
 
                             </ul>
                         </li>
                         <li class=\"footer\"><a href=\"#\">Ver todo</a></li>
                     </ul>
-                </li> -->
-                <!-- Tasks: style can be found in dropdown.less -->
-                <!-- <li class=\"dropdown tasks-menu\">
+                </li> 
+                <li class=\"dropdown notifications-menu\">
+                    <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" onclick=cargarActividades();>
+                        <i class=\"fa fa-eye\"></i>
+                        <span class=\"label label-warning\"></span>
+                    </a>
+                    <ul class=\"dropdown-menu\">
+                        <li class=\"header\">Tienes 0 notificaciones</li>
+                        <li> 
+                            
+                            <ul class=\"menu\">
+                                
+                            </ul>
+                        </li>
+                        <li class=\"footer\"><a href=\"#\">Ver todo</a></li>
+                    </ul>
+                </li> 
+                 <li class=\"dropdown tasks-menu\">
                     <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">
                         <i class=\"fa fa-flag-o\"></i>
                         <span class=\"label label-danger\"></span>
                     </a>
                     <ul class=\"dropdown-menu\">
                         <li class=\"header\">Tienes 0 tareas</li>
-                        <li> -->
-                            <!-- inner menu: contains the actual data -->
-                            <!-- <ul class=\"menu\">
-
+                        <li>                         
+                             <ul class=\"menu\">
+                                
                             </ul>
                         </li>
                         <li class=\"footer\">
                             <a href=\"#\">Ver todas las tareas</a>
                         </li>
                     </ul>
-                </li> -->
+                </li> 
                 <!-- User Account: style can be found in dropdown.less -->
                 <li class=\"dropdown user user-menu\">
                     <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">
                       ";
-        // line 75
+        // line 89
         if ((twig_get_attribute($this->env, $this->getSourceContext(), ($context["owner_user"] ?? null), "foto", array(), "array") == 1)) {
-            // line 76
+            // line 90
             echo "                        <img src=\"views/app/images/avatares/";
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), ($context["owner_user"] ?? null), "name_foto", array(), "array"), "html", null, true);
             echo "\" class=\"user-image\" alt=\"User Image\">
                       ";
         } else {
-            // line 78
+            // line 92
             echo "                        <img src=\"//ssl.gstatic.com/accounts/ui/avatar_2x.png\" class=\"user-image\" alt=\"User Image\">
                       ";
         }
-        // line 80
+        // line 94
         echo "
                         <span class=\"hidden-xs\">";
-        // line 81
+        // line 95
         echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), ($context["owner_user"] ?? null), "name", array(), "array"), "html", null, true);
         echo "</span>
                     </a>
@@ -118,22 +132,22 @@ class __TwigTemplate_555bd0789d7af3d16f348ee4055ae51bd0b3297f91d6e89f073f2fb31f8
                         <li class=\"user-header\">
 
                             ";
-        // line 87
+        // line 101
         if ((twig_get_attribute($this->env, $this->getSourceContext(), ($context["owner_user"] ?? null), "foto", array(), "array") == 1)) {
-            // line 88
+            // line 102
             echo "                              <img src=\"views/app/images/avatares/";
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), ($context["owner_user"] ?? null), "name_foto", array(), "array"), "html", null, true);
             echo "\" class=\"img-circle\" alt=\"User Image\">
                             ";
         } else {
-            // line 90
+            // line 104
             echo "                              <img src=\"//ssl.gstatic.com/accounts/ui/avatar_2x.png\" class=\"img-circle\" alt=\"User Image\">
                             ";
         }
-        // line 92
+        // line 106
         echo "                            <p>
                                 ";
-        // line 93
+        // line 107
         echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), ($context["owner_user"] ?? null), "email", array(), "array"), "html", null, true);
         echo "
                                 <small></small>
@@ -187,7 +201,7 @@ class __TwigTemplate_555bd0789d7af3d16f348ee4055ae51bd0b3297f91d6e89f073f2fb31f8
 
     public function getDebugInfo()
     {
-        return array (  137 => 93,  134 => 92,  130 => 90,  124 => 88,  122 => 87,  113 => 81,  110 => 80,  106 => 78,  100 => 76,  98 => 75,  28 => 8,  19 => 1,);
+        return array (  151 => 107,  148 => 106,  144 => 104,  138 => 102,  136 => 101,  127 => 95,  124 => 94,  120 => 92,  114 => 90,  112 => 89,  28 => 8,  19 => 1,);
     }
 
     public function getSourceContext()
@@ -210,8 +224,8 @@ class __TwigTemplate_555bd0789d7af3d16f348ee4055ae51bd0b3297f91d6e89f073f2fb31f8
 
         <div class=\"navbar-custom-menu\">
             <ul class=\"nav navbar-nav\">
-                <!-- Messages: style can be found in dropdown.less-->
-                <!-- <li class=\"dropdown messages-menu\">
+                 
+                 <li class=\"dropdown messages-menu\">
                     <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">
                         <i class=\"fa fa-envelope-o\"></i>
                         <span class=\"label label-success\"></span>
@@ -219,50 +233,64 @@ class __TwigTemplate_555bd0789d7af3d16f348ee4055ae51bd0b3297f91d6e89f073f2fb31f8
                     <ul class=\"dropdown-menu\">
                         <li class=\"header\">Tienes 0 mensajes</li>
                         <li>
-                            <!-- inner menu: contains the actual data -->
-                            <!-- <ul class=\"menu\">
+                            
+                             <ul class=\"menu\">
 
                             </ul>
                         </li>
                         <li class=\"footer\"><a href=\"#\">Ver todos los mensajes</a></li>
                     </ul>
-                </li> -->
-                <!-- Notifications: style can be found in dropdown.less -->
-                <!-- <li class=\"dropdown notifications-menu\">
+                </li> 
+               
+                <li class=\"dropdown notifications-menu\">
                     <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">
                         <i class=\"fa fa-bell-o\"></i>
                         <span class=\"label label-warning\"></span>
                     </a>
                     <ul class=\"dropdown-menu\">
                         <li class=\"header\">Tienes 0 notificaciones</li>
-                        <li> -->
-                            <!-- inner menu: contains the actual data -->
-                            <!-- <ul class=\"menu\">
+                        <li> 
+                            
+                            <ul class=\"menu\">
 
                             </ul>
                         </li>
                         <li class=\"footer\"><a href=\"#\">Ver todo</a></li>
                     </ul>
-                </li> -->
-                <!-- Tasks: style can be found in dropdown.less -->
-                <!-- <li class=\"dropdown tasks-menu\">
+                </li> 
+                <li class=\"dropdown notifications-menu\">
+                    <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" onclick=cargarActividades();>
+                        <i class=\"fa fa-eye\"></i>
+                        <span class=\"label label-warning\"></span>
+                    </a>
+                    <ul class=\"dropdown-menu\">
+                        <li class=\"header\">Tienes 0 notificaciones</li>
+                        <li> 
+                            
+                            <ul class=\"menu\">
+                                
+                            </ul>
+                        </li>
+                        <li class=\"footer\"><a href=\"#\">Ver todo</a></li>
+                    </ul>
+                </li> 
+                 <li class=\"dropdown tasks-menu\">
                     <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">
                         <i class=\"fa fa-flag-o\"></i>
                         <span class=\"label label-danger\"></span>
                     </a>
                     <ul class=\"dropdown-menu\">
                         <li class=\"header\">Tienes 0 tareas</li>
-                        <li> -->
-                            <!-- inner menu: contains the actual data -->
-                            <!-- <ul class=\"menu\">
-
+                        <li>                         
+                             <ul class=\"menu\">
+                                
                             </ul>
                         </li>
                         <li class=\"footer\">
                             <a href=\"#\">Ver todas las tareas</a>
                         </li>
                     </ul>
-                </li> -->
+                </li> 
                 <!-- User Account: style can be found in dropdown.less -->
                 <li class=\"dropdown user user-menu\">
                     <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">
@@ -321,6 +349,6 @@ class __TwigTemplate_555bd0789d7af3d16f348ee4055ae51bd0b3297f91d6e89f073f2fb31f8
         </div>
     </nav>
 </header>
-", "portal/header.twig", "C:\\xampp\\htdocs\\proyectos\\helpdesk\\app\\templates\\portal\\header.twig");
+", "portal/header.twig", "C:\\xampp\\htdocs\\helpdesk\\app\\templates\\portal\\header.twig");
     }
 }

@@ -64,7 +64,6 @@ class __TwigTemplate_0a363d31d0d4b3aa5e5358642e9b3c821612e02649f0487f74fd5b687a2
         <form id=\"formAgregarEscalamiento\" name=\"formAgregarEscalamiento\">
             <div class=\"row\">
                 <div class=\"col-md-12\">
-                    <div class=\"box\">
                         <div class=\"box-header\">
                             <h3 class=\"box-title\">Agregar Actividad</h3>
                         </div>
@@ -76,24 +75,24 @@ class __TwigTemplate_0a363d31d0d4b3aa5e5358642e9b3c821612e02649f0487f74fd5b687a2
                             </div>
                             <div class=\"col-md-6\">
                                 <label>Usuario:</label><input type=\"text\"   class=\"form-control\"  value=\"";
-        // line 44
+        // line 43
         echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), ($context["owner_user"] ?? null), "name", array(), "array"), "html", null, true);
         echo " \" disabled>
                                 <input type=\"text\" name=\"nombreUsuario\" id=\"nombreUsuario\" class=\"form-control\"  value=\"";
-        // line 45
+        // line 44
         echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), ($context["owner_user"] ?? null), "name", array(), "array"), "html", null, true);
         echo "\" style=\"display:none\">
                             </div>
                             <div class=\"col-md-6\">
                                   <label>Id Actividad:</label>
                                   <input type=\"text\" name=\"idActividadManual\" id=\"idActividadManual\" class=\"form-control\" placeholder=\"Ingrese Id Actividad\" value=\"";
-        // line 49
+        // line 48
         echo twig_escape_filter($this->env, ($context["id_actividad"] ?? null), "html", null, true);
         echo "\" readonly>
                             </div>
                             <div class=\"col-md-6\">
                                 <label>Fecha Ingreso Actividad:</label><input type=\"DATE\" name=\"fecha\" id=\"fecha\" class=\"form-control\" value=\"";
-        // line 52
+        // line 51
         echo twig_escape_filter($this->env, twig_date_format_filter($this->env, "now", "Y-m-d"), "html", null, true);
         echo "\">
                             </div>
@@ -110,6 +109,11 @@ class __TwigTemplate_0a363d31d0d4b3aa5e5358642e9b3c821612e02649f0487f74fd5b687a2
                                     <input type=\"date\" name=\"fechaCompromiso\" id=\"fechaCompromiso\" class=\"form-control fechaCompromiso\" placeholder=\"Ingrese Descripción Actividad\" >
                             </div>
                             <div class=\"col-md-6\">
+                                <label>Hora Compromiso:</label>
+                                <input type=\"time\" name=\"horaCompromiso\" value=\"\" id=\"horaCompromiso\" class=\"form-control\" placeholder=\"Ingrese Hora Compromiso\">
+                            </div>
+                            
+                            <div class=\"col-md-6\">
                                 <label>Canal:</label>
                                     <input type=\"text\" name=\"canal\" id=\"canal\" class=\"form-control canal\" placeholder=\"Ingrese canal\" >
                             </div>
@@ -117,10 +121,10 @@ class __TwigTemplate_0a363d31d0d4b3aa5e5358642e9b3c821612e02649f0487f74fd5b687a2
                                 <label>Bloque:</label>
                                 <select class=\"form-control bloque\" name=\"bloque\" id=\"bloque\">
                                     <option value=\"\"selected disabled>Seleccione Bloque</option>
-                                    <option value=\"09-13\">09-13</option>
+                                    <option value=\"09-13\">10-13</option>
                                     <option value=\"13-16\">13-16</option>
                                     <option value=\"16-19\">16-19</option>
-                                    <option value=\"19-21\">19-21</option>
+                                    <option value=\"19-21\">19-22</option>
                                 </select>
                             </div>
                             <div class=\"col-md-6\">
@@ -128,7 +132,7 @@ class __TwigTemplate_0a363d31d0d4b3aa5e5358642e9b3c821612e02649f0487f74fd5b687a2
                                 <input type=\"text\" name=\"estadoEscalamiento\" value=\"\" id=\"estadoEscalamiento\" class=\"form-control\" placeholder=\"Ingrese estado escalamiento\">
                             </div>
                             <input type=\"date\" name=\"fechaCreacion\" class=\"fechaCreacion\" id=\"fechaCreacion\" value=\"";
-        // line 84
+        // line 88
         echo twig_escape_filter($this->env, twig_date_format_filter($this->env, "now", "Y-m-d"), "html", null, true);
         echo "\" hidden>
 
@@ -153,6 +157,12 @@ class __TwigTemplate_0a363d31d0d4b3aa5e5358642e9b3c821612e02649f0487f74fd5b687a2
                                     </select>
                             </div>
 
+                            <div class=\"col-md-6\">
+                                <input type=\"hidden\" name=\"fechaFinalizacion\" id=\"fechaFinalizacion\" class=\"form-control fechaFinalizacion\" placeholder=\"Ingrese comuna Actividad\" value=\"";
+        // line 112
+        echo twig_escape_filter($this->env, twig_date_format_filter($this->env, "now", "Y-m-d"), "html", null, true);
+        echo "\" >
+                            </div>
 
                                 <br>
                             <div class=\"col-md-12\">
@@ -173,10 +183,10 @@ class __TwigTemplate_0a363d31d0d4b3aa5e5358642e9b3c821612e02649f0487f74fd5b687a2
     ";
     }
 
-    // line 125
+    // line 132
     public function block_appScript($context, array $blocks = array())
     {
-        // line 126
+        // line 133
         echo "        <script src=\"views/app/js/escalamiento/escalamiento.js\" type=\"text/javascript\"></script>
         <script src=\"//code.jquery.com/ui/1.12.1/jquery-ui.js\"></script>
     ";
@@ -194,7 +204,7 @@ class __TwigTemplate_0a363d31d0d4b3aa5e5358642e9b3c821612e02649f0487f74fd5b687a2
 
     public function getDebugInfo()
     {
-        return array (  180 => 126,  177 => 125,  132 => 84,  97 => 52,  91 => 49,  84 => 45,  80 => 44,  41 => 7,  38 => 6,  33 => 3,  30 => 2,  11 => 1,);
+        return array (  190 => 133,  187 => 132,  163 => 112,  136 => 88,  96 => 51,  90 => 48,  83 => 44,  79 => 43,  41 => 7,  38 => 6,  33 => 3,  30 => 2,  11 => 1,);
     }
 
     public function getSourceContext()
@@ -231,7 +241,6 @@ class __TwigTemplate_0a363d31d0d4b3aa5e5358642e9b3c821612e02649f0487f74fd5b687a2
         <form id=\"formAgregarEscalamiento\" name=\"formAgregarEscalamiento\">
             <div class=\"row\">
                 <div class=\"col-md-12\">
-                    <div class=\"box\">
                         <div class=\"box-header\">
                             <h3 class=\"box-title\">Agregar Actividad</h3>
                         </div>
@@ -265,6 +274,11 @@ class __TwigTemplate_0a363d31d0d4b3aa5e5358642e9b3c821612e02649f0487f74fd5b687a2
                                     <input type=\"date\" name=\"fechaCompromiso\" id=\"fechaCompromiso\" class=\"form-control fechaCompromiso\" placeholder=\"Ingrese Descripción Actividad\" >
                             </div>
                             <div class=\"col-md-6\">
+                                <label>Hora Compromiso:</label>
+                                <input type=\"time\" name=\"horaCompromiso\" value=\"\" id=\"horaCompromiso\" class=\"form-control\" placeholder=\"Ingrese Hora Compromiso\">
+                            </div>
+                            
+                            <div class=\"col-md-6\">
                                 <label>Canal:</label>
                                     <input type=\"text\" name=\"canal\" id=\"canal\" class=\"form-control canal\" placeholder=\"Ingrese canal\" >
                             </div>
@@ -272,10 +286,10 @@ class __TwigTemplate_0a363d31d0d4b3aa5e5358642e9b3c821612e02649f0487f74fd5b687a2
                                 <label>Bloque:</label>
                                 <select class=\"form-control bloque\" name=\"bloque\" id=\"bloque\">
                                     <option value=\"\"selected disabled>Seleccione Bloque</option>
-                                    <option value=\"09-13\">09-13</option>
+                                    <option value=\"09-13\">10-13</option>
                                     <option value=\"13-16\">13-16</option>
                                     <option value=\"16-19\">16-19</option>
-                                    <option value=\"19-21\">19-21</option>
+                                    <option value=\"19-21\">19-22</option>
                                 </select>
                             </div>
                             <div class=\"col-md-6\">
@@ -305,6 +319,9 @@ class __TwigTemplate_0a363d31d0d4b3aa5e5358642e9b3c821612e02649f0487f74fd5b687a2
                                     </select>
                             </div>
 
+                            <div class=\"col-md-6\">
+                                <input type=\"hidden\" name=\"fechaFinalizacion\" id=\"fechaFinalizacion\" class=\"form-control fechaFinalizacion\" placeholder=\"Ingrese comuna Actividad\" value=\"{{ \"now\"|date(\"Y-m-d\") }}\" >
+                            </div>
 
                                 <br>
                             <div class=\"col-md-12\">

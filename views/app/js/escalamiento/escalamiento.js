@@ -81,7 +81,10 @@ function crearEncargadoFiltrar() {
           buttons: {
             ok: function() {
               location.href =
-                "escalamiento/agregarEscalamientoNoCorresponde/" + json.idActv+"/"+json.nombreRemitente;
+                "escalamiento/agregarEscalamientoNoCorresponde/" +
+                json.idActv +
+                "/" +
+                json.nombreRemitente;
             }
           }
         });
@@ -222,11 +225,11 @@ function cargarTabla(tipo) {
             aTargets: [8],
             mRender: function(data, type, full) {
               return (
-                '<input type="button" class="btn btn-success" onclick="cambiarEstadoActividad(' +
+                '<input type="button" class="btn btn-success" onclick="cambiarEstadoActividad(\''+
                 full[3] +
-                ')" value="Estado"> <input type="button" class="btn btn-info" onclick="visualizarActividad(' +
+                '\')" value="Estado"> <input type="button" class="btn btn-info" onclick="visualizarActividad(\''+
                 full[3] +
-                ')" value="Visualizar">'
+                '\')" value="Visualizar">'
               );
             }
           }
@@ -294,11 +297,11 @@ function cargarTabla(tipo) {
 
             mRender: function(data, type, full) {
               return (
-                '<input type="button" class="btn btn-success" onclick="cambiarEstadoActividad(' +
+                '<input type="button" class="btn btn-success" onclick="cambiarEstadoActividad(\''+
                 full[3] +
-                ')" value="Estado"> <input type="button" class="btn btn-info" onclick="visualizarActividad(' +
+                '\')" value="Estado"> <input type="button" class="btn btn-info" onclick="visualizarActividad(\''+
                 full[3] +
-                ')" value="Visualizar">'
+                '\')" value="Visualizar">'
               );
             }
           }
@@ -365,11 +368,11 @@ function cargarTabla(tipo) {
             aTargets: [8],
             mRender: function(data, type, full) {
               return (
-                '<input type="button" class="btn btn-success" onclick="cambiarEstadoActividad(' +
+                '<input type="button" class="btn btn-success" onclick="cambiarEstadoActividad(\''+
                 full[3] +
-                ')" value="Estado"> <input type="button" class="btn btn-info" onclick="visualizarActividad(' +
+                '\')" value="Estado"> <input type="button" class="btn btn-info" onclick="visualizarActividad(\''+
                 full[3] +
-                ')" value="Visualizar">'
+                '\')" value="Visualizar">'
               );
             }
           }
@@ -437,23 +440,23 @@ function cargarTabla(tipo) {
           }
         ],
         aoColumnDefs: [
-            {
-              aTargets: [8],
-              mRender: function(data, type, full) {
-                return (
-                  '<input type="button" class="btn btn-success" onclick="cambiarEstadoActividad(' +
-                  full[3] +
-                  ')" value="Estado"> <input type="button" class="btn btn-info" onclick="visualizarActividad(' +
-                  full[3] +
-                  ')" value="Visualizar">'
-                );
-              }
+          {
+            aTargets: [8],
+            mRender: function(data, type, full) {
+              return (
+                '<input type="button" class="btn btn-success" onclick="cambiarEstadoActividad(\''+
+                full[3] +
+                '\')" value="Estado"> <input type="button" class="btn btn-info" onclick="visualizarActividad(\''+
+                full[3] +
+                '\')" value="Visualizar">'
+              );
             }
-          ]
+          }
+        ]
       });
       break;
 
-      case "noCorresponde":
+    case "noCorresponde":
       $("#home")
         .find("h3")
         .text(" Detalle Actividades no corresponden");
@@ -514,26 +517,103 @@ function cargarTabla(tipo) {
           }
         ],
         aoColumnDefs: [
-            {
-              aTargets: [9],
-              mRender: function(data, type, full) {
-                
-                return (
-                  
-                  '<input type="button" class="btn btn-success" onclick="cambiarEstadoActividad(' +
-                  full[0] +
-                  ')" value="Estado"> <input type="button" class="btn btn-info" onclick="visualizarActividadNoCorresponde(' +
-                  full[0] +
-                  ')" value="Visualizar">'
-                );
-              }
+          {
+            aTargets: [9],
+            mRender: function(data, type, full) {
+              return (
+                '<input type="button" class="btn btn-success" onclick="cambiarEstadoActividadNoCorresponde(\''+
+                full[0] +
+                '\')" value="Estado"> <input type="button" class="btn btn-info" onclick="visualizarActividadNoCorresponde(\''+
+                full[0] +
+                '\')" value="Visualizar">'
+              );
             }
-          ]
+          }
+        ]
       });
+      break;
+    
+    
+ 
+case "porVencer":
+$("#home")
+    .find("h3")
+    .text(".     Detalle Actividades por Vencer");
+var cols = new Array(
+    "Fecha Ingreso",
+    "Fecha Compromiso",
+    "Rut",
+    "Id Actividad",
+    "Comuna",
+    "Remitente",
+    "Bloque",
+    "Tipo de Actividad",
+    "Hora compromiso",
+    "Acciones"
+);
+$.each(cols, function(index, value) {
+    $("#t1")
+        .find("thead > tr")
+        .append("<th>" + value + "</th>");
+});
+$("#t1").dataTable({
+    ajax: {
+        url: "api/actividadesPorVencer",
+        type: "POST"
+  },
+  language: {
+    search: "Buscar:",
+        zeroRecords: "No hay actividades por vencer",
+    info: "Mostrando _END_ Registros, de un total de _TOTAL_ ",
+        loadingRecords: "Cargando...",
+    processing: "Procesando...",
+    infoEmpty: "No hay entradas para mostrar",
+    lengthMenu: "Mostrar _MENU_ Filas",
+
+    columns: [
+        { data: "nombre" },
+        { defaultContent: "<button>Editar</button>" }
+    ],
+
+    paginate: {
+        first: "Primera",
+        last: "Ultima",
+        next: "Siguiente",
+        previous: "Anterior"
+    }
+  },
+        autoWidth: true,
+        scrollX: true,
+        bSort: false,
+        bInfo: false,
+        iDisplayLength: 8,
+        pagingType: "full_numbers",
+        dom: "Bfrtip",
+        buttons: [
+    {
+        extend: "excel",
+        text: ""
+    }
+  ],
+  aoColumnDefs: [
+    {
+        aTargets: [9],
+        mRender: function(data, type, full) {
+        return (
+            '<input type="button" class="btn btn-success" onclick="cambiarEstadoActividadNoCorresponde(\''+
+            full[0] +
+            '\')" value="Estado"> <input type="button" class="btn btn-info" onclick="visualizarActividadNoCorresponde('+
+            full[0] +
+            ')" value="Visualizar">'
+        );
+        }
+    }
+  ]
+});
       break;
 
     default:
-      break;
+    break;
   }
 }
 
@@ -641,84 +721,73 @@ Funcion encargada de modificar estado actividad
 */
 
 function cambiarEstadoActividad(idActividad) {
+  
   var formData = new FormData();
   formData.append("idActividad", idActividad);
-  $.ajax({
-    type: "POST",
-    url: "api/cambiarEstadoActividad",
-    contentType: false,
-    processData: false,
-    data: formData,
-    // success: function(data) {
-    //     if (data.success == 1) {
-    //       $.confirm({
-    //         escapeKey: "formSubmit",
-    //         icon: "glyphicon glyphicon-list-alt",
-    //         title: "Cambiar Estado",
-    //         columnClass: "col-lg-12",
-    //         content: data.html,
-    //         type: "green",
-    //         buttons: {
-    //           formSubmit: {
-    //             text: "Aceptar",
-    //             btnClass: "btn-default",
-    //             action: function() {}
-    //           }
-    //         }
-    //       });
-    //     }
-
-
-    success: function(data) {
-      if (data.success == 1) {
+  $.confirm({
+    title: "Desea cambiar el estado",
+    content:
+      '<form class="form-horizontal" method="POST">' +
+      "<div>" +
+      "<label>Ingrese Cambio De Estado</label>" +
+      "<select id='estados' class='form-control'><option value='finalizada'>Finalizada</option><option value='pendiente'>Pendiente</option><option value='seguimiento'>Seguimiento</option></select>" +
+      "</div>" +
+      "</form>",
+    buttons: {
+      Confirmar: function() {
+        var x = $("#estados option:selected").val();
         $.confirm({
-          title: "Mi Estado",
-          content:
-            "" +
-            '<form class="formName">' +
-            '<div class="form-group">' +
-            "<label>Ingrese Cambio de estado</label>" +
-            '<table style="table"><thead><th>hola</th><th>chao</th><th>hola</th><th>chao</th><th></th></thead><tbody><tr><td><input></input></td></tr><tr><td><input></input></td></tr><tr><td><input></input></td></tr><tr><td><input></input></td></t></tbody></table>' +
-            '<button onclick=cargarActividades()>Enviar</button>'+
-            "</div>" +
-            "</form>"
-          // buttons: {
-          //   Confirmar: function() {
-          //     $.alert("Confirmado!");
-          //   },
-          //   Cancelar: function() {
-          //     $.alert("Cancelado!");
-          //   },
-          //   brake: function() {
-          //     $.alert("brake!");
-          //   },
-          //   somethingElse: {
-          //     text: "Something else",
-          //     btnClass: "btn-blue",
-          //     keys: ["enter", "shift"],
-          //     action: function() {
-          //       $.alert("Something else?");
-          //     }
-          //   }
-          // }
-        });
-      } 
-    
-        else {
-        $.confirm({
-          escapeKey: "formSubmit",
-          icon: "glyphicon glyphicon-remove",
-          title: "Detalle Actividad",
-          content: "<h4>Error al visualizar Actividad</h4>",
-          type: "red",
+          title: "Seguro que desea Realizar este cambio?",
+          content: "La actividad cambiara a estado " + x,
           buttons: {
-            formSubmit: {
-              text: "Aceptar",
-              btnClass: "btn-green",
-              action: function() {}
+            Cancelar: function() {
+              $.alert("Acaba de cancelar los cambios");
+              location.reload();
+            },
+            confirmar: function() {
+              formData.append("estado", x),
+                $.ajax({
+                  type: "POST",
+                  url: "api/cambiarEstadoActividad",
+                  contentType: false,
+                  processData: false,
+                  data: formData,
+                  success: function(data) {
+                    if (data.success == 1) {
+                      $.confirm({
+                        title: "Cambio Exitoso",
+                        content: "",
+
+                        buttons: {
+                          Ok: function() {
+                            location.reload();
+                          }
+                        }
+                      });
+                    } else {
+                      $.confirm({
+                        escapeKey: "formSubmit",
+                        icon: "glyphicon glyphicon-remove",
+                        title: "Detalle Actividad",
+                        content: "<h4>Error al modificar actividad</h4>",
+                        type: "red",
+                        buttons: {
+                          formSubmit: {
+                            text: "Aceptar",
+                            btnClass: "btn-green",
+                            action: function() {}
+                          }
+                        }
+                      });
+                    }
+                  }
+                });
             }
           }
         });
+      },
+      Rechazar: function() {
+        $.alert("Ha rechazado el cambio");
       }
     }
   });
@@ -726,8 +795,76 @@ function cambiarEstadoActividad(idActividad) {
 
 
 
-function cargarActividades() {
-  console.log("hola");
+function cambiarEstadoActividadNoCorresponde(idActividad) {
+    var formData = new FormData();
+    formData.append("idActividad", idActividad);
+    $.confirm({
+      title: "Desea cambiar el estado",
+      content:
+        '<form class="form-horizontal" method="POST">' +
+        "<div>" +
+        "<label>Ingrese Cambio De Estado</label>" +
+        "<select id='estados' class='form-control'><option value='finalizada'>Finalizada</option><option value='pendiente'>Pendiente</option><option value='seguimiento'>Seguimiento</option></select>" +
+        "</div>" +
+        "</form>",
+      buttons: {
+        Confirmar: function() {
+          var x = $("#estados option:selected").val();
+          $.confirm({
+            title: "Seguro que desea Realizar este cambio?",
+            content: "La actividad cambiara a estado " + x,
+            buttons: {
+              Cancelar: function() {
+                $.alert("Acaba de cancelar los cambios");
+                location.reload();
+              },
+              confirmar: function() {
+                formData.append("estado", x),
+                  $.ajax({
+                    type: "POST",
+                    url: "api/cambiarEstadoActividadNoCorresponde",
+                    contentType: false,
+                    processData: false,
+                    data: formData,
+                    success: function(data) {
+                      if (data.success == 1) {
+                        $.confirm({
+                          title: "Cambio Exitoso",
+                          content: "",
+  
+                          buttons: {
+                            Ok: function() {
+                              location.reload();
+                            }
+                          }
+                        });
+                      } else {
+                        $.confirm({
+                          escapeKey: "formSubmit",
+                          icon: "glyphicon glyphicon-remove",
+                          title: "Detalle Actividad",
+                          content: "<h4>Error al modificar actividad</h4>",
+                          type: "red",
+                          buttons: {
+                            formSubmit: {
+                              text: "Aceptar",
+                              btnClass: "btn-green",
+                              action: function() {}
+                            }
+                          }
+                        });
+                      }
+                    }
+                  });
+              }
+            }
+          });
+        },
+        Rechazar: function() {
+          $.alert("Ha rechazado el cambio");
+        }
+      }
+    });
 }
 
 $(document).ready(function() {

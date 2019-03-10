@@ -109,6 +109,11 @@ class __TwigTemplate_8d32948712147076bc11bc56a0247b25b86eac83a647498b61c991f40e5
                                     <input type=\"date\" name=\"fechaCompromiso\" id=\"fechaCompromiso\" class=\"form-control fechaCompromiso\" placeholder=\"Ingrese Descripción Actividad\" >
                             </div>
                             <div class=\"col-md-6\">
+                                <label>Hora Compromiso:</label>
+                                <input type=\"time\" name=\"horaCompromiso\" value=\"\" id=\"horaCompromiso\" class=\"form-control\" placeholder=\"Ingrese Hora Compromiso\">
+                            </div>
+                            
+                            <div class=\"col-md-6\">
                                 <label>Canal:</label>
                                     <input type=\"text\" name=\"canal\" id=\"canal\" class=\"form-control canal\" placeholder=\"Ingrese canal\" >
                             </div>
@@ -127,7 +132,7 @@ class __TwigTemplate_8d32948712147076bc11bc56a0247b25b86eac83a647498b61c991f40e5
                                 <input type=\"text\" name=\"estadoEscalamiento\" value=\"\" id=\"estadoEscalamiento\" class=\"form-control\" placeholder=\"Ingrese estado escalamiento\">
                             </div>
                             <input type=\"date\" name=\"fechaCreacion\" class=\"fechaCreacion\" id=\"fechaCreacion\" value=\"";
-        // line 83
+        // line 88
         echo twig_escape_filter($this->env, twig_date_format_filter($this->env, "now", "Y-m-d"), "html", null, true);
         echo "\" hidden>
 
@@ -154,7 +159,7 @@ class __TwigTemplate_8d32948712147076bc11bc56a0247b25b86eac83a647498b61c991f40e5
 
                             <div class=\"col-md-6\">
                                 <input type=\"hidden\" name=\"fechaFinalizacion\" id=\"fechaFinalizacion\" class=\"form-control fechaFinalizacion\" placeholder=\"Ingrese comuna Actividad\" value=\"";
-        // line 107
+        // line 112
         echo twig_escape_filter($this->env, twig_date_format_filter($this->env, "now", "Y-m-d"), "html", null, true);
         echo "\" >
                             </div>
@@ -178,10 +183,10 @@ class __TwigTemplate_8d32948712147076bc11bc56a0247b25b86eac83a647498b61c991f40e5
     ";
     }
 
-    // line 127
+    // line 132
     public function block_appScript($context, array $blocks = array())
     {
-        // line 128
+        // line 133
         echo "        <script src=\"views/app/js/escalamiento/escalamiento.js\" type=\"text/javascript\"></script>
         <script src=\"//code.jquery.com/ui/1.12.1/jquery-ui.js\"></script>
     ";
@@ -199,7 +204,7 @@ class __TwigTemplate_8d32948712147076bc11bc56a0247b25b86eac83a647498b61c991f40e5
 
     public function getDebugInfo()
     {
-        return array (  185 => 128,  182 => 127,  158 => 107,  131 => 83,  96 => 51,  90 => 48,  83 => 44,  79 => 43,  41 => 7,  38 => 6,  33 => 3,  30 => 2,  11 => 1,);
+        return array (  190 => 133,  187 => 132,  163 => 112,  136 => 88,  96 => 51,  90 => 48,  83 => 44,  79 => 43,  41 => 7,  38 => 6,  33 => 3,  30 => 2,  11 => 1,);
     }
 
     public function getSourceContext()
@@ -268,6 +273,11 @@ class __TwigTemplate_8d32948712147076bc11bc56a0247b25b86eac83a647498b61c991f40e5
                                 <label>Fecha Compromiso:</label>
                                     <input type=\"date\" name=\"fechaCompromiso\" id=\"fechaCompromiso\" class=\"form-control fechaCompromiso\" placeholder=\"Ingrese Descripción Actividad\" >
                             </div>
+                            <div class=\"col-md-6\">
+                                <label>Hora Compromiso:</label>
+                                <input type=\"time\" name=\"horaCompromiso\" value=\"\" id=\"horaCompromiso\" class=\"form-control\" placeholder=\"Ingrese Hora Compromiso\">
+                            </div>
+                            
                             <div class=\"col-md-6\">
                                 <label>Canal:</label>
                                     <input type=\"text\" name=\"canal\" id=\"canal\" class=\"form-control canal\" placeholder=\"Ingrese canal\" >

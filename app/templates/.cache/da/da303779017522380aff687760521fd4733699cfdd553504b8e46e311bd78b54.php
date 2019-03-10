@@ -153,13 +153,17 @@ class __TwigTemplate_ad9286a067c5cd8b450a5c4c8508480e2ea387b2c0af6f0f246be892c29
                                 <label>Comuna:</label>
                                 <input type=\"text\" name=\"comuna\" value=\"\" id=\"comuna\" class=\"form-control\" placeholder=\"Ingrese comuna\">
                             </div>
+                            <div class=\"col-md-6\">
+                                <label>Hora Compromiso:</label>
+                                <input type=\"time\" name=\"horaCompromiso\" value=\"\" id=\"horaCompromiso\" class=\"form-control horaCompromiso\" placeholder=\"Ingrese Hora Compromiso\">
+                            </div>
                             <div class=\"col-md-12\">
                                 <label>Descripción:</label>
                                 <textarea name=\"descripcionActividad\" id=\"descripcionActividad\" cols=\"30\" rows=\"3\" class=\"form-control\"></textarea>
                             </div>
                             <div class=\"col-md-6\">
                                 <input type=\"hidden\" name=\"fechaFinalizacion\" id=\"fechaFinalizacion\" class=\"form-control fechaFinalizacion\" placeholder=\"\" value=\"";
-        // line 112
+        // line 116
         echo twig_escape_filter($this->env, twig_date_format_filter($this->env, "now", "Y-m-d"), "html", null, true);
         echo "\" >
                             </div>
@@ -177,10 +181,10 @@ class __TwigTemplate_ad9286a067c5cd8b450a5c4c8508480e2ea387b2c0af6f0f246be892c29
     ";
     }
 
-    // line 126
+    // line 130
     public function block_appScript($context, array $blocks = array())
     {
-        // line 127
+        // line 131
         echo "        <script src=\"views/app/js/escalamiento/escalamiento.js\" type=\"text/javascript\"></script>
         <script src=\"//code.jquery.com/ui/1.12.1/jquery-ui.js\"></script>
     ";
@@ -198,7 +202,7 @@ class __TwigTemplate_ad9286a067c5cd8b450a5c4c8508480e2ea387b2c0af6f0f246be892c29
 
     public function getDebugInfo()
     {
-        return array (  184 => 127,  181 => 126,  163 => 112,  108 => 60,  97 => 52,  91 => 49,  84 => 45,  80 => 44,  41 => 7,  38 => 6,  33 => 3,  30 => 2,  11 => 1,);
+        return array (  188 => 131,  185 => 130,  167 => 116,  108 => 60,  97 => 52,  91 => 49,  84 => 45,  80 => 44,  41 => 7,  38 => 6,  33 => 3,  30 => 2,  11 => 1,);
     }
 
     public function getSourceContext()
@@ -308,6 +312,10 @@ class __TwigTemplate_ad9286a067c5cd8b450a5c4c8508480e2ea387b2c0af6f0f246be892c29
                             <div class=\"col-md-6\">
                                 <label>Comuna:</label>
                                 <input type=\"text\" name=\"comuna\" value=\"\" id=\"comuna\" class=\"form-control\" placeholder=\"Ingrese comuna\">
+                            </div>
+                            <div class=\"col-md-6\">
+                                <label>Hora Compromiso:</label>
+                                <input type=\"time\" name=\"horaCompromiso\" value=\"\" id=\"horaCompromiso\" class=\"form-control horaCompromiso\" placeholder=\"Ingrese Hora Compromiso\">
                             </div>
                             <div class=\"col-md-12\">
                                 <label>Descripción:</label>

@@ -48,6 +48,7 @@ class Escalamiento extends Models implements IModels {
             $descripcionActividad           = $http->request->get('descripcionActividad');
             $fechaCreacion                  = $http->request->get('fechaCreacion');
             $comuna                         = $http->request->get('comuna');
+            $horaCompromiso                 = $http->request->get('horaCompromiso');
 
             $validar = [
                 "Id_Actividad_Manual"       => $idActividadManual,
@@ -62,7 +63,8 @@ class Escalamiento extends Models implements IModels {
                 "fechaFinalizacion"         => $fechaFinalizacion,
                 "descripcionActividad"      => $descripcionActividad,
                 "fechaCreacion"             => $fechaCreacion,
-                "comuna"                    => $comuna
+                "comuna"                    => $comuna,
+                "horaCompromiso"            => $horaCompromiso
             ];
 
             foreach ($validar as $i => $value) {
@@ -89,7 +91,8 @@ class Escalamiento extends Models implements IModels {
                                                     fechaFinalizacion,
                                                     descripcionActividad,
                                                     fechaCreacion,
-                                                    comuna
+                                                    comuna,
+                                                    horaCompromiso
 
             )value(
                                                     '$idActividadManual',
@@ -104,7 +107,8 @@ class Escalamiento extends Models implements IModels {
                                                     '$fechaFinalizacion',
                                                     '$descripcionActividad',
                                                     '$fechaCreacion',
-                                                    '$comuna'
+                                                    '$comuna',
+                                                    '$horaCompromiso'
                                                     )";
 
                 $result     =   $this->db->query_select($sql);
@@ -127,7 +131,8 @@ class Escalamiento extends Models implements IModels {
                                                         fechaFinalizacion,
                                                         descripcionActividad,
                                                         fechaCreacion,
-                                                        comuna
+                                                        comuna,
+                                                        horaCompromiso
 
                 )value(
                                                         '$idActividadManual',
@@ -142,7 +147,8 @@ class Escalamiento extends Models implements IModels {
                                                         'pendienteFinalizar',
                                                         '$descripcionActividad',
                                                         '$fechaCreacion',
-                                                        '$comuna'
+                                                        '$comuna',
+                                                        '$horaCompromiso'
                                                         )";
 
             $result     =   $this->db->query_select($sql);
@@ -230,8 +236,9 @@ class Escalamiento extends Models implements IModels {
         $estadoEscalamiento     =   $http->request->get('estadoEscalamiento');
         $tipoActividad          =   $http->request->get('selectTipoActividad');
         $estadoOrden            =   $http->request->get('selectEstadoOrden');
-        $fechaFinalizacion      =   '19/09/10';
+        $fechaFinalizacion      =   $http->request->get('fechaFinalizacion');
         $comuna                 =   $http->request->get('comuna');
+        $horaCompromiso         =   $http->request->get('horaCompromiso');
 
 
 
@@ -248,7 +255,9 @@ class Escalamiento extends Models implements IModels {
                 'estadoEscalamiento'    =>   $estadoEscalamiento,
                 'tipoActividad'         =>   $tipoActividad,
                 'estadoOrden'           =>   $estadoOrden,
-                'comuna'                =>   $comuna
+                'comuna'                =>   $comuna,
+                'fechaFinalizacion'     =>   $fechaFinalizacion,
+                'horaCompromiso'        =>   $horaCompromiso
         ];
 
         foreach ($validar as $i => $value) {
@@ -271,7 +280,8 @@ class Escalamiento extends Models implements IModels {
                                 comuna,
                                 descripcion,
                                 nombreRemitente,
-                                idActividadManual
+                                idActividadManual,
+                                horaCompromiso
 
             )value(             '$nombreUsuario',
                                 '$fechaCreacion',
@@ -286,7 +296,8 @@ class Escalamiento extends Models implements IModels {
                                 '$comuna',
                                 '$descripcionActividad',
                                 '$nombreRemitente',
-                                '$idActividad'
+                                '$idActividad',
+                                '$horaCompromiso'
             )";
 
             $result             =   $this->db->query_select($sql);
@@ -351,11 +362,13 @@ class Escalamiento extends Models implements IModels {
     }
 
     public function actividadesAll(){
-        $sql = "SELECT DATE_FORMAT(fechaCreacion, '%d-%m-%Y'), DATE_FORMAT(fechaCompromiso, '%d-%m-%Y'), rutCliente, idActividadManual, e.comuna, nombreRemitente, bloque, tipoActividad
-                FROM escalamientoremitente e RIGHT JOIN escalamientocorresponde c ON e.idActividadIngresar = c.idActividadManual";
-        $result = $this->db->query_select($sql);
+        
+            $sql = "SELECT DATE_FORMAT(fechaCreacion, '%d-%m-%Y'), DATE_FORMAT(fechaCompromiso, '%d-%m-%Y'), c. rutCliente, c.idActividadManual, e.comuna, nombreRemitente, bloque, tipoActividad
+                    FROM escalamientoremitente e RIGHT JOIN escalamientocorresponde c ON e.idActividadIngresar = c.idActividadManual";
+                    $result = $this->db->query_select($sql);
         
         return array( 'data' => $result);
+        
     }
 
     //-----------------------------FIN TRAER TODAS LAS ACTIVIDADES-----------------------------------------------
@@ -435,8 +448,6 @@ class Escalamiento extends Models implements IModels {
                             <td>".$comuna."</td>
                         </tr>
                     </tbody>
-                    s
-
                 </table>            ";
             return array('success'=>1, 'html'=> $html);
 
@@ -461,7 +472,7 @@ class Escalamiento extends Models implements IModels {
         $comuna                 =   $consulta[0]['comuna'];
 
          $html="<h3 class='text-center'>
-                 $descripcionActividad
+                ".$descripcionActividad."
                  </h3>
                  <h4>
                  <table table class='table table-bordered'>
@@ -504,11 +515,135 @@ class Escalamiento extends Models implements IModels {
     crear funcion de retorno data al cambiar el estado de la actividad
     */
     public function cambiarEstadoActividad($select = '*'){
-        global $http;
-        return array('success'=>1);
-        
+        global $http;   
         $idActividad    =   $http->request->get('idActividad');
-        print_r($idActividad);
+        $estado         =   $http->request->get('estado');
+        $consulta               =   $this->db->select($select, 'escalamientoCorresponde',
+                                    "idActividadManual = '$idActividad'", 'limit 1');
+        
+        if($estado == "finalizada"){
+            $sql    =   "update escalamientocorresponde
+                set estadoOrden = '$estado',
+                    fechaFinalizacion = curdate()
+                where idActividadManual = '$idActividad'";
+            $result =   $this->db->query_select($sql);
+            return array('success'=>1);
+        }elseif ($estado == "pendiente"){
+            $sql    =   "update escalamientocorresponde
+                set estadoOrden = '$estado',
+                    fechaFinalizacion = 'null'
+                where idActividadManual = '$idActividad'";
+            $result =   $this->db->query_select($sql);
+            return array('success'=>1);
+        }elseif($estado == "seguimiento"){
+            $sql    =   "update escalamientocorresponde
+                set estadoOrden = '$estado',
+                    fechaFinalizacion = 'null'
+                where idActividadManual = '$idActividad'";
+            $result =   $this->db->query_select($sql);
+            return array('success'=>1);
+        }else{
+            return array('success'=>0, 'message'=>'Error al obtener estadoActividad');
+        }     
+    }
+
+    public function cambiarEstadoActividadNoCorresponde($select = '*'){
+        global $http;
+
+        $idActividad    =   $http->request->get('idActividad');
+        $estado         =   $http->request->get('estado');
+        $consulta       =   $this->db->select($select, 'escalamientoNoCorresponde',
+                            "idActividadManual = '$idActividad'", 'limit 1');
+        $nombreUsuario      =   $consulta[0][0];
+        $fechaCreacion      =   $consulta[0][1];
+        $rutCliente         =   $consulta[0][3];
+        $fechaCompromiso    =   $consulta[0][4];
+        $canal              =   $consulta[0][5];
+        $bloque             =   $consulta[0][6];
+        $estadoEscalamiento =   $consulta[0][7];
+        $tipoActividad      =   $consulta[0][8];
+        $fechaFinalizacion  =   "null";
+        $comuna             =   $consulta[0][11];
+        $descripcion        =   $consulta[0][12];
+        $nombreRemitente    =   $consulta[0][13];
+        $idActividadManual  =   $consulta[0][14];
+        $horaCompromiso     =   $consulta[0][8];
+         
+        
+
+            $sql =      "insert escalamientocorresponde(
+                                                            idActividadManual,
+                                                            rutCliente,
+                                                            fechaCompromiso,
+                                                            canal,
+                                                            bloque,
+                                                            estadoEscalamiento,
+                                                            tipoActividad,
+                                                            estadoOrden,
+                                                            nombreUserLog,
+                                                            fechaFinalizacion,
+                                                            descripcionActividad,
+                                                            fechaCreacion,
+                                                            comuna,
+                                                            horaCompromiso
+        
+                        )value(
+                                                            '$idActividad',
+                                                            '$rutCliente',
+                                                            '$fechaCompromiso',
+                                                            '$canal',
+                                                            '$bloque',
+                                                            '$estadoEscalamiento',
+                                                            '$tipoActividad',
+                                                            '$estado',
+                                                            '$nombreUsuario',
+                                                            '$fechaFinalizacion',
+                                                            '$descripcion',
+                                                            '$fechaCreacion',
+                                                            '$comuna',
+                                                            '$horaCompromiso'
+                                                            )";
+                    
+        
+    $result2    =   $this->db->query_select($sql);
+    // print_r($result2);
+
+    // $sql    =   "DELETE FROM escalamientoNoCorresponde 
+    //                 WHERE idActividadManual ='$idActividad'";
+    // $result =   $this->db->query_select($sql);
+    
+
+            return array('success'=>1);
+    }
+
+    public function actividadesPorVencer(){
+        $sql1 = "SELECT DATE_FORMAT(fechaCreacion, '%d-%m-%Y'), 
+                DATE_FORMAT(fechaCompromiso, '%d-%m-%Y'), 
+                c.rutCliente, 
+                c.idActividadManual, 
+                e.comuna, 
+                e.nombreRemitente, 
+                c.bloque, 
+                c.tipoActividad, 
+                c.horaCompromiso
+                FROM escalamientoremitente e RIGHT JOIN escalamientocorresponde c ON e.idActividadIngresar = c.idActividadManual
+                where c.fechaCompromiso  = CAST(CURRENT_TIMESTAMP AS DATE) and c.estadoOrden <> 'finalizada'";
+            
+                $arrayCompromisoHoy = $this->db->query_select($sql1);
+            if ($arrayCompromisoHoy) {
+                foreach ($arrayCompromisoHoy as $valor) {
+                    $timezone =  new DateTime (date_default_timezone_get());
+                    $horaDeCompromiso = new DateTime($valor['horaCompromiso']);
+                    
+                     $diff = ($timezone)->diff($horaDeCompromiso);
+    
+                    if($diff->invert != 1)
+                    {
+                     $arrayHoraCompromisoXvencer[] = $valor;    
+                    }
+                }
+            } 
+        return  array('data'=> $arrayHoraCompromisoXvencer);
     }
 
     //-----------------------------CONEXIÓN BD-------------------------------------------------------

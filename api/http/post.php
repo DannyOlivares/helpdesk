@@ -643,3 +643,14 @@ $app->post('/actividadesNoCorresponden  ', function() use($app) {
     $u = new Model\Escalamiento;
     return $app->json($u->actividadesNoCorresponden());
 });
+
+$app->post('/cambiarEstadoActividadNoCorresponde  ', function() use($app) {
+    $u = new Model\Escalamiento;
+    return $app->json($u->cambiarEstadoActividadNoCorresponde());
+});
+
+$app->post('/actividadesPorVencer  ', function() use($app) {
+    $u = new Model\Escalamiento;
+    return $app->json($u->actividadesPorVencer());
+});
+
