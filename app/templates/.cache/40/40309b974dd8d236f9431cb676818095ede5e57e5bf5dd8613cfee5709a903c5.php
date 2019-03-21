@@ -54,7 +54,7 @@ class __TwigTemplate_d78983603ee56c0bfc653ffc817daadae53f4ec94f6397bf4a45f1de7b0
                 <a href=\"escalamiento/inicio\">Inicio</a>
             </li>
             <li>
-                <a href=\"escalamiento/listar_evento\">Listado de Escalamientos</a>
+                <a href=\"escalamiento/listaActividades\">Listado Actividades</a>
             </li>
             <li class=\"active\">Agregar Actividad</li>
         </ol>
@@ -96,14 +96,14 @@ class __TwigTemplate_d78983603ee56c0bfc653ffc817daadae53f4ec94f6397bf4a45f1de7b0
                                         <option value=\"\" selected disabled>Seleccione Tipo Actividad</option>
                                         <option value=\"deuda\">Deuda</option>
                                         <option value=\"sinActividad\">Sin Actividad</option>
-                                        <option value=\"adelantamientoActividades\">Adelantamiento ordenes</option>
-                                        <option value=\"actividadesPendientesAndes\">Actividades pendientes andes</option>
-                                        <option value=\"reclamoComercial\">Reclamo comercial</option>
+                                        <option value=\"adelantamientoActividades\">Adelantamiento Actividades</option>
+                                        <option value=\"actividadesPendientesAndes\">Actividades Pendientes Andes</option>
+                                        <option value=\"reclamoComercial\">Solicitud Comercial</option>
                                         <option value=\"reagendamientoReiterado\">Reagendamientos reiterados</option>
-                                        <option value=\"fechaFuturaLejana\">Fecha futura lejana</option>
-                                        <option value=\"fallaSistema\">Falla en el sistema</option>
+                                        <option value=\"fechaFuturaLejana\">Fecha Futura Lejana</option>
+                                        <option value=\"fallaSistema\">Falla En El Sistema</option>
                                         <option value=\"derivadaGsa\">Derivada Gsa</option>
-                                        <option value=\"noAgendada\">No agendada</option>
+                                        <option value=\"noAgendada\">No Agendada</option>
                                         <option value=\"otros\">Otros</option>
                                     </select>
                             </div>
@@ -170,7 +170,7 @@ class __TwigTemplate_d78983603ee56c0bfc653ffc817daadae53f4ec94f6397bf4a45f1de7b0
                 <a href=\"escalamiento/inicio\">Inicio</a>
             </li>
             <li>
-                <a href=\"escalamiento/listar_evento\">Listado de Escalamientos</a>
+                <a href=\"escalamiento/listaActividades\">Listado Actividades</a>
             </li>
             <li class=\"active\">Agregar Actividad</li>
         </ol>
@@ -212,14 +212,14 @@ class __TwigTemplate_d78983603ee56c0bfc653ffc817daadae53f4ec94f6397bf4a45f1de7b0
                                         <option value=\"\" selected disabled>Seleccione Tipo Actividad</option>
                                         <option value=\"deuda\">Deuda</option>
                                         <option value=\"sinActividad\">Sin Actividad</option>
-                                        <option value=\"adelantamientoActividades\">Adelantamiento ordenes</option>
-                                        <option value=\"actividadesPendientesAndes\">Actividades pendientes andes</option>
-                                        <option value=\"reclamoComercial\">Reclamo comercial</option>
+                                        <option value=\"adelantamientoActividades\">Adelantamiento Actividades</option>
+                                        <option value=\"actividadesPendientesAndes\">Actividades Pendientes Andes</option>
+                                        <option value=\"reclamoComercial\">Solicitud Comercial</option>
                                         <option value=\"reagendamientoReiterado\">Reagendamientos reiterados</option>
-                                        <option value=\"fechaFuturaLejana\">Fecha futura lejana</option>
-                                        <option value=\"fallaSistema\">Falla en el sistema</option>
+                                        <option value=\"fechaFuturaLejana\">Fecha Futura Lejana</option>
+                                        <option value=\"fallaSistema\">Falla En El Sistema</option>
                                         <option value=\"derivadaGsa\">Derivada Gsa</option>
-                                        <option value=\"noAgendada\">No agendada</option>
+                                        <option value=\"noAgendada\">No Agendada</option>
                                         <option value=\"otros\">Otros</option>
                                     </select>
                             </div>

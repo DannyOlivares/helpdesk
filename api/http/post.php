@@ -651,6 +651,11 @@ $app->post('/cambiarEstadoActividadNoCorresponde  ', function() use($app) {
 
 $app->post('/actividadesPorVencer  ', function() use($app) {
     $u = new Model\Escalamiento;
-    return $app->json($u->actividadesPorVencer());
+    return $app->json($u->AlertaOrdenesPorVencer());
+});
+
+$app->post('/agregarGestion  ', function() use($app) {
+    $u = new Model\Escalamiento;
+    return $app->json($u->agregarGestion());
 });
 

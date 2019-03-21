@@ -17,6 +17,7 @@ use Ocrend\Kernel\Models\IModels;
 use Ocrend\Kernel\Models\ModelsException;
 use Ocrend\Kernel\Models\Traits\DBModel;
 use Ocrend\Kernel\Router\IRouter;
+use \datetime;
 
 /**
  * Modelo Escalamiento
@@ -29,6 +30,33 @@ class Escalamiento extends Models implements IModels {
       * Característica para establecer conexión con base de datos.
     */
     use DBModel;
+
+    function valida_rut($rut)
+    {
+        if (!preg_match("/^[0-9.]+[-]?+[0-9kK]{1}/", $rut)) {
+            return false;
+        }
+        $rut = preg_replace('/[\.\-]/i', '', $rut);
+        $dv = substr($rut, -1);
+        $numero = substr($rut, 0, strlen($rut) - 1);
+        $i = 2;
+        $suma = 0;
+        foreach (array_reverse(str_split($numero)) as $v) {
+            if ($i == 8)
+                $i = 2;
+            $suma += $v * $i;
+            ++$i;
+        }
+        $dvr = 11 - ($suma % 11);
+        if ($dvr == 11)
+            $dvr = 0;
+        if ($dvr == 10)
+            $dvr = 'K';
+        if ($dvr == strtoupper($dv))
+            return true;
+        else
+            return false;
+    }
 
     public function agregarEscalamiento(){
         global $http;
@@ -67,12 +95,21 @@ class Escalamiento extends Models implements IModels {
                 "horaCompromiso"            => $horaCompromiso
             ];
 
+            $validaRut=$this->valida_rut($rutCliente);
+
+            if($validaRut == false){
+                return array('success'=>0, 'message'=>'Ingrese un rut válido', 'id' => 'rutCliente');
+            }
+            
             foreach ($validar as $i => $value) {
                 if(trim($value)==''){
-                    return array('success'=>0, 'message'=>'ERROR de validacion en '.$i);
+                    return array('success'=>0, 'message'=>'ERROR de validacion en '.$i, 'id' => $i);
                 }
             }
-
+            
+            $sql1 = "select * from escalamientoCorresponde";
+            $result = $this->db->query_select($sql1);
+            
             if($estadoOrden == 'finalizada'){
                 $sql = "select * from escalamientocorresponde
             where idActividadManual = '$idActividadManual'";
@@ -186,7 +223,34 @@ class Escalamiento extends Models implements IModels {
                     return array('success' => 0 , 'message'=>'Error al intentar validar el campo '.$i);
                 }
             }
+            
+            $sql1 = "SELECT * FROM escalamientoCorresponde";
+            $result= $this->db->query_select($sql1);
 
+            $sql2 = "SELECT * FROM  escalamientonocorresponde";
+            $result1 = $this->db->query_select($sql2);
+
+            $arrResult = $result;
+            $arrResult1 = $result1;
+
+                if($arrResult){
+                    for ($i = 0; $i < count($arrResult); $i++)
+                {
+                    if($arrResult[$i]['idActividadManual'] == $idActividadManual){
+                        return array('success'=>0, 'message'=> 'Esta Actividad ya existe en nuestros registros');
+                    }
+                }
+                }
+
+                if($arrResult1){
+                    for ($i = 0; $i < count($arrResult1); $i++)
+                    {
+                        if((integer)$arrResult1[$i]['idActividadManual'] == (integer)$idActividadManual){
+                            return array('success'=>0, 'message'=> 'Esta Actividad ya existe en nuestros registros');
+                        }
+                    }
+                }
+                        
             $sql=   "insert escalamientoremitente(
                                                     areaIngreso,
                                                     comuna,
@@ -240,8 +304,6 @@ class Escalamiento extends Models implements IModels {
         $comuna                 =   $http->request->get('comuna');
         $horaCompromiso         =   $http->request->get('horaCompromiso');
 
-
-
         $validar = [
                 'nombreUsuario'         =>   $nombreUsuario,
                 'nombreRemitente'       =>   $nombreRemitente,
@@ -259,6 +321,8 @@ class Escalamiento extends Models implements IModels {
                 'fechaFinalizacion'     =>   $fechaFinalizacion,
                 'horaCompromiso'        =>   $horaCompromiso
         ];
+
+        $validaRut=$this->valida_rut($rutCliente);
 
         foreach ($validar as $i => $value) {
             if(trim($value)==''){
@@ -345,7 +409,7 @@ class Escalamiento extends Models implements IModels {
     //----------------------------FIN FINALIZADAS HOY-----------------------------------------------
 
     public function actividadesPendientesAll(){
-        $sql = "SELECT DATE_FORMAT(fechaCreacion, '%d-%m-%Y'), DATE_FORMAT(fechaCompromiso, '%d-%m-%Y'), rutCliente, idActividadManual, e.comuna, nombreRemitente, bloque, tipoActividad
+        $sql = "SELECT DATE_FORMAT(fechaCreacion, '%d-%m-%Y'), DATE_FORMAT(fechaCompromiso, '%d-%m-%Y'), rutCliente, idActividadManual, e.comuna, nombreRemitente, bloque, tipoActividad,gestion
                 FROM escalamientoremitente e INNER JOIN escalamientocorresponde c ON e.idActividadIngresar = c.idActividadManual
                 WHERE estadoOrden= 'pendiente'";
         $result = $this->db->query_select($sql);
@@ -353,7 +417,7 @@ class Escalamiento extends Models implements IModels {
     }
 
     public function actividadesAsignadasAll(){
-        $sql = "SELECT DATE_FORMAT(fechaCreacion, '%d-%m-%Y'), DATE_FORMAT(fechaCompromiso,'%d-%m-%Y'), rutCliente, idActividadManual, e.comuna, nombreRemitente, bloque, tipoActividad
+        $sql = "SELECT DATE_FORMAT(fechaCreacion, '%d-%m-%Y'), DATE_FORMAT(fechaCompromiso,'%d-%m-%Y'), rutCliente, idActividadManual, e.comuna, nombreRemitente, bloque, tipoActividad,gestion
                 FROM escalamientoremitente e INNER JOIN escalamientocorresponde c ON e.idActividadIngresar = c.idActividadManual
                 WHERE estadoOrden= 'seguimiento'";
         $result =  $this->db->query_select($sql);
@@ -365,8 +429,11 @@ class Escalamiento extends Models implements IModels {
         
             $sql = "SELECT DATE_FORMAT(fechaCreacion, '%d-%m-%Y'), DATE_FORMAT(fechaCompromiso, '%d-%m-%Y'), c. rutCliente, c.idActividadManual, e.comuna, nombreRemitente, bloque, tipoActividad
                     FROM escalamientoremitente e RIGHT JOIN escalamientocorresponde c ON e.idActividadIngresar = c.idActividadManual";
+
                     $result = $this->db->query_select($sql);
-        
+                    // echo'<pre>';
+                    //     print_r($result);
+                    // echo'</pre>';
         return array( 'data' => $result);
         
     }
@@ -511,40 +578,92 @@ class Escalamiento extends Models implements IModels {
 
     }
     /* 
-    TODO:
     crear funcion de retorno data al cambiar el estado de la actividad
     */
     public function cambiarEstadoActividad($select = '*'){
         global $http;   
-        $idActividad    =   $http->request->get('idActividad');
-        $estado         =   $http->request->get('estado');
+        $idActividad            =   $http->request->get('idActividad');
+        $estado                 =   $http->request->get('estado');
         $consulta               =   $this->db->select($select, 'escalamientoCorresponde',
                                     "idActividadManual = '$idActividad'", 'limit 1');
-        
-        if($estado == "finalizada"){
-            $sql    =   "update escalamientocorresponde
-                set estadoOrden = '$estado',
-                    fechaFinalizacion = curdate()
-                where idActividadManual = '$idActividad'";
-            $result =   $this->db->query_select($sql);
-            return array('success'=>1);
-        }elseif ($estado == "pendiente"){
-            $sql    =   "update escalamientocorresponde
-                set estadoOrden = '$estado',
-                    fechaFinalizacion = 'null'
-                where idActividadManual = '$idActividad'";
-            $result =   $this->db->query_select($sql);
-            return array('success'=>1);
-        }elseif($estado == "seguimiento"){
-            $sql    =   "update escalamientocorresponde
-                set estadoOrden = '$estado',
-                    fechaFinalizacion = 'null'
-                where idActividadManual = '$idActividad'";
-            $result =   $this->db->query_select($sql);
-            return array('success'=>1);
-        }else{
-            return array('success'=>0, 'message'=>'Error al obtener estadoActividad');
-        }     
+        $rutCliente             =   $consulta[0]['rutCliente'];
+        $fechaCompromiso        =   $consulta[0]['fechaCompromiso'];
+        $canal                  =   $consulta[0]['canal'];
+        $bloque                 =   $consulta[0]['bloque'];
+        $estadoEscalamiento     =   $consulta[0]['estadoEscalamiento'];
+        $tipoActividad          =   $consulta[0]['tipoActividad'];
+        $horaCompromiso         =   $consulta[0]['horaCompromiso'];
+        $estadoOrden            =   $consulta[0]['estadoOrden'];
+        $nombreUserLog          =   $consulta[0]['nombreUserLog'];
+        $fechaFinalizacion      =   $consulta[0]['fechaFinalizacion'];
+        $descripcionActividad   =   $consulta[0]['descripcionActividad'];
+        $fechaCreacion          =   $consulta[0]['fechaCreacion'];
+        $comuna                 =   $consulta[0]['comuna'];
+        $gestion                =   $consulta[0]['gestion'];
+
+        $sql = "insert escalamientoHistory(
+                                                idActividadManual,
+                                                rutCliente,
+                                                fechaCompromiso,
+                                                canal,
+                                                bloque,
+                                                estadoEscalamiento,
+                                                tipoActividad,
+                                                estadoOrden,
+                                                nombreUserLog,
+                                                fechaFinalizacion,
+                                                descripcionActividad,
+                                                fechaCreacion,
+                                                comuna,
+                                                horaCompromiso
+
+        )value(
+                                                '$idActividad',
+                                                '$rutCliente',
+                                                '$fechaCompromiso',
+                                                '$canal',
+                                                '$bloque',
+                                                '$estadoEscalamiento',
+                                                '$tipoActividad',
+                                                '$estadoOrden',
+                                                '$nombreUserLog',
+                                                '$fechaFinalizacion',
+                                                '$descripcionActividad',
+                                                '$fechaCreacion',
+                                                '$comuna',
+                                                '$horaCompromiso'
+                    )";
+        $resultHistory =    $this->db->query_select($sql);
+
+        switch($estado){
+            case    "finalizada":
+                if($gestion == ''){
+                    return array('success'=>0, 'message'=>'para Finalizar Debe agregar una Gestión');
+                }else{
+                    $sql    =   "UPDATE escalamientocorresponde
+                                SET estadoOrden = '$estado',
+                                fechaFinalizacion = curdate()
+                                WHERE idActividadmanual = '$idActividad'";
+                    $result =   $this->db->query_select($sql);
+                    return array('success'=>1, 'message'=>'ha cambiado el estado de la actividad con el id'.$idActividad);
+                }
+                break;
+            case    "seguimiento":
+                $sql =  "UPDATE escalamientocorresponde 
+                        SET estadoOrden = '$estado'
+                        WHERE   idActividadManual = '$idActividad'";
+                $result = $this->db->query_select($sql);
+                return array('success'=>1, 'message'=>'Se ha cambiado el estado de la actividad con el id'.$idActividad);
+                break;
+
+            case    "pendiente":
+                $sql = "UPDATE escalamientocorresponde
+                    SET estadoOrden = '$estado'
+                    WHERE idActividadmanual = '$idActividad'";
+                $result = $this->db->query_select($sql);
+                return array('success'=>1, 'message'=>'Se Ha Cambiado el estado satisfactoriamente');
+                break;
+        }
     }
 
     public function cambiarEstadoActividadNoCorresponde($select = '*'){
@@ -604,47 +723,90 @@ class Escalamiento extends Models implements IModels {
                                                             '$horaCompromiso'
                                                             )";
                     
-        
     $result2    =   $this->db->query_select($sql);
-    // print_r($result2);
-
-    // $sql    =   "DELETE FROM escalamientoNoCorresponde 
-    //                 WHERE idActividadManual ='$idActividad'";
-    // $result =   $this->db->query_select($sql);
-    
-
-            return array('success'=>1);
+                return array('success'=>1);
     }
 
-    public function actividadesPorVencer(){
-        $sql1 = "SELECT DATE_FORMAT(fechaCreacion, '%d-%m-%Y'), 
-                DATE_FORMAT(fechaCompromiso, '%d-%m-%Y'), 
-                c.rutCliente, 
-                c.idActividadManual, 
-                e.comuna, 
-                e.nombreRemitente, 
-                c.bloque, 
-                c.tipoActividad, 
-                c.horaCompromiso
+    public function AlertaOrdenesPorVencer(){
+        $sql1 = "SELECT DATE_FORMAT(fechaCreacion, '%d-%m-%Y'), DATE_FORMAT(fechaCompromiso, '%d-%m-%Y'), c.rutCliente, c.idActividadManual, e.comuna, e.nombreRemitente, c.bloque, c.tipoActividad, c.horaCompromiso
+        FROM escalamientoremitente e RIGHT JOIN escalamientocorresponde c ON e.idActividadIngresar = c.idActividadManual
+        where c.fechaCompromiso  = CAST(CURRENT_TIMESTAMP AS DATE) and c.estadoOrden <> 'finalizada'";
+        $arrayCompromisoHoy = $this->db->query_select($sql1);
+
+        if ($arrayCompromisoHoy) {
+            foreach ($arrayCompromisoHoy as $valor) {
+                $horaActual =  new DateTime (date_default_timezone_get());
+                $horaDeCompromiso = new DateTime($valor['horaCompromiso']);
+
+                $diff = $horaActual->diff($horaDeCompromiso);
+
+                $calcHoras = ( ($diff->days * 24 ) * 60 ) + ( $diff->h );
+
+                if($diff->invert != 1 && $calcHoras <= 1)
+                {
+                 $arrayHoraCompromisoXvencer[] = $valor;  
+                }
+            }  
+        } 
+        if (!empty($arrayHoraCompromisoXvencer)){
+            return  array( "data"=> $arrayHoraCompromisoXvencer);
+        }
+        else {
+            $arrayCompromisoHoy ="";
+            return  array('data'=> $arrayCompromisoHoy);
+            
+             }
+        }
+
+    public function TotalAlertasFechaCompromiso()
+    {
+        $sql1 = "SELECT DATE_FORMAT(fechaCreacion, '%d-%m-%Y'), DATE_FORMAT(fechaCompromiso, '%d-%m-%Y'), c.rutCliente, c.idActividadManual, e.comuna, e.nombreRemitente, c.bloque, c.tipoActividad, c.horaCompromiso
                 FROM escalamientoremitente e RIGHT JOIN escalamientocorresponde c ON e.idActividadIngresar = c.idActividadManual
                 where c.fechaCompromiso  = CAST(CURRENT_TIMESTAMP AS DATE) and c.estadoOrden <> 'finalizada'";
-            
-                $arrayCompromisoHoy = $this->db->query_select($sql1);
-            if ($arrayCompromisoHoy) {
-                foreach ($arrayCompromisoHoy as $valor) {
-                    $timezone =  new DateTime (date_default_timezone_get());
-                    $horaDeCompromiso = new DateTime($valor['horaCompromiso']);
-                    
-                     $diff = ($timezone)->diff($horaDeCompromiso);
-    
-                    if($diff->invert != 1)
+
+        $arrayCompromisoHoy = $this->db->query_select($sql1);
+        $cont=0; 
+          if ($arrayCompromisoHoy) {
+            foreach ($arrayCompromisoHoy as $valor) {
+                $timezone =  new DateTime (date_default_timezone_get());
+                $horaDeCompromiso = new DateTime($valor['horaCompromiso']);                
+                $diff = ($timezone)->diff($horaDeCompromiso);
+                $calcHoras = ( ($diff->days * 24 ) * 60 ) + ( $diff->h );
+                    if($diff->invert != 1 && $calcHoras <= 1)
                     {
-                     $arrayHoraCompromisoXvencer[] = $valor;    
+                        $cont++; 
                     }
-                }
-            } 
-        return  array('data'=> $arrayHoraCompromisoXvencer);
+                }    
+            }
+            if (!empty($cont))
+            {
+                return $cont;
+            }
+            else   
+            {
+                return 0;
+            }
+        }
+
+    public function agregarGestion(){
+        global $http;
+
+        $idActividad    = $http->request->get('idActividad');
+        $mensaje        = $http->request->get('mensaje');
+
+        if(trim($mensaje) ==''){
+            return array('success'=>0, 'message'=>'Error, no a ingresado ningún mensaje');
+        }
+
+        $sql    =   "UPDATE escalamientocorresponde
+        SET gestion = '$mensaje'
+        WHERE idActividadManual = '$idActividad'";
+
+        $result = $this->db->query_select($sql);
+
+        return array('success'=>1, 'message'=>'Guardado correctamente');
     }
+    
 
     //-----------------------------CONEXIÓN BD-------------------------------------------------------
     public function __construct(IRouter $router = null) {

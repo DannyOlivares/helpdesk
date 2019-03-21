@@ -59,10 +59,13 @@ class __TwigTemplate_c016bf9db555db0117f217c5c04db20933b58a21cb1906b4b4045de4eed
         </h1>
         <ol class=\"breadcrumb\">
         <li><a href=\"#\"><i class=\"fa fa-dashboard\"></i> Home</a></li>
-        <li><a href=\"escalamiento/agregarEncargadoFiltrar\">Agregar Actividad</a></li>
+        <li class=\"active\">
+            <button type=\"button\" name=\"button\" class=\"btn btn-primary\" onclick= location.href='escalamiento/agregarEncargadoFiltrar'>Agregar Actividad</button>
+        </li>
+        <li><a href=\"escalamiento/listaActividades\">Listar Actividades</a></li>
         </ol>
     </section>
-
+    <br>
     <section class=\"content\">
         <div class=\"row\">
                 <div class=\"col col-md-12\">
@@ -78,7 +81,7 @@ class __TwigTemplate_c016bf9db555db0117f217c5c04db20933b58a21cb1906b4b4045de4eed
                                     </div>
                                     <div class=\"box-footer\">
                                         Total Gestionadas: ";
-        // line 45
+        // line 48
         echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), twig_get_attribute($this->env, $this->getSourceContext(), ($context["data1"] ?? null), 0, array(), "array"), 0, array(), "array"), "html", null, true);
         echo "
                                     </div>
@@ -91,7 +94,7 @@ class __TwigTemplate_c016bf9db555db0117f217c5c04db20933b58a21cb1906b4b4045de4eed
                                     </div>
                                     <div class=\"box-footer\">
                                         Total Pendientes: ";
-        // line 55
+        // line 58
         echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), twig_get_attribute($this->env, $this->getSourceContext(), ($context["data2"] ?? null), 0, array(), "array"), 0, array(), "array"), "html", null, true);
         echo "
                                     </div>
@@ -105,7 +108,7 @@ class __TwigTemplate_c016bf9db555db0117f217c5c04db20933b58a21cb1906b4b4045de4eed
                                     </div>
                                     <div class=\"box-footer\">
                                         Total Seguimiento: ";
-        // line 66
+        // line 69
         echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), twig_get_attribute($this->env, $this->getSourceContext(), ($context["data3"] ?? null), 0, array(), "array"), 0, array(), "array"), "html", null, true);
         echo "
                                     </div>
@@ -119,7 +122,7 @@ class __TwigTemplate_c016bf9db555db0117f217c5c04db20933b58a21cb1906b4b4045de4eed
                                     </div>
                                     <div class=\"box-footer\">
                                         Total Finalizadas Hoy: ";
-        // line 77
+        // line 80
         echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), twig_get_attribute($this->env, $this->getSourceContext(), twig_get_attribute($this->env, $this->getSourceContext(), ($context["data4"] ?? null), "data", array(), "array"), 0, array(), "array"), 0, array(), "array"), "html", null, true);
         echo "
                                     </div>
@@ -128,7 +131,6 @@ class __TwigTemplate_c016bf9db555db0117f217c5c04db20933b58a21cb1906b4b4045de4eed
 
                         </div>
                         <ul class=\"nav nav-tabs\">
-                            <li class=\"active\"><a data-toggle=\"tab\" href=\"#home\" onclick=\"cargarTabla('gestionada');\">Actividades Gestionadas</a></li>
                             <li><a data-toggle=\"tab\" href=\"#menu1\" class=\"\" onclick=\"cargarTabla('pendiente');\">Actividades Pendientes</a></li>
                             <li><a data-toggle=\"tab\" href=\"#menu2\" onclick=\"cargarTabla('seguimiento');\">Actividades seguimiento</a></li>
                             <li><a data-toggle=\"tab\" href=\"#menu3\" onclick=\"cargarTabla('finalizadaHoy');\">Actividades Finalizadas Hoy</a></li>
@@ -155,10 +157,10 @@ class __TwigTemplate_c016bf9db555db0117f217c5c04db20933b58a21cb1906b4b4045de4eed
 ";
     }
 
-    // line 110
+    // line 112
     public function block_appScript($context, array $blocks = array())
     {
-        // line 111
+        // line 113
         echo "    <script src=\"views/app/js/escalamiento/escalamiento.js\" type=\"text/javascript\"></script>
     <script src=\"views/app/template/datatables/jquery.dataTables.min.js\" type=\"text/javascript\"></script>
     <script src=\"https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js\"></script>
@@ -180,7 +182,7 @@ class __TwigTemplate_c016bf9db555db0117f217c5c04db20933b58a21cb1906b4b4045de4eed
 
     public function getDebugInfo()
     {
-        return array (  162 => 111,  159 => 110,  123 => 77,  109 => 66,  95 => 55,  82 => 45,  55 => 20,  52 => 19,  33 => 3,  30 => 2,  11 => 1,);
+        return array (  164 => 113,  161 => 112,  126 => 80,  112 => 69,  98 => 58,  85 => 48,  55 => 20,  52 => 19,  33 => 3,  30 => 2,  11 => 1,);
     }
 
     public function getSourceContext()
@@ -211,10 +213,13 @@ class __TwigTemplate_c016bf9db555db0117f217c5c04db20933b58a21cb1906b4b4045de4eed
         </h1>
         <ol class=\"breadcrumb\">
         <li><a href=\"#\"><i class=\"fa fa-dashboard\"></i> Home</a></li>
-        <li><a href=\"escalamiento/agregarEncargadoFiltrar\">Agregar Actividad</a></li>
+        <li class=\"active\">
+            <button type=\"button\" name=\"button\" class=\"btn btn-primary\" onclick= location.href='escalamiento/agregarEncargadoFiltrar'>Agregar Actividad</button>
+        </li>
+        <li><a href=\"escalamiento/listaActividades\">Listar Actividades</a></li>
         </ol>
     </section>
-
+    <br>
     <section class=\"content\">
         <div class=\"row\">
                 <div class=\"col col-md-12\">
@@ -268,7 +273,6 @@ class __TwigTemplate_c016bf9db555db0117f217c5c04db20933b58a21cb1906b4b4045de4eed
 
                         </div>
                         <ul class=\"nav nav-tabs\">
-                            <li class=\"active\"><a data-toggle=\"tab\" href=\"#home\" onclick=\"cargarTabla('gestionada');\">Actividades Gestionadas</a></li>
                             <li><a data-toggle=\"tab\" href=\"#menu1\" class=\"\" onclick=\"cargarTabla('pendiente');\">Actividades Pendientes</a></li>
                             <li><a data-toggle=\"tab\" href=\"#menu2\" onclick=\"cargarTabla('seguimiento');\">Actividades seguimiento</a></li>
                             <li><a data-toggle=\"tab\" href=\"#menu3\" onclick=\"cargarTabla('finalizadaHoy');\">Actividades Finalizadas Hoy</a></li>

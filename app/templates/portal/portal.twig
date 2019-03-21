@@ -47,23 +47,23 @@
     />
 
     <style>
-      .fa-eye {
+      .activar {
         transition: 0.125s;
       }
 
       .rotate-left {
-        -webkit-transform: rotate(35deg);
-        -moz-transform: rotate(35deg);
-        -o-transform: rotate(35deg);
-        transform: rotate(35deg);
-        color: red;
+        -webkit-transform: rotate(30deg);
+        -moz-transform: rotate(30deg);
+        -o-transform: rotate(30deg);
+        transform: rotate(30deg);
+        color: lightblue;
       }
       .rotate-right {
-        -webkit-transform: rotate(-35deg);
-        -moz-transform: rotate(-35deg);
-        -o-transform: rotate(-35deg);
-        transform: rotate(-35deg);
-        color: blue;
+        -webkit-transform: rotate(-30deg);
+        -moz-transform: rotate(-30deg);
+        -o-transform: rotate(-30deg);
+        transform: rotate(-30deg);
+        color:lightgreen;
       }
     </style>
 
@@ -76,9 +76,7 @@
 
     <!-- Google Font -->
     <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic"> -->
-
     {% block appStylos %} {% endblock %}
-
     <link
       href="views/app/images/favicon.ico"
       rel="shortcut icon"
@@ -86,7 +84,6 @@
     />
     {# Título #}
     <title>{{ config.site.name }}</title>
-
     {# Extras en el header #} {% block appHeader %}
     <!-- :) -->
     {% endblock %}
@@ -99,7 +96,6 @@
         <label style="color:#FFF; background-color:#ABB6BA; text-align:center"
           >&nbsp;&nbsp;&nbsp;Espere... &nbsp;&nbsp;&nbsp;</label
         >
-
         <img
           src="views/app/images/cargando.gif"
           align="middle"
@@ -108,7 +104,6 @@
         &nbsp;<label style="color:#ABB6BA"
           >Realizando tarea solicitada ...</label
         >
-
         <br />
         <hr style="color:#003" width="30%" />
         <br />
@@ -171,13 +166,13 @@
       });
 
       setInterval(function() {
-        $(".fa-eye").addClass("rotate-left");
-        $(".fa-eye").removeClass("rotate-right");
+        $(".activar").addClass("rotate-left");
+        $(".activar").removeClass("rotate-right");
       }, 125);
 
       setInterval(function() {
-        $(".fa-eye").addClass("rotate-right");
-        $(".fa-eye").removeClass("rotate-left");
+        $(".activar").addClass("rotate-right");
+        $(".activar").removeClass("rotate-left");
       }, 250);
     </script>
     <script>
@@ -199,7 +194,39 @@
     <script type="text/javascript">
       notificacion_emergente('{{ config.site.name }}','{{ owner_user['id_user'] }}');
     </script>
-
+    <script type="text/javascript">
+      notificacion_emergente('{{ config.site.name }}','{{ owner_user['id_user'] }}');
+    </script>
+    FIXME:
+    <script type="text/javascript">
+    var cont = 0;
+    function contador(){
+        var contador = document.getElementById("contador");
+        contador.value = cont;
+        cont++;
+       if(cont == 1){ 
+          $.ajax({
+            url: "api/TotalAlertasFechaCompromiso",
+            method: "POST",
+            async: true,
+            success: function(response) {
+              $("#miDiv").load("escalamiento/escalamiento #miDiv");
+          }
+        });
+        }  
+        if(cont % 30== 0){ 
+          $.ajax({
+            url: "api/TotalAlertasFechaCompromiso",
+            method: "POST",
+            async: true,
+            success: function(response) {
+              $("#miDiv").load("escalamiento/escalamiento #miDiv");
+          }
+        });
+        }    
+    }
+    </script>
     {# Scripts globales #} {% block appScript %} {% endblock %}
+
   </body>
 </html>

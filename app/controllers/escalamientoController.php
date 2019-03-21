@@ -43,10 +43,19 @@ class escalamientoController extends Controllers implements IControllers {
                     'data2'     => (new Model\Escalamiento)->actividadesPendientes(),
                     'data3'     => (new Model\Escalamiento)->actividadesAsignadas(),
                     'data1'     => (new Model\Escalamiento)->actividadesTotales(),
-                    'data4'     => (new Model\Escalamiento)->actividadesFinalizadasHoyAll()
+                    'data4'     => (new Model\Escalamiento)->actividadesFinalizadasHoyAll(),
+                    'data5'     => (new Model\Escalamiento)->AlertaOrdenesPorVencer(),
+                    'data6'     => (new Model\Escalamiento)->TotalAlertasFechaCompromiso()
+
                 ));
             break;
 
+            case 'listaActividades':
+                $t = new Model\Escalamiento();
+                echo    $this->template->render('escalamiento/listaActividades', array(
+                    'data'  =>  (new Model\Escalamiento)->actividadesAll()
+                ));
+                break;
             default:
                 echo $this->template->render('escalamiento/agregarEncargadoFiltrar');
             break;

@@ -1,4 +1,3 @@
-
 <header class="main-header">
     <!-- Logo -->
     <a href="portal" class="logo">
@@ -13,27 +12,24 @@
         <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
           <span class="sr-only">Toggle navigation</span>
         </a>
-
-        <div class="navbar-custom-menu">
-            <ul class="nav navbar-nav">
-                 
-                 <li class="dropdown messages-menu">
+        <div class="navbar-custom-menu" id="miDiv">
+            <ul class="nav navbar-nav" >
+                <input type="HIDDEN" id="contador">
+                <li class="dropdown messages-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <i class="fa fa-envelope-o"></i>
                         <span class="label label-success"></span>
                     </a>
                     <ul class="dropdown-menu">
                         <li class="header">Tienes 0 mensajes</li>
-                        <li>
-                            
+                        <li>                           
                              <ul class="menu">
 
                             </ul>
                         </li>
                         <li class="footer"><a href="#">Ver todos los mensajes</a></li>
                     </ul>
-                </li> 
-               
+                </li>               
                 <li class="dropdown notifications-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <i class="fa fa-bell-o"></i>
@@ -41,30 +37,59 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li class="header">Tienes 0 notificaciones</li>
-                        <li> 
-                            
+                        <li>                            
                             <ul class="menu">
 
                             </ul>
                         </li>
-                        <li class="footer"><a href="#">Ver todo</a></li>
+                        <li class="footer"><a href="escalamiento/ActividadesPorVencer">Ver todo</a></li>
                     </ul>
                 </li> 
                 <li class="dropdown notifications-menu">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" onclick=cargarActividades();>
-                        <i class="fa fa-eye"></i>
-                        <span class="label label-warning"></span>
+                    {% if data6 > 1  %}
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" onclick="" title="Hay {{ data6 }} Actividades por vencer">
+                         <i class="fa fa-eye activar"></i>
+                        {# <i class="fa fa-warning activar" style="font-size:12px;color:red"></i> #}
+                        <span class="label label-warning">{{ data6 }}</span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li class="header">Tienes 0 notificaciones</li>
-                        <li> 
-                            
-                            <ul class="menu">
-                                
+                          <li class="header" >Hay {{ data6 }} actividades por vencer</li>
+                        <li>                             
+                            <ul class="menu">                               
                             </ul>
                         </li>
-                        <li class="footer"><a href="#">Ver todo</a></li>
+                        <li class="footer">
+                        </li>
                     </ul>
+                    {% elseif data6 == 1 %}
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" onclick="" title="Hay {{ data6 }} Actividad por vencer">
+                         <i class="fa fa-eye activar"></i>
+                        {# <i class="fa fa-warning activar" style="font-size:12px;color:red"></i> #}
+                        <span class="label label-warning">{{ data6 }}</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                          <li class="header" >Hay {{ data6 }} actividad por vencer</li>
+                        <li>                             
+                            <ul class="menu">
+                            </ul>
+                        </li>
+                        <li class="footer">
+                        </li>
+                    </ul>
+                    {% else %} 
+
+                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" onclick=cargarActividades(); title="No hay actividades por vencer"> 
+                        <i class="fa fa-eye"></i>
+                        <span class="label label-warning" ></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="header" >no hay actividades por vencer</li>
+                        <li>                             
+                            <ul class="menu">
+                            </ul>
+                        </li>
+                    </ul>
+                    {% endif %}
                 </li> 
                  <li class="dropdown tasks-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -74,8 +99,7 @@
                     <ul class="dropdown-menu">
                         <li class="header">Tienes 0 tareas</li>
                         <li>                         
-                             <ul class="menu">
-                                
+                             <ul class="menu">                               
                             </ul>
                         </li>
                         <li class="footer">
@@ -128,7 +152,6 @@
                             <div class="pull-left">
                                 <a href="#" class="btn btn-default btn-flat" data-toggle="modal" data-target="#resetpass">Reset Password</a>
                             </div>
-
                             <div class="pull-right">
                                 <a href="logout" class="btn btn-default btn-flat">Salir</a>
                             </div>
@@ -136,7 +159,6 @@
                     </ul>
                 </li>
                 <!-- Control Sidebar Toggle Button -->
-
             </ul>
         </div>
     </nav>

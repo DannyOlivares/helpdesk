@@ -24,10 +24,13 @@
         </h1>
         <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="escalamiento/agregarEncargadoFiltrar">Agregar Actividad</a></li>
+        <li class="active">
+            <button type="button" name="button" class="btn btn-primary" onclick= location.href='escalamiento/agregarEncargadoFiltrar'>Agregar Actividad</button>
+        </li>
+        <li><a href="escalamiento/listaActividades">Listar Actividades</a></li>
         </ol>
     </section>
-
+    <br>
     <section class="content">
         <div class="row">
                 <div class="col col-md-12">
@@ -81,7 +84,6 @@
 
                         </div>
                         <ul class="nav nav-tabs">
-                            <li class="active"><a data-toggle="tab" href="#home" onclick="cargarTabla('gestionada');">Actividades Gestionadas</a></li>
                             <li><a data-toggle="tab" href="#menu1" class="" onclick="cargarTabla('pendiente');">Actividades Pendientes</a></li>
                             <li><a data-toggle="tab" href="#menu2" onclick="cargarTabla('seguimiento');">Actividades seguimiento</a></li>
                             <li><a data-toggle="tab" href="#menu3" onclick="cargarTabla('finalizadaHoy');">Actividades Finalizadas Hoy</a></li>

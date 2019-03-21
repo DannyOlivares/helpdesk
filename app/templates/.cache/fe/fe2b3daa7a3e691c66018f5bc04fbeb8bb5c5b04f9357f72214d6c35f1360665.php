@@ -74,23 +74,23 @@ class __TwigTemplate_be61ea1f71d59e42b31dd955476876cbfe92bf79b1780c6d4253864708f
     />
 
     <style>
-      .fa-eye {
+      .activar {
         transition: 0.125s;
       }
 
       .rotate-left {
-        -webkit-transform: rotate(35deg);
-        -moz-transform: rotate(35deg);
-        -o-transform: rotate(35deg);
-        transform: rotate(35deg);
-        color: red;
+        -webkit-transform: rotate(30deg);
+        -moz-transform: rotate(30deg);
+        -o-transform: rotate(30deg);
+        transform: rotate(30deg);
+        color: lightblue;
       }
       .rotate-right {
-        -webkit-transform: rotate(-35deg);
-        -moz-transform: rotate(-35deg);
-        -o-transform: rotate(-35deg);
-        transform: rotate(-35deg);
-        color: blue;
+        -webkit-transform: rotate(-30deg);
+        -moz-transform: rotate(-30deg);
+        -o-transform: rotate(-30deg);
+        transform: rotate(-30deg);
+        color:lightgreen;
       }
     </style>
 
@@ -103,28 +103,25 @@ class __TwigTemplate_be61ea1f71d59e42b31dd955476876cbfe92bf79b1780c6d4253864708f
 
     <!-- Google Font -->
     <!-- <link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic\"> -->
-
     ";
-        // line 80
+        // line 79
         $this->displayBlock('appStylos', $context, $blocks);
-        // line 81
-        echo "
-    <link
+        // line 80
+        echo "    <link
       href=\"views/app/images/favicon.ico\"
       rel=\"shortcut icon\"
       type=\"image/x-icon\"
     />
     ";
-        // line 88
+        // line 86
         echo "    <title>";
         echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), twig_get_attribute($this->env, $this->getSourceContext(), ($context["config"] ?? null), "site", array()), "name", array()), "html", null, true);
         echo "</title>
-
     ";
-        // line 90
+        // line 87
         echo " ";
         $this->displayBlock('appHeader', $context, $blocks);
-        // line 93
+        // line 90
         echo "  </head>
   <body class=\"hold-transition skin-green sidebar-mini\">
     <!--<body class=\"hold-transition skin-blue sidebar-mini\">-->
@@ -134,7 +131,6 @@ class __TwigTemplate_be61ea1f71d59e42b31dd955476876cbfe92bf79b1780c6d4253864708f
         <label style=\"color:#FFF; background-color:#ABB6BA; text-align:center\"
           >&nbsp;&nbsp;&nbsp;Espere... &nbsp;&nbsp;&nbsp;</label
         >
-
         <img
           src=\"views/app/images/cargando.gif\"
           align=\"middle\"
@@ -143,51 +139,50 @@ class __TwigTemplate_be61ea1f71d59e42b31dd955476876cbfe92bf79b1780c6d4253864708f
         &nbsp;<label style=\"color:#ABB6BA\"
           >Realizando tarea solicitada ...</label
         >
-
         <br />
         <hr style=\"color:#003\" width=\"30%\" />
         <br />
       </div>
       ";
-        // line 116
+        // line 111
         $this->displayBlock('appHead', $context, $blocks);
         echo " ";
         $this->displayBlock('appside', $context, $blocks);
-        // line 117
+        // line 112
         echo " ";
-        // line 118
+        // line 113
         echo "      <div class=\"content-wrapper\">
         ";
-        // line 119
+        // line 114
         $this->displayBlock('appBody', $context, $blocks);
-        // line 120
+        // line 115
         echo "      </div>
 
       ";
-        // line 122
+        // line 117
         echo " ";
         $this->displayBlock('appFooter', $context, $blocks);
-        // line 123
+        // line 118
         echo " ";
-        $this->loadTemplate("portal/resetpass", "portal/portal.twig", 123)->display($context);
-        // line 124
+        $this->loadTemplate("portal/resetpass", "portal/portal.twig", 118)->display($context);
+        // line 119
         echo "    </div>
     ";
-        // line 125
+        // line 120
         echo " ";
         if (twig_get_attribute($this->env, $this->getSourceContext(), twig_get_attribute($this->env, $this->getSourceContext(), ($context["config"] ?? null), "framework", array()), "debug", array())) {
             echo " ";
-            // line 127
+            // line 122
             echo "    <script src=\"views/app/js/jdev.min.js\"></script>
     ";
         } else {
-            // line 128
+            // line 123
             echo " ";
-            // line 130
+            // line 125
             echo "    <script src=\"views/app/template/jquery/dist/jquery.min.js\"></script>
     ";
         }
-        // line 132
+        // line 127
         echo "
     <!-- jQuery UI 1.11.4 -->
     <script src=\"views/app/template/jquery-ui/jquery-ui.min.js\"></script>
@@ -230,18 +225,18 @@ class __TwigTemplate_be61ea1f71d59e42b31dd955476876cbfe92bf79b1780c6d4253864708f
       });
 
       setInterval(function() {
-        \$(\".fa-eye\").addClass(\"rotate-left\");
-        \$(\".fa-eye\").removeClass(\"rotate-right\");
+        \$(\".activar\").addClass(\"rotate-left\");
+        \$(\".activar\").removeClass(\"rotate-right\");
       }, 125);
 
       setInterval(function() {
-        \$(\".fa-eye\").addClass(\"rotate-right\");
-        \$(\".fa-eye\").removeClass(\"rotate-left\");
+        \$(\".activar\").addClass(\"rotate-right\");
+        \$(\".activar\").removeClass(\"rotate-left\");
       }, 250);
     </script>
     <script>
       if( ";
-        // line 184
+        // line 179
         echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), ($context["user_resetpass"] ?? null), "reset", array(), "array"), "html", null, true);
         echo " == 1 ){
           \$.alert({
@@ -260,68 +255,105 @@ class __TwigTemplate_be61ea1f71d59e42b31dd955476876cbfe92bf79b1780c6d4253864708f
     </script>
     <script type=\"text/javascript\">
       notificacion_emergente('";
-        // line 200
+        // line 195
         echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), twig_get_attribute($this->env, $this->getSourceContext(), ($context["config"] ?? null), "site", array()), "name", array()), "html", null, true);
         echo "','";
         echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), ($context["owner_user"] ?? null), "id_user", array(), "array"), "html", null, true);
         echo "');
     </script>
-
+    <script type=\"text/javascript\">
+      notificacion_emergente('";
+        // line 198
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), twig_get_attribute($this->env, $this->getSourceContext(), ($context["config"] ?? null), "site", array()), "name", array()), "html", null, true);
+        echo "','";
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), ($context["owner_user"] ?? null), "id_user", array(), "array"), "html", null, true);
+        echo "');
+    </script>
+    FIXME:
+    <script type=\"text/javascript\">
+    var cont = 0;
+    function contador(){
+        var contador = document.getElementById(\"contador\");
+        contador.value = cont;
+        cont++;
+       if(cont == 1){ 
+          \$.ajax({
+            url: \"api/TotalAlertasFechaCompromiso\",
+            method: \"POST\",
+            async: true,
+            success: function(response) {
+              \$(\"#miDiv\").load(\"escalamiento/escalamiento #miDiv\");
+          }
+        });
+        }  
+        if(cont % 30== 0){ 
+          \$.ajax({
+            url: \"api/TotalAlertasFechaCompromiso\",
+            method: \"POST\",
+            async: true,
+            success: function(response) {
+              \$(\"#miDiv\").load(\"escalamiento/escalamiento #miDiv\");
+          }
+        });
+        }    
+    }
+    </script>
     ";
-        // line 203
+        // line 229
         echo " ";
         $this->displayBlock('appScript', $context, $blocks);
-        // line 204
-        echo "  </body>
+        // line 230
+        echo "
+  </body>
 </html>
 ";
     }
 
-    // line 80
+    // line 79
     public function block_appStylos($context, array $blocks = array())
     {
         echo " ";
     }
 
-    // line 90
+    // line 87
     public function block_appHeader($context, array $blocks = array())
     {
-        // line 91
+        // line 88
         echo "    <!-- :) -->
     ";
     }
 
-    // line 116
+    // line 111
     public function block_appHead($context, array $blocks = array())
     {
         echo " ";
-        $this->loadTemplate("portal/header", "portal/portal.twig", 116)->display($context);
+        $this->loadTemplate("portal/header", "portal/portal.twig", 111)->display($context);
         echo " ";
     }
 
     public function block_appside($context, array $blocks = array())
     {
-        // line 117
+        // line 112
         echo " ";
-        $this->loadTemplate("portal/menu", "portal/portal.twig", 117)->display($context);
+        $this->loadTemplate("portal/menu", "portal/portal.twig", 112)->display($context);
         echo " ";
     }
 
-    // line 119
+    // line 114
     public function block_appBody($context, array $blocks = array())
     {
         echo " ";
     }
 
-    // line 122
+    // line 117
     public function block_appFooter($context, array $blocks = array())
     {
         echo " ";
-        $this->loadTemplate("portal/footer", "portal/portal.twig", 122)->display($context);
+        $this->loadTemplate("portal/footer", "portal/portal.twig", 117)->display($context);
         echo " ";
     }
 
-    // line 203
+    // line 229
     public function block_appScript($context, array $blocks = array())
     {
         echo " ";
@@ -339,7 +371,7 @@ class __TwigTemplate_be61ea1f71d59e42b31dd955476876cbfe92bf79b1780c6d4253864708f
 
     public function getDebugInfo()
     {
-        return array (  325 => 203,  317 => 122,  311 => 119,  305 => 117,  295 => 116,  290 => 91,  287 => 90,  281 => 80,  275 => 204,  272 => 203,  264 => 200,  245 => 184,  191 => 132,  187 => 130,  185 => 128,  181 => 127,  177 => 125,  174 => 124,  171 => 123,  168 => 122,  164 => 120,  162 => 119,  159 => 118,  157 => 117,  153 => 116,  128 => 93,  125 => 90,  119 => 88,  111 => 81,  109 => 80,  34 => 7,  31 => 5,  26 => 1,);
+        return array (  357 => 229,  349 => 117,  343 => 114,  337 => 112,  327 => 111,  322 => 88,  319 => 87,  313 => 79,  306 => 230,  303 => 229,  267 => 198,  259 => 195,  240 => 179,  186 => 127,  182 => 125,  180 => 123,  176 => 122,  172 => 120,  169 => 119,  166 => 118,  163 => 117,  159 => 115,  157 => 114,  154 => 113,  152 => 112,  148 => 111,  125 => 90,  122 => 87,  117 => 86,  110 => 80,  108 => 79,  34 => 7,  31 => 5,  26 => 1,);
     }
 
     public function getSourceContext()
@@ -393,23 +425,23 @@ class __TwigTemplate_be61ea1f71d59e42b31dd955476876cbfe92bf79b1780c6d4253864708f
     />
 
     <style>
-      .fa-eye {
+      .activar {
         transition: 0.125s;
       }
 
       .rotate-left {
-        -webkit-transform: rotate(35deg);
-        -moz-transform: rotate(35deg);
-        -o-transform: rotate(35deg);
-        transform: rotate(35deg);
-        color: red;
+        -webkit-transform: rotate(30deg);
+        -moz-transform: rotate(30deg);
+        -o-transform: rotate(30deg);
+        transform: rotate(30deg);
+        color: lightblue;
       }
       .rotate-right {
-        -webkit-transform: rotate(-35deg);
-        -moz-transform: rotate(-35deg);
-        -o-transform: rotate(-35deg);
-        transform: rotate(-35deg);
-        color: blue;
+        -webkit-transform: rotate(-30deg);
+        -moz-transform: rotate(-30deg);
+        -o-transform: rotate(-30deg);
+        transform: rotate(-30deg);
+        color:lightgreen;
       }
     </style>
 
@@ -422,9 +454,7 @@ class __TwigTemplate_be61ea1f71d59e42b31dd955476876cbfe92bf79b1780c6d4253864708f
 
     <!-- Google Font -->
     <!-- <link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic\"> -->
-
     {% block appStylos %} {% endblock %}
-
     <link
       href=\"views/app/images/favicon.ico\"
       rel=\"shortcut icon\"
@@ -432,7 +462,6 @@ class __TwigTemplate_be61ea1f71d59e42b31dd955476876cbfe92bf79b1780c6d4253864708f
     />
     {# Título #}
     <title>{{ config.site.name }}</title>
-
     {# Extras en el header #} {% block appHeader %}
     <!-- :) -->
     {% endblock %}
@@ -445,7 +474,6 @@ class __TwigTemplate_be61ea1f71d59e42b31dd955476876cbfe92bf79b1780c6d4253864708f
         <label style=\"color:#FFF; background-color:#ABB6BA; text-align:center\"
           >&nbsp;&nbsp;&nbsp;Espere... &nbsp;&nbsp;&nbsp;</label
         >
-
         <img
           src=\"views/app/images/cargando.gif\"
           align=\"middle\"
@@ -454,7 +482,6 @@ class __TwigTemplate_be61ea1f71d59e42b31dd955476876cbfe92bf79b1780c6d4253864708f
         &nbsp;<label style=\"color:#ABB6BA\"
           >Realizando tarea solicitada ...</label
         >
-
         <br />
         <hr style=\"color:#003\" width=\"30%\" />
         <br />
@@ -517,13 +544,13 @@ class __TwigTemplate_be61ea1f71d59e42b31dd955476876cbfe92bf79b1780c6d4253864708f
       });
 
       setInterval(function() {
-        \$(\".fa-eye\").addClass(\"rotate-left\");
-        \$(\".fa-eye\").removeClass(\"rotate-right\");
+        \$(\".activar\").addClass(\"rotate-left\");
+        \$(\".activar\").removeClass(\"rotate-right\");
       }, 125);
 
       setInterval(function() {
-        \$(\".fa-eye\").addClass(\"rotate-right\");
-        \$(\".fa-eye\").removeClass(\"rotate-left\");
+        \$(\".activar\").addClass(\"rotate-right\");
+        \$(\".activar\").removeClass(\"rotate-left\");
       }, 250);
     </script>
     <script>
@@ -545,8 +572,40 @@ class __TwigTemplate_be61ea1f71d59e42b31dd955476876cbfe92bf79b1780c6d4253864708f
     <script type=\"text/javascript\">
       notificacion_emergente('{{ config.site.name }}','{{ owner_user['id_user'] }}');
     </script>
-
+    <script type=\"text/javascript\">
+      notificacion_emergente('{{ config.site.name }}','{{ owner_user['id_user'] }}');
+    </script>
+    FIXME:
+    <script type=\"text/javascript\">
+    var cont = 0;
+    function contador(){
+        var contador = document.getElementById(\"contador\");
+        contador.value = cont;
+        cont++;
+       if(cont == 1){ 
+          \$.ajax({
+            url: \"api/TotalAlertasFechaCompromiso\",
+            method: \"POST\",
+            async: true,
+            success: function(response) {
+              \$(\"#miDiv\").load(\"escalamiento/escalamiento #miDiv\");
+          }
+        });
+        }  
+        if(cont % 30== 0){ 
+          \$.ajax({
+            url: \"api/TotalAlertasFechaCompromiso\",
+            method: \"POST\",
+            async: true,
+            success: function(response) {
+              \$(\"#miDiv\").load(\"escalamiento/escalamiento #miDiv\");
+          }
+        });
+        }    
+    }
+    </script>
     {# Scripts globales #} {% block appScript %} {% endblock %}
+
   </body>
 </html>
 ", "portal/portal.twig", "C:\\xampp\\htdocs\\helpdesk\\app\\templates\\portal\\portal.twig");
