@@ -31,13 +31,36 @@ class __TwigTemplate_ad9286a067c5cd8b450a5c4c8508480e2ea387b2c0af6f0f246be892c29
     {
         // line 3
         echo "    <link rel=\"stylesheet\" href=\"//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css\">
+    <script>
+            var respuestaComunas = new Array();
+            \$(document).ready(function (){
+                \$.ajax({
+                    type: \"POST\",
+                    url: \"api/mostrarComunas2\",
+                    success: function(response){
+                        for (var i=0; i<response.length; i++) {
+                            
+                            respuestaComunas.push(response[i][\"descripcion\"]);
+                        }
+                        console.log(respuestaComunas);
+                    },                
+                    error: function(xhr, status) {
+                        msg_box_alert(99, \"Filtrar Ordenes\", xhr.responseText);
+                    }
+                });
+                
+                \$( \"#comuna\" ).autocomplete({
+                    source: respuestaComunas
+                });
+            });
+        </script>
 ";
     }
 
-    // line 6
+    // line 29
     public function block_appBody($context, array $blocks = array())
     {
-        // line 7
+        // line 30
         echo "    <section class=\"content-header\">
         <h1>
             Escalamiento
@@ -76,24 +99,24 @@ class __TwigTemplate_ad9286a067c5cd8b450a5c4c8508480e2ea387b2c0af6f0f246be892c29
                             </div>
                             <div class=\"col-md-6\">
                                 <label>Nombre Usuario:</label><input type=\"text\"   class=\"form-control\"  value=\"";
-        // line 44
+        // line 67
         echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), ($context["owner_user"] ?? null), "name", array(), "array"), "html", null, true);
         echo " \" disabled>
                                 <input type=\"text\" name=\"nombreUsuario\" id=\"nombreUsuario\" class=\"form-control\"  value=\"";
-        // line 45
+        // line 68
         echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), ($context["owner_user"] ?? null), "name", array(), "array"), "html", null, true);
         echo "\" style=\"display:none\">
                             </div>
                             <div class=\"col-md-6\">
                                 <label>Nombre remitente:</label>
                                 <input type=\"text\" name=\"nombreRemitente\" id=\"nombreRemitente\" class=\"form-control nombreRemitente\"  value=\"";
-        // line 49
+        // line 72
         echo twig_escape_filter($this->env, ($context["nombreRemitente"] ?? null), "html", null, true);
         echo "\" placeholder=\"Ingrese nombre Remitente\" readonly>
                             </div>
                             <div class=\"col-md-6\">
                                 <label>Fecha Ingreso Actividad:</label><input type=\"date\" name=\"fecha\" id=\"fecha\" class=\"form-control\" value=\"";
-        // line 52
+        // line 75
         echo twig_escape_filter($this->env, twig_date_format_filter($this->env, "now", "Y-m-d"), "html", null, true);
         echo "\">
                             </div>
@@ -104,7 +127,7 @@ class __TwigTemplate_ad9286a067c5cd8b450a5c4c8508480e2ea387b2c0af6f0f246be892c29
                             <div class=\"col-md-6\">
                                   <label>Id Actividad:</label>
                                   <input type=\"text\" name=\"idActividad\" id=\"idActividad\" class=\"form-control idActividad\" placeholder=\"Ingrese id Actividad\" value=\"";
-        // line 60
+        // line 83
         echo twig_escape_filter($this->env, ($context["id_actividad"] ?? null), "html", null, true);
         echo "\" readonly>
                             </div>
@@ -151,7 +174,7 @@ class __TwigTemplate_ad9286a067c5cd8b450a5c4c8508480e2ea387b2c0af6f0f246be892c29
                             </div>
                             <div class=\"col-md-6\">
                                 <label>Comuna:</label>
-                                <input type=\"text\" name=\"comuna\" value=\"\" id=\"comuna\" class=\"form-control\" placeholder=\"Ingrese comuna\">
+                                <input type=\"text\" name=\"comuna\" id=\"comuna\" class=\"form-control comuna\" placeholder=\"Ingrese comuna\">
                             </div>
                             <div class=\"col-md-6\">
                                 <label>Hora Compromiso:</label>
@@ -163,7 +186,7 @@ class __TwigTemplate_ad9286a067c5cd8b450a5c4c8508480e2ea387b2c0af6f0f246be892c29
                             </div>
                             <div class=\"col-md-6\">
                                 <input type=\"hidden\" name=\"fechaFinalizacion\" id=\"fechaFinalizacion\" class=\"form-control fechaFinalizacion\" placeholder=\"\" value=\"";
-        // line 116
+        // line 139
         echo twig_escape_filter($this->env, twig_date_format_filter($this->env, "now", "Y-m-d"), "html", null, true);
         echo "\" >
                             </div>
@@ -181,10 +204,10 @@ class __TwigTemplate_ad9286a067c5cd8b450a5c4c8508480e2ea387b2c0af6f0f246be892c29
     ";
     }
 
-    // line 130
+    // line 153
     public function block_appScript($context, array $blocks = array())
     {
-        // line 131
+        // line 154
         echo "        <script src=\"views/app/js/escalamiento/escalamiento.js\" type=\"text/javascript\"></script>
         <script src=\"//code.jquery.com/ui/1.12.1/jquery-ui.js\"></script>
     ";
@@ -202,7 +225,7 @@ class __TwigTemplate_ad9286a067c5cd8b450a5c4c8508480e2ea387b2c0af6f0f246be892c29
 
     public function getDebugInfo()
     {
-        return array (  188 => 131,  185 => 130,  167 => 116,  108 => 60,  97 => 52,  91 => 49,  84 => 45,  80 => 44,  41 => 7,  38 => 6,  33 => 3,  30 => 2,  11 => 1,);
+        return array (  211 => 154,  208 => 153,  190 => 139,  131 => 83,  120 => 75,  114 => 72,  107 => 68,  103 => 67,  64 => 30,  61 => 29,  33 => 3,  30 => 2,  11 => 1,);
     }
 
     public function getSourceContext()
@@ -210,6 +233,29 @@ class __TwigTemplate_ad9286a067c5cd8b450a5c4c8508480e2ea387b2c0af6f0f246be892c29
         return new Twig_Source("{% extends 'portal/portal' %}
 {% block appStylos %}
     <link rel=\"stylesheet\" href=\"//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css\">
+    <script>
+            var respuestaComunas = new Array();
+            \$(document).ready(function (){
+                \$.ajax({
+                    type: \"POST\",
+                    url: \"api/mostrarComunas2\",
+                    success: function(response){
+                        for (var i=0; i<response.length; i++) {
+                            
+                            respuestaComunas.push(response[i][\"descripcion\"]);
+                        }
+                        console.log(respuestaComunas);
+                    },                
+                    error: function(xhr, status) {
+                        msg_box_alert(99, \"Filtrar Ordenes\", xhr.responseText);
+                    }
+                });
+                
+                \$( \"#comuna\" ).autocomplete({
+                    source: respuestaComunas
+                });
+            });
+        </script>
 {% endblock %}
 
 {% block appBody %}
@@ -311,7 +357,7 @@ class __TwigTemplate_ad9286a067c5cd8b450a5c4c8508480e2ea387b2c0af6f0f246be892c29
                             </div>
                             <div class=\"col-md-6\">
                                 <label>Comuna:</label>
-                                <input type=\"text\" name=\"comuna\" value=\"\" id=\"comuna\" class=\"form-control\" placeholder=\"Ingrese comuna\">
+                                <input type=\"text\" name=\"comuna\" id=\"comuna\" class=\"form-control comuna\" placeholder=\"Ingrese comuna\">
                             </div>
                             <div class=\"col-md-6\">
                                 <label>Hora Compromiso:</label>

@@ -1,6 +1,29 @@
 {% extends 'portal/portal' %}
 {% block appStylos %}
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script>
+            var respuestaComunas = new Array();
+            $(document).ready(function (){
+                $.ajax({
+                    type: "POST",
+                    url: "api/mostrarComunas2",
+                    success: function(response){
+                        for (var i=0; i<response.length; i++) {
+                            
+                            respuestaComunas.push(response[i]["descripcion"]);
+                        }
+                        console.log(respuestaComunas);
+                    },                
+                    error: function(xhr, status) {
+                        msg_box_alert(99, "Filtrar Ordenes", xhr.responseText);
+                    }
+                });
+                
+                $( "#comuna" ).autocomplete({
+                    source: respuestaComunas
+                });
+            });
+        </script>
 {% endblock %}
 
 {% block appBody %}
@@ -102,7 +125,7 @@
                             </div>
                             <div class="col-md-6">
                                 <label>Comuna:</label>
-                                <input type="text" name="comuna" value="" id="comuna" class="form-control" placeholder="Ingrese comuna">
+                                <input type="text" name="comuna" id="comuna" class="form-control comuna" placeholder="Ingrese comuna">
                             </div>
                             <div class="col-md-6">
                                 <label>Hora Compromiso:</label>

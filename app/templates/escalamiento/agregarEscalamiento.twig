@@ -1,6 +1,29 @@
 {% extends 'portal/portal' %}
 {% block appStylos %}
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script>
+        var respuestaComunas = new Array();
+        $(document).ready(function (){
+            $.ajax({
+                type: "POST",
+                url: "api/mostrarComunas2",
+                success: function(response){
+                    for (var i=0; i<response.length; i++) {
+                        
+                        respuestaComunas.push(response[i]["descripcion"]);
+                    }
+                },                
+                error: function(xhr, status) {
+                    msg_box_alert(99, "Filtrar Ordenes", xhr.responseText);
+                }
+            });
+            
+            $( "#comuna" ).autocomplete({
+                source: respuestaComunas
+            });
+        });
+    </script>
 {% endblock %}
 
 {% block appBody %}
@@ -55,9 +78,9 @@
                                   <input type="text" name="rutCliente" id="rutCliente" class="form-control" placeholder="Ingrese rut cliente">
                             </div>
                             <div class="col-md-6">
-                                  <label>Comuna Actividad:</label>
-                                  <input type="text" name="comuna" id="comuna" class="form-control comuna" placeholder="Ingrese comuna Actividad">
-                            </div>
+                                    <label>Comuna Actividad:</label>
+                                    <input type="text" name="comuna" id="comuna" class="comuna form-control" placeholder="Ingrese Comuna" >
+                              </div>
                             <div class="col-md-6">
                                 <label>Fecha Compromiso:</label>
                                     <input type="date" name="fechaCompromiso" id="fechaCompromiso" class="form-control fechaCompromiso" placeholder="Ingrese Descripción Actividad" >

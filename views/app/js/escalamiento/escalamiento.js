@@ -28,7 +28,6 @@ function agregarEscalamiento() {
                     autoClose: "ok|3000",
                     buttons: {
                         ok: function() {
-                            //console.log(json);
                             $("#"+json.id).css("border-color", "red");
                             $("#"+json.id).focus();
                         }
@@ -432,6 +431,79 @@ function cargarTabla(tipo) {
             $("#t1").dataTable({
                 ajax: {
                     url: "api/actividadesNoCorresponden",
+                    type: "POST"
+                },
+                language: {
+                    search: "Buscar:",
+                    zeroRecords: "No hay datos para mostrar",
+                    info: "Mostrando _END_ Registros, de un total de _TOTAL_ ",
+                    loadingRecords: "Cargando...",
+                    processing: "Procesando...",
+                    infoEmpty: "No hay entradas para mostrar",
+                    lengthMenu: "Mostrar _MENU_ Filas",
+
+                    columns: [
+                        { data: "nombre" },
+                        { defaultContent: "<button>Editar</button>" }
+                    ],
+
+                    paginate: {
+                        first: "Primera",
+                        last: "Ultima",
+                        next: "Siguiente",
+                        previous: "Anterior"
+                    }
+                },
+                autoWidth: true,
+                scrollX: true,
+                bSort: false,
+                bInfo: false,
+                iDisplayLength: 8,
+                pagingType: "full_numbers",
+                dom: "Bfrtip",
+                buttons: [{
+                    extend: "excel",
+                    text: ""
+                }],
+                aoColumnDefs: [{
+                    aTargets: [9],
+                    mRender: function(data, type, full) {
+                        return (
+                            '<input type="button" class="btn btn-success" onclick="cambiarEstadoActividadNoCorresponde(\'' +
+                            full[0] +
+                            '\')" value="Estado"> <input type="button" class="btn btn-info" onclick="visualizarActividadNoCorresponde(\'' +
+                            full[0] +
+                            '\')" value="Visualizar">'
+                        );
+                    }
+                }]
+            });
+            break;
+
+            case "compromisoHoyMañana":
+            $("#home")
+                .find("h3")
+                .text(" Detalle Actividades no corresponden");
+            var cols = new Array(
+                "Id Actividad",
+                "Fecha Ingreso",
+                "Fecha Compromiso",
+                "Rut Cliente",
+                "Descripción",
+                "Remitente",
+                "canal",
+                "Creador",
+                "tipoActividad",
+                "Acciones"
+            );
+            $.each(cols, function(index, value) {
+                $("#t1")
+                    .find("thead > tr")
+                    .append("<th>" + value + "</th>");
+            });
+            $("#t1").dataTable({
+                ajax: {
+                    url: "api/compromisoHoyMañana",
                     type: "POST"
                 },
                 language: {

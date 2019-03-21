@@ -659,3 +659,17 @@ $app->post('/agregarGestion  ', function() use($app) {
     return $app->json($u->agregarGestion());
 });
 
+$app->post('/mostrarComunas  ', function() use($app) {
+    $u = new Model\Escalamiento;
+    return $app->json($u->mostrarComunas());
+});
+
+$app->post('/mostrarComunas2  ', function() use($app) {
+    $u = new Model\Escalamiento;
+    return $app->json($u->mostrarComunas());
+});
+
+$app->post('/compromisoHoyMañana  ', function() use($app) {
+    $u = new Model\Escalamiento;
+    return $app->json($u->compromisoHoyMañana());
+});

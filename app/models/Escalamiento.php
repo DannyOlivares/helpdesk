@@ -431,9 +431,6 @@ class Escalamiento extends Models implements IModels {
                     FROM escalamientoremitente e RIGHT JOIN escalamientocorresponde c ON e.idActividadIngresar = c.idActividadManual";
 
                     $result = $this->db->query_select($sql);
-                    // echo'<pre>';
-                    //     print_r($result);
-                    // echo'</pre>';
         return array( 'data' => $result);
         
     }
@@ -445,6 +442,14 @@ class Escalamiento extends Models implements IModels {
         $result = $this->db->query_select($sql);
 
         return  array( 'data' => $result);
+    }
+
+    public function totalCompromisosHoy(){
+        $sql    =   "SELECT count(*) FROM escalamientocorresponde 
+        WHERE fechaCompromiso = curdate() AND estadoOrden <> 'finalizada'";
+
+        $result =   $this->db->query_select($sql);
+        return $result;
     }
 
     public function actividadesNoCorresponden(){
@@ -805,6 +810,20 @@ class Escalamiento extends Models implements IModels {
         $result = $this->db->query_select($sql);
 
         return array('success'=>1, 'message'=>'Guardado correctamente');
+    }
+
+    public function mostrarComunas(){
+        $sql    =   "select descripcion from tblcomuna";
+        $result = $this->db->query_select($sql);
+        return $result;
+    }
+    //FIXME:
+    public function compromisoHoyMañana(){
+        $sql    =   "   SELECT * FROM escalamientoCorresponde
+        WHERE fechaCompromiso = curdate() 
+        OR fechaCompromiso =  DATE_SUB(CURDATE(), INTERVAL -1 DAY)";
+
+        $result =   $this->db->query_select($sql);
     }
     
 

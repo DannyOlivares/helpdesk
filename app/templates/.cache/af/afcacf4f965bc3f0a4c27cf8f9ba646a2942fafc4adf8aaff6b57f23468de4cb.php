@@ -82,49 +82,48 @@ class __TwigTemplate_0e1590ab6e7db38143070aa679d4796cb0b516b6f69f9a8944efa4cb2fc
                                 </tr>
                             </thead>
                             <tbody>
-                                 
                                 ";
-        // line 51
+        // line 50
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->getSourceContext(), ($context["data"] ?? null), "data", array(), "array"));
         foreach ($context['_seq'] as $context["_key"] => $context["d"]) {
             if ((false != twig_get_attribute($this->env, $this->getSourceContext(), ($context["data"] ?? null), "data", array(), "array"))) {
-                // line 52
+                // line 51
                 echo "                                    <tr>
                                         <td>";
-                // line 53
+                // line 52
                 echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), $context["d"], 0, array(), "array"), "html", null, true);
                 echo "</td>
                                         <td>";
-                // line 54
+                // line 53
                 echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), $context["d"], 1, array(), "array"), "html", null, true);
                 echo "</td>
                                         <td>";
-                // line 55
+                // line 54
                 echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), $context["d"], 2, array(), "array"), "html", null, true);
                 echo "</td>
                                         <td>";
-                // line 56
+                // line 55
                 echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), $context["d"], 3, array(), "array"), "html", null, true);
                 echo "</td>
                                         <td>";
-                // line 57
+                // line 56
                 echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), $context["d"], 4, array(), "array"), "html", null, true);
                 echo "</td>
                                         <td>";
-                // line 58
+                // line 57
                 echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), $context["d"], 5, array(), "array"), "html", null, true);
                 echo "</td>
                                         <td>";
-                // line 59
+                // line 58
                 echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), $context["d"], 6, array(), "array"), "html", null, true);
                 echo "</td>
                                         <td>";
-                // line 60
+                // line 59
                 echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), $context["d"], 7, array(), "array"), "html", null, true);
                 echo "</td>
                                         <td><a data-toggle='tooltip' data-placement='top' id=\"visualizar\" name=\"visualizar\" title='Agrega El detalle de tu gestión' class='btn btn-success btn-sm' onclick=\"agregarGestion('";
-                // line 61
+                // line 60
                 echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), $context["d"], 3, array(), "array"), "html", null, true);
                 echo "');\">Agregar Gestión</a></td>
                                     </tr>
@@ -134,7 +133,7 @@ class __TwigTemplate_0e1590ab6e7db38143070aa679d4796cb0b516b6f69f9a8944efa4cb2fc
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['d'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 64
+        // line 63
         echo "                            </tbody>
                         </table>
                     </div>
@@ -145,10 +144,10 @@ class __TwigTemplate_0e1590ab6e7db38143070aa679d4796cb0b516b6f69f9a8944efa4cb2fc
 ";
     }
 
-    // line 72
+    // line 71
     public function block_appScript($context, array $blocks = array())
     {
-        // line 73
+        // line 72
         echo "    <script src=\"views/app/template/datatables/jquery.dataTables.min.js\" type=\"text/javascript\"></script>
     <script src=\"views/app/template/datatables/dataTables.bootstrap.min.js\" type=\"text/javascript\"></script>
     <script src=\"views/app/js/escalamiento/escalamiento.js\"></script>
@@ -189,7 +188,7 @@ class __TwigTemplate_0e1590ab6e7db38143070aa679d4796cb0b516b6f69f9a8944efa4cb2fc
 
     public function getDebugInfo()
     {
-        return array (  152 => 73,  149 => 72,  138 => 64,  128 => 61,  124 => 60,  120 => 59,  116 => 58,  112 => 57,  108 => 56,  104 => 55,  100 => 54,  96 => 53,  93 => 52,  88 => 51,  46 => 11,  43 => 10,  33 => 3,  30 => 2,  11 => 1,);
+        return array (  151 => 72,  148 => 71,  137 => 63,  127 => 60,  123 => 59,  119 => 58,  115 => 57,  111 => 56,  107 => 55,  103 => 54,  99 => 53,  95 => 52,  92 => 51,  87 => 50,  46 => 11,  43 => 10,  33 => 3,  30 => 2,  11 => 1,);
     }
 
     public function getSourceContext()
@@ -243,7 +242,6 @@ class __TwigTemplate_0e1590ab6e7db38143070aa679d4796cb0b516b6f69f9a8944efa4cb2fc
                                 </tr>
                             </thead>
                             <tbody>
-                                 
                                 {%  for  d in data['data'] if false != data['data'] %}
                                     <tr>
                                         <td>{{ d[0] }}</td>

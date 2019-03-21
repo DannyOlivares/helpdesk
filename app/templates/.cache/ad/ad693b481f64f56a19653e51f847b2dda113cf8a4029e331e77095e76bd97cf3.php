@@ -129,6 +129,19 @@ class __TwigTemplate_c016bf9db555db0117f217c5c04db20933b58a21cb1906b4b4045de4eed
                                 </div>
                             </div>
 
+                            <div class=\"col col-md-3\">
+                                    <div class=\"box\">
+                                        <div class=\"box-header with-border\">
+                                            <h3 class=\"box-title\">Resumen Actividades Comprometidas Hoy</h3>
+                                        </div>
+                                        <div class=\"box-footer\">
+                                            Total Compromisos Hoy: ";
+        // line 91
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), twig_get_attribute($this->env, $this->getSourceContext(), ($context["data7"] ?? null), 0, array(), "array"), 0, array(), "array"), "html", null, true);
+        echo "
+                                        </div>
+                                    </div>
+                                </div>
                         </div>
                         <ul class=\"nav nav-tabs\">
                             <li><a data-toggle=\"tab\" href=\"#menu1\" class=\"\" onclick=\"cargarTabla('pendiente');\">Actividades Pendientes</a></li>
@@ -136,6 +149,7 @@ class __TwigTemplate_c016bf9db555db0117f217c5c04db20933b58a21cb1906b4b4045de4eed
                             <li><a data-toggle=\"tab\" href=\"#menu3\" onclick=\"cargarTabla('finalizadaHoy');\">Actividades Finalizadas Hoy</a></li>
                             <li><a data-toggle=\"tab\" href=\"#menu3\" onclick=\"cargarTabla('noCorresponde');\">Actividades  no corresponde</a></li>
                             <li><a data-toggle=\"tab\" href=\"#menu5\" onclick=\"cargarTabla('porVencer');\">Actividades Por Vencer</a></li>
+                            <li><a data-toggle=\"tab\" href=\"#menu3\" onclick=\"cargarTabla('noCorresponde');\">Compromisos Para Hoy y Mañana</a></li>
                         </ul>
                         <div id=\"home\" class=\"tab-pane fade in active\">
                             <div class=\"\">
@@ -157,10 +171,10 @@ class __TwigTemplate_c016bf9db555db0117f217c5c04db20933b58a21cb1906b4b4045de4eed
 ";
     }
 
-    // line 112
+    // line 123
     public function block_appScript($context, array $blocks = array())
     {
-        // line 113
+        // line 124
         echo "    <script src=\"views/app/js/escalamiento/escalamiento.js\" type=\"text/javascript\"></script>
     <script src=\"views/app/template/datatables/jquery.dataTables.min.js\" type=\"text/javascript\"></script>
     <script src=\"https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js\"></script>
@@ -182,7 +196,7 @@ class __TwigTemplate_c016bf9db555db0117f217c5c04db20933b58a21cb1906b4b4045de4eed
 
     public function getDebugInfo()
     {
-        return array (  164 => 113,  161 => 112,  126 => 80,  112 => 69,  98 => 58,  85 => 48,  55 => 20,  52 => 19,  33 => 3,  30 => 2,  11 => 1,);
+        return array (  178 => 124,  175 => 123,  140 => 91,  126 => 80,  112 => 69,  98 => 58,  85 => 48,  55 => 20,  52 => 19,  33 => 3,  30 => 2,  11 => 1,);
     }
 
     public function getSourceContext()
@@ -271,6 +285,16 @@ class __TwigTemplate_c016bf9db555db0117f217c5c04db20933b58a21cb1906b4b4045de4eed
                                 </div>
                             </div>
 
+                            <div class=\"col col-md-3\">
+                                    <div class=\"box\">
+                                        <div class=\"box-header with-border\">
+                                            <h3 class=\"box-title\">Resumen Actividades Comprometidas Hoy</h3>
+                                        </div>
+                                        <div class=\"box-footer\">
+                                            Total Compromisos Hoy: {{ data7[0][0] }}
+                                        </div>
+                                    </div>
+                                </div>
                         </div>
                         <ul class=\"nav nav-tabs\">
                             <li><a data-toggle=\"tab\" href=\"#menu1\" class=\"\" onclick=\"cargarTabla('pendiente');\">Actividades Pendientes</a></li>
@@ -278,6 +302,7 @@ class __TwigTemplate_c016bf9db555db0117f217c5c04db20933b58a21cb1906b4b4045de4eed
                             <li><a data-toggle=\"tab\" href=\"#menu3\" onclick=\"cargarTabla('finalizadaHoy');\">Actividades Finalizadas Hoy</a></li>
                             <li><a data-toggle=\"tab\" href=\"#menu3\" onclick=\"cargarTabla('noCorresponde');\">Actividades  no corresponde</a></li>
                             <li><a data-toggle=\"tab\" href=\"#menu5\" onclick=\"cargarTabla('porVencer');\">Actividades Por Vencer</a></li>
+                            <li><a data-toggle=\"tab\" href=\"#menu3\" onclick=\"cargarTabla('noCorresponde');\">Compromisos Para Hoy y Mañana</a></li>
                         </ul>
                         <div id=\"home\" class=\"tab-pane fade in active\">
                             <div class=\"\">

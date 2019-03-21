@@ -24,6 +24,7 @@ class escalamientoController extends Controllers implements IControllers {
             case 'agregarEscalamiento':
                 echo $this->template->render('escalamiento/agregarEscalamiento', array(
                     'id_actividad' => $router->getId()
+                    
                 ));
             break;
 
@@ -40,13 +41,13 @@ class escalamientoController extends Controllers implements IControllers {
             case 'escalamiento':
                 $t = new Model\Escalamiento();
                 echo $this->template->render('escalamiento/escalamiento',array(
-                    'data2'     => (new Model\Escalamiento)->actividadesPendientes(),
-                    'data3'     => (new Model\Escalamiento)->actividadesAsignadas(),
-                    'data1'     => (new Model\Escalamiento)->actividadesTotales(),
-                    'data4'     => (new Model\Escalamiento)->actividadesFinalizadasHoyAll(),
-                    'data5'     => (new Model\Escalamiento)->AlertaOrdenesPorVencer(),
-                    'data6'     => (new Model\Escalamiento)->TotalAlertasFechaCompromiso()
-
+                    'data2'     =>  (new Model\Escalamiento)->actividadesPendientes(),
+                    'data3'     =>  (new Model\Escalamiento)->actividadesAsignadas(),
+                    'data1'     =>  (new Model\Escalamiento)->actividadesTotales(),
+                    'data4'     =>  (new Model\Escalamiento)->actividadesFinalizadasHoyAll(),
+                    'data5'     =>  (new Model\Escalamiento)->AlertaOrdenesPorVencer(),
+                    'data6'     =>  (new Model\Escalamiento)->TotalAlertasFechaCompromiso(),
+                    'data7'     =>  (new Model\Escalamiento)->totalCompromisosHoy()
                 ));
             break;
 
