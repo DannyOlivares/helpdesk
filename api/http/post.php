@@ -649,11 +649,6 @@ $app->post('/cambiarEstadoActividadNoCorresponde  ', function() use($app) {
     return $app->json($u->cambiarEstadoActividadNoCorresponde());
 });
 
-$app->post('/actividadesPorVencer  ', function() use($app) {
-    $u = new Model\Escalamiento;
-    return $app->json($u->AlertaOrdenesPorVencer());
-});
-
 $app->post('/agregarGestion  ', function() use($app) {
     $u = new Model\Escalamiento;
     return $app->json($u->agregarGestion());
@@ -672,4 +667,29 @@ $app->post('/mostrarComunas2  ', function() use($app) {
 $app->post('/compromisoHoyMañana  ', function() use($app) {
     $u = new Model\Escalamiento;
     return $app->json($u->compromisoHoyMañana());
+});
+
+$app->post('/betweenFechas  ', function() use($app) {
+    $u = new Model\Escalamiento;
+    return $app->json($u->betweenFechas());
+});
+//TODO:
+$app->post('/actividadesPorVencer', function() use($app) {
+    $u = new Model\Escalamiento;
+    return $app->json($u->AlertaActividadesPorVencer());
+});
+
+$app->post('/TotalAlertasActividades', function() use($app) {
+    $u = new Model\Escalamiento;
+    return $app->json($u->TotalAlertasActividades());
+});
+
+$app->post('/compromisosPorVencer', function() use($app) {
+    $u = new Model\Escalamiento;
+    return $app->json($u->AlertaCompromisosPorVencer());
+});
+
+$app->post('/TotalAlertasCompromiso', function() use($app) {
+    $u = new Model\Escalamiento;
+    return $app->json($u->TotalAlertasCompromisos());
 });

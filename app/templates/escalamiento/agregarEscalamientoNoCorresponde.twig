@@ -1,29 +1,29 @@
 {% extends 'portal/portal' %}
 {% block appStylos %}
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script>
-            var respuestaComunas = new Array();
-            $(document).ready(function (){
-                $.ajax({
-                    type: "POST",
-                    url: "api/mostrarComunas2",
-                    success: function(response){
-                        for (var i=0; i<response.length; i++) {
-                            
-                            respuestaComunas.push(response[i]["descripcion"]);
-                        }
-                        console.log(respuestaComunas);
-                    },                
-                    error: function(xhr, status) {
-                        msg_box_alert(99, "Filtrar Ordenes", xhr.responseText);
+        var respuestaComunas = new Array();
+        $(document).ready(function (){
+            $.ajax({
+                type: "POST",
+                url: "api/mostrarComunas2",
+                success: function(response){
+                    for (var i=0; i<response.length; i++) {
+                        
+                        respuestaComunas.push(response[i]["descripcion"]);
                     }
-                });
-                
-                $( "#comuna" ).autocomplete({
-                    source: respuestaComunas
-                });
+                },                
+                error: function(xhr, status) {
+                    msg_box_alert(99, "Filtrar Ordenes", xhr.responseText);
+                }
             });
-        </script>
+            
+            $( "#comuna" ).autocomplete({
+                source: respuestaComunas
+            });
+        });
+    </script>
 {% endblock %}
 
 {% block appBody %}
@@ -57,6 +57,7 @@
                         <div class="box-header">
                             <h3 class="box-title">Finalizar Orden</h3>
                         </div>
+                        
                         <div class="box-body">
                             <div class="col-md-12 text-center">
                                 <a data-toggle='tooltip' data-placement='top' name="btnAgregarEscalamiento" id="btnAgregarEscalamiento" class='btn btn-success' onclick="agregarEscalamientoNoCorresponde();">Finalizar Gestión

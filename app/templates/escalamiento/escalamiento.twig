@@ -29,6 +29,7 @@
         </li>
         <li><a href="escalamiento/listaActividades">Listar Actividades</a></li>
         </ol>
+        
     </section>
     <br>
     <section class="content">
@@ -94,12 +95,13 @@
                                 </div>
                         </div>
                         <ul class="nav nav-tabs">
-                            <li><a data-toggle="tab" href="#menu1" class="" onclick="cargarTabla('pendiente');">Actividades Pendientes</a></li>
-                            <li><a data-toggle="tab" href="#menu2" onclick="cargarTabla('seguimiento');">Actividades seguimiento</a></li>
-                            <li><a data-toggle="tab" href="#menu3" onclick="cargarTabla('finalizadaHoy');">Actividades Finalizadas Hoy</a></li>
-                            <li><a data-toggle="tab" href="#menu3" onclick="cargarTabla('noCorresponde');">Actividades  no corresponde</a></li>
-                            <li><a data-toggle="tab" href="#menu5" onclick="cargarTabla('porVencer');">Actividades Por Vencer</a></li>
-                            <li><a data-toggle="tab" href="#menu3" onclick="cargarTabla('noCorresponde');">Compromisos Para Hoy y Mañana</a></li>
+                            <li><a data-toggle="tab" href="#menu1" class="pendiente"  onclick="cargarTabla('pendiente');">Actividades Pendientes</a></li>
+                            <li><a data-toggle="tab" href="#menu2" class="seguimiento" onclick="cargarTabla('seguimiento');">Actividades seguimiento</a></li>
+                            <li><a data-toggle="tab" href="#menu3" class="finalizada" onclick="cargarTabla('finalizadaHoy');">Actividades Finalizadas Hoy</a></li>
+                            <li><a data-toggle="tab" href="#menu3" class="noCorresponde" onclick="cargarTabla('noCorresponde');">Actividades  no corresponde</a></li>
+                            <li><a data-toggle="tab" href="#menu5" class="porVencer" onclick="cargarTabla('porVencer');">Actividades Por Vencer</a></li>
+                            <li><a data-toggle="tab" href="#home6" onclick="cargarTabla('xVencerCompromiso');">Compromisos Por Vencer</a></li>
+                            <li><a data-toggle="tab" href="#menu3" class="compromisoHoyMañana" onclick="cargarTabla('compromisoHoyMañana');">Compromisos Para Hoy y Mañana</a></li>
                         </ul>
                         <div id="home" class="tab-pane fade in active">
                             <div class="">

@@ -50,7 +50,8 @@ class __TwigTemplate_673d23903d41f061265ac8309efe7eb59e5fb88e353ad9d14d36709fd07
                         </li>
                         <li class=\"footer\"><a href=\"#\">Ver todos los mensajes</a></li>
                     </ul>
-                </li>               
+                </li>   
+
                 <li class=\"dropdown notifications-menu\">
                     <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">
                         <i class=\"fa fa-bell-o\"></i>
@@ -66,54 +67,96 @@ class __TwigTemplate_673d23903d41f061265ac8309efe7eb59e5fb88e353ad9d14d36709fd07
                         <li class=\"footer\"><a href=\"escalamiento/ActividadesPorVencer\">Ver todo</a></li>
                     </ul>
                 </li> 
+                <!--FIXME:-->
                 <li class=\"dropdown notifications-menu\">
                     ";
-        // line 49
-        if ((($context["data6"] ?? null) > 1)) {
-            // line 50
-            echo "                    <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" onclick=\"\" title=\"Hay ";
-            echo twig_escape_filter($this->env, ($context["data6"] ?? null), "html", null, true);
-            echo " Actividades por vencer\">
-                         <i class=\"fa fa-eye activar\"></i>
-                        ";
-            // line 53
-            echo "                        <span class=\"label label-warning\">";
-            echo twig_escape_filter($this->env, ($context["data6"] ?? null), "html", null, true);
+        // line 51
+        if ((($context["data8"] ?? null) || (($context["data10"] ?? null) > 0))) {
+            // line 52
+            echo "                    <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" >
+                       <i class=\"fa fa-eye activar\"></i>
+                       <span class=\"label label-warning\">";
+            // line 54
+            echo twig_escape_filter($this->env, (($context["data8"] ?? null) + ($context["data10"] ?? null)), "html", null, true);
             echo "</span>
                     </a>
-                    <ul class=\"dropdown-menu\">
-                          <li class=\"header\" >Hay ";
-            // line 56
-            echo twig_escape_filter($this->env, ($context["data6"] ?? null), "html", null, true);
-            echo " actividades por vencer</li>
-                        <li>                             
-                            <ul class=\"menu\">                               
+                    ";
+        }
+        // line 57
+        echo "
+                     ";
+        // line 58
+        if ((($context["data8"] ?? null) != 1)) {
+            // line 59
+            echo "                    <ul class=\"dropdown-menu\">
+                        <li class=\"header\" ><i class=\"fa fa-warning activar\"></i>&nbsp;&nbsp;";
+            // line 60
+            echo twig_escape_filter($this->env, ($context["data8"] ?? null), "html", null, true);
+            echo " Actividades por vencer</li>
+                        ";
+            // line 61
+            if ((($context["data10"] ?? null) > 1)) {
+                // line 62
+                echo "                            <li class=\"header\" ><i class=\"fa fa-warning activar\"></i>&nbsp;&nbsp;&nbsp;";
+                echo twig_escape_filter($this->env, ($context["data10"] ?? null), "html", null, true);
+                echo " Compromisos por vencer</li>
+                        ";
+            } elseif ((            // line 63
+($context["data10"] ?? null) == 1)) {
+                // line 64
+                echo "                            <li class=\"header\" ><i class=\"fa fa-warning activar\"></i>&nbsp;&nbsp;&nbsp;";
+                echo twig_escape_filter($this->env, ($context["data10"] ?? null), "html", null, true);
+                echo " Compromiso por vencer</li>
+                        ";
+            } elseif ((            // line 65
+($context["data10"] ?? null) == 0)) {
+                // line 66
+                echo "                            <li class=\"header\" ><i class=\"fa fa-warning activar\"></i>&nbsp;&nbsp;&nbsp; Sin compromisos por vencer</li>
+                        ";
+            }
+            // line 68
+            echo "                        <li>                             
+                            <ul class=\"menu\">
                             </ul>
                         </li>
                         <li class=\"footer\">
                         </li>
                     </ul>
+
                     ";
-        } elseif ((        // line 64
-($context["data6"] ?? null) == 1)) {
-            // line 65
-            echo "                    <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" onclick=\"\" title=\"Hay ";
-            echo twig_escape_filter($this->env, ($context["data6"] ?? null), "html", null, true);
-            echo " Actividad por vencer\">
-                         <i class=\"fa fa-eye activar\"></i>
+        } elseif ((        // line 76
+($context["data8"] ?? null) == 1)) {
+            // line 77
+            echo "                    <ul class=\"dropdown-menu\">
+                            <li class=\"header\" ><i class=\"fa fa-warning activar\"></i>&nbsp;&nbsp;&nbsp;";
+            // line 78
+            echo twig_escape_filter($this->env, ($context["data8"] ?? null), "html", null, true);
+            echo " Actividad por vencer</li>
                         ";
-            // line 68
-            echo "                        <span class=\"label label-warning\">";
-            echo twig_escape_filter($this->env, ($context["data6"] ?? null), "html", null, true);
-            echo "</span>
-                    </a>
-                    <ul class=\"dropdown-menu\">
-                          <li class=\"header\" >Hay ";
-            // line 71
-            echo twig_escape_filter($this->env, ($context["data6"] ?? null), "html", null, true);
-            echo " actividad por vencer</li>
-                        <li>                             
+            // line 79
+            if ((($context["data10"] ?? null) > 1)) {
+                // line 80
+                echo "                            <li class=\"header\" ><i class=\"fa fa-warning activar\"></i>&nbsp;&nbsp;&nbsp;";
+                echo twig_escape_filter($this->env, ($context["data10"] ?? null), "html", null, true);
+                echo " Compromisos por vencer</li>
+                       ";
+            } elseif ((            // line 81
+($context["data10"] ?? null) == 1)) {
+                // line 82
+                echo "                            <li class=\"header\" ><i class=\"fa fa-warning activar\"></i>&nbsp;&nbsp;&nbsp;";
+                echo twig_escape_filter($this->env, ($context["data10"] ?? null), "html", null, true);
+                echo " Compromiso por vencer</li>
+                       ";
+            } elseif ((            // line 83
+($context["data10"] ?? null) == 0)) {
+                // line 84
+                echo "                            <li class=\"header\" ><i class=\"fa fa-warning activar\"></i>&nbsp;&nbsp;&nbsp; Sin compromisos por vencer</li>
+                        ";
+            }
+            // line 86
+            echo "                        <li>                             
                             <ul class=\"menu\">
+                                
                             </ul>
                         </li>
                         <li class=\"footer\">
@@ -121,24 +164,43 @@ class __TwigTemplate_673d23903d41f061265ac8309efe7eb59e5fb88e353ad9d14d36709fd07
                     </ul>
                     ";
         } else {
-            // line 79
+            // line 94
             echo " 
-
-                   <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" onclick=cargarActividades(); title=\"No hay actividades por vencer\"> 
-                        <i class=\"fa fa-eye\"></i>
-                        <span class=\"label label-warning\" ></span>
-                    </a>
                     <ul class=\"dropdown-menu\">
                         <li class=\"header\" >no hay actividades por vencer</li>
-                        <li>                             
-                            <ul class=\"menu\">
-                            </ul>
+                        ";
+            // line 97
+            if ((($context["data10"] ?? null) > 1)) {
+                // line 98
+                echo "                            <li class=\"header\" ><i class=\"fa fa-warning activar\"></i>&nbsp;&nbsp;&nbsp;";
+                echo twig_escape_filter($this->env, ($context["data10"] ?? null), "html", null, true);
+                echo " Compromisos por vencer</li>
+                        ";
+            } elseif ((            // line 99
+($context["data10"] ?? null) == 1)) {
+                // line 100
+                echo "                            <li class=\"header\" ><i class=\"fa fa-warning activar\"></i>&nbsp;&nbsp;&nbsp;";
+                echo twig_escape_filter($this->env, ($context["data10"] ?? null), "html", null, true);
+                echo " Compromiso por vencer</li>
+                        ";
+            } elseif ((            // line 101
+($context["data10"] ?? null) == 0)) {
+                // line 102
+                echo "                            <li class=\"header\" ><i class=\"fa fa-warning activar\"></i>&nbsp;&nbsp;&nbsp; Sin compromisos por vencer</li>
+                        ";
+            }
+            // line 104
+            echo "                            <li>                             
+                        <ul class=\"menu\">
+                        </ul>
                         </li>
+            
                     </ul>
                     ";
         }
-        // line 93
+        // line 111
         echo "                </li> 
+                <!--FIXME:-->
                  <li class=\"dropdown tasks-menu\">
                     <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">
                         <i class=\"fa fa-flag-o\"></i>
@@ -159,22 +221,22 @@ class __TwigTemplate_673d23903d41f061265ac8309efe7eb59e5fb88e353ad9d14d36709fd07
                 <li class=\"dropdown user user-menu\">
                     <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">
                       ";
-        // line 113
+        // line 132
         if ((twig_get_attribute($this->env, $this->getSourceContext(), ($context["owner_user"] ?? null), "foto", array(), "array") == 1)) {
-            // line 114
+            // line 133
             echo "                        <img src=\"views/app/images/avatares/";
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), ($context["owner_user"] ?? null), "name_foto", array(), "array"), "html", null, true);
             echo "\" class=\"user-image\" alt=\"User Image\">
                       ";
         } else {
-            // line 116
+            // line 135
             echo "                        <img src=\"//ssl.gstatic.com/accounts/ui/avatar_2x.png\" class=\"user-image\" alt=\"User Image\">
                       ";
         }
-        // line 118
+        // line 137
         echo "
                         <span class=\"hidden-xs\">";
-        // line 119
+        // line 138
         echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), ($context["owner_user"] ?? null), "name", array(), "array"), "html", null, true);
         echo "</span>
                     </a>
@@ -183,22 +245,22 @@ class __TwigTemplate_673d23903d41f061265ac8309efe7eb59e5fb88e353ad9d14d36709fd07
                         <li class=\"user-header\">
 
                             ";
-        // line 125
+        // line 144
         if ((twig_get_attribute($this->env, $this->getSourceContext(), ($context["owner_user"] ?? null), "foto", array(), "array") == 1)) {
-            // line 126
+            // line 145
             echo "                              <img src=\"views/app/images/avatares/";
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), ($context["owner_user"] ?? null), "name_foto", array(), "array"), "html", null, true);
             echo "\" class=\"img-circle\" alt=\"User Image\">
                             ";
         } else {
-            // line 128
+            // line 147
             echo "                              <img src=\"//ssl.gstatic.com/accounts/ui/avatar_2x.png\" class=\"img-circle\" alt=\"User Image\">
                             ";
         }
-        // line 130
+        // line 149
         echo "                            <p>
                                 ";
-        // line 131
+        // line 150
         echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), ($context["owner_user"] ?? null), "email", array(), "array"), "html", null, true);
         echo "
                                 <small></small>
@@ -250,7 +312,7 @@ class __TwigTemplate_673d23903d41f061265ac8309efe7eb59e5fb88e353ad9d14d36709fd07
 
     public function getDebugInfo()
     {
-        return array (  202 => 131,  199 => 130,  195 => 128,  189 => 126,  187 => 125,  178 => 119,  175 => 118,  171 => 116,  165 => 114,  163 => 113,  141 => 93,  125 => 79,  113 => 71,  106 => 68,  100 => 65,  98 => 64,  87 => 56,  80 => 53,  74 => 50,  72 => 49,  27 => 7,  19 => 1,);
+        return array (  264 => 150,  261 => 149,  257 => 147,  251 => 145,  249 => 144,  240 => 138,  237 => 137,  233 => 135,  227 => 133,  225 => 132,  202 => 111,  193 => 104,  189 => 102,  187 => 101,  182 => 100,  180 => 99,  175 => 98,  173 => 97,  168 => 94,  157 => 86,  153 => 84,  151 => 83,  146 => 82,  144 => 81,  139 => 80,  137 => 79,  133 => 78,  130 => 77,  128 => 76,  118 => 68,  114 => 66,  112 => 65,  107 => 64,  105 => 63,  100 => 62,  98 => 61,  94 => 60,  91 => 59,  89 => 58,  86 => 57,  80 => 54,  76 => 52,  74 => 51,  27 => 7,  19 => 1,);
     }
 
     public function getSourceContext()
@@ -286,7 +348,8 @@ class __TwigTemplate_673d23903d41f061265ac8309efe7eb59e5fb88e353ad9d14d36709fd07
                         </li>
                         <li class=\"footer\"><a href=\"#\">Ver todos los mensajes</a></li>
                     </ul>
-                </li>               
+                </li>   
+
                 <li class=\"dropdown notifications-menu\">
                     <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">
                         <i class=\"fa fa-bell-o\"></i>
@@ -302,52 +365,70 @@ class __TwigTemplate_673d23903d41f061265ac8309efe7eb59e5fb88e353ad9d14d36709fd07
                         <li class=\"footer\"><a href=\"escalamiento/ActividadesPorVencer\">Ver todo</a></li>
                     </ul>
                 </li> 
+                <!--FIXME:-->
                 <li class=\"dropdown notifications-menu\">
-                    {% if data6 > 1  %}
-                    <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" onclick=\"\" title=\"Hay {{ data6 }} Actividades por vencer\">
-                         <i class=\"fa fa-eye activar\"></i>
-                        {# <i class=\"fa fa-warning activar\" style=\"font-size:12px;color:red\"></i> #}
-                        <span class=\"label label-warning\">{{ data6 }}</span>
+                    {% if data8 or data10 > 0  %}
+                    <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" >
+                       <i class=\"fa fa-eye activar\"></i>
+                       <span class=\"label label-warning\">{{ data8 + data10 }}</span>
                     </a>
+                    {% endif  %}
+
+                     {% if data8 != 1  %}
                     <ul class=\"dropdown-menu\">
-                          <li class=\"header\" >Hay {{ data6 }} actividades por vencer</li>
+                        <li class=\"header\" ><i class=\"fa fa-warning activar\"></i>&nbsp;&nbsp;{{ data8 }} Actividades por vencer</li>
+                        {% if data10 > 1  %}
+                            <li class=\"header\" ><i class=\"fa fa-warning activar\"></i>&nbsp;&nbsp;&nbsp;{{ data10 }} Compromisos por vencer</li>
+                        {% elseif data10 == 1 %}
+                            <li class=\"header\" ><i class=\"fa fa-warning activar\"></i>&nbsp;&nbsp;&nbsp;{{ data10 }} Compromiso por vencer</li>
+                        {% elseif data10 == 0 %}
+                            <li class=\"header\" ><i class=\"fa fa-warning activar\"></i>&nbsp;&nbsp;&nbsp; Sin compromisos por vencer</li>
+                        {% endif  %}
                         <li>                             
-                            <ul class=\"menu\">                               
+                            <ul class=\"menu\">
                             </ul>
                         </li>
                         <li class=\"footer\">
                         </li>
                     </ul>
-                    {% elseif data6 == 1 %}
-                    <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" onclick=\"\" title=\"Hay {{ data6 }} Actividad por vencer\">
-                         <i class=\"fa fa-eye activar\"></i>
-                        {# <i class=\"fa fa-warning activar\" style=\"font-size:12px;color:red\"></i> #}
-                        <span class=\"label label-warning\">{{ data6 }}</span>
-                    </a>
+
+                    {% elseif data8 == 1 %}
                     <ul class=\"dropdown-menu\">
-                          <li class=\"header\" >Hay {{ data6 }} actividad por vencer</li>
+                            <li class=\"header\" ><i class=\"fa fa-warning activar\"></i>&nbsp;&nbsp;&nbsp;{{ data8 }} Actividad por vencer</li>
+                        {% if data10 > 1  %}
+                            <li class=\"header\" ><i class=\"fa fa-warning activar\"></i>&nbsp;&nbsp;&nbsp;{{ data10 }} Compromisos por vencer</li>
+                       {% elseif data10 == 1 %}
+                            <li class=\"header\" ><i class=\"fa fa-warning activar\"></i>&nbsp;&nbsp;&nbsp;{{ data10 }} Compromiso por vencer</li>
+                       {% elseif data10 == 0 %}
+                            <li class=\"header\" ><i class=\"fa fa-warning activar\"></i>&nbsp;&nbsp;&nbsp; Sin compromisos por vencer</li>
+                        {% endif  %}
                         <li>                             
                             <ul class=\"menu\">
+                                
                             </ul>
                         </li>
                         <li class=\"footer\">
                         </li>
                     </ul>
                     {% else %} 
-
-                   <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" onclick=cargarActividades(); title=\"No hay actividades por vencer\"> 
-                        <i class=\"fa fa-eye\"></i>
-                        <span class=\"label label-warning\" ></span>
-                    </a>
                     <ul class=\"dropdown-menu\">
                         <li class=\"header\" >no hay actividades por vencer</li>
-                        <li>                             
-                            <ul class=\"menu\">
-                            </ul>
+                        {% if data10 > 1  %}
+                            <li class=\"header\" ><i class=\"fa fa-warning activar\"></i>&nbsp;&nbsp;&nbsp;{{ data10 }} Compromisos por vencer</li>
+                        {% elseif data10 == 1 %}
+                            <li class=\"header\" ><i class=\"fa fa-warning activar\"></i>&nbsp;&nbsp;&nbsp;{{ data10 }} Compromiso por vencer</li>
+                        {% elseif data10 == 0 %}
+                            <li class=\"header\" ><i class=\"fa fa-warning activar\"></i>&nbsp;&nbsp;&nbsp; Sin compromisos por vencer</li>
+                        {% endif  %}
+                            <li>                             
+                        <ul class=\"menu\">
+                        </ul>
                         </li>
+            
                     </ul>
                     {% endif %}
                 </li> 
+                <!--FIXME:-->
                  <li class=\"dropdown tasks-menu\">
                     <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">
                         <i class=\"fa fa-flag-o\"></i>

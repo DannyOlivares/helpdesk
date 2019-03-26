@@ -123,7 +123,7 @@ class __TwigTemplate_be61ea1f71d59e42b31dd955476876cbfe92bf79b1780c6d4253864708f
         $this->displayBlock('appHeader', $context, $blocks);
         // line 90
         echo "  </head>
-  <body class=\"hold-transition skin-green sidebar-mini\">
+  <body class=\"hold-transition skin-green sidebar-mini\" onLoad=\"setInterval('contador()',1000);\">
     <!--<body class=\"hold-transition skin-blue sidebar-mini\">-->
     <div class=\"wrapper\">
       <div style=\"display: none;\" id=\"cargador\" align=\"center\">
@@ -269,40 +269,54 @@ class __TwigTemplate_be61ea1f71d59e42b31dd955476876cbfe92bf79b1780c6d4253864708f
         echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), ($context["owner_user"] ?? null), "id_user", array(), "array"), "html", null, true);
         echo "');
     </script>
-    FIXME:
+    <!--FIXME:-->
     <script type=\"text/javascript\">
-    var cont = 0;
-    function contador(){
-        var contador = document.getElementById(\"contador\");
-        contador.value = cont;
-        cont++;
-       if(cont == 1){ 
-          \$.ajax({
-            url: \"api/TotalAlertasFechaCompromiso\",
-            method: \"POST\",
-            async: true,
-            success: function(response) {
-              \$(\"#miDiv\").load(\"escalamiento/escalamiento #miDiv\");
-          }
+        var cont = 0;
+                function contador(){
+                var contador = document.getElementById(\"contador\");
+                contador.value = cont;
+                cont++;
+    
+         if(cont == 1){ 
+            \$.ajax({
+                url: \"api/TotalAlertasActividades\",
+                method: \"POST\",
+                async: true,
+                success: function(response) {
+                    \$(\"#miDiv\").load(\"escalamiento/escalamiento #miDiv\");
+            }
         });
-        }  
-        if(cont % 30== 0){ 
-          \$.ajax({
-            url: \"api/TotalAlertasFechaCompromiso\",
-            method: \"POST\",
-            async: true,
-            success: function(response) {
-              \$(\"#miDiv\").load(\"escalamiento/escalamiento #miDiv\");
-          }
-        });
-        }    
-    }
-    </script>
+    } 
+  
+                 if(cont == 1){ 
+            \$.ajax({
+              url: \"api/TotalAlertasCompromiso\",
+              method: \"POST\",
+              async: true,
+              success: function(response) {
+                \$(\"#miDiv\").load(\"escalamiento/escalamiento #miDiv\");
+            }
+          });
+          }   
+  
+  
+          if(cont % 30== 0){ 
+            \$.ajax({
+              url: \"api/TotalAlertasActividades\",
+              method: \"POST\",
+              async: true,
+              success: function(response) {
+                \$(\"#miDiv\").load(\"escalamiento/escalamiento #miDiv\");
+            }
+          });
+          }    
+      }
+      </script>
     ";
-        // line 229
+        // line 243
         echo " ";
         $this->displayBlock('appScript', $context, $blocks);
-        // line 230
+        // line 244
         echo "
   </body>
 </html>
@@ -353,7 +367,7 @@ class __TwigTemplate_be61ea1f71d59e42b31dd955476876cbfe92bf79b1780c6d4253864708f
         echo " ";
     }
 
-    // line 229
+    // line 243
     public function block_appScript($context, array $blocks = array())
     {
         echo " ";
@@ -371,7 +385,7 @@ class __TwigTemplate_be61ea1f71d59e42b31dd955476876cbfe92bf79b1780c6d4253864708f
 
     public function getDebugInfo()
     {
-        return array (  357 => 229,  349 => 117,  343 => 114,  337 => 112,  327 => 111,  322 => 88,  319 => 87,  313 => 79,  306 => 230,  303 => 229,  267 => 198,  259 => 195,  240 => 179,  186 => 127,  182 => 125,  180 => 123,  176 => 122,  172 => 120,  169 => 119,  166 => 118,  163 => 117,  159 => 115,  157 => 114,  154 => 113,  152 => 112,  148 => 111,  125 => 90,  122 => 87,  117 => 86,  110 => 80,  108 => 79,  34 => 7,  31 => 5,  26 => 1,);
+        return array (  371 => 243,  363 => 117,  357 => 114,  351 => 112,  341 => 111,  336 => 88,  333 => 87,  327 => 79,  320 => 244,  317 => 243,  267 => 198,  259 => 195,  240 => 179,  186 => 127,  182 => 125,  180 => 123,  176 => 122,  172 => 120,  169 => 119,  166 => 118,  163 => 117,  159 => 115,  157 => 114,  154 => 113,  152 => 112,  148 => 111,  125 => 90,  122 => 87,  117 => 86,  110 => 80,  108 => 79,  34 => 7,  31 => 5,  26 => 1,);
     }
 
     public function getSourceContext()
@@ -466,7 +480,7 @@ class __TwigTemplate_be61ea1f71d59e42b31dd955476876cbfe92bf79b1780c6d4253864708f
     <!-- :) -->
     {% endblock %}
   </head>
-  <body class=\"hold-transition skin-green sidebar-mini\">
+  <body class=\"hold-transition skin-green sidebar-mini\" onLoad=\"setInterval('contador()',1000);\">
     <!--<body class=\"hold-transition skin-blue sidebar-mini\">-->
     <div class=\"wrapper\">
       <div style=\"display: none;\" id=\"cargador\" align=\"center\">
@@ -575,35 +589,49 @@ class __TwigTemplate_be61ea1f71d59e42b31dd955476876cbfe92bf79b1780c6d4253864708f
     <script type=\"text/javascript\">
       notificacion_emergente('{{ config.site.name }}','{{ owner_user['id_user'] }}');
     </script>
-    FIXME:
+    <!--FIXME:-->
     <script type=\"text/javascript\">
-    var cont = 0;
-    function contador(){
-        var contador = document.getElementById(\"contador\");
-        contador.value = cont;
-        cont++;
-       if(cont == 1){ 
-          \$.ajax({
-            url: \"api/TotalAlertasFechaCompromiso\",
-            method: \"POST\",
-            async: true,
-            success: function(response) {
-              \$(\"#miDiv\").load(\"escalamiento/escalamiento #miDiv\");
-          }
+        var cont = 0;
+                function contador(){
+                var contador = document.getElementById(\"contador\");
+                contador.value = cont;
+                cont++;
+    
+         if(cont == 1){ 
+            \$.ajax({
+                url: \"api/TotalAlertasActividades\",
+                method: \"POST\",
+                async: true,
+                success: function(response) {
+                    \$(\"#miDiv\").load(\"escalamiento/escalamiento #miDiv\");
+            }
         });
-        }  
-        if(cont % 30== 0){ 
-          \$.ajax({
-            url: \"api/TotalAlertasFechaCompromiso\",
-            method: \"POST\",
-            async: true,
-            success: function(response) {
-              \$(\"#miDiv\").load(\"escalamiento/escalamiento #miDiv\");
-          }
-        });
-        }    
-    }
-    </script>
+    } 
+  
+                 if(cont == 1){ 
+            \$.ajax({
+              url: \"api/TotalAlertasCompromiso\",
+              method: \"POST\",
+              async: true,
+              success: function(response) {
+                \$(\"#miDiv\").load(\"escalamiento/escalamiento #miDiv\");
+            }
+          });
+          }   
+  
+  
+          if(cont % 30== 0){ 
+            \$.ajax({
+              url: \"api/TotalAlertasActividades\",
+              method: \"POST\",
+              async: true,
+              success: function(response) {
+                \$(\"#miDiv\").load(\"escalamiento/escalamiento #miDiv\");
+            }
+          });
+          }    
+      }
+      </script>
     {# Scripts globales #} {% block appScript %} {% endblock %}
 
   </body>

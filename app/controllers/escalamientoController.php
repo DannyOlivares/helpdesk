@@ -45,9 +45,10 @@ class escalamientoController extends Controllers implements IControllers {
                     'data3'     =>  (new Model\Escalamiento)->actividadesAsignadas(),
                     'data1'     =>  (new Model\Escalamiento)->actividadesTotales(),
                     'data4'     =>  (new Model\Escalamiento)->actividadesFinalizadasHoyAll(),
-                    'data5'     =>  (new Model\Escalamiento)->AlertaOrdenesPorVencer(),
-                    'data6'     =>  (new Model\Escalamiento)->TotalAlertasFechaCompromiso(),
-                    'data7'     =>  (new Model\Escalamiento)->totalCompromisosHoy()
+                    'data7'     =>  (new Model\Escalamiento)->totalCompromisosHoy(),
+                    'data8'     =>  (new Model\Escalamiento)->TotalAlertasActividades(),
+                    'data9'     =>  (new Model\Escalamiento)->AlertaCompromisosPorVencer(),
+                    'data10'    =>  (new Model\Escalamiento)->TotalAlertasCompromisos()
                 ));
             break;
 

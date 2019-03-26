@@ -144,7 +144,7 @@ class __TwigTemplate_8d32948712147076bc11bc56a0247b25b86eac83a647498b61c991f40e5
                                 <label>Bloque:</label>
                                 <select class=\"form-control bloque\" name=\"bloque\" id=\"bloque\">
                                     <option value=\"\"selected disabled>Seleccione Bloque</option>
-                                    <option value=\"09-13\">10-13</option>
+                                    <option value=\"10-13\">10-13</option>
                                     <option value=\"13-16\">13-16</option>
                                     <option value=\"16-19\">16-19</option>
                                     <option value=\"19-21\">19-22</option>
@@ -174,7 +174,6 @@ class __TwigTemplate_8d32948712147076bc11bc56a0247b25b86eac83a647498b61c991f40e5
                                 <label>Estado Orden:</label>
                                     <select class=\"form-control\" name=\"selectEstadoOrden\" id=\"selectEstadoOrden\">
                                         <option value=\"\"selected disabled>Seleccione Estado</option>
-                                        <option value=\"finalizada\">Finalizada</option>
                                         <option value=\"pendiente\">Pendiente</option>
                                         <option value=\"seguimiento\">Seguimiento</option>
                                     </select>
@@ -182,7 +181,7 @@ class __TwigTemplate_8d32948712147076bc11bc56a0247b25b86eac83a647498b61c991f40e5
 
                             <div class=\"col-md-6\">
                                 <input type=\"hidden\" name=\"fechaFinalizacion\" id=\"fechaFinalizacion\" class=\"form-control fechaFinalizacion\" placeholder=\"Ingrese comuna Actividad\" value=\"";
-        // line 135
+        // line 134
         echo twig_escape_filter($this->env, twig_date_format_filter($this->env, "now", "Y-m-d"), "html", null, true);
         echo "\" >
                             </div>
@@ -202,14 +201,14 @@ class __TwigTemplate_8d32948712147076bc11bc56a0247b25b86eac83a647498b61c991f40e5
                     </div>
                 </div>
             </form>
-        </section>
+    </section>
     ";
     }
 
-    // line 155
+    // line 154
     public function block_appScript($context, array $blocks = array())
     {
-        // line 156
+        // line 155
         echo "        <script src=\"views/app/js/escalamiento/escalamiento.js\" type=\"text/javascript\"></script>
         <script src=\"//code.jquery.com/ui/1.12.1/jquery-ui.js\"></script>
     ";
@@ -227,7 +226,7 @@ class __TwigTemplate_8d32948712147076bc11bc56a0247b25b86eac83a647498b61c991f40e5
 
     public function getDebugInfo()
     {
-        return array (  213 => 156,  210 => 155,  186 => 135,  159 => 111,  119 => 74,  113 => 71,  106 => 67,  102 => 66,  64 => 30,  61 => 29,  33 => 3,  30 => 2,  11 => 1,);
+        return array (  212 => 155,  209 => 154,  185 => 134,  159 => 111,  119 => 74,  113 => 71,  106 => 67,  102 => 66,  64 => 30,  61 => 29,  33 => 3,  30 => 2,  11 => 1,);
     }
 
     public function getSourceContext()
@@ -332,7 +331,7 @@ class __TwigTemplate_8d32948712147076bc11bc56a0247b25b86eac83a647498b61c991f40e5
                                 <label>Bloque:</label>
                                 <select class=\"form-control bloque\" name=\"bloque\" id=\"bloque\">
                                     <option value=\"\"selected disabled>Seleccione Bloque</option>
-                                    <option value=\"09-13\">10-13</option>
+                                    <option value=\"10-13\">10-13</option>
                                     <option value=\"13-16\">13-16</option>
                                     <option value=\"16-19\">16-19</option>
                                     <option value=\"19-21\">19-22</option>
@@ -359,7 +358,6 @@ class __TwigTemplate_8d32948712147076bc11bc56a0247b25b86eac83a647498b61c991f40e5
                                 <label>Estado Orden:</label>
                                     <select class=\"form-control\" name=\"selectEstadoOrden\" id=\"selectEstadoOrden\">
                                         <option value=\"\"selected disabled>Seleccione Estado</option>
-                                        <option value=\"finalizada\">Finalizada</option>
                                         <option value=\"pendiente\">Pendiente</option>
                                         <option value=\"seguimiento\">Seguimiento</option>
                                     </select>
@@ -384,7 +382,7 @@ class __TwigTemplate_8d32948712147076bc11bc56a0247b25b86eac83a647498b61c991f40e5
                     </div>
                 </div>
             </form>
-        </section>
+    </section>
     {% endblock %}
     {% block appScript %}
         <script src=\"views/app/js/escalamiento/escalamiento.js\" type=\"text/javascript\"></script>

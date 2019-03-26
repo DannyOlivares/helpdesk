@@ -64,6 +64,7 @@ class __TwigTemplate_c016bf9db555db0117f217c5c04db20933b58a21cb1906b4b4045de4eed
         </li>
         <li><a href=\"escalamiento/listaActividades\">Listar Actividades</a></li>
         </ol>
+        
     </section>
     <br>
     <section class=\"content\">
@@ -81,7 +82,7 @@ class __TwigTemplate_c016bf9db555db0117f217c5c04db20933b58a21cb1906b4b4045de4eed
                                     </div>
                                     <div class=\"box-footer\">
                                         Total Gestionadas: ";
-        // line 48
+        // line 49
         echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), twig_get_attribute($this->env, $this->getSourceContext(), ($context["data1"] ?? null), 0, array(), "array"), 0, array(), "array"), "html", null, true);
         echo "
                                     </div>
@@ -94,7 +95,7 @@ class __TwigTemplate_c016bf9db555db0117f217c5c04db20933b58a21cb1906b4b4045de4eed
                                     </div>
                                     <div class=\"box-footer\">
                                         Total Pendientes: ";
-        // line 58
+        // line 59
         echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), twig_get_attribute($this->env, $this->getSourceContext(), ($context["data2"] ?? null), 0, array(), "array"), 0, array(), "array"), "html", null, true);
         echo "
                                     </div>
@@ -108,7 +109,7 @@ class __TwigTemplate_c016bf9db555db0117f217c5c04db20933b58a21cb1906b4b4045de4eed
                                     </div>
                                     <div class=\"box-footer\">
                                         Total Seguimiento: ";
-        // line 69
+        // line 70
         echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), twig_get_attribute($this->env, $this->getSourceContext(), ($context["data3"] ?? null), 0, array(), "array"), 0, array(), "array"), "html", null, true);
         echo "
                                     </div>
@@ -122,7 +123,7 @@ class __TwigTemplate_c016bf9db555db0117f217c5c04db20933b58a21cb1906b4b4045de4eed
                                     </div>
                                     <div class=\"box-footer\">
                                         Total Finalizadas Hoy: ";
-        // line 80
+        // line 81
         echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), twig_get_attribute($this->env, $this->getSourceContext(), twig_get_attribute($this->env, $this->getSourceContext(), ($context["data4"] ?? null), "data", array(), "array"), 0, array(), "array"), 0, array(), "array"), "html", null, true);
         echo "
                                     </div>
@@ -136,7 +137,7 @@ class __TwigTemplate_c016bf9db555db0117f217c5c04db20933b58a21cb1906b4b4045de4eed
                                         </div>
                                         <div class=\"box-footer\">
                                             Total Compromisos Hoy: ";
-        // line 91
+        // line 92
         echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), twig_get_attribute($this->env, $this->getSourceContext(), ($context["data7"] ?? null), 0, array(), "array"), 0, array(), "array"), "html", null, true);
         echo "
                                         </div>
@@ -144,12 +145,13 @@ class __TwigTemplate_c016bf9db555db0117f217c5c04db20933b58a21cb1906b4b4045de4eed
                                 </div>
                         </div>
                         <ul class=\"nav nav-tabs\">
-                            <li><a data-toggle=\"tab\" href=\"#menu1\" class=\"\" onclick=\"cargarTabla('pendiente');\">Actividades Pendientes</a></li>
-                            <li><a data-toggle=\"tab\" href=\"#menu2\" onclick=\"cargarTabla('seguimiento');\">Actividades seguimiento</a></li>
-                            <li><a data-toggle=\"tab\" href=\"#menu3\" onclick=\"cargarTabla('finalizadaHoy');\">Actividades Finalizadas Hoy</a></li>
-                            <li><a data-toggle=\"tab\" href=\"#menu3\" onclick=\"cargarTabla('noCorresponde');\">Actividades  no corresponde</a></li>
-                            <li><a data-toggle=\"tab\" href=\"#menu5\" onclick=\"cargarTabla('porVencer');\">Actividades Por Vencer</a></li>
-                            <li><a data-toggle=\"tab\" href=\"#menu3\" onclick=\"cargarTabla('noCorresponde');\">Compromisos Para Hoy y Mañana</a></li>
+                            <li><a data-toggle=\"tab\" href=\"#menu1\" class=\"pendiente\"  onclick=\"cargarTabla('pendiente');\">Actividades Pendientes</a></li>
+                            <li><a data-toggle=\"tab\" href=\"#menu2\" class=\"seguimiento\" onclick=\"cargarTabla('seguimiento');\">Actividades seguimiento</a></li>
+                            <li><a data-toggle=\"tab\" href=\"#menu3\" class=\"finalizada\" onclick=\"cargarTabla('finalizadaHoy');\">Actividades Finalizadas Hoy</a></li>
+                            <li><a data-toggle=\"tab\" href=\"#menu3\" class=\"noCorresponde\" onclick=\"cargarTabla('noCorresponde');\">Actividades  no corresponde</a></li>
+                            <li><a data-toggle=\"tab\" href=\"#menu5\" class=\"porVencer\" onclick=\"cargarTabla('porVencer');\">Actividades Por Vencer</a></li>
+                            <li><a data-toggle=\"tab\" href=\"#home6\" onclick=\"cargarTabla('xVencerCompromiso');\">Compromisos Por Vencer</a></li>
+                            <li><a data-toggle=\"tab\" href=\"#menu3\" class=\"compromisoHoyMañana\" onclick=\"cargarTabla('compromisoHoyMañana');\">Compromisos Para Hoy y Mañana</a></li>
                         </ul>
                         <div id=\"home\" class=\"tab-pane fade in active\">
                             <div class=\"\">
@@ -171,10 +173,10 @@ class __TwigTemplate_c016bf9db555db0117f217c5c04db20933b58a21cb1906b4b4045de4eed
 ";
     }
 
-    // line 123
+    // line 125
     public function block_appScript($context, array $blocks = array())
     {
-        // line 124
+        // line 126
         echo "    <script src=\"views/app/js/escalamiento/escalamiento.js\" type=\"text/javascript\"></script>
     <script src=\"views/app/template/datatables/jquery.dataTables.min.js\" type=\"text/javascript\"></script>
     <script src=\"https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js\"></script>
@@ -196,7 +198,7 @@ class __TwigTemplate_c016bf9db555db0117f217c5c04db20933b58a21cb1906b4b4045de4eed
 
     public function getDebugInfo()
     {
-        return array (  178 => 124,  175 => 123,  140 => 91,  126 => 80,  112 => 69,  98 => 58,  85 => 48,  55 => 20,  52 => 19,  33 => 3,  30 => 2,  11 => 1,);
+        return array (  180 => 126,  177 => 125,  141 => 92,  127 => 81,  113 => 70,  99 => 59,  86 => 49,  55 => 20,  52 => 19,  33 => 3,  30 => 2,  11 => 1,);
     }
 
     public function getSourceContext()
@@ -232,6 +234,7 @@ class __TwigTemplate_c016bf9db555db0117f217c5c04db20933b58a21cb1906b4b4045de4eed
         </li>
         <li><a href=\"escalamiento/listaActividades\">Listar Actividades</a></li>
         </ol>
+        
     </section>
     <br>
     <section class=\"content\">
@@ -297,12 +300,13 @@ class __TwigTemplate_c016bf9db555db0117f217c5c04db20933b58a21cb1906b4b4045de4eed
                                 </div>
                         </div>
                         <ul class=\"nav nav-tabs\">
-                            <li><a data-toggle=\"tab\" href=\"#menu1\" class=\"\" onclick=\"cargarTabla('pendiente');\">Actividades Pendientes</a></li>
-                            <li><a data-toggle=\"tab\" href=\"#menu2\" onclick=\"cargarTabla('seguimiento');\">Actividades seguimiento</a></li>
-                            <li><a data-toggle=\"tab\" href=\"#menu3\" onclick=\"cargarTabla('finalizadaHoy');\">Actividades Finalizadas Hoy</a></li>
-                            <li><a data-toggle=\"tab\" href=\"#menu3\" onclick=\"cargarTabla('noCorresponde');\">Actividades  no corresponde</a></li>
-                            <li><a data-toggle=\"tab\" href=\"#menu5\" onclick=\"cargarTabla('porVencer');\">Actividades Por Vencer</a></li>
-                            <li><a data-toggle=\"tab\" href=\"#menu3\" onclick=\"cargarTabla('noCorresponde');\">Compromisos Para Hoy y Mañana</a></li>
+                            <li><a data-toggle=\"tab\" href=\"#menu1\" class=\"pendiente\"  onclick=\"cargarTabla('pendiente');\">Actividades Pendientes</a></li>
+                            <li><a data-toggle=\"tab\" href=\"#menu2\" class=\"seguimiento\" onclick=\"cargarTabla('seguimiento');\">Actividades seguimiento</a></li>
+                            <li><a data-toggle=\"tab\" href=\"#menu3\" class=\"finalizada\" onclick=\"cargarTabla('finalizadaHoy');\">Actividades Finalizadas Hoy</a></li>
+                            <li><a data-toggle=\"tab\" href=\"#menu3\" class=\"noCorresponde\" onclick=\"cargarTabla('noCorresponde');\">Actividades  no corresponde</a></li>
+                            <li><a data-toggle=\"tab\" href=\"#menu5\" class=\"porVencer\" onclick=\"cargarTabla('porVencer');\">Actividades Por Vencer</a></li>
+                            <li><a data-toggle=\"tab\" href=\"#home6\" onclick=\"cargarTabla('xVencerCompromiso');\">Compromisos Por Vencer</a></li>
+                            <li><a data-toggle=\"tab\" href=\"#menu3\" class=\"compromisoHoyMañana\" onclick=\"cargarTabla('compromisoHoyMañana');\">Compromisos Para Hoy y Mañana</a></li>
                         </ul>
                         <div id=\"home\" class=\"tab-pane fade in active\">
                             <div class=\"\">

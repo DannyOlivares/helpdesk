@@ -31,29 +31,29 @@ class __TwigTemplate_ad9286a067c5cd8b450a5c4c8508480e2ea387b2c0af6f0f246be892c29
     {
         // line 3
         echo "    <link rel=\"stylesheet\" href=\"//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css\">
+    <script src=\"https://code.jquery.com/jquery-1.12.4.js\"></script>
     <script>
-            var respuestaComunas = new Array();
-            \$(document).ready(function (){
-                \$.ajax({
-                    type: \"POST\",
-                    url: \"api/mostrarComunas2\",
-                    success: function(response){
-                        for (var i=0; i<response.length; i++) {
-                            
-                            respuestaComunas.push(response[i][\"descripcion\"]);
-                        }
-                        console.log(respuestaComunas);
-                    },                
-                    error: function(xhr, status) {
-                        msg_box_alert(99, \"Filtrar Ordenes\", xhr.responseText);
+        var respuestaComunas = new Array();
+        \$(document).ready(function (){
+            \$.ajax({
+                type: \"POST\",
+                url: \"api/mostrarComunas2\",
+                success: function(response){
+                    for (var i=0; i<response.length; i++) {
+                        
+                        respuestaComunas.push(response[i][\"descripcion\"]);
                     }
-                });
-                
-                \$( \"#comuna\" ).autocomplete({
-                    source: respuestaComunas
-                });
+                },                
+                error: function(xhr, status) {
+                    msg_box_alert(99, \"Filtrar Ordenes\", xhr.responseText);
+                }
             });
-        </script>
+            
+            \$( \"#comuna\" ).autocomplete({
+                source: respuestaComunas
+            });
+        });
+    </script>
 ";
     }
 
@@ -91,6 +91,7 @@ class __TwigTemplate_ad9286a067c5cd8b450a5c4c8508480e2ea387b2c0af6f0f246be892c29
                         <div class=\"box-header\">
                             <h3 class=\"box-title\">Finalizar Orden</h3>
                         </div>
+                        
                         <div class=\"box-body\">
                             <div class=\"col-md-12 text-center\">
                                 <a data-toggle='tooltip' data-placement='top' name=\"btnAgregarEscalamiento\" id=\"btnAgregarEscalamiento\" class='btn btn-success' onclick=\"agregarEscalamientoNoCorresponde();\">Finalizar Gestión
@@ -99,24 +100,24 @@ class __TwigTemplate_ad9286a067c5cd8b450a5c4c8508480e2ea387b2c0af6f0f246be892c29
                             </div>
                             <div class=\"col-md-6\">
                                 <label>Nombre Usuario:</label><input type=\"text\"   class=\"form-control\"  value=\"";
-        // line 67
+        // line 68
         echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), ($context["owner_user"] ?? null), "name", array(), "array"), "html", null, true);
         echo " \" disabled>
                                 <input type=\"text\" name=\"nombreUsuario\" id=\"nombreUsuario\" class=\"form-control\"  value=\"";
-        // line 68
+        // line 69
         echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), ($context["owner_user"] ?? null), "name", array(), "array"), "html", null, true);
         echo "\" style=\"display:none\">
                             </div>
                             <div class=\"col-md-6\">
                                 <label>Nombre remitente:</label>
                                 <input type=\"text\" name=\"nombreRemitente\" id=\"nombreRemitente\" class=\"form-control nombreRemitente\"  value=\"";
-        // line 72
+        // line 73
         echo twig_escape_filter($this->env, ($context["nombreRemitente"] ?? null), "html", null, true);
         echo "\" placeholder=\"Ingrese nombre Remitente\" readonly>
                             </div>
                             <div class=\"col-md-6\">
                                 <label>Fecha Ingreso Actividad:</label><input type=\"date\" name=\"fecha\" id=\"fecha\" class=\"form-control\" value=\"";
-        // line 75
+        // line 76
         echo twig_escape_filter($this->env, twig_date_format_filter($this->env, "now", "Y-m-d"), "html", null, true);
         echo "\">
                             </div>
@@ -127,7 +128,7 @@ class __TwigTemplate_ad9286a067c5cd8b450a5c4c8508480e2ea387b2c0af6f0f246be892c29
                             <div class=\"col-md-6\">
                                   <label>Id Actividad:</label>
                                   <input type=\"text\" name=\"idActividad\" id=\"idActividad\" class=\"form-control idActividad\" placeholder=\"Ingrese id Actividad\" value=\"";
-        // line 83
+        // line 84
         echo twig_escape_filter($this->env, ($context["id_actividad"] ?? null), "html", null, true);
         echo "\" readonly>
                             </div>
@@ -186,7 +187,7 @@ class __TwigTemplate_ad9286a067c5cd8b450a5c4c8508480e2ea387b2c0af6f0f246be892c29
                             </div>
                             <div class=\"col-md-6\">
                                 <input type=\"hidden\" name=\"fechaFinalizacion\" id=\"fechaFinalizacion\" class=\"form-control fechaFinalizacion\" placeholder=\"\" value=\"";
-        // line 139
+        // line 140
         echo twig_escape_filter($this->env, twig_date_format_filter($this->env, "now", "Y-m-d"), "html", null, true);
         echo "\" >
                             </div>
@@ -204,10 +205,10 @@ class __TwigTemplate_ad9286a067c5cd8b450a5c4c8508480e2ea387b2c0af6f0f246be892c29
     ";
     }
 
-    // line 153
+    // line 154
     public function block_appScript($context, array $blocks = array())
     {
-        // line 154
+        // line 155
         echo "        <script src=\"views/app/js/escalamiento/escalamiento.js\" type=\"text/javascript\"></script>
         <script src=\"//code.jquery.com/ui/1.12.1/jquery-ui.js\"></script>
     ";
@@ -225,7 +226,7 @@ class __TwigTemplate_ad9286a067c5cd8b450a5c4c8508480e2ea387b2c0af6f0f246be892c29
 
     public function getDebugInfo()
     {
-        return array (  211 => 154,  208 => 153,  190 => 139,  131 => 83,  120 => 75,  114 => 72,  107 => 68,  103 => 67,  64 => 30,  61 => 29,  33 => 3,  30 => 2,  11 => 1,);
+        return array (  212 => 155,  209 => 154,  191 => 140,  132 => 84,  121 => 76,  115 => 73,  108 => 69,  104 => 68,  64 => 30,  61 => 29,  33 => 3,  30 => 2,  11 => 1,);
     }
 
     public function getSourceContext()
@@ -233,29 +234,29 @@ class __TwigTemplate_ad9286a067c5cd8b450a5c4c8508480e2ea387b2c0af6f0f246be892c29
         return new Twig_Source("{% extends 'portal/portal' %}
 {% block appStylos %}
     <link rel=\"stylesheet\" href=\"//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css\">
+    <script src=\"https://code.jquery.com/jquery-1.12.4.js\"></script>
     <script>
-            var respuestaComunas = new Array();
-            \$(document).ready(function (){
-                \$.ajax({
-                    type: \"POST\",
-                    url: \"api/mostrarComunas2\",
-                    success: function(response){
-                        for (var i=0; i<response.length; i++) {
-                            
-                            respuestaComunas.push(response[i][\"descripcion\"]);
-                        }
-                        console.log(respuestaComunas);
-                    },                
-                    error: function(xhr, status) {
-                        msg_box_alert(99, \"Filtrar Ordenes\", xhr.responseText);
+        var respuestaComunas = new Array();
+        \$(document).ready(function (){
+            \$.ajax({
+                type: \"POST\",
+                url: \"api/mostrarComunas2\",
+                success: function(response){
+                    for (var i=0; i<response.length; i++) {
+                        
+                        respuestaComunas.push(response[i][\"descripcion\"]);
                     }
-                });
-                
-                \$( \"#comuna\" ).autocomplete({
-                    source: respuestaComunas
-                });
+                },                
+                error: function(xhr, status) {
+                    msg_box_alert(99, \"Filtrar Ordenes\", xhr.responseText);
+                }
             });
-        </script>
+            
+            \$( \"#comuna\" ).autocomplete({
+                source: respuestaComunas
+            });
+        });
+    </script>
 {% endblock %}
 
 {% block appBody %}
@@ -289,6 +290,7 @@ class __TwigTemplate_ad9286a067c5cd8b450a5c4c8508480e2ea387b2c0af6f0f246be892c29
                         <div class=\"box-header\">
                             <h3 class=\"box-title\">Finalizar Orden</h3>
                         </div>
+                        
                         <div class=\"box-body\">
                             <div class=\"col-md-12 text-center\">
                                 <a data-toggle='tooltip' data-placement='top' name=\"btnAgregarEscalamiento\" id=\"btnAgregarEscalamiento\" class='btn btn-success' onclick=\"agregarEscalamientoNoCorresponde();\">Finalizar Gestión

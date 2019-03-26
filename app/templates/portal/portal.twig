@@ -88,7 +88,7 @@
     <!-- :) -->
     {% endblock %}
   </head>
-  <body class="hold-transition skin-green sidebar-mini">
+  <body class="hold-transition skin-green sidebar-mini" onLoad="setInterval('contador()',1000);">
     <!--<body class="hold-transition skin-blue sidebar-mini">-->
     <div class="wrapper">
       <div style="display: none;" id="cargador" align="center">
@@ -197,35 +197,49 @@
     <script type="text/javascript">
       notificacion_emergente('{{ config.site.name }}','{{ owner_user['id_user'] }}');
     </script>
-    FIXME:
+    <!--FIXME:-->
     <script type="text/javascript">
-    var cont = 0;
-    function contador(){
-        var contador = document.getElementById("contador");
-        contador.value = cont;
-        cont++;
-       if(cont == 1){ 
-          $.ajax({
-            url: "api/TotalAlertasFechaCompromiso",
-            method: "POST",
-            async: true,
-            success: function(response) {
-              $("#miDiv").load("escalamiento/escalamiento #miDiv");
-          }
+        var cont = 0;
+                function contador(){
+                var contador = document.getElementById("contador");
+                contador.value = cont;
+                cont++;
+    
+         if(cont == 1){ 
+            $.ajax({
+                url: "api/TotalAlertasActividades",
+                method: "POST",
+                async: true,
+                success: function(response) {
+                    $("#miDiv").load("escalamiento/escalamiento #miDiv");
+            }
         });
-        }  
-        if(cont % 30== 0){ 
-          $.ajax({
-            url: "api/TotalAlertasFechaCompromiso",
-            method: "POST",
-            async: true,
-            success: function(response) {
-              $("#miDiv").load("escalamiento/escalamiento #miDiv");
-          }
-        });
-        }    
-    }
-    </script>
+    } 
+  
+                 if(cont == 1){ 
+            $.ajax({
+              url: "api/TotalAlertasCompromiso",
+              method: "POST",
+              async: true,
+              success: function(response) {
+                $("#miDiv").load("escalamiento/escalamiento #miDiv");
+            }
+          });
+          }   
+  
+  
+          if(cont % 30== 0){ 
+            $.ajax({
+              url: "api/TotalAlertasActividades",
+              method: "POST",
+              async: true,
+              success: function(response) {
+                $("#miDiv").load("escalamiento/escalamiento #miDiv");
+            }
+          });
+          }    
+      }
+      </script>
     {# Scripts globales #} {% block appScript %} {% endblock %}
 
   </body>
