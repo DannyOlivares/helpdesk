@@ -31,10 +31,10 @@ class escalamientoController extends Controllers implements IControllers {
             case 'agregarEscalamientoNoCorresponde':
 
                 $router->setRoute('/mi_nueva_ruta');
-                
                 echo $this->template->render('escalamiento/agregarEscalamientoNoCorresponde', array(                 
                     'id_actividad'      => $router->getId(),
-                    'nombreRemitente'   => $router->getRoute('/mi_nueva_ruta')
+                    'nombreRemitente'   => $router->getRoute('/mi_nueva_ruta'),
+                    'datos'     =>  (new Model\Escalamiento)->verRemitente($router->getId()),
                 ));
             break;
 
@@ -46,9 +46,9 @@ class escalamientoController extends Controllers implements IControllers {
                     'data1'     =>  (new Model\Escalamiento)->actividadesTotales(),
                     'data4'     =>  (new Model\Escalamiento)->actividadesFinalizadasHoyAll(),
                     'data7'     =>  (new Model\Escalamiento)->totalCompromisosHoy(),
-                    'data8'     =>  (new Model\Escalamiento)->TotalAlertasActividades(),
-                    'data9'     =>  (new Model\Escalamiento)->AlertaCompromisosPorVencer(),
-                    'data10'    =>  (new Model\Escalamiento)->TotalAlertasCompromisos()
+                    // 'data8'     =>  (new Model\Escalamiento)->TotalAlertasActividades(),
+                    // 'data9'     =>  (new Model\Escalamiento)->AlertaCompromisosPorVencer(),
+                    // 'data10'    =>  (new Model\Escalamiento)->TotalAlertasCompromisos()
                 ));
             break;
 

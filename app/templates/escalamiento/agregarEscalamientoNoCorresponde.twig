@@ -68,73 +68,29 @@
                                 <label>Nombre Usuario:</label><input type="text"   class="form-control"  value="{{ owner_user['name'] }} " disabled>
                                 <input type="text" name="nombreUsuario" id="nombreUsuario" class="form-control"  value="{{ owner_user['name'] }}" style="display:none">
                             </div>
+                            
                             <div class="col-md-6">
-                                <label>Nombre remitente:</label>
-                                <input type="text" name="nombreRemitente" id="nombreRemitente" class="form-control nombreRemitente"  value="{{ nombreRemitente }}" placeholder="Ingrese nombre Remitente" readonly>
+                                <label for="nombreRemitente">Nombre remitente:</label>
+                                <input type="text" name="nombreRemitente" id="nombreRemitente" class="form-control nombreRemitente"  value="{{ datos.nombreRemitente }}" placeholder="Ingrese nombre Remitente" readonly>
                             </div>
                             <div class="col-md-6">
-                                <label>Fecha Ingreso Actividad:</label><input type="date" name="fecha" id="fecha" class="form-control" value="{{ "now"|date("Y-m-d") }}">
+                                <label>Rut Cliente:</label>
+                                <input type="text" name="rutCliente" id="rutCliente" class="form-control rutCliente"  value="" placeholder="Ingrese Rut Cliente">
                             </div>
                             <div class="col-md-6">
-                                  <label>Rut Cliente:</label>
-                                  <input type="text" name="rutCliente" id="rutCliente" class="form-control rutCliente" placeholder="Ingrese rut cliente">
+                                <label>Área Ingreso:</label>
+                                <input type="text" name="areaIngreso" id="areaIngreso" class="form-control areaIngreso"  value="{{datos.areaIngreso}}" placeholder="Ingrese Area Ingreso" readOnly>
+                            </div>
+                            <div class="col-md-6">
+                                <label>Fecha Ingreso Actividad:</label><input type="date" name="fecha" id="fecha" class="form-control" value="{{ "now"|date("Y-m-d") }}" readonly>
                             </div>
                             <div class="col-md-6">
                                   <label>Id Actividad:</label>
                                   <input type="text" name="idActividad" id="idActividad" class="form-control idActividad" placeholder="Ingrese id Actividad" value="{{ id_actividad }}" readonly>
                             </div>
-                            <div class="col-md-6">
-                                <label>Canal:</label>
-                                <input type="text" name="canal" id="canal" class="form-control canal" placeholder="Ingrese canal" value="">
-                            </div>
-                            <div class="col-md-6">
-                                <label>Fecha Compromiso:</label>
-                                <input type="date" name="fechaCompromiso" id="fechaCompromiso" class="form-control fechaCompromiso" placeholder="Ingrese fecha compromiso" value="">
-                            </div>
-                            <div class="col-md-6">
-                                <label>Bloque:</label>
-                                <select class="form-control bloque" name="bloque" id="bloque">
-                                    <option value=""selected disabled>Seleccione Bloque</option>
-                                    <option value="09-13">10-13</option>
-                                    <option value="13-16">13-16</option>
-                                    <option value="16-19">16-19</option>
-                                    <option value="19-21">19-22</option>
-                                </select>
-                            </div>
-                            <div class="col-md-6">
-                                <label>Estado Escalamiento:</label>
-                                <input type="text" name="estadoEscalamiento" value="" id="estadoEscalamiento" class="form-control" placeholder="Ingrese estado escalamiento">
-                            </div>
-                            <div class="col-md-6">
-                                <label>Tipo Actividad:</label>
-                                    <select class="form-control" name="selectTipoActividad" id="selectTipoActividad">
-                                        <option value=""selected disabled>Seleccione Tipo</option>
-                                        <option value="reparacion">Reparación</option>
-                                        <option value="modificacion">Modificación</option>
-                                        <option value="alta">Alta</option>
-                                        <option value="altaTraslado">Alta Traslado</option>
-                                    </select>
-                            </div>
-                            <div class="col-md-6">
-                                <label>Estado Orden:</label>
-                                    <select class="form-control" onchange="this.options[1].selected=true" name="selectEstadoOrden" id="selectEstadoOrden">
-                                        <option value=""selected disabled>Seleccione Estado</option>
-                                        <option value="finalizada" selected>Finalizada</option>
-                                        <option value="pendiente">Pendiente</option>
-                                        <option value="seguimiento">Seguimiento</option>
-                                    </select>
-                            </div>
-                            <div class="col-md-6">
-                                <label>Comuna:</label>
-                                <input type="text" name="comuna" id="comuna" class="form-control comuna" placeholder="Ingrese comuna">
-                            </div>
-                            <div class="col-md-6">
-                                <label>Hora Compromiso:</label>
-                                <input type="time" name="horaCompromiso" value="" id="horaCompromiso" class="form-control horaCompromiso" placeholder="Ingrese Hora Compromiso">
-                            </div>
                             <div class="col-md-12">
-                                <label>Descripción:</label>
-                                <textarea name="descripcionActividad" id="descripcionActividad" cols="30" rows="3" class="form-control"></textarea>
+                                <label>Observación:</label>
+                                <textarea name="observacion" id="observacion" cols="30" rows="3" class="form-control observacion"></textarea>
                             </div>
                             <div class="col-md-6">
                                 <input type="hidden" name="fechaFinalizacion" id="fechaFinalizacion" class="form-control fechaFinalizacion" placeholder="" value="{{ "now"|date("Y-m-d") }}" >

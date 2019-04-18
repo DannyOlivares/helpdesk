@@ -32,34 +32,24 @@
             <div class="col-md-12">
                 <div class="box box-primary">
                     <div class="box-body">
-                        <table id="dataordenes" name="dataordenes" class="table table-bordered">
+                        <table id="dataEscalamiento" name="dataordenes" class="table table-bordered">
                             <thead>
                                 <tr>
-                                    <th>Fecha Ingreso</th>
-                                    <th>Fecha Compromiso</th>
-                                    <th>Rut</th>
                                     <th>Id Actividad</th>
-                                    <th>Comuna </th>
-                                    <th>Remitente</th>
+                                    <th>Rut Cliente</th>
+                                    <th>Fecha Compromiso</th>
+                                    <th>Canal</th>
                                     <th>Bloque </th>
+                                    <th>Estado Escalamiento</th>
                                     <th>Tipo Actividad</th>
-                                    <th>Acciones</th>
+                                    <th>Gestion</th>
+                                    <th>Hora Compromiso</th>
+                                    <th>Estado Orden</th>
+                                    <th>Creador</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {%  for  d in data['data'] if false != data['data'] %}
-                                    <tr>
-                                        <td>{{ d[0] }}</td>
-                                        <td>{{ d[1] }}</td>
-                                        <td>{{ d[2] }}</td>
-                                        <td>{{ d[3] }}</td>
-                                        <td>{{ d[4] }}</td>
-                                        <td>{{ d[5] }}</td>
-                                        <td>{{ d[6] }}</td>
-                                        <td>{{ d[7] }}</td>
-                                        <td><a data-toggle='tooltip' data-placement='top' id="visualizar" name="visualizar" title='Agrega El detalle de tu gestión' class='btn btn-success btn-sm' onclick="agregarGestion('{{ d[3] }}');">Agregar Gestión</a></td>
-                                    </tr>
-                                {% endfor %}
+                                
                             </tbody>
                         </table>
                     </div>
@@ -73,7 +63,11 @@
     <script src="views/app/template/datatables/dataTables.bootstrap.min.js" type="text/javascript"></script>
     <script src="views/app/js/escalamiento/escalamiento.js"></script>
     <script>
-        /*$("").dataTable({
+        $("#dataEscalamiento").dataTable({
+            ajax: {
+                url: "api/todasLasActividades",
+                type: "POST"
+              },
             "language": {
                 "search": "Buscar:",
                 "zeroRecords": "No hay datos para mostrar",
@@ -92,6 +86,6 @@
             "autoWidth": true,
             "scrollX": true,
             "bSort": false
-        });*/
+        });
     </script>
 {% endblock %}

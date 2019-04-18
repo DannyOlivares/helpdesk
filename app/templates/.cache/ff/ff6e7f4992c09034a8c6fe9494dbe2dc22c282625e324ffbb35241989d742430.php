@@ -1,7 +1,7 @@
 <?php
 
 /* portal/portal.twig */
-class __TwigTemplate_be61ea1f71d59e42b31dd955476876cbfe92bf79b1780c6d4253864708ff51b1 extends Twig_Template
+class __TwigTemplate_6da69170c8e4186162644daf0348988b58e01287f902c33adb3c5bcd79f7a9eb extends Twig_Template
 {
     public function __construct(Twig_Environment $env)
     {

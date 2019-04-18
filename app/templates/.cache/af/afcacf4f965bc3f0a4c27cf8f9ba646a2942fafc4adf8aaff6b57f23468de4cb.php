@@ -67,74 +67,25 @@ class __TwigTemplate_0e1590ab6e7db38143070aa679d4796cb0b516b6f69f9a8944efa4cb2fc
             <div class=\"col-md-12\">
                 <div class=\"box box-primary\">
                     <div class=\"box-body\">
-                        <table id=\"dataordenes\" name=\"dataordenes\" class=\"table table-bordered\">
+                        <table id=\"dataEscalamiento\" name=\"dataordenes\" class=\"table table-bordered\">
                             <thead>
                                 <tr>
-                                    <th>Fecha Ingreso</th>
-                                    <th>Fecha Compromiso</th>
-                                    <th>Rut</th>
                                     <th>Id Actividad</th>
-                                    <th>Comuna </th>
-                                    <th>Remitente</th>
+                                    <th>Rut Cliente</th>
+                                    <th>Fecha Compromiso</th>
+                                    <th>Canal</th>
                                     <th>Bloque </th>
+                                    <th>Estado Escalamiento</th>
                                     <th>Tipo Actividad</th>
-                                    <th>Acciones</th>
+                                    <th>Gestion</th>
+                                    <th>Hora Compromiso</th>
+                                    <th>Estado Orden</th>
+                                    <th>Creador</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                ";
-        // line 50
-        $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->getSourceContext(), ($context["data"] ?? null), "data", array(), "array"));
-        foreach ($context['_seq'] as $context["_key"] => $context["d"]) {
-            if ((false != twig_get_attribute($this->env, $this->getSourceContext(), ($context["data"] ?? null), "data", array(), "array"))) {
-                // line 51
-                echo "                                    <tr>
-                                        <td>";
-                // line 52
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), $context["d"], 0, array(), "array"), "html", null, true);
-                echo "</td>
-                                        <td>";
-                // line 53
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), $context["d"], 1, array(), "array"), "html", null, true);
-                echo "</td>
-                                        <td>";
-                // line 54
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), $context["d"], 2, array(), "array"), "html", null, true);
-                echo "</td>
-                                        <td>";
-                // line 55
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), $context["d"], 3, array(), "array"), "html", null, true);
-                echo "</td>
-                                        <td>";
-                // line 56
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), $context["d"], 4, array(), "array"), "html", null, true);
-                echo "</td>
-                                        <td>";
-                // line 57
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), $context["d"], 5, array(), "array"), "html", null, true);
-                echo "</td>
-                                        <td>";
-                // line 58
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), $context["d"], 6, array(), "array"), "html", null, true);
-                echo "</td>
-                                        <td>";
-                // line 59
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), $context["d"], 7, array(), "array"), "html", null, true);
-                echo "</td>
-                                        <td><a data-toggle='tooltip' data-placement='top' id=\"visualizar\" name=\"visualizar\" title='Agrega El detalle de tu gestión' class='btn btn-success btn-sm' onclick=\"agregarGestion('";
-                // line 60
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), $context["d"], 3, array(), "array"), "html", null, true);
-                echo "');\">Agregar Gestión</a></td>
-                                    </tr>
-                                ";
-            }
-        }
-        $_parent = $context['_parent'];
-        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['d'], $context['_parent'], $context['loop']);
-        $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 63
-        echo "                            </tbody>
+                                
+                            </tbody>
                         </table>
                     </div>
                 </div>
@@ -144,15 +95,19 @@ class __TwigTemplate_0e1590ab6e7db38143070aa679d4796cb0b516b6f69f9a8944efa4cb2fc
 ";
     }
 
-    // line 71
+    // line 61
     public function block_appScript($context, array $blocks = array())
     {
-        // line 72
+        // line 62
         echo "    <script src=\"views/app/template/datatables/jquery.dataTables.min.js\" type=\"text/javascript\"></script>
     <script src=\"views/app/template/datatables/dataTables.bootstrap.min.js\" type=\"text/javascript\"></script>
     <script src=\"views/app/js/escalamiento/escalamiento.js\"></script>
     <script>
-        /*\$(\"\").dataTable({
+        \$(\"#dataEscalamiento\").dataTable({
+            ajax: {
+                url: \"api/todasLasActividades\",
+                type: \"POST\"
+              },
             \"language\": {
                 \"search\": \"Buscar:\",
                 \"zeroRecords\": \"No hay datos para mostrar\",
@@ -171,7 +126,7 @@ class __TwigTemplate_0e1590ab6e7db38143070aa679d4796cb0b516b6f69f9a8944efa4cb2fc
             \"autoWidth\": true,
             \"scrollX\": true,
             \"bSort\": false
-        });*/
+        });
     </script>
 ";
     }
@@ -188,7 +143,7 @@ class __TwigTemplate_0e1590ab6e7db38143070aa679d4796cb0b516b6f69f9a8944efa4cb2fc
 
     public function getDebugInfo()
     {
-        return array (  151 => 72,  148 => 71,  137 => 63,  127 => 60,  123 => 59,  119 => 58,  115 => 57,  111 => 56,  107 => 55,  103 => 54,  99 => 53,  95 => 52,  92 => 51,  87 => 50,  46 => 11,  43 => 10,  33 => 3,  30 => 2,  11 => 1,);
+        return array (  102 => 62,  99 => 61,  46 => 11,  43 => 10,  33 => 3,  30 => 2,  11 => 1,);
     }
 
     public function getSourceContext()
@@ -227,34 +182,24 @@ class __TwigTemplate_0e1590ab6e7db38143070aa679d4796cb0b516b6f69f9a8944efa4cb2fc
             <div class=\"col-md-12\">
                 <div class=\"box box-primary\">
                     <div class=\"box-body\">
-                        <table id=\"dataordenes\" name=\"dataordenes\" class=\"table table-bordered\">
+                        <table id=\"dataEscalamiento\" name=\"dataordenes\" class=\"table table-bordered\">
                             <thead>
                                 <tr>
-                                    <th>Fecha Ingreso</th>
-                                    <th>Fecha Compromiso</th>
-                                    <th>Rut</th>
                                     <th>Id Actividad</th>
-                                    <th>Comuna </th>
-                                    <th>Remitente</th>
+                                    <th>Rut Cliente</th>
+                                    <th>Fecha Compromiso</th>
+                                    <th>Canal</th>
                                     <th>Bloque </th>
+                                    <th>Estado Escalamiento</th>
                                     <th>Tipo Actividad</th>
-                                    <th>Acciones</th>
+                                    <th>Gestion</th>
+                                    <th>Hora Compromiso</th>
+                                    <th>Estado Orden</th>
+                                    <th>Creador</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {%  for  d in data['data'] if false != data['data'] %}
-                                    <tr>
-                                        <td>{{ d[0] }}</td>
-                                        <td>{{ d[1] }}</td>
-                                        <td>{{ d[2] }}</td>
-                                        <td>{{ d[3] }}</td>
-                                        <td>{{ d[4] }}</td>
-                                        <td>{{ d[5] }}</td>
-                                        <td>{{ d[6] }}</td>
-                                        <td>{{ d[7] }}</td>
-                                        <td><a data-toggle='tooltip' data-placement='top' id=\"visualizar\" name=\"visualizar\" title='Agrega El detalle de tu gestión' class='btn btn-success btn-sm' onclick=\"agregarGestion('{{ d[3] }}');\">Agregar Gestión</a></td>
-                                    </tr>
-                                {% endfor %}
+                                
                             </tbody>
                         </table>
                     </div>
@@ -268,7 +213,11 @@ class __TwigTemplate_0e1590ab6e7db38143070aa679d4796cb0b516b6f69f9a8944efa4cb2fc
     <script src=\"views/app/template/datatables/dataTables.bootstrap.min.js\" type=\"text/javascript\"></script>
     <script src=\"views/app/js/escalamiento/escalamiento.js\"></script>
     <script>
-        /*\$(\"\").dataTable({
+        \$(\"#dataEscalamiento\").dataTable({
+            ajax: {
+                url: \"api/todasLasActividades\",
+                type: \"POST\"
+              },
             \"language\": {
                 \"search\": \"Buscar:\",
                 \"zeroRecords\": \"No hay datos para mostrar\",
@@ -287,7 +236,7 @@ class __TwigTemplate_0e1590ab6e7db38143070aa679d4796cb0b516b6f69f9a8944efa4cb2fc
             \"autoWidth\": true,
             \"scrollX\": true,
             \"bSort\": false
-        });*/
+        });
     </script>
 {% endblock %}
 ", "escalamiento/listaActividades.twig", "C:\\xampp\\htdocs\\helpdesk\\app\\templates\\escalamiento\\listaActividades.twig");

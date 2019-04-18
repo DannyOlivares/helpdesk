@@ -85,10 +85,10 @@
     {# Título #}
     <title>{{ config.site.name }}</title>
     {# Extras en el header #} {% block appHeader %}
-    <!-- :) -->
+    <!-- :) onLoad="setInterval('contador()',1000);"pegar en el body-->
     {% endblock %}
   </head>
-  <body class="hold-transition skin-green sidebar-mini" onLoad="setInterval('contador()',1000);">
+  <body class="hold-transition skin-green sidebar-mini" >
     <!--<body class="hold-transition skin-blue sidebar-mini">-->
     <div class="wrapper">
       <div style="display: none;" id="cargador" align="center">
